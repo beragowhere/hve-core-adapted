@@ -43,11 +43,11 @@ jobs:
 
       - name: Create changelog file
         id: create-changelog
+        env:
+          RELEASE_BODY: ${{ github.event.release.body }}
         run: |
           if [ "${{ github.event_name }}" == "release" ]; then
-            cat > CHANGELOG.md << 'EOF'
-          ${{ github.event.release.body }}
-          EOF
+            printf '%s\n' "$RELEASE_BODY" > CHANGELOG.md
             echo "path=CHANGELOG.md" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
             echo "path=" >> "$GITHUB_OUTPUT"
@@ -73,11 +73,13 @@ jobs:
         id: normalize
         env:
           GH_TOKEN: ${{ github.token }}
+          INPUT_VERSION: ${{ inputs.version }}
+          RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
         run: |
           if [ "${{ github.event_name }}" == "release" ]; then
-            VERSION="${{ github.event.release.tag_name }}"
+            VERSION="$RELEASE_TAG_NAME"
           else
-            VERSION="${{ inputs.version }}"
+            VERSION="$INPUT_VERSION"
           fi
           # Strip leading 'v' and component prefix if present
           VERSION="${VERSION#v}"
