@@ -18,6 +18,11 @@ on:
         required: false
         type: boolean
         default: true
+      log-opts:
+        description: 'Extra git log options passed to gitleaks (e.g. a revision range to scope the scan)'
+        required: false
+        type: string
+        default: ''
 
 permissions:
   contents: read
@@ -74,6 +79,12 @@ jobs:
             "--redact"
             "--log-level" "info"
           )
+
+          LOG_OPTS="${{ inputs.log-opts }}"
+          if [ -n "$LOG_OPTS" ]; then
+            SCAN_ARGS+=("--log-opts=$LOG_OPTS")
+            echo "Scoping scan with log-opts: $LOG_OPTS"
+          fi
 
           # Respect .gitleaksignore for pre-existing secrets
           if [ -f ".gitleaksignore" ]; then

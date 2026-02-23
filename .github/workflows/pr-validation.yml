@@ -144,6 +144,7 @@ jobs:
       soft-fail: false
       upload-sarif: true
       upload-artifact: false
+      log-opts: '${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}'
 
   npm-audit:
     name: npm Security Audit
