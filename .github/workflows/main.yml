@@ -220,7 +220,17 @@ jobs:
       - name: Resolve VSIX filename
         id: vsix
         run: |
-          VSIX_FILE=$(ls dist/*.vsix)
+          shopt -s nullglob
+          files=(dist/*.vsix)
+          if [[ ${#files[@]} -eq 0 ]]; then
+            echo "::error::No VSIX file found in dist/"
+            exit 1
+          fi
+          if [[ ${#files[@]} -gt 1 ]]; then
+            echo "::error::Expected exactly one VSIX file but found ${#files[@]}: ${files[*]}"
+            exit 1
+          fi
+          VSIX_FILE="${files[0]}"
           VSIX_NAME=$(basename "$VSIX_FILE")
           echo "file=$VSIX_FILE" >> "$GITHUB_OUTPUT"
           echo "name=$VSIX_NAME" >> "$GITHUB_OUTPUT"
