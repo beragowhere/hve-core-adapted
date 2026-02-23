@@ -29,6 +29,8 @@ jobs:
   normalize-version:
     name: Normalize Version
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     outputs:
       version: ${{ steps.normalize.outputs.version }}
     steps:
