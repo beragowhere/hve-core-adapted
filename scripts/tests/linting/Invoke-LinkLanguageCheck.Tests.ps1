@@ -1,4 +1,4 @@
-#Requires -Modules Pester
+﻿#Requires -Modules Pester
 <#
 .SYNOPSIS
     Pester tests for Invoke-LinkLanguageCheck.ps1 script
@@ -607,7 +607,7 @@ No URLs with language-specific paths detected.
             }
 
             # Simulate the check from the function
-            $repoRoot = git rev-parse --show-toplevel 2>$null
+            $null = git rev-parse --show-toplevel 2>$null
             if ($LASTEXITCODE -ne 0) {
                 Write-Error "Not in a git repository"
             }
@@ -890,7 +890,7 @@ Describe 'Invoke-LinkLanguageCheckWrapper Orchestration Paths' -Tag 'Unit' {
                 return $null
             } -ParameterFilter { $args[0] -eq 'rev-parse' }
 
-            $repoRoot = git rev-parse --show-toplevel 2>$null
+            $null = git rev-parse --show-toplevel 2>$null
             if ($LASTEXITCODE -ne 0) {
                 Write-Error "Not in a git repository"
             }

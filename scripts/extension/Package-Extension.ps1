@@ -414,7 +414,6 @@ function Invoke-ExtensionPackaging {
         return 1
     }
 
-    $baseVersion = $versionResult.BaseVersion
     $packageVersion = $versionResult.PackageVersion
 
     Write-Host "   Using version: $packageVersion" -ForegroundColor Green

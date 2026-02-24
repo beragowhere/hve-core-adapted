@@ -512,7 +512,7 @@ Describe 'Get-LatestCommitSHA' -Tag 'Unit' {
             Mock Write-SecurityLog { }
 
             # Function should handle error gracefully and return null
-            { $result = Get-LatestCommitSHA -Owner 'actions' -Repo 'checkout' -Branch 'main' } | Should -Not -Throw
+            { Get-LatestCommitSHA -Owner 'actions' -Repo 'checkout' -Branch 'main' } | Should -Not -Throw
         }
     }
 

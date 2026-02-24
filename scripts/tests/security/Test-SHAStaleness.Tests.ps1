@@ -299,7 +299,7 @@ Describe 'Get-BulkGitHubActionsStaleness' -Tag 'Unit' {
                 }
             }
 
-            $result = Get-BulkGitHubActionsStaleness -ActionRepos $script:testActionRepos -ShaToActionMap $script:testShaToActionMap -BatchSize 10
+            $null = Get-BulkGitHubActionsStaleness -ActionRepos $script:testActionRepos -ShaToActionMap $script:testShaToActionMap -BatchSize 10
             Should -Invoke Invoke-GitHubAPIWithRetry -Times 2 -Scope It
         }
 
@@ -429,6 +429,7 @@ jobs:
 
             Mock Get-BulkGitHubActionsStaleness {
                 param($ActionRepos, $ShaToActionMap)
+                $null = $ActionRepos
                 $ShaToActionMap.Count | Should -Be 1
                 return @()
             }

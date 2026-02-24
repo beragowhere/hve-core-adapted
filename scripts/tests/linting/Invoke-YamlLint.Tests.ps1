@@ -661,7 +661,7 @@ Describe 'Invoke-YamlLintValidation Function' -Tag 'Unit' {
         It 'Uses Get-ChangedFilesFromGit in ChangedFilesOnly mode' {
             Mock Get-ChangedFilesFromGit { @('.github/workflows/test.yml') }
 
-            $result = Invoke-YamlLintValidation -ChangedFilesOnly -OutputPath (Join-Path $script:TempDir 'changed-results.json')
+            $null = Invoke-YamlLintValidation -ChangedFilesOnly -OutputPath (Join-Path $script:TempDir 'changed-results.json')
             Should -Invoke Get-ChangedFilesFromGit -Times 1
         }
 

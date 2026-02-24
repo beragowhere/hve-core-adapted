@@ -1592,7 +1592,7 @@ maturity: stable
             $originalContent = Get-Content -Path $pkgPath -Raw
 
             # Simulate what DryRun should do - read but not write
-            $packageJson = $originalContent | ConvertFrom-Json
+            $originalContent | ConvertFrom-Json | Out-Null
             $allowed = Get-AllowedMaturities -Channel 'Stable'
 
             $agents = Get-DiscoveredAgents -AgentsDir (Join-Path $script:TestDir '.github/agents') -AllowedMaturities $allowed -ExcludedAgents @()

@@ -877,8 +877,6 @@ function Invoke-SHAStalenessTest {
     Output format: 'json', 'azdo', 'github', or 'console'.
 .PARAMETER MaxAge
     Maximum age in days before considering a dependency stale.
-.PARAMETER LogPath
-    Path for security logging.
 .PARAMETER OutputPath
     Path to write structured output file.
 .PARAMETER FailOnStale
@@ -897,9 +895,6 @@ function Invoke-SHAStalenessTest {
 
         [Parameter(Mandatory = $false)]
         [int]$MaxAge = 30,
-
-        [Parameter(Mandatory = $false)]
-        [string]$LogPath = "./logs/sha-staleness-monitoring.log",
 
         [Parameter(Mandatory = $false)]
         [string]$OutputPath = "./logs/sha-staleness-results.json",
@@ -981,7 +976,6 @@ try {
         $exitCode = Invoke-SHAStalenessTest `
             -OutputFormat $OutputFormat `
             -MaxAge $MaxAge `
-            -LogPath $LogPath `
             -OutputPath $OutputPath `
             -FailOnStale:$FailOnStale `
             -GraphQLBatchSize $GraphQLBatchSize

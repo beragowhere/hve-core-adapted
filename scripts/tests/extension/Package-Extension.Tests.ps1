@@ -717,7 +717,6 @@ Describe 'Invoke-ExtensionPackaging Orchestration' -Tag 'Integration' {
             New-Item -ItemType Directory -Path (Join-Path $script:OrchTestDir '.github') -Force | Out-Null
 
             # Save original location and change to test dir
-            $originalPSScriptRoot = $PSScriptRoot
             Push-Location $script:OrchTestDir
             try {
                 # The function checks for extension dir relative to repo root
@@ -1351,7 +1350,7 @@ return 0
             $pkgPath = Join-Path $script:TestDir 'extension/package.json'
             $parseError = $null
             try {
-                $content = Get-Content -Path $pkgPath -Raw | ConvertFrom-Json
+                Get-Content -Path $pkgPath -Raw | ConvertFrom-Json
             } catch {
                 $parseError = $_
             }
