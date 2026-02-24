@@ -60,7 +60,9 @@ jobs:
             Path            = '.github/workflows'
             Format          = 'sarif'
             OutputPath      = 'logs/workflow-permissions-results.sarif'
-            FailOnViolation = -not ${{ inputs.soft-fail }}
+          }
+          if ('${{ inputs.soft-fail }}' -ne 'true') {
+            $params['FailOnViolation'] = $true
           }
           ./scripts/security/Test-WorkflowPermissions.ps1 @params
 
