@@ -18,50 +18,28 @@ BeforeAll {
 AfterAll {
     Restore-CIEnvironment
     Remove-Module CIHelpers -Force -ErrorAction SilentlyContinue
+    Remove-Module SecurityHelpers -Force -ErrorAction SilentlyContinue
 }
 
-Describe 'Write-PermissionsLog' -Tag 'Unit' {
+Describe 'Write-SecurityLog integration' -Tag 'Unit' {
     BeforeAll {
-        Mock Write-CIAnnotation { } -ModuleName CIHelpers
         Mock Write-Host { }
     }
 
     It 'Should not throw for Info level' {
-        { Write-PermissionsLog -Message 'Test info' -Level Info } | Should -Not -Throw
+        { Write-SecurityLog -Message 'Test info' -Level Info } | Should -Not -Throw
     }
 
     It 'Should not throw for Warning level' {
-        { Write-PermissionsLog -Message 'Test warning' -Level Warning } | Should -Not -Throw
+        { Write-SecurityLog -Message 'Test warning' -Level Warning } | Should -Not -Throw
     }
 
     It 'Should not throw for Error level' {
-        { Write-PermissionsLog -Message 'Test error' -Level Error } | Should -Not -Throw
+        { Write-SecurityLog -Message 'Test error' -Level Error } | Should -Not -Throw
     }
 
     It 'Should not throw for Success level' {
-        { Write-PermissionsLog -Message 'Test success' -Level Success } | Should -Not -Throw
-    }
-
-    It 'Should forward Warning to CI annotation' {
-        Mock Write-CIAnnotation { }
-        Mock Write-Host { }
-
-        Write-PermissionsLog -Message 'CI warning test' -Level Warning
-
-        Should -Invoke Write-CIAnnotation -Times 1 -Exactly -ParameterFilter {
-            $Level -eq 'Warning' -and $Message -eq 'CI warning test'
-        }
-    }
-
-    It 'Should forward Error to CI annotation' {
-        Mock Write-CIAnnotation { }
-        Mock Write-Host { }
-
-        Write-PermissionsLog -Message 'CI error test' -Level Error
-
-        Should -Invoke Write-CIAnnotation -Times 1 -Exactly -ParameterFilter {
-            $Level -eq 'Error' -and $Message -eq 'CI error test'
-        }
+        { Write-SecurityLog -Message 'Test success' -Level Success } | Should -Not -Throw
     }
 }
 

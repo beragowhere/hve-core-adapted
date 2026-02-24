@@ -71,42 +71,9 @@ param(
 $ErrorActionPreference = 'Stop'
 
 Import-Module (Join-Path $PSScriptRoot '../lib/Modules/CIHelpers.psm1') -Force
+Import-Module (Join-Path $PSScriptRoot 'Modules/SecurityHelpers.psm1') -Force
 
 # region Helper Functions
-
-function Write-PermissionsLog {
-    <#
-    .SYNOPSIS
-        Writes a timestamped log message with optional CI annotation.
-    #>
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory = $true)]
-        [string]$Message,
-
-        [Parameter(Mandatory = $false)]
-        [ValidateSet('Info', 'Warning', 'Error', 'Success')]
-        [string]$Level = 'Info'
-    )
-
-    $timestamp = Get-Date -Format 'HH:mm:ss'
-    $color = switch ($Level) {
-        'Info' { 'Cyan' }
-        'Warning' { 'Yellow' }
-        'Error' { 'Red' }
-        'Success' { 'Green' }
-    }
-
-    Write-Host "[$timestamp] " -NoNewline -ForegroundColor DarkGray
-    Write-Host $Message -ForegroundColor $color
-
-    if ($Level -eq 'Warning') {
-        Write-CIAnnotation -Message $Message -Level 'Warning'
-    }
-    elseif ($Level -eq 'Error') {
-        Write-CIAnnotation -Message $Message -Level 'Error'
-    }
-}
 
 function Test-WorkflowPermissions {
     <#
@@ -227,12 +194,12 @@ function Invoke-WorkflowPermissionsCheck {
         [string]$ExcludePaths = 'copilot-setup-steps.yml'
     )
 
-    Write-PermissionsLog "Starting workflow permissions validation" -Level Info
-    Write-PermissionsLog "Scanning: $Path" -Level Info
+    Write-SecurityLog "Starting workflow permissions validation" -Level Info -CIAnnotation
+    Write-SecurityLog "Scanning: $Path" -Level Info
 
     # Resolve scan path
     $resolvedPath = Resolve-Path -Path $Path -ErrorAction Stop
-    Write-PermissionsLog "Resolved path: $resolvedPath" -Level Info
+    Write-SecurityLog "Resolved path: $resolvedPath" -Level Info
 
     # Parse exclusions
     $exclusions = @()
@@ -240,39 +207,41 @@ function Invoke-WorkflowPermissionsCheck {
         $exclusions = $ExcludePaths -split ',' | ForEach-Object { $_.Trim() } | Where-Object { $_ }
     }
     if ($exclusions.Count -gt 0) {
-        Write-PermissionsLog "Excluding: $($exclusions -join ', ')" -Level Info
+        Write-SecurityLog "Excluding: $($exclusions -join ', ')" -Level Info
     }
 
     # Discover workflow files
-    $workflowFiles = Get-ChildItem -Path $resolvedPath -Filter '*.yml' -File
-    $totalFiles = $workflowFiles.Count
-    Write-PermissionsLog "Found $totalFiles workflow file(s)" -Level Info
+    $workflowFiles = Get-ChildItem -Path $resolvedPath -File | Where-Object { $_.Extension -in '.yml', '.yaml' }
+    $totalFiles = @($workflowFiles).Count
+    Write-SecurityLog "Found $totalFiles workflow file(s)" -Level Info
 
     # Apply exclusions
     if ($exclusions.Count -gt 0) {
         $workflowFiles = $workflowFiles | Where-Object { $exclusions -notcontains $_.Name }
     }
     $scannedFiles = $workflowFiles.Count
-    Write-PermissionsLog "Scanning $scannedFiles file(s) after exclusions" -Level Info
+    Write-SecurityLog "Scanning $scannedFiles file(s) after exclusions" -Level Info
 
     # Scan each workflow
     $report = [ComplianceReport]::new($Path)
     $report.TotalFiles = $totalFiles
     $report.ScannedFiles = $scannedFiles
     $report.TotalDependencies = $scannedFiles
+    $report.Metadata['ItemType'] = 'workflow'
+    $report.Metadata['ItemLabel'] = 'workflows with permissions'
     $filesWithPermissions = 0
 
     foreach ($file in $workflowFiles) {
         $violation = Test-WorkflowPermissions -FilePath $file.FullName
         if ($null -eq $violation) {
             $filesWithPermissions++
-            Write-PermissionsLog "  PASS: $($file.Name)" -Level Success
+            Write-SecurityLog "  PASS: $($file.Name)" -Level Success
         }
         else {
             # Normalize to workspace-relative path
             $violation.File = Join-Path $Path $file.Name
             $report.AddViolation($violation)
-            Write-PermissionsLog "  FAIL: $($file.Name) - missing permissions block" -Level Error
+            Write-SecurityLog "  FAIL: $($file.Name) - missing permissions block" -Level Error -CIAnnotation
             Write-CIAnnotation -Message $violation.Description -Level 'Error' -File $violation.File -Line 1
         }
     }
@@ -280,7 +249,7 @@ function Invoke-WorkflowPermissionsCheck {
     $report.PinnedDependencies = $filesWithPermissions
     $report.CalculateScore()
 
-    Write-PermissionsLog "Score: $($report.ComplianceScore)% ($filesWithPermissions/$scannedFiles with permissions)" -Level Info
+    Write-SecurityLog "Score: $($report.ComplianceScore)% ($filesWithPermissions/$scannedFiles with permissions)" -Level Info
 
     # Format output
     $output = switch ($Format) {
@@ -312,7 +281,7 @@ function Invoke-WorkflowPermissionsCheck {
     }
 
     $output | Out-File -FilePath $OutputPath -Encoding utf8 -Force
-    Write-PermissionsLog "Results written to: $OutputPath" -Level Info
+    Write-SecurityLog "Results written to: $OutputPath" -Level Info
 
     # Generate step summary
     $summaryLines = @(
@@ -350,15 +319,15 @@ function Invoke-WorkflowPermissionsCheck {
     $exitCode = 0
     if ($report.Violations.Count -gt 0) {
         if ($FailOnViolation) {
-            Write-PermissionsLog "$($report.Violations.Count) violation(s) found - failing" -Level Error
+            Write-SecurityLog "$($report.Violations.Count) violation(s) found - failing" -Level Error -CIAnnotation
             $exitCode = 1
         }
         else {
-            Write-PermissionsLog "$($report.Violations.Count) violation(s) found - soft fail mode" -Level Warning
+            Write-SecurityLog "$($report.Violations.Count) violation(s) found - soft fail mode" -Level Warning -CIAnnotation
         }
     }
     else {
-        Write-PermissionsLog "All workflows have permissions blocks" -Level Success
+        Write-SecurityLog "All workflows have permissions blocks" -Level Success
     }
 
     return $exitCode
@@ -373,8 +342,8 @@ if ($MyInvocation.InvocationName -ne '.') {
         exit $exitCode
     }
     catch {
-        Write-PermissionsLog "Fatal error: $_" -Level Error
-        Write-PermissionsLog $_.ScriptStackTrace -Level Error
+        Write-SecurityLog "Fatal error: $_" -Level Error -CIAnnotation
+        Write-SecurityLog $_.ScriptStackTrace -Level Error
         exit 1
     }
 }
