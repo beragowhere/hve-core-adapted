@@ -67,7 +67,7 @@ function Get-GitTextFile {
         $result = & git grep -I --name-only -e '' 2>&1
 
         if ($LASTEXITCODE -gt 1) {
-            Write-Error "Error executing git grep: $result"
+            Write-Warning "Error executing git grep: $result"
             return @()
         }
 
@@ -78,7 +78,7 @@ function Get-GitTextFile {
         return @()
     }
     catch {
-        Write-Error "Error getting git text files: $_"
+        Write-Warning "Error getting git text files: $_"
         return @()
     }
 }

@@ -1171,7 +1171,6 @@ Describe 'Get-MarkdownTarget Additional Edge Cases' -Tag 'Unit' {
         BeforeEach {
             Mock git {
                 $global:LASTEXITCODE = 128
-                Write-Error 'fatal: not a git repository'
             }
 
             $script:NonGitDir = Join-Path $script:EdgeCaseDir 'non-git'
