@@ -79,10 +79,10 @@ Each module delivers five components:
 
 ## Example
 
-Start a learning session with this prompt:
+Select the **dt-learning-tutor** agent, then start a learning session:
 
 ```text
-@dt-learning-tutor I'm new to Design Thinking and want to learn the full
+I'm new to Design Thinking and want to learn the full
 curriculum from the beginning. I've done some user research before but
 never used a structured DT framework.
 ```

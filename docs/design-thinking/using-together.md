@@ -14,6 +14,9 @@ estimated_reading_time: 8
 
 This guide walks through a complete Design Thinking journey, showing how the nine methods work together to transform a vague request into a validated, scalable solution. The walkthrough uses a manufacturing scenario where a plant manager asks to "build a quality dashboard" and the team discovers the real problem is knowledge loss across shifts.
 
+> [!NOTE]
+> All prompts in this walkthrough use the **dt-coach** agent. Select it from the agent picker dropdown in Copilot Chat before entering each prompt. See [Using DT Coach](dt-coach.md) for setup details.
+
 ## The Complete Journey
 
 ```text
@@ -44,10 +47,10 @@ The Problem Space ensures your team understands the actual problem before genera
 
 ### Method 1: Scope Conversations
 
-Start by engaging the DT Coach with the initial request:
+Start by entering the initial request:
 
 ```text
-@dt-coach We received a request from a plant manager: "Build us a real-time
+We received a request from a plant manager: "Build us a real-time
 quality dashboard for the production floor." Help us scope this properly.
 ```
 
@@ -58,7 +61,7 @@ The coach guides you through frozen-vs-fluid classification, stakeholder mapping
 With the scoped problem in hand, the coach shifts to firsthand evidence gathering:
 
 ```text
-@dt-coach We've completed scoping. Ready to plan research with operators
+We've completed scoping. Ready to plan research with operators
 and supervisors across day and night shifts.
 ```
 
@@ -69,7 +72,7 @@ Method 2 produces interview evidence, environmental observations (noise levels, 
 Bring research data together into actionable themes:
 
 ```text
-@dt-coach We have interview transcripts and observation notes from 8
+We have interview transcripts and observation notes from 8
 operators, 3 supervisors, and 2 quality engineers. Ready to synthesize.
 ```
 
@@ -80,7 +83,7 @@ The coach facilitates affinity clustering, theme extraction, and "How Might We" 
 When Method 3 outputs are validated across sources and the team has alignment, the coach surfaces the space transition:
 
 ```text
-@dt-coach /dt-method-next
+/dt-method-next
 ```
 
 The coach summarizes Problem Space findings, confirms readiness signals, and presents options: move forward to brainstorming, drop back for more research, or hand off to RPI for implementation of the problem statement. Choose to proceed into the Solution Space.
@@ -94,7 +97,7 @@ The Solution Space generates and shapes ideas into testable concepts. Constraint
 Generate diverse solution ideas bounded by validated constraints:
 
 ```text
-@dt-coach We're ready to brainstorm. Our key constraints are: 85-90 dB
+We're ready to brainstorm. Our key constraints are: 85-90 dB
 noise, greasy hands preventing touchscreen use, and limited floor space.
 ```
 
@@ -105,7 +108,7 @@ The coach leads divergent ideation (quantity over quality, no judgment) followed
 Shape solution themes into visual concepts stakeholders can evaluate:
 
 ```text
-@dt-coach We've clustered our brainstorm into four themes. Ready to
+We've clustered our brainstorm into four themes. Ready to
 develop these into user concepts for stakeholder feedback.
 ```
 
@@ -116,7 +119,7 @@ The coach guides concept articulation using desirability, feasibility, and viabi
 Test concepts with real users in real environments using scrappy prototypes:
 
 ```text
-@dt-coach The voice-guided repair concept scored highest. Ready to
+The voice-guided repair concept scored highest. Ready to
 build lo-fi prototypes and test on the factory floor.
 ```
 
@@ -127,7 +130,7 @@ Lo-fi prototyping reveals constraints invisible from a desk: touchscreen contami
 When lo-fi prototypes have been tested with real users and core assumptions are validated, the coach surfaces the next transition:
 
 ```text
-@dt-coach /dt-method-next
+/dt-method-next
 ```
 
 The coach reviews prototype findings, confirms that concepts have been narrowed to one or two directions, and presents options: proceed to hi-fi prototyping, return to brainstorming with new constraints, or hand off to RPI. Choose to continue into the Validation Space.
@@ -141,7 +144,7 @@ The Validation Space builds functional prototypes, tests them systematically, an
 Build functional systems with real data for systematic comparison:
 
 ```text
-@dt-coach Ready to build hi-fi prototypes. We're comparing three
+Ready to build hi-fi prototypes. We're comparing three
 microphone options for voice interaction in 85-90 dB environments.
 ```
 
@@ -152,7 +155,7 @@ The coach guides technical translation from lo-fi findings into functional speci
 Validate prototypes with real users in real environments:
 
 ```text
-@dt-coach Hi-fi prototypes are built. Ready to plan structured user
+Hi-fi prototypes are built. Ready to plan structured user
 testing across four operator types and both shifts.
 ```
 
@@ -163,7 +166,7 @@ Testing reveals that glove-friendly design drives 40% higher adoption, shift-cha
 Optimize the deployed solution using telemetry and usage patterns:
 
 ```text
-@dt-coach Testing is complete. Ready to plan rollout and define
+Testing is complete. Ready to plan rollout and define
 iteration priorities based on our telemetry data.
 ```
 
@@ -197,7 +200,7 @@ Methods do not always flow in a straight line. The DT Coach supports backtrackin
 Each loop produces deeper understanding. The coach tracks iteration history in the coaching state so no context is lost when revisiting earlier methods.
 
 ```text
-@dt-coach Testing revealed that operators use emergency procedures far
+Testing revealed that operators use emergency procedures far
 more than routine features. We need to revisit our Method 3 themes to
 reframe around safety-critical use cases.
 ```
