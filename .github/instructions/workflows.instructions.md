@@ -58,6 +58,8 @@ jobs:
           echo "Running validation steps"
 ```
 
+**Enforcement:** Violations are detected by `scripts/security/Test-WorkflowPermissions.ps1`. CI will fail on workflows missing a top-level `permissions:` block. The `copilot-setup-steps.yml` workflow is excluded by default.
+
 ## Credentials and Secrets
 
 Workflows MUST NOT persist GitHub credentials by default. Credential persistence MUST be enabled only when explicitly required for a specific capability. Secrets and tokens MUST be granted explicitly and scoped to the minimum required permissions.
@@ -95,10 +97,10 @@ runs-on: ubuntu-latest
 
 Workflows MUST follow these structural expectations:
 
-- Use descriptive names for workflows and jobs
-- Group related jobs with `needs:` dependencies
-- Use `concurrency:` to prevent duplicate runs
-- Prefer reusable workflows for common patterns
+* Use descriptive names for workflows and jobs
+* Group related jobs with `needs:` dependencies
+* Use `concurrency:` to prevent duplicate runs
+* Prefer reusable workflows for common patterns
 
 **Required structure example:**
 
@@ -231,29 +233,35 @@ All workflows MUST pass the following validation checks:
 
 ### actionlint Validation
 
-- **What it enforces:** Syntax validation, best practices, and security checks
-- **Configuration:** Uses actionlint with SHA256 verification
-- **CI blocking:** Workflows fail CI if violations are detected
+* **What it enforces:** Syntax validation, best practices, and security checks
+* **Configuration:** Uses actionlint with SHA256 verification
+* **CI blocking:** Workflows fail CI if violations are detected
 
 ### Dependency Pinning Validation
 
-- **Script:** `scripts/security/Test-DependencyPinning.ps1`
-- **What it enforces:** All third-party actions use full SHA pins
-- **CI blocking:** Failures block CI when configured to enforce compliance
+* **Script:** `scripts/security/Test-DependencyPinning.ps1`
+* **What it enforces:** All third-party actions use full SHA pins
+* **CI blocking:** Failures block CI when configured to enforce compliance
 
 ### SHA Staleness Validation
 
-- **Script:** `scripts/security/Test-SHAStaleness.ps1`
-- **What it enforces:** SHA-pinned dependencies are not stale
-- **CI blocking:** Stale dependencies generate warnings and may fail CI
+* **Script:** `scripts/security/Test-SHAStaleness.ps1`
+* **What it enforces:** SHA-pinned dependencies are not stale
+* **CI blocking:** Stale dependencies generate warnings and may fail CI
+
+### Workflow Permissions Validation
+
+* **Script:** `scripts/security/Test-WorkflowPermissions.ps1`
+* **What it enforces:** All workflows declare a top-level `permissions:` block
+* **CI blocking:** Failures block CI when configured to enforce compliance
 
 ## Security Requirements
 
-- Never expose secrets in logs or outputs
-- No personal access tokens (PATs) are used in workflows
-- Use event guards for release-specific operations when needed
-- Enable security features like CodeQL and dependency scanning
-- All security workflows use explicit, minimal permissions
+* Never expose secrets in logs or outputs
+* No personal access tokens (PATs) are used in workflows
+* Use event guards for release-specific operations when needed
+* Enable security features like CodeQL and dependency scanning
+* All security workflows use explicit, minimal permissions
 
 **Example event guard pattern:**
 
@@ -304,8 +312,9 @@ Avoid `format()` workarounds or environment variable indirection when the simple
 
 The following scripts enforce compliance:
 
-- `scripts/security/Test-DependencyPinning.ps1` - Validates SHA pinning
-- `scripts/security/Test-SHAStaleness.ps1` - Checks for stale dependencies
-- `scripts/linting/Invoke-YamlLint.ps1` - Runs actionlint validation
+* `scripts/security/Test-DependencyPinning.ps1` - Validates SHA pinning
+* `scripts/security/Test-SHAStaleness.ps1` - Checks for stale dependencies
+* `scripts/security/Test-WorkflowPermissions.ps1` - Validates workflow permissions declarations
+* `scripts/linting/Invoke-YamlLint.ps1` - Runs actionlint validation
 
 All workflows must pass these validation checks to be merged into the repository.

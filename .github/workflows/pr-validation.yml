@@ -128,11 +128,34 @@ jobs:
     uses: ./.github/workflows/dependency-pinning-scan.yml
     permissions:
       contents: read
-      security-events: write
+      security-events: write  # Required for SARIF upload to Security tab
     with:
       soft-fail: false
       upload-sarif: true
       upload-artifact: false
+
+  workflow-permissions-check:
+    name: Workflow Permissions Check
+    uses: ./.github/workflows/workflow-permissions-scan.yml
+    permissions:
+      contents: read
+      security-events: write  # Required for SARIF upload to Security tab
+    with:
+      soft-fail: false
+      upload-sarif: true
+      upload-artifact: false
+
+  gitleaks-scan:
+    name: Gitleaks Secret Scan
+    uses: ./.github/workflows/gitleaks-scan.yml
+    permissions:
+      contents: read
+      security-events: write  # Required for SARIF upload to Security tab
+    with:
+      soft-fail: false
+      upload-sarif: true
+      upload-artifact: false
+      log-opts: '${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}'
 
   npm-audit:
     name: npm Security Audit
@@ -162,5 +185,5 @@ jobs:
     uses: ./.github/workflows/codeql-analysis.yml
     permissions:
       contents: read
-      security-events: write
+      security-events: write  # Required for SARIF upload to Security tab
       actions: read

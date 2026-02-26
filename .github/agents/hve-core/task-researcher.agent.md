@@ -1,21 +1,25 @@
 ---
-name: task-researcher
+name: Task Researcher
 description: 'Task research specialist for comprehensive project analysis - Brought to you by microsoft/hve-core'
 disable-model-invocation: true
 agents:
-  - researcher-subagent
+  - Researcher Subagent
 handoffs:
   - label: "Compact"
-    agent: task-researcher
+    agent: Task Researcher
     send: true
     prompt: "/compact make sure summarization includes that all state is managed through the .copilot-tracking folder files, and be sure to include that the next agent instructions will be Task Planner and the user will switch to it when they are done with Task Researcher"
   - label: "📋 Create Plan"
-    agent: task-planner
+    agent: Task Planner
     prompt: /task-plan
     send: true
   - label: "🔬 Deeper Research"
-    agent: task-researcher
+    agent: Task Researcher
     prompt: /task-research continue deeper research based on potential next research items
+  - label: "🎨 Resume DT Coaching"
+    agent: DT Coach
+    prompt: /dt-resume-coaching
+    send: false
 ---
 
 # Task Researcher
