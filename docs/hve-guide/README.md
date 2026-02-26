@@ -48,6 +48,7 @@ flowchart TD
         S9["9 · Operations<br/>doc-ops · incident-response"]
     end
 
+    DT["Design Thinking<br/>dt-coach<br/>(optional)"] -.->|"design insights ready"| S2
     S1 -->|"environment ready"| S2
     S2 -->|"TPM approves BRD"| S3
     S3 -->|"TPM finalizes PRD"| S4
@@ -65,7 +66,7 @@ flowchart TD
 | Stage   | Name               | Key Tools                                                                                                   |
 |---------|--------------------|-------------------------------------------------------------------------------------------------------------|
 | Stage 1 | Setup              | hve-core-installer                                                                                          |
-| Stage 2 | Discovery          | task-researcher, brd-builder, security-plan-creator                                                         |
+| Stage 2 | Discovery          | task-researcher, brd-builder, security-plan-creator, dt-coach                                               |
 | Stage 3 | Product Definition | prd-builder, product-manager-advisor, adr-creation, arch-diagram-builder                                    |
 | Stage 4 | Decomposition      | ado-prd-to-wit, github-backlog-manager                                                                      |
 | Stage 5 | Sprint Planning    | github-backlog-manager, agile-coach                                                                         |
@@ -92,6 +93,7 @@ Nine role-specific guides covering recommended collections, stage walkthroughs, 
 | SRE / Operations         | Stage 1, Stage 3, Stage 6, Stage 8, Stage 9 | [SRE / Operations](roles/sre-operations.md)                   |
 | Business Program Manager | Stage 2, Stage 3, Stage 4, Stage 5          | [Business Program Manager](roles/business-program-manager.md) |
 | New Contributor          | Stage 1, Stage 2, Stage 6, Stage 7          | [New Contributor](roles/new-contributor.md)                   |
+| UX Designer              | Stage 2, Stage 3, Stage 6, Stage 7          | [UX Designer](roles/ux-designer.md)                           |
 | Utility                  | All                                         | [Utility](roles/utility.md)                                   |
 
 **[Browse All Role Guides →](roles/README.md)**

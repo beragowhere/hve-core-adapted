@@ -51,6 +51,7 @@ Use this navigator to jump directly to the stage matching your current need.
 
 ```mermaid
 flowchart LR
+    DT[Design Thinking] -.->|optional entry| Stage2
     Stage1[Stage 1: Setup] -->|environment ready| Stage2[Stage 2: Discovery]
     Stage2 -->|BRD approved| Stage3[Stage 3: Product Definition]
     Stage2 -->|TPMs skip PRD| Stage4[Stage 4: Decomposition]
@@ -67,18 +68,19 @@ flowchart LR
 
 ## Stage Transition Rules
 
-1. Stage 1 to Stage 2: Installation complete
-2. Stage 2 to Stage 3: BRD complete, handoff at `docs/brds/`
-3. Stage 2 to Stage 4: TPMs skip PRD when BRD is sufficient
-4. Stage 3 to Stage 4: PRD and ADRs finalized
-5. Stage 4 to Stage 5: Work items created
-6. Stage 5 to Stage 6: Sprint planned
-7. Stage 6 to Stage 7: Implementation complete, `/clear` context
-8. Stage 7 to Stage 8: PR approved
-9. Stage 7 to Stage 6: Rework needed
-10. Stage 8 to Stage 6: Next sprint
-11. Stage 8 to Stage 9: Final sprint complete
-12. Stage 9 to Stage 6: Hotfix needed
+1. Design Thinking to Stage 2: Teams optionally run DT methods (scope conversations, design research) before entering Discovery
+2. Stage 1 to Stage 2: Installation complete
+3. Stage 2 to Stage 3: BRD complete, handoff at `docs/brds/`
+4. Stage 2 to Stage 4: TPMs skip PRD when BRD is sufficient
+5. Stage 3 to Stage 4: PRD and ADRs finalized
+6. Stage 4 to Stage 5: Work items created
+7. Stage 5 to Stage 6: Sprint planned
+8. Stage 6 to Stage 7: Implementation complete, `/clear` context
+9. Stage 7 to Stage 8: PR approved
+10. Stage 7 to Stage 6: Rework needed
+11. Stage 8 to Stage 6: Next sprint
+12. Stage 8 to Stage 9: Final sprint complete
+13. Stage 9 to Stage 6: Hotfix needed
 
 ## Coverage Notes
 
