@@ -20,7 +20,7 @@ This directory contains security documentation for HVE Core, demonstrating defen
 
 | Document                         | Description                                            |
 |----------------------------------|--------------------------------------------------------|
-| [Threat Model](threat-model)  | Comprehensive threat model and security assurance case |
+| [Threat Model](threat-model.md)  | Comprehensive threat model and security assurance case |
 | [SECURITY.md](https://github.com/microsoft/hve-core/blob/main/SECURITY.md) | Vulnerability disclosure and reporting process         |
 
 ## Security Posture
@@ -31,7 +31,7 @@ HVE Core is an enterprise prompt engineering framework that:
 * Operates as development-time tooling consumed by GitHub Copilot
 * Relies on defense-in-depth with 18+ automated security controls
 
-The [threat model](threat-model) documents:
+The [threat model](threat-model.md) documents:
 
 * 36 threats across STRIDE, AI-specific, and Responsible AI categories
 * Security controls mapped to each threat
@@ -41,8 +41,8 @@ The [threat model](threat-model) documents:
 
 ## Related Resources
 
-* [Branch Protection](../contributing/branch-protection): Repository protection configuration
-* [MCP Configuration](../getting-started/mcp-configuration): MCP server setup and trust guidance
+* [Branch Protection](../contributing/branch-protection.md): Repository protection configuration
+* [MCP Configuration](../getting-started/mcp-configuration.md): MCP server setup and trust guidance
 * [GOVERNANCE.md](https://github.com/microsoft/hve-core/blob/main/GOVERNANCE.md): Project governance and maintainer roles
 
 ---

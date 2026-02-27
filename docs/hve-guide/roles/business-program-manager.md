@@ -43,17 +43,17 @@ The BPM and TPM roles share tooling but apply it differently:
 | Measurement       | Business outcomes, ROI, customer impact                                 | Sprint velocity, delivery milestones, technical quality   |
 | Lifecycle stages  | Stage 2: Discovery, Stage 3: Product Definition, Stage 4: Decomposition | Stage 2 through Stage 8 with deeper technical involvement |
 
-For technical backlog management, Azure DevOps integration, or GitHub issue workflows, see the [TPM Guide](tpm).
+For technical backlog management, Azure DevOps integration, or GitHub issue workflows, see the [TPM Guide](tpm.md).
 
 ## Your Lifecycle Stages
 
 > [!NOTE]
 > BPMs primarily operate in these lifecycle stages:
 >
-> [Stage 2: Discovery](../lifecycle/discovery): Research business requirements, competitive landscape, market context
-> [Stage 3: Product Definition](../lifecycle/product-definition): Define business requirements and outcome specifications
-> [Stage 4: Decomposition](../lifecycle/decomposition): Break down business objectives into program milestones
-> [Stage 5: Sprint Planning](../lifecycle/sprint-planning): Coordinate cross-team planning and milestone alignment
+> [Stage 2: Discovery](../lifecycle/discovery.md): Research business requirements, competitive landscape, market context
+> [Stage 3: Product Definition](../lifecycle/product-definition.md): Define business requirements and outcome specifications
+> [Stage 4: Decomposition](../lifecycle/decomposition.md): Break down business objectives into program milestones
+> [Stage 5: Sprint Planning](../lifecycle/sprint-planning.md): Coordinate cross-team planning and milestone alignment
 
 ## Stage Walkthrough
 
@@ -150,14 +150,17 @@ navigation support.
 
 ## Key Agents and Workflows
 
-| Agent                       | Purpose                                         | Docs       |
-|-----------------------------|-------------------------------------------------|------------|
-| **brd-builder**             | Business requirements document creation         | Agent file |
-| **product-manager-advisor** | Product strategy and prioritization guidance    | Agent file |
-| **agile-coach**             | User story creation and refinement coaching     | Agent file |
-| **task-researcher**         | Business context and market research            | Agent file |
-| **ux-ui-designer**          | UX/UI guidance for business-facing deliverables | Agent file |
-| **memory**                  | Session context and preference persistence      | Agent file |
+| Agent                       | Purpose                                                   | Docs                                               |
+|-----------------------------|-----------------------------------------------------------|----------------------------------------------------|
+| **brd-builder**             | Business requirements document creation                   | Agent file                                         |
+| **product-manager-advisor** | Product strategy and prioritization guidance              | Agent file                                         |
+| **agile-coach**             | User story creation and refinement coaching               | Agent file                                         |
+| **task-researcher**         | Business context and market research                      | Agent file                                         |
+| **ux-ui-designer**          | UX/UI guidance for business-facing deliverables           | Agent file                                         |
+| **memory**                  | Session context and preference persistence                | Agent file                                         |
+| **dt-coach**                | Design Thinking coaching for user-centered program design | [Design Thinking](../../design-thinking/README.md) |
+
+BPMs benefit from **dt-coach** when program design requires user-centered validation. Design Thinking scope conversations (Method 1) and user concepts (Method 5) help BPMs ground business requirements in validated user needs before formal BRD creation.
 
 Prompts complement the agents for cross-cutting workflows:
 
@@ -178,14 +181,14 @@ Prompts complement the agents for cross-cutting workflows:
 
 ## Related Roles
 
-* BPM + TPM: BPMs define business requirements and outcomes; TPMs decompose them into technical specifications and work items. Strong collaboration between these roles ensures business intent carries through to implementation. See the [TPM Guide](tpm).
-* BPM + Security Architect: Business requirements include compliance and security constraints. Security plans validate that business commitments are technically achievable. See the [Security Architect Guide](security-architect).
+* BPM + TPM: BPMs define business requirements and outcomes; TPMs decompose them into technical specifications and work items. Strong collaboration between these roles ensures business intent carries through to implementation. See the [TPM Guide](tpm.md).
+* BPM + Security Architect: Business requirements include compliance and security constraints. Security plans validate that business commitments are technically achievable. See the [Security Architect Guide](security-architect.md).
 
 ## Next Steps
 
 > [!TIP]
 > Explore project planning tools: [Project Planning Collection](https://github.com/microsoft/hve-core/blob/main/collections/project-planning.collection.md)
-> Understand the TPM workflow for technical handoff: [TPM Guide](tpm)
+> Understand the TPM workflow for technical handoff: [TPM Guide](tpm.md)
 > See how program management fits the project lifecycle: [AI-Assisted Project Lifecycle](../lifecycle/)
 
 ---

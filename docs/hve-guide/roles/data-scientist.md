@@ -36,11 +36,11 @@ This guide is for you if you analyze data, build Jupyter notebooks, create dashb
 > [!NOTE]
 > Data scientists primarily operate in these lifecycle stages:
 >
-> [Stage 2: Discovery](../lifecycle/discovery): Research data sources, explore datasets, investigate patterns
-> [Stage 3: Product Definition](../lifecycle/product-definition): Define data schemas, sources, and transformation requirements
-> [Stage 6: Implementation](../lifecycle/implementation): Build notebooks, create dashboards, develop pipelines
-> [Stage 7: Review](../lifecycle/review): Validate analysis, review data quality, test dashboards
-> [Stage 8: Delivery](../lifecycle/delivery): Package notebooks, dashboards, and documentation for stakeholders
+> [Stage 2: Discovery](../lifecycle/discovery.md): Research data sources, explore datasets, investigate patterns
+> [Stage 3: Product Definition](../lifecycle/product-definition.md): Define data schemas, sources, and transformation requirements
+> [Stage 6: Implementation](../lifecycle/implementation.md): Build notebooks, create dashboards, develop pipelines
+> [Stage 7: Review](../lifecycle/review.md): Validate analysis, review data quality, test dashboards
+> [Stage 8: Delivery](../lifecycle/delivery.md): Package notebooks, dashboards, and documentation for stakeholders
 
 ## Stage Walkthrough
 
@@ -104,8 +104,8 @@ granularity, and GDPR privacy constraints for EU customer data.
 | **gen-streamlit-dashboard**  | Streamlit dashboard creation               | Agent file                                      |
 | **gen-data-spec**            | Data specification document creation       | Agent file                                      |
 | **test-streamlit-dashboard** | Dashboard functional testing               | Agent file                                      |
-| **task-researcher**          | Data source and pattern research           | [Task Researcher](../../rpi/task-researcher) |
-| **task-planner**             | Analytics pipeline planning                | [Task Planner](../../rpi/task-planner)       |
+| **task-researcher**          | Data source and pattern research           | [Task Researcher](../../rpi/task-researcher.md) |
+| **task-planner**             | Analytics pipeline planning                | [Task Planner](../../rpi/task-planner.md)       |
 | **memory**                   | Session context and preference persistence | Agent file                                      |
 
 Prompts complement the agents for cross-cutting workflows:
@@ -129,8 +129,8 @@ Python environment management follows the `uv` virtual environment instructions 
 
 ## Related Roles
 
-* Data Scientist + Engineer: Analytics pipelines bridge data exploration with production integration. Engineers implement production-grade versions of prototype analyses. See the [Engineer Guide](engineer).
-* Data Scientist + TPM: Data requirements feed into product specifications. Analytics capabilities shape feature definitions. See the [TPM Guide](tpm).
+* Data Scientist + Engineer: Analytics pipelines bridge data exploration with production integration. Engineers implement production-grade versions of prototype analyses. See the [Engineer Guide](engineer.md).
+* Data Scientist + TPM: Data requirements feed into product specifications. Analytics capabilities shape feature definitions. See the [TPM Guide](tpm.md).
 
 ## Next Steps
 

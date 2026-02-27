@@ -26,10 +26,10 @@ Git-Ignored Folder installation places HVE-Core inside your project in a `.hve-c
 
 ❌ **Consider alternatives when:**
 
-* Your team needs version control → [Submodule](submodule)
-* You use Codespaces → [GitHub Codespaces](codespaces)
-* You want to share HVE-Core across projects → [Mounted Directory](mounted)
-* You need paths that work everywhere → [Multi-Root Workspace](multi-root)
+* Your team needs version control → [Submodule](submodule.md)
+* You use Codespaces → [GitHub Codespaces](codespaces.md)
+* You want to share HVE-Core across projects → [Mounted Directory](mounted.md)
+* You need paths that work everywhere → [Multi-Root Workspace](multi-root.md)
 
 ## How It Works
 
@@ -278,7 +278,7 @@ The clone only happens if the folder doesn't exist. To force update:
 | Aspect           | Status                                                             |
 |------------------|--------------------------------------------------------------------|
 | Devcontainers    | ✅  Designed for this                                               |
-| Codespaces       | ⚠️  Works but not optimal (use [Codespaces method](codespaces)) |
+| Codespaces       | ⚠️  Works but not optimal (use [Codespaces method](codespaces.md)) |
 | Team sharing     | ⚠️  Each developer clones separately                               |
 | Portable paths   | ✅  Relative paths work                                             |
 | Version pinning  | ⚠️  Manual (modify clone command)                                  |
@@ -287,9 +287,9 @@ The clone only happens if the folder doesn't exist. To force update:
 
 ## Next Steps
 
-* [Your First Workflow](../first-workflow) - Try HVE-Core with a real task
-* [Multi-Root Workspace](multi-root) - Share across local + Codespaces
-* [Submodule](submodule) - Add version control for teams
+* [Your First Workflow](../first-workflow.md) - Try HVE-Core with a real task
+* [Multi-Root Workspace](multi-root.md) - Share across local + Codespaces
+* [Submodule](submodule.md) - Add version control for teams
 
 ---
 

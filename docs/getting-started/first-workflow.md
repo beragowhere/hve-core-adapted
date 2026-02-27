@@ -43,13 +43,13 @@ You'll create:
 Multiple unknowns make RPI a good fit for this task: existing script patterns, PowerShell conventions, npm integration, output format. Research first reduces guesswork.
 
 > [!IMPORTANT]
-> AI can't tell the difference between investigating and implementing. When you ask for code, it writes code. Patterns that look plausible but break your conventions. RPI's constraint system changes the goal: when AI knows it cannot implement, it stops optimizing for "plausible code" and starts optimizing for "verified truth." [Learn more about why RPI works](../rpi/why-rpi).
+> AI can't tell the difference between investigating and implementing. When you ask for code, it writes code. Patterns that look plausible but break your conventions. RPI's constraint system changes the goal: when AI knows it cannot implement, it stops optimizing for "plausible code" and starts optimizing for "verified truth." [Learn more about why RPI works](../rpi/why-rpi.md).
 
 ## Before You Start
 
 > [!TIP]
-> Steps 1 and 2 ([Your First Interaction](first-interaction) and
-> [Your First Research](first-research)) cover the basics. If you've
+> Steps 1 and 2 ([Your First Interaction](first-interaction.md) and
+> [Your First Research](first-research.md)) cover the basics. If you've
 > already completed them or have experience with HVE Core agents, continue
 > below.
 
@@ -58,7 +58,7 @@ should start fresh. The artifacts (research doc, plan) carry the context
 forward, not the chat history.
 
 > [!NOTE]
-> Understanding why `/clear` matters (not just that you should use it) helps you recognize when context degradation affects your results. See [Context Engineering](../rpi/context-engineering) for the full explanation.
+> Understanding why `/clear` matters (not just that you should use it) helps you recognize when context degradation affects your results. See [Context Engineering](../rpi/context-engineering.md) for the full explanation.
 
 ## Phase 1: Research
 
@@ -245,7 +245,7 @@ between phases.
 | PowerShell not found  | Ensure `pwsh` is installed and in PATH                                                            |
 | npm script not found  | Check `package.json` was saved                                                                    |
 | Wrong folders checked | Verify script targets `docs/*` pattern                                                            |
-| Agent skips phases    | Use `/clear` before each `/rpi` request; see [Context Engineering](../rpi/context-engineering) |
+| Agent skips phases    | Use `/clear` before each `/rpi` request; see [Context Engineering](../rpi/context-engineering.md) |
 
 ## Next Step
 
@@ -254,7 +254,7 @@ way for any task: research the unknowns, plan the approach, implement from
 the plan.
 
 Continue your journey through the
-[New Contributor Milestones](../hve-guide/roles/new-contributor#milestone-3-independent-workflow),
+[New Contributor Milestones](../hve-guide/roles/new-contributor.md#milestone-3-independent-workflow),
 where Milestone 3 guides you through your first independent workflow on a
 task you choose yourself.
 

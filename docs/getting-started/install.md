@@ -37,10 +37,10 @@ VS Code → Extensions → Search "HVE Core" → Install
 **When to use alternatives:**
 
 * ❌ You need to customize components → Use custom installation methods below
-* ❌ Team needs version control → Use [Submodule](methods/submodule)
-* ❌ Contributing to HVE-Core → Use [Peer Clone](methods/peer-clone)
+* ❌ Team needs version control → Use [Submodule](methods/submodule.md)
+* ❌ Contributing to HVE-Core → Use [Peer Clone](methods/peer-clone.md)
 
-See [Extension Installation Guide](methods/extension) for complete documentation.
+See [Extension Installation Guide](methods/extension.md) for complete documentation.
 
 ## Custom Installation Methods
 
@@ -74,15 +74,15 @@ Answer these questions to find your recommended installation method:
 
 | Environment               | Team | Updates    | Recommended Method                            |
 |---------------------------|------|------------|-----------------------------------------------|
-| **Any** (simplest)        | Any  | Auto       | [VS Code Extension](methods/extension) ⭐   |
-| Local (no container)      | Solo | Manual     | [Peer Directory Clone](methods/peer-clone) |
-| Local (no container)      | Team | Controlled | [Submodule](methods/submodule)             |
-| Local devcontainer        | Solo | Auto       | [Git-Ignored Folder](methods/git-ignored)  |
-| Local devcontainer        | Team | Controlled | [Submodule](methods/submodule)             |
-| Codespaces only           | Solo | Auto       | [GitHub Codespaces](methods/codespaces)    |
-| Codespaces only           | Team | Controlled | [Submodule](methods/submodule)             |
-| Both local + Codespaces   | Any  | Any        | [Multi-Root Workspace](methods/multi-root) |
-| Advanced (shared install) | Solo | Auto       | [Mounted Directory](methods/mounted)       |
+| **Any** (simplest)        | Any  | Auto       | [VS Code Extension](methods/extension.md) ⭐   |
+| Local (no container)      | Solo | Manual     | [Peer Directory Clone](methods/peer-clone.md) |
+| Local (no container)      | Team | Controlled | [Submodule](methods/submodule.md)             |
+| Local devcontainer        | Solo | Auto       | [Git-Ignored Folder](methods/git-ignored.md)  |
+| Local devcontainer        | Team | Controlled | [Submodule](methods/submodule.md)             |
+| Codespaces only           | Solo | Auto       | [GitHub Codespaces](methods/codespaces.md)    |
+| Codespaces only           | Team | Controlled | [Submodule](methods/submodule.md)             |
+| Both local + Codespaces   | Any  | Any        | [Multi-Root Workspace](methods/multi-root.md) |
+| Advanced (shared install) | Solo | Auto       | [Mounted Directory](methods/mounted.md)       |
 
 ⭐ **VS Code Extension** is the recommended method for most users who don't need customization.
 
@@ -141,7 +141,7 @@ The installer reads collection assignments from the collection manifests (`colle
 
 | Method                                      | Best For                         | Complexity |
 |---------------------------------------------|----------------------------------|------------|
-| [VS Code Extension](methods/extension) ⭐ | Anyone wanting zero-config setup | Minimal    |
+| [VS Code Extension](methods/extension.md) ⭐ | Anyone wanting zero-config setup | Minimal    |
 
 ### Consumer Methods (Customization + Version Control)
 
@@ -149,8 +149,8 @@ These methods are for projects that want to use and potentially customize HVE-Co
 
 | Method                                        | Best For                      | Complexity |
 |-----------------------------------------------|-------------------------------|------------|
-| [Multi-Root Workspace](methods/multi-root) | Any environment, portable     | Low        |
-| [Submodule](methods/submodule)             | Teams needing version control | Medium     |
+| [Multi-Root Workspace](methods/multi-root.md) | Any environment, portable     | Low        |
+| [Submodule](methods/submodule.md)             | Teams needing version control | Medium     |
 
 ### Developer Methods
 
@@ -158,10 +158,10 @@ These methods are for HVE-Core contributors or advanced scenarios:
 
 | Method                                        | Best For                      | Complexity |
 |-----------------------------------------------|-------------------------------|------------|
-| [Peer Directory Clone](methods/peer-clone) | Local VS Code, solo           | Low        |
-| [Git-Ignored Folder](methods/git-ignored)  | Local devcontainer, solo      | Low        |
-| [Mounted Directory](methods/mounted)       | Advanced devcontainer sharing | High       |
-| [GitHub Codespaces](methods/codespaces)    | Codespaces-only projects      | Medium     |
+| [Peer Directory Clone](methods/peer-clone.md) | Local VS Code, solo           | Low        |
+| [Git-Ignored Folder](methods/git-ignored.md)  | Local devcontainer, solo      | Low        |
+| [Mounted Directory](methods/mounted.md)       | Advanced devcontainer sharing | High       |
+| [GitHub Codespaces](methods/codespaces.md)    | Codespaces-only projects      | Medium     |
 
 ## Using the Installer Agent
 
@@ -220,7 +220,7 @@ These artifacts are useful during your workflow session but are ephemeral by des
 
 Some HVE-Core agents use MCP (Model Context Protocol) servers to integrate with Azure DevOps, GitHub, or documentation services. These are optional enhancements; agents work without MCP configuration.
 
-If you use agents like `ado-prd-to-wit` or `github-backlog-manager`, see [MCP Server Configuration](mcp-configuration) for setup instructions. That guide includes:
+If you use agents like `ado-prd-to-wit` or `github-backlog-manager`, see [MCP Server Configuration](mcp-configuration.md) for setup instructions. That guide includes:
 
 * Which agents require which MCP servers
 * Complete configuration templates
@@ -229,7 +229,7 @@ If you use agents like `ado-prd-to-wit` or `github-backlog-manager`, see [MCP Se
 
 ## Next Steps
 
-* [Your First Workflow](first-workflow) - Try HVE-Core with a real task
+* [Your First Workflow](first-workflow.md) - Try HVE-Core with a real task
 * [RPI Workflow](../rpi/) - Research, Plan, Implement methodology
 * [Contributing](../contributing/) - Contribute to HVE-Core
 

@@ -327,7 +327,7 @@ When creating artifacts that reference other artifacts:
 | Test in isolation      | Verify your artifact works when only its collection is installed                |
 | Keep coupling minimal  | Avoid unnecessary dependencies between artifacts                                |
 
-For agent handoff configuration details, see [Contributing Custom Agents - Frontmatter Requirements](custom-agents#frontmatter-requirements).
+For agent handoff configuration details, see [Contributing Custom Agents - Frontmatter Requirements](custom-agents.md#frontmatter-requirements).
 
 ### Maturity Field Requirements
 
@@ -373,7 +373,7 @@ items:
     maturity: stable
 ```
 
-For detailed channel and lifecycle information, see [Release Process - Extension Channels](release-process#extension-channels-and-maturity).
+For detailed channel and lifecycle information, see [Release Process - Extension Channels](release-process.md#extension-channels-and-maturity).
 
 **Before submitting**: Verify your artifact targets the current latest model versions from Anthropic or OpenAI. Contributions targeting older or alternative models will be automatically rejected.
 
@@ -788,7 +788,7 @@ Code blocks missing language identifiers for syntax highlighting. Always specify
 
 ### Bare URLs
 
-URLs placed directly in text without proper markdown formatting. Wrap URLs in angle brackets `<https://example.com>` or use proper markdown link syntax `[text](url)`.
+URLs placed directly in text without proper markdown formatting. Wrap URLs in angle brackets `<https://example.com>` or use proper markdown link syntax `[text](url.md)`.
 
 ### Inconsistent List Markers
 
@@ -874,9 +874,9 @@ When contributing AI artifacts:
 
 ### Common Resources
 
-* [Contributing Custom Agents](custom-agents) - Agent configurations
-* [Contributing Prompts](prompts) - Workflow guidance
-* [Contributing Instructions](instructions) - Technology standards
+* [Contributing Custom Agents](custom-agents.md) - Agent configurations
+* [Contributing Prompts](prompts.md) - Workflow guidance
+* [Contributing Instructions](instructions.md) - Technology standards
 * [Pull Request Template](https://github.com/microsoft/hve-core/blob/main/.github/PULL_REQUEST_TEMPLATE.md) - Submission checklist
 
 ---

@@ -806,7 +806,7 @@ HVE Core achieves acceptable security through:
 HVE Core documents integrations with Model Context Protocol servers. This section analyzes the trust posture of each server.
 
 > [!NOTE]
-> GitHub MCP is enabled by default in VS Code when using GitHub Copilot. The other servers are optional and recommended for an optimal HVE Core development experience. See [MCP Configuration](../getting-started/mcp-configuration) for setup instructions.
+> GitHub MCP is enabled by default in VS Code when using GitHub Copilot. The other servers are optional and recommended for an optimal HVE Core development experience. See [MCP Configuration](../getting-started/mcp-configuration.md) for setup instructions.
 
 ### Server Summary
 
@@ -905,8 +905,8 @@ HVE Core documents integrations with Model Context Protocol servers. This sectio
 
 * [SECURITY.md](https://github.com/microsoft/hve-core/blob/main/SECURITY.md): Vulnerability disclosure process
 * [GOVERNANCE.md](https://github.com/microsoft/hve-core/blob/main/GOVERNANCE.md): Project governance and roles
-* [Branch Protection](../contributing/branch-protection): Repository protection configuration
-* [MCP Configuration](../getting-started/mcp-configuration): MCP server setup guidance
+* [Branch Protection](../contributing/branch-protection.md): Repository protection configuration
+* [MCP Configuration](../getting-started/mcp-configuration.md): MCP server setup guidance
 
 ### External Standards
 

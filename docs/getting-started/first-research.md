@@ -69,7 +69,7 @@ generate plausible answers. It searched, read, and cited.
 
 You've installed HVE Core, talked to an agent, and run your first research.
 The next step is a full Research, Plan, Implement cycle:
-[Your First Full Workflow](first-workflow).
+[Your First Full Workflow](first-workflow.md).
 
 ---
 

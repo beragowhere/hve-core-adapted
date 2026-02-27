@@ -44,7 +44,7 @@ Why this matters:
 * Research findings are in files, not chat history
 * Clean context lets each agent work optimally
 
-For the deeper explanation of how LLM context affects agent behavior, see [Context Engineering](context-engineering).
+For the deeper explanation of how LLM context affects agent behavior, see [Context Engineering](context-engineering.md).
 
 ## Walkthrough: Adding Azure Blob Storage
 
@@ -372,18 +372,18 @@ For tasks that don't require strict phase separation, **rpi-agent** provides aut
 You don't have to decide upfront. Start with rpi-agent for speed, and if the task reveals hidden complexity, it can hand off to Task Researcher. This hybrid approach gives you speed for simple tasks and the verified truth that comes from constraint-based research when you need it.
 
 > [!TIP]
-> For the full explanation of why constraints change AI behavior, see [Why the RPI Workflow Works](why-rpi#the-counterintuitive-insight).
+> For the full explanation of why constraints change AI behavior, see [Why the RPI Workflow Works](why-rpi.md#the-counterintuitive-insight).
 
 See [Agents Reference](https://github.com/microsoft/hve-core/blob/main/.github/CUSTOM-AGENTS.md) for rpi-agent implementation details.
 
 ## Related Guides
 
 * [RPI Overview](./) - Understand the workflow
-* [Context Engineering](context-engineering) - Why context management matters
-* [Task Researcher](task-researcher) - Deep research phase
-* [Task Planner](task-planner) - Create actionable plans
-* [Task Implementor](task-implementor) - Execute with precision
-* [Task Reviewer](task-reviewer) - Validate implementations
+* [Context Engineering](context-engineering.md) - Why context management matters
+* [Task Researcher](task-researcher.md) - Deep research phase
+* [Task Planner](task-planner.md) - Create actionable plans
+* [Task Implementor](task-implementor.md) - Execute with precision
+* [Task Reviewer](task-reviewer.md) - Validate implementations
 
 ---
 

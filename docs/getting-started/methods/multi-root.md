@@ -28,8 +28,8 @@ Forking HVE-Core lets your enterprise customize agents, prompts, instructions, a
 
 ❌ **Consider alternatives when:**
 
-* Your team needs version-pinned dependencies without a fork → [Submodule](submodule)
-* You're contributing back to HVE-Core itself → [Peer Clone](peer-clone)
+* Your team needs version-pinned dependencies without a fork → [Submodule](submodule.md)
+* You're contributing back to HVE-Core itself → [Peer Clone](peer-clone.md)
 
 ## How It Works
 
@@ -258,9 +258,9 @@ After setup, verify HVE-Core is working:
 
 ## Next Steps
 
-* [Your First Workflow](../first-workflow) - Try HVE-Core with a real task
+* [Your First Workflow](../first-workflow.md) - Try HVE-Core with a real task
 * [RPI Workflow](../../rpi/) - Research, Plan, Implement methodology
-* [Back to Installation Guide](../install) - Compare other methods
+* [Back to Installation Guide](../install.md) - Compare other methods
 
 ---
 

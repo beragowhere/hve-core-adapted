@@ -139,7 +139,7 @@ After Task Researcher completes:
 
 1. **Review** the research document in `.copilot-tracking/research/`
 2. **Clear context** using `/clear` or starting a new chat
-3. **Proceed to planning** with [Task Planner](task-planner)
+3. **Proceed to planning** with [Task Planner](task-planner.md)
 
 Pass the research document path to Task Planner so it can create an actionable implementation plan.
 

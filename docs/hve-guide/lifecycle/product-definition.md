@@ -20,7 +20,7 @@ Product Definition transforms Discovery outputs into actionable specifications. 
 
 ## When You Enter This Stage
 
-You enter Product Definition after completing [Stage 2: Discovery](discovery) with a finalized BRD.
+You enter Product Definition after completing [Stage 2: Discovery](discovery.md) with a finalized BRD.
 
 > [!NOTE]
 > Prerequisites: BRD complete and available at `docs/brds/`. Architecture options explored during Discovery.
@@ -35,12 +35,17 @@ You enter Product Definition after completing [Stage 2: Discovery](discovery) wi
 | arch-diagram-builder    | Agent | Select **arch-diagram-builder** agent    | Generate architecture diagrams for PRDs         |
 | security-plan-creator   | Agent | Select **security-plan-creator** agent   | Validate security requirements in product specs |
 
+## Design Thinking for Product Concepts
+
+Teams that used **dt-coach** during Discovery can carry Design Thinking outputs into Product Definition. Methods 4-5 (Brainstorming and User Concepts) produce validated solution concepts with Desirability/Feasibility/Viability analysis that strengthen PRD requirements. The **dt-coach** agent helps refine concepts before formal PRD creation, ensuring product definitions reflect user-validated insights. See the [Design Thinking documentation](../../design-thinking/README.md) for method details.
+
 ## Role-Specific Guidance
 
 TPMs own Product Definition, translating BRDs into PRDs with clear acceptance criteria. Tech Leads contribute architecture decisions and validate technical feasibility of proposed requirements.
 
-* [TPM Guide](../roles/tpm)
-* [Tech Lead Guide](../roles/tech-lead)
+* [TPM Guide](../roles/tpm.md)
+* [Tech Lead Guide](../roles/tech-lead.md)
+* [UX Designer Guide](../roles/ux-designer.md)
 
 ## Starter Prompts
 
@@ -73,7 +78,7 @@ integration. Use mermaid flowchart syntax.
 
 ## Stage Outputs and Next Stage
 
-Product Definition produces PRDs, ADRs, and architecture diagrams. Transition to [Stage 4: Decomposition](decomposition) when PRDs and ADRs are finalized.
+Product Definition produces PRDs, ADRs, and architecture diagrams. Transition to [Stage 4: Decomposition](decomposition.md) when PRDs and ADRs are finalized.
 
 <!-- markdownlint-disable MD036 -->
 *🤖 Crafted with precision by ✨Copilot following brilliant human instruction,

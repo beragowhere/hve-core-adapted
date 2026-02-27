@@ -27,8 +27,8 @@ Git submodules provide version-controlled, reproducible HVE-Core consumption. Ev
 
 ❌ **Consider alternatives when:**
 
-* You want automatic updates → [Multi-Root Workspace](multi-root)
-* You're a solo developer without version pinning needs → [Multi-Root Workspace](multi-root)
+* You want automatic updates → [Multi-Root Workspace](multi-root.md)
+* You're a solo developer without version pinning needs → [Multi-Root Workspace](multi-root.md)
 
 ## How It Works
 
@@ -270,9 +270,9 @@ git commit
 
 ## Next Steps
 
-* [Your First Workflow](../first-workflow) - Try HVE-Core with a real task
+* [Your First Workflow](../first-workflow.md) - Try HVE-Core with a real task
 * [RPI Workflow](../../rpi/) - Research, Plan, Implement methodology
-* [Back to Installation Guide](../install) - Compare other methods
+* [Back to Installation Guide](../install.md) - Compare other methods
 
 ---
 

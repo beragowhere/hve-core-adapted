@@ -141,9 +141,9 @@ Context degradation produces observable symptoms. Catching them early prevents w
 
 ## Next Steps
 
-* [Why RPI?](why-rpi): the psychology behind phase separation
+* [Why RPI?](why-rpi.md): the psychology behind phase separation
 * [RPI Overview](./): complete workflow guide
-* [Using Tasks Together](using-together): phase transitions and handoffs
+* [Using Tasks Together](using-together.md): phase transitions and handoffs
 
 ---
 

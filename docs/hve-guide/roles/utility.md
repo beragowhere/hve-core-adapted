@@ -143,7 +143,7 @@ This fallback activates automatically. No manual configuration is needed.
 > [!TIP]
 > Find your role-specific guide: [Role Guides Overview](./)
 > Explore collection options: [Role Overview](./#role-overview)
-> Get started with installation: [Install Guide](../../getting-started/install)
+> Get started with installation: [Install Guide](../../getting-started/install.md)
 
 ---
 

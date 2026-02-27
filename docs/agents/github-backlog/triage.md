@@ -120,7 +120,7 @@ confidence scores above 70%.
 ## Next Steps
 
 1. Review and adjust the triage handoff file before proceeding
-2. Move to [Sprint Planning](sprint-planning) to assign milestones, or skip directly to [Execution](execution) for label-only changes
+2. Move to [Sprint Planning](sprint-planning.md) to assign milestones, or skip directly to [Execution](execution.md) for label-only changes
 
 > [!TIP]
 > For repositories with custom label schemes, update the taxonomy reference before running triage. The workflow applies whatever taxonomy is configured, so mismatches produce irrelevant suggestions.

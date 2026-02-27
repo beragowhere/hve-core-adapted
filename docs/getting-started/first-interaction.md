@@ -66,7 +66,7 @@ artifacts carry context forward so you don't repeat yourself.
 ## Next Step
 
 Now that you know agents work, try using one for real work:
-[Your First Research](first-research).
+[Your First Research](first-research.md).
 
 ---
 

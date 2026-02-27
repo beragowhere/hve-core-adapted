@@ -20,7 +20,7 @@ Sprint Planning organizes decomposed work items into actionable sprints. This st
 
 ## When You Enter This Stage
 
-You enter Sprint Planning after completing [Stage 4: Decomposition](decomposition) with work items created and ready for prioritization.
+You enter Sprint Planning after completing [Stage 4: Decomposition](decomposition.md) with work items created and ready for prioritization.
 
 > [!NOTE]
 > Prerequisites: Work items exist in GitHub Issues or ADO. Repository has labels and milestones configured for sprint tracking.
@@ -43,8 +43,8 @@ You enter Sprint Planning after completing [Stage 4: Decomposition](decompositio
 
 TPMs lead Sprint Planning, balancing priorities across the backlog and coordinating with Tech Leads on technical sequencing. Tech Leads contribute capacity estimates and identify dependency chains.
 
-* [TPM Guide](../roles/tpm)
-* [Tech Lead Guide](../roles/tech-lead)
+* [TPM Guide](../roles/tpm.md)
+* [Tech Lead Guide](../roles/tech-lead.md)
 
 ## Starter Prompts
 
@@ -116,7 +116,7 @@ Prepare the v2.4.0 milestone for sprint planning. Triage any needs-triage issues
 
 ## Stage Outputs and Next Stage
 
-Sprint Planning produces a scoped sprint with prioritized issues, assigned owners, and milestone targets. Transition to [Stage 6: Implementation](implementation) when the sprint is planned and work items are assigned.
+Sprint Planning produces a scoped sprint with prioritized issues, assigned owners, and milestone targets. Transition to [Stage 6: Implementation](implementation.md) when the sprint is planned and work items are assigned.
 
 <!-- markdownlint-disable MD036 -->
 *🤖 Crafted with precision by ✨Copilot following brilliant human instruction,

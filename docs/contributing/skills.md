@@ -14,7 +14,7 @@ estimated_reading_time: 8
 
 This guide defines the requirements, standards, and best practices for contributing skill packages to the hve-core library.
 
-**⚙️ Common Standards**: See [AI Artifacts Common Standards](ai-artifacts-common) for shared requirements (XML blocks, markdown quality, RFC 2119, validation, testing).
+**⚙️ Common Standards**: See [AI Artifacts Common Standards](ai-artifacts-common.md) for shared requirements (XML blocks, markdown quality, RFC 2119, validation, testing).
 
 ## What is a Skill?
 
@@ -183,7 +183,7 @@ Choose collections based on who uses the skill's utilities:
 | Infrastructure tools | `hve-core-all`, `coding-standards` |
 | Code generation      | `hve-core-all`, `coding-standards` |
 
-For complete collection documentation, see [AI Artifacts Common Standards - Collection Manifests](ai-artifacts-common#collection-manifests-and-dependencies).
+For complete collection documentation, see [AI Artifacts Common Standards - Collection Manifests](ai-artifacts-common.md#collection-manifests-and-dependencies).
 
 ## SKILL.md Content Structure
 
@@ -344,7 +344,7 @@ Place test files in a `tests/` subdirectory within the skill directory:
 PowerShell skill scripts require Pester 5.x tests:
 
 * Use `.Tests.ps1` suffix matching the source script name
-* Follow the same conventions as `scripts/tests/` (see [Testing Architecture](../architecture/testing))
+* Follow the same conventions as `scripts/tests/` (see [Testing Architecture](../architecture/testing.md))
 * Pester configuration is defined at `scripts/tests/pester.config.ps1`; co-located skill tests run when their `tests/` directories are included in the Pester run paths (for example via CI or explicit test invocation)
 
 Minimal example:
@@ -507,10 +507,10 @@ All checks **MUST** pass before merge.
 
 ## Related Documentation
 
-* [AI Artifacts Common Standards](ai-artifacts-common) - Shared standards for all contributions
-* [Contributing Agents](custom-agents) - Agent file guidelines
-* [Contributing Prompts](prompts) - Prompt file guidelines
-* [Contributing Instructions](instructions) - Instructions file guidelines
+* [AI Artifacts Common Standards](ai-artifacts-common.md) - Shared standards for all contributions
+* [Contributing Agents](custom-agents.md) - Agent file guidelines
+* [Contributing Prompts](prompts.md) - Prompt file guidelines
+* [Contributing Instructions](instructions.md) - Instructions file guidelines
 * [Agent Skills Specification](https://agentskills.io/specification) - Core specification for skill structure and metadata
 * [VS Code Copilot Agent Skills](https://code.visualstudio.com/docs/copilot/customization/agent-skills) - VS Code integration, progressive disclosure, and frontmatter controls
 

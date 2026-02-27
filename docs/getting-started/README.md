@@ -26,18 +26,18 @@ This guide walks you through four steps, each building on the last:
 
 | Step                                                      | What You Do                                             | Time    |
 |-----------------------------------------------------------|---------------------------------------------------------|---------|
-| [First Interaction](first-interaction)                 | Talk to an agent, see it respond                        | 1 min   |
-| [First Research](first-research)                       | Use task-researcher on your own codebase                | 5 min   |
-| [First Full Workflow](first-workflow)                  | Run a complete Research, Plan, Implement cycle          | 15 min  |
-| [Growing with HVE](../hve-guide/roles/new-contributor) | Progress through four milestones toward independent use | Ongoing |
+| [First Interaction](first-interaction.md)                 | Talk to an agent, see it respond                        | 1 min   |
+| [First Research](first-research.md)                       | Use task-researcher on your own codebase                | 5 min   |
+| [First Full Workflow](first-workflow.md)                  | Run a complete Research, Plan, Implement cycle          | 15 min  |
+| [Growing with HVE](../hve-guide/roles/new-contributor.md) | Progress through four milestones toward independent use | Ongoing |
 
 > [!TIP]
 > Already comfortable with AI-assisted development? Skip to
-> [First Full Workflow](first-workflow) or try the
+> [First Full Workflow](first-workflow.md) or try the
 > [rpi-agent](https://github.com/microsoft/hve-core/blob/main/.github/CUSTOM-AGENTS.md#rpi-agent) for autonomous
 > single-session workflows.
 
-Need installation help? See the [Installation Guide](install) for all
+Need installation help? See the [Installation Guide](install.md) for all
 methods, or install the
 [VS Code extension](https://marketplace.visualstudio.com/items?itemName=ise-hve-essentials.hve-core)
 for the quickest path.
@@ -62,7 +62,7 @@ for the quickest path.
 
 * Verify Git is installed: run `git --version` in terminal
 * Check network connectivity to github.com
-* See the [installation guide](install) for method-specific troubleshooting
+* See the [installation guide](install.md) for method-specific troubleshooting
 
 ## Optional Scripts
 
@@ -78,14 +78,22 @@ Copy the scripts you need to your project's `scripts/` directory and adjust path
 
 ## Next Steps
 
-* Start the journey: [Your First Interaction](first-interaction)
+* Start the journey: [Your First Interaction](first-interaction.md)
 * Learn the [RPI Workflow](../rpi/) for complex tasks
 * Browse [available agents](https://github.com/microsoft/hve-core/blob/main/.github/CUSTOM-AGENTS.md) for the full catalog
 
+## Design Thinking Path
+
+For projects requiring user-centered requirements discovery before implementation:
+
+* [Design Thinking Guide](../design-thinking/README.md) — Start here for DT overview
+* [Using the DT Coach](../design-thinking/dt-coach.md) — Learn to use the dt-coach agent
+* [DT to RPI Integration](../design-thinking/dt-rpi-integration.md) — Transition from DT to implementation
+
 ## See Also
 
-* [Installation Guide](install) - Full decision matrix for all installation methods
-* [MCP Configuration](mcp-configuration) - Configure Model Context Protocol servers
+* [Installation Guide](install.md) - Full decision matrix for all installation methods
+* [MCP Configuration](mcp-configuration.md) - Configure Model Context Protocol servers
 * [Role Guides](../hve-guide/roles/) - Find your role-specific guide
 
 ---

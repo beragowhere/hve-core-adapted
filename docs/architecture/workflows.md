@@ -298,7 +298,7 @@ Workflows invoke validation through npm scripts defined in `package.json`:
 
 ## Related Documentation
 
-* [Testing Architecture](testing) - PowerShell Pester test infrastructure
+* [Testing Architecture](testing.md) - PowerShell Pester test infrastructure
 * [Scripts README](https://github.com/microsoft/hve-core/blob/main/scripts/README.md) - Script organization and usage
 
 🤖 *Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
