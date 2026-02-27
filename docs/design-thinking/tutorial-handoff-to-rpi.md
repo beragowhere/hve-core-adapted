@@ -41,20 +41,20 @@ Earlier exit points provide leaner artifacts requiring broader Researcher invest
 
 Every handoff artifact contains three categories of information that shape how Task Researcher scopes its investigation:
 
-| Category    | What It Contains                                       | How the Researcher Uses It                           |
-|-------------|--------------------------------------------------------|------------------------------------------------------|
-| Artifacts   | DT method outputs with file paths and evidence summary | Establishes the evidence base and validated context   |
-| Constraints | Technical, environmental, or workflow limitations      | Bounds the solution space the researcher explores     |
-| Assumptions | Beliefs not yet independently verified                 | Drives verification targets and research priorities   |
+| Category    | What It Contains                                       | How the Researcher Uses It                          |
+|-------------|--------------------------------------------------------|-----------------------------------------------------|
+| Artifacts   | DT method outputs with file paths and evidence summary | Establishes the evidence base and validated context |
+| Constraints | Technical, environmental, or workflow limitations      | Bounds the solution space the researcher explores   |
+| Assumptions | Beliefs not yet independently verified                 | Drives verification targets and research priorities |
 
 Each item carries a **confidence marker** that tells the Researcher how much trust to place in it:
 
-| Marker        | Meaning                                             | Researcher Action                              |
-|---------------|-----------------------------------------------------|------------------------------------------------|
-| `validated`   | Confirmed through multiple sources or observation   | Treats as established fact, no re-investigation |
-| `assumed`     | Stated by a source but not independently confirmed  | Marks as a verification target                  |
-| `unknown`     | Identified gap not yet investigated                 | Marks as a primary research target              |
-| `conflicting` | Multiple sources disagree                           | Investigates to resolve the conflict            |
+| Marker        | Meaning                                            | Researcher Action                               |
+|---------------|----------------------------------------------------|-------------------------------------------------|
+| `validated`   | Confirmed through multiple sources or observation  | Treats as established fact, no re-investigation |
+| `assumed`     | Stated by a source but not independently confirmed | Marks as a verification target                  |
+| `unknown`     | Identified gap not yet investigated                | Marks as a primary research target              |
+| `conflicting` | Multiple sources disagree                          | Investigates to resolve the conflict            |
 
 When you review your handoff artifact before giving it to Task Researcher, pay attention to items marked `assumed`, `unknown`, or `conflicting`. These drive the Researcher's investigation scope. If too many critical items carry weak markers, consider returning to DT coaching to strengthen the evidence before handing off.
 

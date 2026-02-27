@@ -176,11 +176,11 @@ The coach guides scaling patterns, change management planning, and telemetry-dri
 
 Design Thinking produces validated understanding; RPI delivers implementation. The handoff can occur at three exit points, each seeding Task Researcher with progressively richer context. Every exit enters the full RPI pipeline at Task Researcher.
 
-| Exit Point                 | Methods | Artifacts Seeded to Researcher                                                                      | Researcher Scope                                                  |
-|----------------------------|---------|------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
-| Problem Statement Complete | 1-3     | Problem statement, stakeholder map, research themes, affinity clusters, constraints, assumptions log | Broad: solution approaches, technology options, feasibility       |
-| Concept Validated          | 4-6     | Exit 1 plus tested concepts with D/F/V scores, lo-fi prototype feedback, constraint discoveries      | Moderate: concept feasibility, integration paths, risk areas      |
-| Implementation Spec Ready  | 7-9     | Exits 1-2 plus hi-fi specs, architecture decisions, benchmarks, test protocols, scaling plan          | Narrow: implementation refinement, deployment strategy, edge cases |
+| Exit Point                 | Methods | Artifacts Seeded to Researcher                                                                       | Researcher Scope                                                   |
+|----------------------------|---------|------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|
+| Problem Statement Complete | 1-3     | Problem statement, stakeholder map, research themes, affinity clusters, constraints, assumptions log | Broad: solution approaches, technology options, feasibility        |
+| Concept Validated          | 4-6     | Exit 1 plus tested concepts with D/F/V scores, lo-fi prototype feedback, constraint discoveries      | Moderate: concept feasibility, integration paths, risk areas       |
+| Implementation Spec Ready  | 7-9     | Exits 1-2 plus hi-fi specs, architecture decisions, benchmarks, test protocols, scaling plan         | Narrow: implementation refinement, deployment strategy, edge cases |
 
 **Exit 1 assets — Problem Space (Methods 1-3):**
 
