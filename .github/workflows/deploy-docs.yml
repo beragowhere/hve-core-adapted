@@ -21,8 +21,17 @@ permissions:
   contents: read
 
 jobs:
+  test:
+    name: Docusaurus Tests
+    uses: ./.github/workflows/docusaurus-tests.yml
+    permissions:
+      contents: read
+    with:
+      soft-fail: false
+
   build:
     name: Build Docusaurus
+    needs: test
     runs-on: ubuntu-latest
     permissions:
       contents: read

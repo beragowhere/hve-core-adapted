@@ -73,6 +73,14 @@ jobs:
       changed-files-only: false
       code-coverage: true
 
+  docusaurus-tests:
+    name: Docusaurus Tests
+    uses: ./.github/workflows/docusaurus-tests.yml
+    permissions:
+      contents: read
+    with:
+      soft-fail: false
+
   release-please:
     name: Release Please
     needs:
@@ -82,6 +90,7 @@ jobs:
       - dependency-pinning-scan
       - gitleaks-scan
       - pester-tests
+      - docusaurus-tests
     runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
