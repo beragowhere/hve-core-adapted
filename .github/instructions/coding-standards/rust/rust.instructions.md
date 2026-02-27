@@ -524,7 +524,7 @@ Prefer one assertion per test. Related assertions validating the same behavior a
 Demonstrates naming, structure, error handling, async patterns, configuration, observability, and testing:
 
 ```rust
-namespace example not applicable — Rust uses modules
+// Rust uses modules, not namespaces — see the mod declarations below.
 
 use std::env;
 use std::time::Duration;
