@@ -13,6 +13,7 @@ copilot plugin install hve-core-all@hve-core
 
 | Agent                        | Description                                                                                                                                                                                                |
 |------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ado-backlog-manager          | Orchestrator agent for Azure DevOps backlog management workflows including triage, discovery, sprint planning, PRD-to-work-item conversion, and execution - Brought to you by microsoft/hve-core           |
 | ado-prd-to-wit               | Product Manager expert for analyzing PRDs and planning Azure DevOps work item hierarchies                                                                                                                  |
 | gen-data-spec                | Generate comprehensive data dictionaries, machine-readable data profiles, and objective summaries for downstream analysis (EDA notebooks, dashboards) through guided discovery                             |
 | gen-jupyter-notebook         | Create structured exploratory data analysis Jupyter notebooks from available data sources and generated data dictionaries                                                                                  |

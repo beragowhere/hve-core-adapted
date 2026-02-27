@@ -17,7 +17,7 @@ hve-core organizes specialized agents into functional groups. Each group combine
 |---------------------------|----------|-------------|---------------------------------------------|
 | RPI Orchestration         | 5        | High        | [RPI Documentation](../rpi/README.md)       |
 | GitHub Backlog Management | 1 active | Very High   | [Backlog Manager](github-backlog/README.md) |
-| ADO Integration           | 1        | Medium-High | Planned                                     |
+| ADO Backlog Management    | 1 active | Very High   | [Backlog Manager](ado-backlog/README.md)    |
 | Document Builders         | 4        | Medium-High | Planned                                     |
 | Data Pipeline             | 4        | Medium      | Planned                                     |
 | DevOps Quality            | 2        | High        | Planned                                     |
@@ -33,9 +33,9 @@ The Research, Plan, Implement methodology separates complex tasks into specializ
 
 Automates issue discovery, triage, sprint planning, and execution across GitHub repositories. The backlog manager agent orchestrates five distinct workflows with three-tier autonomy control. See the [Backlog Manager Documentation](github-backlog/README.md) for workflow guides.
 
-## ADO Integration
+## ADO Backlog Management
 
-Bridges Azure DevOps work items with local Copilot workflows. The ADO integration agent handles work item discovery, planning file creation, pull request generation, and build status monitoring.
+Automates work item triage, discovery, sprint planning, and execution across Azure DevOps projects. The ADO Backlog Manager agent orchestrates nine distinct workflows with three-tier autonomy control. See the [Backlog Manager Documentation](ado-backlog/README.md) for workflow guides.
 
 ## Document Builders
 
