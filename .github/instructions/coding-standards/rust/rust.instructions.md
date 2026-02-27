@@ -26,6 +26,7 @@ tests/
 ```
 
 * `Cargo.toml` and `Cargo.lock` at crate root.
+* Commit `Cargo.lock` for binary crates to ensure reproducible builds. Exclude it from version control for library crates.
 * `src/` contains all source files.
 * Binary crates use `main.rs`; library crates use `lib.rs`.
 * Test projects use a sibling `tests/` directory for integration tests.
@@ -54,6 +55,8 @@ tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 ```
 <!-- </example-cargo-toml> -->
+
+Sections below reference additional crates (`reqwest`, `tokio-retry`, `async-trait`). Add them to `[dependencies]` when using those patterns.
 
 ### Dependency Management
 
@@ -178,6 +181,7 @@ impl ServiceError {
 * Use `anyhow` only in application-level `main` functions or CLI tools where error granularity is unnecessary.
 * Prefer `?` operator for error propagation over explicit `match` or `unwrap`.
 * Never use `unwrap()` or `expect()` in production paths. Reserve them for cases with compile-time or initialization guarantees.
+* Initialization paths include startup config loading in `main`, `OnceLock`/`LazyLock` initializers, and one-time setup that runs before the service accepts work. Use `expect()` with a descriptive message in these contexts.
 * Provide context-aware error messages that include relevant state.
 * Implement `#[from]` for delegating errors from external crates.
 * Add helper constructors on error types for ergonomic creation.
@@ -223,7 +227,7 @@ tokio::select! {
 
 ### Async Trait Implementations
 
-Use `async-trait` for trait definitions requiring async methods:
+Use `async-trait` for trait definitions requiring async methods. The `async-trait` crate is required for the 2021 edition. Native async trait support is available in the 2024 edition and later.
 
 ```rust
 use async_trait::async_trait;
@@ -266,11 +270,36 @@ error!(
 
 ### OpenTelemetry Integration
 
-When distributed tracing is required, integrate OpenTelemetry via `tracing-opentelemetry`:
+When distributed tracing is required, integrate OpenTelemetry via `tracing-opentelemetry`. Add `tracing-opentelemetry`, `opentelemetry`, and `opentelemetry-otlp` to `[dependencies]`.
 
 * Check for `OTEL_EXPORTER_OTLP_ENDPOINT` environment variable before enabling the exporter.
 * Fall back to console-only logging when the variable is absent.
 * Use `TraceContextPropagator` for W3C trace context propagation.
+
+```rust
+use std::env;
+
+fn init_tracing() {
+    let subscriber = tracing_subscriber::fmt()
+        .with_env_filter(tracing_subscriber::EnvFilter::from_default_env());
+
+    if env::var("OTEL_EXPORTER_OTLP_ENDPOINT").is_ok() {
+        // Configure OpenTelemetry pipeline with OTLP exporter
+        let tracer = opentelemetry_otlp::new_pipeline()
+            .tracing()
+            .install_batch(opentelemetry_sdk::runtime::Tokio)
+            .expect("OpenTelemetry pipeline must initialize at startup");
+
+        let telemetry = tracing_opentelemetry::layer().with_tracer(tracer);
+        use tracing_subscriber::layer::SubscriberExt;
+        tracing::subscriber::set_global_default(
+            subscriber.finish().with(telemetry),
+        ).expect("Global subscriber must be set once at startup");
+    } else {
+        subscriber.init();
+    }
+}
+```
 
 ## Serialization
 
@@ -398,6 +427,15 @@ pub enum Backend {
 }
 ```
 
+Declare features and gate optional dependencies in `Cargo.toml`:
+
+```toml
+[features]
+default = []
+backend-a = ["dep:backend-a-crate"]
+backend-b = ["dep:backend-b-crate"]
+```
+
 Gate heavy dependencies behind features so downstream consumers control binary size.
 
 ## Code Documentation
@@ -504,7 +542,20 @@ Prefer one assertion per test. Related assertions validating the same behavior a
 
 * Prefer `&str` over `String` in function parameters when ownership is not needed.
 * Use `impl Into<String>` for constructors and builders accepting string arguments.
-* Use `Cow<'_, str>` when a function may or may not need to allocate.
+* Use `Cow<'_, str>` when a function may or may not need to allocate:
+
+```rust
+use std::borrow::Cow;
+
+fn normalize_name(name: &str) -> Cow<'_, str> {
+    if name.contains(' ') {
+        Cow::Owned(name.replace(' ', "_"))
+    } else {
+        Cow::Borrowed(name)
+    }
+}
+```
+
 * Use iterators and combinators over manual loops where readability is maintained.
 * Prefer `Vec<u8>` and slices over raw pointer manipulation.
 
