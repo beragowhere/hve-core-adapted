@@ -210,7 +210,7 @@ The CI output API from `scripts/lib/Modules/CIHelpers.psm1` provides platform-ab
 
 ```powershell
 Import-Module (Join-Path $PSScriptRoot '../lib/Modules/CIHelpers.psm1') -Force
-Write-CIAnnotation -Type 'warning' -Message 'Deprecated API usage detected' -File $filePath -Line $lineNum
+Write-CIAnnotation -Level 'Warning' -Message 'Deprecated API usage detected' -File $filePath -Line $lineNum
 ```
 
 ### JSON Results
@@ -328,6 +328,7 @@ if ($MyInvocation.InvocationName -ne '.') {
         exit 0
     }
     catch {
+        Write-CIAnnotation -Level 'Error' -Message $_.Exception.Message
         Write-Error -ErrorAction Continue "ScriptName failed: $($_.Exception.Message)"
         exit 1
     }
