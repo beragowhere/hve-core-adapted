@@ -17,11 +17,11 @@ Shared conventions for creating and evaluating work items. Agents and instructio
 
 Use the clearest format for the context. Three patterns are acceptable:
 
-| Pattern | When to Use | Example |
-| --- | --- | --- |
-| Classic user story | End-user-facing capability | "As a reviewer, I want inline comments so that I can give feedback without leaving the diff view." |
-| Goal statement | Internal or technical work | "Enable CSV export of user profile data for GDPR compliance." |
-| Problem statement | Bug-adjacent or improvement | "Search latency exceeds 3 seconds for queries with more than 100 results." |
+| Pattern            | When to Use                 | Example                                                                                            |
+|--------------------|-----------------------------|----------------------------------------------------------------------------------------------------|
+| Classic user story | End-user-facing capability  | "As a reviewer, I want inline comments so that I can give feedback without leaving the diff view." |
+| Goal statement     | Internal or technical work  | "Enable CSV export of user profile data for GDPR compliance."                                      |
+| Problem statement  | Bug-adjacent or improvement | "Search latency exceeds 3 seconds for queries with more than 100 results."                         |
 
 Every description includes:
 
