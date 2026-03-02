@@ -255,14 +255,65 @@ Describe 'Export-ComplianceReport' -Tag 'Unit' {
     }
 
     Context 'SARIF format' {
-        It 'Generates valid SARIF report' {
-            $outputFile = Join-Path $script:TestOutputPath 'report.sarif'
+        BeforeAll {
+            $script:SarifFile = Join-Path $script:TestOutputPath 'report.sarif'
 
-            Export-ComplianceReport -Report $script:MockReport -Format 'sarif' -OutputPath $outputFile
+            # Add a Medium severity violation for severity mapping coverage
+            $mediumViolation = [DependencyViolation]::new()
+            $mediumViolation.File = 'requirements.txt'
+            $mediumViolation.Line = 5
+            $mediumViolation.Type = 'pip'
+            $mediumViolation.Name = 'requests'
+            $mediumViolation.Version = '2.31.*'
+            $mediumViolation.Severity = 'Medium'
+            $mediumViolation.Description = 'Version range not pinned'
+            $mediumViolation.Remediation = 'Pin to exact version'
+            $script:MockReport.Violations += $mediumViolation
 
-            Test-Path $outputFile | Should -BeTrue
-            $content = Get-Content $outputFile -Raw | ConvertFrom-Json
-            $content.'$schema' | Should -Match 'sarif'
+            Export-ComplianceReport -Report $script:MockReport -Format 'sarif' -OutputPath $script:SarifFile
+            $script:SarifContent = Get-Content $script:SarifFile -Raw | ConvertFrom-Json
+        }
+
+        It 'Has valid SARIF version 2.1.0' {
+            $script:SarifContent.version | Should -BeExactly '2.1.0'
+        }
+
+        It 'References the SARIF 2.1.0 schema' {
+            $script:SarifContent.'$schema' | Should -Match 'sarif-2\.1\.0'
+        }
+
+        It 'Identifies dependency-pinning-analyzer as the tool driver' {
+            $script:SarifContent.runs[0].tool.driver.name | Should -BeExactly 'dependency-pinning-analyzer'
+        }
+
+        It 'Produces one result per violation' {
+            $script:SarifContent.runs[0].results.Count | Should -Be 2
+        }
+
+        It 'Maps High severity to error level' {
+            $highResult = $script:SarifContent.runs[0].results | Where-Object {
+                $_.properties.dependencyName -eq 'actions/checkout'
+            }
+            $highResult.level | Should -BeExactly 'error'
+        }
+
+        It 'Maps Medium severity to warning level' {
+            $mediumResult = $script:SarifContent.runs[0].results | Where-Object {
+                $_.properties.dependencyName -eq 'requests'
+            }
+            $mediumResult.level | Should -BeExactly 'warning'
+        }
+
+        It 'Includes file location with startLine greater than zero' {
+            $result = $script:SarifContent.runs[0].results[0]
+            $result.locations[0].physicalLocation.artifactLocation.uri | Should -Not -BeNullOrEmpty
+            $result.locations[0].physicalLocation.region.startLine | Should -BeGreaterThan 0
+        }
+
+        It 'Includes dependencyName and remediation in properties' {
+            $result = $script:SarifContent.runs[0].results[0]
+            $result.properties.dependencyName | Should -Not -BeNullOrEmpty
+            $result.properties.remediation | Should -Not -BeNullOrEmpty
         }
     }
 

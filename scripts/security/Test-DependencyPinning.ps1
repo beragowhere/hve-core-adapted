@@ -149,6 +149,7 @@ $DependencyPatterns = @{
 
     'pip'              = @{
         FilePatterns    = @('**/requirements*.txt', '**/Pipfile', '**/pyproject.toml', '**/setup.py')
+        ExcludePatterns = @('.venv', 'venv', '.tox', '.nox', '__pypackages__')
         VersionPatterns = @(
             @{
                 Pattern     = '([a-zA-Z0-9\-_]+)==([^#\s]+)'

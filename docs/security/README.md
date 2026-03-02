@@ -21,6 +21,7 @@ This directory contains security documentation for HVE Core, demonstrating defen
 | Document                                                                   | Description                                            |
 |----------------------------------------------------------------------------|--------------------------------------------------------|
 | [Threat Model](threat-model.md)                                            | Comprehensive threat model and security assurance case |
+| [Dependency Pinning](dependency-pinning.md)                                 | Pinning strategies and CI enforcement for all dependency types |
 | [SECURITY.md](https://github.com/microsoft/hve-core/blob/main/SECURITY.md) | Vulnerability disclosure and reporting process         |
 
 ## Security Posture
