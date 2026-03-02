@@ -103,7 +103,7 @@ jobs:
           **To fix:**
           ``````powershell
           # Review the warnings above, then pin each dependency to a SHA
-          # Example: Change 'uses: actions/checkout@v4' to 'uses: actions/checkout@71cf2267d89c5cb81562390fa70a37fa40b1305e # v4.2.2'
+          # Example: Change 'actions/checkout@v4' to 'actions/checkout@<commit-sha> # v4.2.2'
           ``````
           
           "@

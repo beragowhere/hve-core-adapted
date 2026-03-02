@@ -65,6 +65,52 @@ Describe 'Test-SHAPinning' -Tag 'Unit' {
     }
 }
 
+Describe 'Test-NpmExactVersion' -Tag 'Unit' {
+    Context 'Exact versions' {
+        It 'Returns true for simple semver' {
+            Test-NpmExactVersion -Version '1.2.3' | Should -BeTrue
+        }
+
+        It 'Returns true for semver with prerelease tag' {
+            Test-NpmExactVersion -Version '1.0.0-beta.1' | Should -BeTrue
+        }
+
+        It 'Returns true for semver with build metadata' {
+            Test-NpmExactVersion -Version '2.0.0+build.42' | Should -BeTrue
+        }
+    }
+
+    Context 'Range specifiers' {
+        It 'Returns false for caret range' {
+            Test-NpmExactVersion -Version '^4.17.21' | Should -BeFalse
+        }
+
+        It 'Returns false for tilde range' {
+            Test-NpmExactVersion -Version '~4.18.2' | Should -BeFalse
+        }
+
+        It 'Returns false for wildcard' {
+            Test-NpmExactVersion -Version '*' | Should -BeFalse
+        }
+
+        It 'Returns false for greater-than-or-equal range' {
+            Test-NpmExactVersion -Version '>=17.0.0' | Should -BeFalse
+        }
+
+        It 'Returns false for URL dependency' {
+            Test-NpmExactVersion -Version 'https://example.com/pkg.tgz' | Should -BeFalse
+        }
+
+        It 'Returns false for git dependency' {
+            Test-NpmExactVersion -Version 'git+ssh://git@github.com/user/repo.git' | Should -BeFalse
+        }
+
+        It 'Returns false for dist-tag like latest' {
+            Test-NpmExactVersion -Version 'latest' | Should -BeFalse
+        }
+    }
+}
+
 Describe 'Test-ShellDownloadSecurity' -Tag 'Unit' {
     Context 'Insecure downloads' {
         It 'Detects curl without checksum verification' {
@@ -630,6 +676,31 @@ Describe 'Get-NpmDependencyViolations' -Tag 'Unit' {
             $lodashViolation | Should -Not -BeNullOrEmpty
             $lodashViolation.Name | Should -Be 'lodash'
             $lodashViolation.Version | Should -Be '^4.17.21'
+        }
+
+        It 'Assigns valid line numbers to violations' {
+            $fileInfo = @{
+                Path         = Join-Path $script:FixturesPath 'with-dependencies-package.json'
+                Type         = 'npm'
+                RelativePath = 'with-dependencies-package.json'
+            }
+
+            $violations = Get-NpmDependencyViolations -FileInfo $fileInfo
+
+            $violations | ForEach-Object { $_.Line | Should -BeGreaterOrEqual 1 }
+        }
+
+        It 'Excludes exact-version dependencies from violations' {
+            $fileInfo = @{
+                Path         = Join-Path $script:FixturesPath 'with-dependencies-package.json'
+                Type         = 'npm'
+                RelativePath = 'with-dependencies-package.json'
+            }
+
+            $violations = Get-NpmDependencyViolations -FileInfo $fileInfo
+            $packageNames = $violations | ForEach-Object { $_.Name }
+
+            $packageNames | Should -Not -Contain 'jest'
         }
     }
 
