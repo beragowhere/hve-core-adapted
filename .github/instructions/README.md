@@ -39,6 +39,7 @@ See [Contributing Instructions](../../docs/contributing/instructions.md) for aut
 | [coding-standards/csharp/csharp.instructions.md](coding-standards/csharp/csharp.instructions.md) | `**/*.cs`                              | C# implementation and coding conventions |
 | [coding-standards/csharp/csharp-tests.instructions.md](coding-standards/csharp/csharp-tests.instructions.md) | `**/*.cs`                      | C# test code standards                   |
 | [coding-standards/rust/rust.instructions.md](coding-standards/rust/rust.instructions.md) | `**/*.rs`                                | Rust development conventions             |
+| [coding-standards/rust/rust-tests.instructions.md](coding-standards/rust/rust-tests.instructions.md) | `**/*.rs`                          | Rust test code standards                 |
 | [coding-standards/python-script.instructions.md](coding-standards/python-script.instructions.md) | `**/*.py`                              | Python scripting implementation          |
 | [coding-standards/terraform/terraform.instructions.md](coding-standards/terraform/terraform.instructions.md) | `**/*.tf, **/*.tfvars, **/terraform/**` | Terraform infrastructure as code     |
 | [coding-standards/uv-projects.instructions.md](coding-standards/uv-projects.instructions.md) | `**/*.py, **/*.ipynb`                    | Python virtual environments using uv     |
@@ -122,7 +123,8 @@ For manual creation, see [Contributing Instructions](../../docs/contributing/ins
 │   │   ├── csharp.instructions.md
 │   │   └── csharp-tests.instructions.md
 │   ├── rust/
-│   │   └── rust.instructions.md
+│   │   ├── rust.instructions.md
+│   │   └── rust-tests.instructions.md
 │   ├── terraform/
 │   │   └── terraform.instructions.md
 │   ├── python-script.instructions.md

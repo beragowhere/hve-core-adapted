@@ -493,51 +493,6 @@ pub fn process(input: &[u8], config: &ProcessConfig) -> Result<Vec<u8>> {
 * Run `cargo fmt` before committing.
 * Use default `rustfmt` configuration unless the project includes a `rustfmt.toml`.
 
-## Testing
-
-### Test Module Placement
-
-Place unit tests in `#[cfg(test)] mod tests` within the source file they exercise:
-
-<!-- <example-tests> -->
-```rust
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn given_valid_input_parse_returns_config() {
-        let config = AppConfig::from_file("fixtures/valid.json").unwrap();
-        assert_eq!(config.polling_interval_secs, 10);
-    }
-
-    #[tokio::test]
-    async fn when_endpoint_available_send_succeeds() {
-        // Arrange, Act, Assert
-    }
-}
-```
-<!-- </example-tests> -->
-
-### Test Naming
-
-Test method format: `given_context_when_action_then_expected` or descriptive snake_case that reads as a behavior statement.
-
-```text
-given_valid_input_parse_returns_config
-when_endpoint_unavailable_send_returns_error
-parses_empty_payload_as_default
-```
-
-Prefer one assertion per test. Related assertions validating the same behavior are acceptable.
-
-### Test Conventions
-
-* Use `#[tokio::test]` for async tests.
-* Prefer assertion messages that explain intent: `assert!(result.is_ok(), "should parse valid JSON")`.
-* Use fixtures or builder patterns for test data rather than inline construction.
-* Place integration tests in the `tests/` directory at the crate root.
-
 ## Additional Conventions
 
 * Prefer `&str` over `String` in function parameters when ownership is not needed.
@@ -716,25 +671,5 @@ async fn main() -> Result<()> {
 
     let service = PollingService::new(config);
     service.run().await
-}
-
-// --- Tests ---
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn given_defaults_config_has_ten_second_interval() {
-        let json = r#"{"endpoint": "https://example.com"}"#;
-        let config: AppConfig = serde_json::from_str(json).unwrap();
-        assert_eq!(config.polling_interval_secs, 10);
-    }
-
-    #[test]
-    fn service_error_not_found_formats_message() {
-        let err = ServiceError::not_found("item 42");
-        assert_eq!(err.to_string(), "Not found: item 42");
-    }
 }
 ```
