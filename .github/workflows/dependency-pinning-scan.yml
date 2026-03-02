@@ -44,7 +44,7 @@ permissions:
 
 jobs:
   scan:
-    name: Validate SHA Pinning Compliance
+    name: Validate Dependency Pinning Compliance
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -59,7 +59,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Run SHA Pinning Validation
+      - name: Run Dependency Pinning Validation
         id: pinning
         shell: pwsh
         run: |
@@ -165,7 +165,7 @@ jobs:
           
           ### ⚠️ Action Required
           
-          **$unpinnedCount dependencies are not SHA-pinned.**
+          **$unpinnedCount dependencies are not properly pinned.**
           
           Review the warnings in the workflow log and pin dependencies to specific SHA commits.
           
@@ -175,7 +175,7 @@ jobs:
           
           ### ✅ All Dependencies Pinned
           
-          All dependencies are properly SHA-pinned.
+          All dependencies are properly pinned.
           
           "@
           })

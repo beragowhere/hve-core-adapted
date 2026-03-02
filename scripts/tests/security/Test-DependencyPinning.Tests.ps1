@@ -449,6 +449,35 @@ Describe 'ExcludePaths Filtering Logic' -Tag 'Unit' {
     }
 }
 
+Describe 'pip ExcludePatterns integration' -Tag 'Unit' {
+    BeforeAll {
+        $pipTestRoot = Join-Path $TestDrive 'pip-exclude-test'
+        New-Item -Path $pipTestRoot -ItemType Directory -Force | Out-Null
+
+        # Root-level requirements file (should be scanned)
+        Set-Content -Path (Join-Path $pipTestRoot 'requirements.txt') -Value 'requests==2.31.0'
+
+        # Files inside excluded virtual environment directories (should be excluded)
+        $excludedDirs = @('.venv', 'venv', '.tox', '.nox', '__pypackages__')
+        foreach ($dir in $excludedDirs) {
+            $dirPath = Join-Path $pipTestRoot $dir
+            New-Item -Path $dirPath -ItemType Directory -Force | Out-Null
+            Set-Content -Path (Join-Path $dirPath 'requirements.txt') -Value 'flask==3.0.0'
+        }
+    }
+
+    It 'Excludes virtual environment directories from pip scans' {
+        $files = @(Get-FilesToScan -ScanPath $pipTestRoot -Types 'pip')
+        $files | Should -HaveCount 1
+        $files[0].RelativePath | Should -Be 'requirements.txt'
+    }
+
+    It 'Returns correct type metadata for pip files' {
+        $files = @(Get-FilesToScan -ScanPath $pipTestRoot -Types 'pip')
+        $files[0].Type | Should -Be 'pip'
+    }
+}
+
 Describe 'Dot-sourced execution protection' -Tag 'Unit' {
     Context 'When script is dot-sourced' {
         It 'Does not execute main block when dot-sourced' {
@@ -931,7 +960,7 @@ Describe 'Invoke-DependencyPinningAnalysis' -Tag 'Unit' {
         It 'emits success Write-Host message when no violations' {
             Invoke-DependencyPinningAnalysis -Path TestDrive:
             Should -Invoke Write-Host -ParameterFilter {
-                $Object -like '*✅*' -and $Object -like '*SHA-pinned*'
+                $Object -like '*✅*' -and $Object -like '*properly pinned*'
             }
         }
 
@@ -1215,8 +1244,8 @@ Describe 'Invoke-DependencyPinningAnalysis' -Tag 'Unit' {
 
             Invoke-DependencyPinningAnalysis -Path TestDrive:
 
-            # Write-SecurityLog -CIAnnotation "N dependencies require SHA pinning..." emits a Warning annotation
-            Should -Invoke Write-CIAnnotation -ModuleName SecurityHelpers -ParameterFilter { $Level -eq 'Warning' -and $null -eq $File -and $Message -match 'SHA pinning' }
+            # Write-SecurityLog -CIAnnotation "N dependencies require pinning..." emits a Warning annotation
+            Should -Invoke Write-CIAnnotation -ModuleName SecurityHelpers -ParameterFilter { $Level -eq 'Warning' -and $null -eq $File -and $Message -match 'pinning' }
         }
 
         It 'Forwards Error-level log messages as CI Error annotations' {
@@ -1289,7 +1318,7 @@ Describe 'Invoke-DependencyPinningAnalysis' -Tag 'Unit' {
 
             Invoke-DependencyPinningAnalysis -Path TestDrive:
 
-            Should -Invoke Write-Host -ParameterFilter { $ForegroundColor -eq 'Green' -and $Object -match 'SHA-pinned' }
+            Should -Invoke Write-Host -ParameterFilter { $ForegroundColor -eq 'Green' -and $Object -match 'properly pinned' }
         }
     }
 }

@@ -135,7 +135,7 @@ flowchart LR
 | skill-validation         | `skill-validation.yml`        | Skill directory structure      |
 | link-lang-check          | `link-lang-check.yml`         | Link accessibility             |
 | markdown-link-check      | `markdown-link-check.yml`     | Broken links                   |
-| dependency-pinning-check | `dependency-pinning-scan.yml` | Action SHA pinning             |
+| dependency-pinning-check | `dependency-pinning-scan.yml` | Dependency pinning             |
 | npm-audit                | Inline                        | npm dependency vulnerabilities |
 | codeql                   | `codeql-analysis.yml`         | Code security patterns         |
 | copyright-headers        | `copyright-headers.yml`       | Copyright header compliance    |
@@ -202,7 +202,7 @@ The `weekly-security-maintenance.yml` workflow runs every Sunday at 2AM UTC, pro
 
 | Job              | Purpose                               |
 |------------------|---------------------------------------|
-| validate-pinning | Verify GitHub Actions use SHA pinning |
+| validate-pinning | Verify dependency pinning compliance  |
 | check-staleness  | Detect outdated SHA references        |
 | codeql-analysis  | Full CodeQL security scan             |
 | summary          | Aggregate security status report      |

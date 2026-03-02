@@ -26,7 +26,7 @@ class DependencyViolation {
         Represents a single dependency pinning violation.
 
     .DESCRIPTION
-        Contains information about a dependency that is not properly SHA-pinned,
+        Contains information about a dependency that is not properly pinned,
         including file location, dependency details, and remediation guidance.
 
         ViolationType values:

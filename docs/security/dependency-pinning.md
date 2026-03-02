@@ -11,7 +11,7 @@ keywords:
   - npm
   - pip
   - github actions
-estimated_reading_time: 5
+estimated_reading_time: 8
 ---
 
 ## Overview
@@ -23,6 +23,7 @@ HVE Core enforces dependency pinning to mitigate supply chain attacks. Every dep
 | GitHub Actions | Full 40-character commit SHA | `actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29` |
 | npm | Exact version (no ranges) | `"eslint": "9.18.0"` |
 | pip | Exact version with `==` | `requests==2.31.0` |
+| Workflow npm commands | `npm ci` enforcement | `npm ci` instead of `npm install` |
 | Shell downloads | Checksum verification | `sha256sum --check` after download |
 
 ## npm: Exact-Version Enforcement
@@ -92,6 +93,81 @@ requests>=2.31.0
 flask~=3.0
 ```
 
+## Workflow npm Commands: npm ci Enforcement
+
+CI workflow YAML files are scanned for npm commands that modify the dependency tree at install time. These commands resolve version ranges against the registry, producing non-deterministic installs that can pull in compromised packages.
+
+### Detected Commands
+
+The scanner inspects `run:` blocks in workflow YAML with indentation-aware parsing and flags these commands:
+
+| Flagged | Reason |
+|---|---|
+| `npm install` | Resolves ranges from `package.json`, ignoring lockfile |
+| `npm i` | Alias for `npm install` |
+| `npm update` | Upgrades to latest versions within semver ranges |
+| `npm install-test` | Combines install and test in a non-deterministic way |
+
+### Safe Commands
+
+These npm commands are not flagged because they do not modify the dependency tree:
+
+* `npm ci` — Installs exactly from the lockfile, removing `node_modules` first
+* `npm run` — Executes a script defined in `package.json`
+* `npm test` — Alias for `npm run test`
+* `npm audit` — Reports known vulnerabilities without installing
+* `npx` — Runs a package binary without modifying dependencies
+
+### Remediation
+
+Replace flagged commands with `npm ci` for deterministic, lockfile-based installs:
+
+```yaml
+# Rejected — resolves version ranges from the registry
+- run: npm install
+
+# Accepted — installs exactly what the lockfile specifies
+- run: npm ci
+```
+
+### File Scope
+
+The scanner processes files matching `.github/workflows/*.yml` and `.github/workflows/*.yaml`.
+
+## Shell Downloads: Checksum Verification
+
+Shell scripts that download files from the internet must verify checksums to prevent tampered or corrupted binaries from entering the build environment.
+
+### Detection
+
+The scanner identifies download commands matching `curl` or `wget` with an HTTP/HTTPS URL. It then checks the next five lines for a checksum verification command. If no verification is found, the download is flagged.
+
+### Accepted Verification Commands
+
+Any of these patterns within five lines of the download satisfies the check:
+
+* `sha256sum` — GNU coreutils checksum
+* `shasum` — macOS/BSD checksum utility
+* `Get-FileHash` — PowerShell checksum cmdlet
+* `openssl dgst -sha256` — OpenSSL digest
+* `sha256sum -c` — Checksum file verification
+
+### Examples
+
+```bash
+# Accepted — checksum verified immediately after download
+curl -Lo tool.tar.gz https://example.com/tool-v1.0.tar.gz
+echo "abc123...  tool.tar.gz" | sha256sum --check
+
+# Rejected — no checksum verification after download
+wget https://example.com/tool-v1.0.tar.gz
+tar xzf tool-v1.0.tar.gz
+```
+
+### File Scope
+
+The scanner processes files matching `.devcontainer/scripts/*.sh` and `scripts/*.sh`, excluding fixture directories used in tests.
+
 ## CI Integration
 
 The dependency pinning scanner runs in CI as part of the security validation workflow. It produces SARIF 2.1.0 output that integrates with GitHub code scanning.
@@ -124,7 +200,7 @@ flowchart LR
 
 ## Related Resources
 
-* [Threat Model](threat-model.md) — Supply chain threats S-1, S-2, SC-1, and SC-4
+* [Threat Model](threat-model.md) — Supply chain threats S-1, S-2, SC-1, SC-4, and SC-6
 * [Branch Protection](../contributing/branch-protection.md) — Required status checks including dependency pinning
 
 ---

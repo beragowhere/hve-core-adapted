@@ -5,11 +5,11 @@
 
 <#
 .SYNOPSIS
-    Verifies and reports on SHA pinning compliance for supply chain security.
+    Verifies and reports on dependency pinning compliance for supply chain security.
 
 .DESCRIPTION
     Cross-platform PowerShell script that analyzes GitHub Actions workflows, Docker images,
-    and other dependency declarations to verify compliance with SHA pinning security practices.
+    and other dependency declarations to verify compliance with dependency pinning security practices.
     Identifies unpinned dependencies and provides remediation guidance.
 
 .PARAMETER Path
@@ -1105,7 +1105,7 @@ function Invoke-DependencyPinningAnalysis {
         }
     }
     else {
-        Write-Host "`n✅ All dependencies are properly SHA-pinned." -ForegroundColor Green
+        Write-Host "`n✅ All dependencies are properly pinned." -ForegroundColor Green
     }
 
     # Generate compliance report
@@ -1124,7 +1124,7 @@ function Invoke-DependencyPinningAnalysis {
     Write-SecurityLog -CIAnnotation "Unpinned Dependencies: $($report.UnpinnedDependencies)" -Level Info
 
     if ($report.UnpinnedDependencies -gt 0) {
-        Write-SecurityLog -CIAnnotation "$($report.UnpinnedDependencies) dependencies require SHA pinning for security compliance" -Level Warning
+        Write-SecurityLog -CIAnnotation "$($report.UnpinnedDependencies) dependencies require pinning for security compliance" -Level Warning
 
         # Check threshold compliance
         if ($report.ComplianceScore -lt $Threshold) {
