@@ -21,7 +21,7 @@ This directory contains security documentation for HVE Core, demonstrating defen
 | Document                                                                   | Description                                            |
 |----------------------------------------------------------------------------|--------------------------------------------------------|
 | [Threat Model](threat-model.md)                                            | Comprehensive threat model and security assurance case |
-| [SBOM Verification](sbom-verification.md)                                   | SBOM attestation verification and consumption guide    |
+| [SBOM Verification](sbom-verification.md)                                  | SBOM attestation verification and consumption guide    |
 | [SECURITY.md](https://github.com/microsoft/hve-core/blob/main/SECURITY.md) | Vulnerability disclosure and reporting process         |
 
 ## Security Posture

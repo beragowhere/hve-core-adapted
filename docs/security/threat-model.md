@@ -721,28 +721,28 @@ These threats address ethical and responsible AI considerations aligned with Mic
 
 ### Supply Chain Security Controls
 
-| ID   | Control                    | Implementation                       | Validates Against |
-|------|----------------------------|--------------------------------------|-------------------|
-| SC-1 | SHA Pinning Validation     | Test-DependencyPinning.ps1           | S-1, S-2          |
-| SC-2 | SHA Staleness Monitoring   | Test-SHAStaleness.ps1                | S-1               |
-| SC-3 | Dependency Review          | dependency-review.yml                | S-2, AI-5         |
-| SC-4 | npm Security Audit         | npm audit in pr-validation.yml       | S-2               |
-| SC-5 | Dependabot Updates         | dependabot.yml                       | S-1, S-2          |
-| SC-6 | Tool Checksum Verification | scripts/security/tool-checksums.json | S-1               |
-| SC-7 | SBOM Generation and Attestation | anchore/sbom-action, actions/attest in main.yml | S-1, S-2 |
-| SC-8 | SBOM Dependency Diff | sbom-diff job in main.yml | S-1, S-2 |
+| ID   | Control                         | Implementation                                  | Validates Against |
+|------|---------------------------------|-------------------------------------------------|-------------------|
+| SC-1 | SHA Pinning Validation          | Test-DependencyPinning.ps1                      | S-1, S-2          |
+| SC-2 | SHA Staleness Monitoring        | Test-SHAStaleness.ps1                           | S-1               |
+| SC-3 | Dependency Review               | dependency-review.yml                           | S-2, AI-5         |
+| SC-4 | npm Security Audit              | npm audit in pr-validation.yml                  | S-2               |
+| SC-5 | Dependabot Updates              | dependabot.yml                                  | S-1, S-2          |
+| SC-6 | Tool Checksum Verification      | scripts/security/tool-checksums.json            | S-1               |
+| SC-7 | SBOM Generation and Attestation | anchore/sbom-action, actions/attest in main.yml | S-1, S-2          |
+| SC-8 | SBOM Dependency Diff            | sbom-diff job in main.yml                       | S-1, S-2          |
 
 #### SC-8: SBOM Dependency Diff Implementation
 
 The `sbom-diff` job in `main.yml` runs during each release to surface supply chain changes between consecutive versions. It compares the current dependency SBOM against the previous release, generating a structured `dependency-diff.md` report that is uploaded to the GitHub Release.
 
-| Field | Value |
-|-------|-------|
-| **Trigger** | Runs when `release_created == 'true'`, after SBOM generation completes |
-| **Input** | SPDX JSON dependency SBOMs from current build and previous GitHub Release |
-| **Output** | `dependency-diff.md` uploaded to the GitHub Release as an asset |
+| Field            | Value                                                                      |
+|------------------|----------------------------------------------------------------------------|
+| **Trigger**      | Runs when `release_created == 'true'`, after SBOM generation completes     |
+| **Input**        | SPDX JSON dependency SBOMs from current build and previous GitHub Release  |
+| **Output**       | `dependency-diff.md` uploaded to the GitHub Release as an asset            |
 | **Failure Mode** | `continue-on-error: true` prevents diff failures from blocking the release |
-| **Permissions** | `contents: write` (release asset upload only) |
+| **Permissions**  | `contents: write` (release asset upload only)                              |
 
 The diff script parses SPDX JSON packages, excludes root document entries, and categorizes changes into three groups:
 
@@ -798,12 +798,12 @@ This section presents the security assurance case using Goal Structuring Notatio
 
 ### Evidence Mapping
 
-| Goal | Evidence                                                            |
-|------|---------------------------------------------------------------------|
+| Goal | Evidence                                                                                                                    |
+|------|-----------------------------------------------------------------------------------------------------------------------------|
 | G1   | SHA pinning logs, staleness reports, dependency review results, SBOM attestation verification, dependency SBOM diff reports |
-| G2   | Branch protection configuration, CODEOWNERS file, PR review history |
-| G3   | This threat model document, MCP trust analysis                      |
-| G4   | Writing style guidelines, inclusive language checks, PR reviews     |
+| G2   | Branch protection configuration, CODEOWNERS file, PR review history                                                         |
+| G3   | This threat model document, MCP trust analysis                                                                              |
+| G4   | Writing style guidelines, inclusive language checks, PR reviews                                                             |
 
 ### Assumptions and Justifications
 
@@ -913,13 +913,13 @@ HVE Core documents integrations with Model Context Protocol servers. This sectio
 
 ### Validation Workflow Coverage
 
-| Workflow                        | Trigger            | Security Checks                      |
-|---------------------------------|--------------------|--------------------------------------|
-| pr-validation.yml               | PR to main/develop | Pinning, npm audit, CodeQL, gitleaks |
+| Workflow                        | Trigger            | Security Checks                                                |
+|---------------------------------|--------------------|----------------------------------------------------------------|
+| pr-validation.yml               | PR to main/develop | Pinning, npm audit, CodeQL, gitleaks                           |
 | main.yml                        | Push to main       | Pinning, gitleaks, SBOM attestation, dependency diff (release) |
-| codeql-analysis.yml             | Push, PR, weekly   | Static analysis                      |
-| dependency-review.yml           | PR to main/develop | Vulnerability scanning               |
-| weekly-security-maintenance.yml | Sundays 2 AM UTC   | Pinning, staleness, CodeQL           |
+| codeql-analysis.yml             | Push, PR, weekly   | Static analysis                                                |
+| dependency-review.yml           | PR to main/develop | Vulnerability scanning                                         |
+| weekly-security-maintenance.yml | Sundays 2 AM UTC   | Pinning, staleness, CodeQL                                     |
 
 ## References
 
