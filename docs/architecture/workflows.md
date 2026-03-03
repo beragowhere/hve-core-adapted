@@ -200,12 +200,12 @@ When release-please creates a release, parallel jobs build the extension VSIX (`
 
 The `weekly-security-maintenance.yml` workflow runs every Sunday at 2AM UTC, providing scheduled security posture review.
 
-| Job              | Purpose                               |
-|------------------|---------------------------------------|
-| validate-pinning | Verify dependency pinning compliance  |
-| check-staleness  | Detect outdated SHA references        |
-| codeql-analysis  | Full CodeQL security scan             |
-| summary          | Aggregate security status report      |
+| Job              | Purpose                              |
+|------------------|--------------------------------------|
+| validate-pinning | Verify dependency pinning compliance |
+| check-staleness  | Detect outdated SHA references       |
+| codeql-analysis  | Full CodeQL security scan            |
+| summary          | Aggregate security status report     |
 
 ### Security Validation Tools
 

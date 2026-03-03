@@ -180,7 +180,7 @@ This section documents threats using [STRIDE](https://learn.microsoft.com/azure/
 | **Threat**        | Attacker compromises upstream Action repository and replaces tag with malicious code |
 | **Likelihood**    | Medium (documented supply chain attacks exist)                                       |
 | **Impact**        | High (full CI/CD compromise, secret exfiltration)                                    |
-| **Mitigations**   | Dependency pinning for all Actions, staleness monitoring, CodeQL scanning             |
+| **Mitigations**   | Dependency pinning for all Actions, staleness monitoring, CodeQL scanning            |
 | **Residual Risk** | Low (SHA immutable; requires GitHub infrastructure compromise)                       |
 | **Status**        | Mitigated                                                                            |
 
@@ -798,12 +798,12 @@ This section presents the security assurance case using Goal Structuring Notatio
 
 ### Evidence Mapping
 
-| Goal | Evidence                                                                                                                          |
-|------|-----------------------------------------------------------------------------------------------------------------------------------|
+| Goal | Evidence                                                                                                                           |
+|------|------------------------------------------------------------------------------------------------------------------------------------|
 | G1   | Dependency pinning logs, staleness reports, dependency review results, SBOM attestation verification, dependency SBOM diff reports |
-| G2   | Branch protection configuration, CODEOWNERS file, PR review history                                                               |
-| G3   | This threat model document, MCP trust analysis                                                                                    |
-| G4   | Writing style guidelines, inclusive language checks, PR reviews                                                                   |
+| G2   | Branch protection configuration, CODEOWNERS file, PR review history                                                                |
+| G3   | This threat model document, MCP trust analysis                                                                                     |
+| G4   | Writing style guidelines, inclusive language checks, PR reviews                                                                    |
 
 ### Assumptions and Justifications
 
@@ -896,13 +896,13 @@ HVE Core documents integrations with Model Context Protocol servers. This sectio
 
 ### Configured Thresholds
 
-| Metric                 | Threshold | Source                      |
-|------------------------|-----------|-----------------------------|
+| Metric                        | Threshold | Source                      |
+|-------------------------------|-----------|-----------------------------|
 | Dependency Pinning Compliance | ≥95%      | dependency-pinning-scan.yml |
-| SHA Staleness          | ≤30 days  | sha-staleness-check.yml     |
-| Dependency Review Fail | moderate  | dependency-review.yml       |
-| npm Audit Fail Level   | moderate  | pr-validation.yml           |
-| Required PR Reviewers  | 1         | Branch protection           |
+| SHA Staleness                 | ≤30 days  | sha-staleness-check.yml     |
+| Dependency Review Fail        | moderate  | dependency-review.yml       |
+| npm Audit Fail Level          | moderate  | pr-validation.yml           |
+| Required PR Reviewers         | 1         | Branch protection           |
 
 ### Security Response Commitments
 

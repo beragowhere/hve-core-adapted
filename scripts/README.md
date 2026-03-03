@@ -68,7 +68,7 @@ The `security/` directory contains scripts for security scanning and dependency 
 
 | Script                              | Purpose                                   |
 |-------------------------------------|-------------------------------------------|
-| `Test-DependencyPinning.ps1`        | Validate dependency pinning compliance  |
+| `Test-DependencyPinning.ps1`        | Validate dependency pinning compliance    |
 | `Test-SHAStaleness.ps1`             | Check for outdated SHA pins               |
 | `Update-ActionSHAPinning.ps1`       | Automate updating GitHub Actions SHA pins |
 | `Test-ActionVersionConsistency.ps1` | Validate action version consistency       |
