@@ -93,9 +93,6 @@ param(
     [string]$Path = ".",
 
     [Parameter(Mandatory = $false)]
-    [switch]$Recursive,
-
-    [Parameter(Mandatory = $false)]
     [ValidateSet('json', 'sarif', 'csv', 'markdown', 'table')]
     [string]$Format = 'json',
 
@@ -166,12 +163,6 @@ $DependencyPatterns = @{
         ExcludePatterns = @('Fixtures')
         ValidationFunc  = 'Test-ShellDownloadSecurity'
         Description     = 'Shell script downloads must include checksum verification'
-    }
-
-    'workflow-npm-commands' = @{
-        FilePatterns   = @('**/.github/workflows/*.yml', '**/.github/workflows/*.yaml')
-        ValidationFunc = 'Get-WorkflowNpmCommandViolations'
-        Description    = 'Workflow npm install/update commands should use npm ci'
     }
 
     'workflow-npm-commands' = @{
@@ -526,8 +517,7 @@ function Get-FilesToScan {
     param(
         [string]$ScanPath,
         [string[]]$Types,
-        [string[]]$ExcludePatterns,
-        [switch]$Recursive
+        [string[]]$ExcludePatterns
     )
 
     $allFiles = @()
@@ -1020,9 +1010,6 @@ function Invoke-DependencyPinningAnalysis {
         [string]$Path = ".",
 
         [Parameter()]
-        [switch]$Recursive,
-
-        [Parameter()]
         [string]$IncludeTypes = "github-actions,npm,pip,shell-downloads,workflow-npm-commands",
 
         [Parameter()]
@@ -1057,7 +1044,7 @@ function Invoke-DependencyPinningAnalysis {
     if ($excludePatterns) { Write-SecurityLog -CIAnnotation "Exclude patterns: $($excludePatterns -join ', ')" -Level Info }
 
     # Discover files to scan
-    $filesToScan = @(Get-FilesToScan -ScanPath $Path -Types $typesToCheck -ExcludePatterns $excludePatterns -Recursive:$Recursive)
+    $filesToScan = @(Get-FilesToScan -ScanPath $Path -Types $typesToCheck -ExcludePatterns $excludePatterns)
     Write-SecurityLog -CIAnnotation "Found $(@($filesToScan).Count) files to scan" -Level Info
 
     # Scan for violations
@@ -1157,7 +1144,6 @@ if ($MyInvocation.InvocationName -ne '.') {
     try {
         Invoke-DependencyPinningAnalysis `
             -Path $Path `
-            -Recursive:$Recursive `
             -IncludeTypes $IncludeTypes `
             -ExcludePaths $ExcludePaths `
             -Format $Format `

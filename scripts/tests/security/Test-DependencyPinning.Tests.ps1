@@ -122,7 +122,7 @@ Describe 'Test-ShellDownloadSecurity' -Tag 'Unit' {
             }
             $result = Test-ShellDownloadSecurity -FileInfo $fileInfo
             $result | Should -Not -BeNullOrEmpty
-            $result[0].Severity | Should -Be 'warning'
+            $result[0].Severity | Should -Be 'Medium'
         }
 
         It 'Detects both curl and wget violations in the same file' {

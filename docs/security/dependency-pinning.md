@@ -4,7 +4,7 @@ description: How HVE Core enforces dependency pinning across GitHub Actions, npm
 sidebar_position: 3
 author: Microsoft
 ms.date: 2026-03-02
-ms.topic: conceptual
+ms.topic: concept
 keywords:
   - dependency pinning
   - supply chain security
@@ -18,13 +18,13 @@ estimated_reading_time: 8
 
 HVE Core enforces dependency pinning to mitigate supply chain attacks. Every dependency reference in the repository must resolve to a specific, immutable version. The `Test-DependencyPinning.ps1` scanner validates all dependency types during CI and produces SARIF reports for GitHub code scanning integration.
 
-| Dependency Type | Pinning Strategy | Example |
-|---|---|---|
-| GitHub Actions | Full 40-character commit SHA | `actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29` |
-| npm | Exact version (no ranges) | `"eslint": "9.18.0"` |
-| pip | Exact version with `==` | `requests==2.31.0` |
-| Workflow npm commands | `npm ci` enforcement | `npm ci` instead of `npm install` |
-| Shell downloads | Checksum verification | `sha256sum --check` after download |
+| Dependency Type       | Pinning Strategy             | Example                                                     |
+|-----------------------|------------------------------|-------------------------------------------------------------|
+| GitHub Actions        | Full 40-character commit SHA | `actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29` |
+| npm                   | Exact version (no ranges)    | `"eslint": "9.18.0"`                                        |
+| pip                   | Exact version with `==`      | `requests==2.31.0`                                          |
+| Workflow npm commands | `npm ci` enforcement         | `npm ci` instead of `npm install`                           |
+| Shell downloads       | Checksum verification        | `sha256sum --check` after download                          |
 
 ## npm: Exact-Version Enforcement
 
@@ -57,13 +57,13 @@ This permits standard semver (`1.2.3`), pre-release tags (`1.2.3-beta.1`), and b
 
 ### Why Not SHA-Pinning for npm
 
-| Criterion | SHA-Pinning (GitHub Actions) | Exact-Version (npm) |
-|---|---|---|
-| Registry model | Git repositories with mutable tags | Immutable package tarballs |
-| Mutability risk | Tags can be force-pushed to different commits | Published versions are permanently immutable |
-| Audit tooling | `npm audit` cross-references semver, not SHAs | Full compatibility with `npm audit` |
-| Lockfile integration | N/A | `package-lock.json` records integrity hashes |
-| Human readability | 40-char hex strings obscure the actual version | Version is self-documenting |
+| Criterion            | SHA-Pinning (GitHub Actions)                   | Exact-Version (npm)                          |
+|----------------------|------------------------------------------------|----------------------------------------------|
+| Registry model       | Git repositories with mutable tags             | Immutable package tarballs                   |
+| Mutability risk      | Tags can be force-pushed to different commits  | Published versions are permanently immutable |
+| Audit tooling        | `npm audit` cross-references semver, not SHAs  | Full compatibility with `npm audit`          |
+| Lockfile integration | N/A                                            | `package-lock.json` records integrity hashes |
+| Human readability    | 40-char hex strings obscure the actual version | Version is self-documenting                  |
 
 ## GitHub Actions: SHA Pinning
 
@@ -101,12 +101,12 @@ CI workflow YAML files are scanned for npm commands that modify the dependency t
 
 The scanner inspects `run:` blocks in workflow YAML with indentation-aware parsing and flags these commands:
 
-| Flagged | Reason |
-|---|---|
-| `npm install` | Resolves ranges from `package.json`, ignoring lockfile |
-| `npm i` | Alias for `npm install` |
-| `npm update` | Upgrades to latest versions within semver ranges |
-| `npm install-test` | Combines install and test in a non-deterministic way |
+| Flagged            | Reason                                                 |
+|--------------------|--------------------------------------------------------|
+| `npm install`      | Resolves ranges from `package.json`, ignoring lockfile |
+| `npm i`            | Alias for `npm install`                                |
+| `npm update`       | Upgrades to latest versions within semver ranges       |
+| `npm install-test` | Combines install and test in a non-deterministic way   |
 
 ### Safe Commands
 
@@ -164,7 +164,7 @@ wget https://example.com/tool-v1.0.tar.gz
 tar xzf tool-v1.0.tar.gz
 ```
 
-### File Scope
+### Scanned Files
 
 The scanner processes files matching `.devcontainer/scripts/*.sh` and `scripts/*.sh`, excluding fixture directories used in tests.
 
@@ -183,11 +183,11 @@ flowchart LR
 
 ### Severity Mapping
 
-| Scanner Severity | SARIF Level | Trigger |
-|---|---|---|
-| High | `error` | Unpinned or mutable dependency reference |
-| Medium | `warning` | Stale pinned version with available update |
-| Low | `note` | Informational findings |
+| Scanner Severity | SARIF Level | Trigger                                    |
+|------------------|-------------|--------------------------------------------|
+| High             | `error`     | Unpinned or mutable dependency reference   |
+| Medium           | `warning`   | Stale pinned version with available update |
+| Low              | `note`      | Informational findings                     |
 
 ### Running Locally
 
