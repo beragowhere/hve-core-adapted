@@ -209,14 +209,14 @@ The `weekly-security-maintenance.yml` workflow runs every Sunday at 2AM UTC, pro
 
 ### Security Validation Tools
 
-| Tool               | Script                       | Checks                                   |
-|--------------------|------------------------------|------------------------------------------|
+| Tool               | Script                       | Checks                                        |
+|--------------------|------------------------------|-----------------------------------------------|
 | Dependency Pinning | `Test-DependencyPinning.ps1` | Actions use SHA refs; npm uses exact versions |
-| SHA Staleness      | `Test-SHAStaleness.ps1`      | SHAs reference recent commits            |
-| npm Audit          | `npm audit`                  | Known vulnerabilities in dependencies    |
-| CodeQL             | GitHub native                | Code patterns indicating security issues |
-| Gitleaks           | `gitleaks`                   | Secret detection in repository history   |
-| Dependency Review  | GitHub native                | Dependency vulnerability analysis        |
+| SHA Staleness      | `Test-SHAStaleness.ps1`      | SHAs reference recent commits                 |
+| npm Audit          | `npm audit`                  | Known vulnerabilities in dependencies         |
+| CodeQL             | GitHub native                | Code patterns indicating security issues      |
+| Gitleaks           | `gitleaks`                   | Secret detection in repository history        |
+| Dependency Review  | GitHub native                | Dependency vulnerability analysis             |
 
 ## Extension Publishing
 
