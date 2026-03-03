@@ -71,7 +71,6 @@ jobs:
           # Build parameter list for JSON output (always generate)
           $params = @{
             Path = '.'
-            Recursive = $true
             Format = 'json'
             OutputPath = 'logs/dependency-pinning-results.json'
           }
