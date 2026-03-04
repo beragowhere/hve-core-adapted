@@ -112,21 +112,21 @@ The scanner inspects `run:` blocks in workflow YAML with indentation-aware parsi
 
 These npm commands are not flagged because they do not modify the dependency tree:
 
-* `npm ci` — Installs exactly from the lockfile, removing `node_modules` first
-* `npm run` — Executes a script defined in `package.json`
-* `npm test` — Alias for `npm run test`
-* `npm audit` — Reports known vulnerabilities without installing
-* `npx` — Runs a package binary without modifying dependencies
+* `npm ci`: Installs exactly from the lockfile, removing `node_modules` first
+* `npm run`: Executes a script defined in `package.json`
+* `npm test`: Alias for `npm run test`
+* `npm audit`: Reports known vulnerabilities without installing
+* `npx`: Runs a package binary without modifying dependencies
 
 ### Remediation
 
 Replace flagged commands with `npm ci` for deterministic, lockfile-based installs:
 
 ```yaml
-# Rejected — resolves version ranges from the registry
+# Rejected: resolves version ranges from the registry
 - run: npm install
 
-# Accepted — installs exactly what the lockfile specifies
+# Accepted: installs exactly what the lockfile specifies
 - run: npm ci
 ```
 
@@ -146,11 +146,11 @@ The scanner identifies download commands matching `curl` or `wget` with an HTTP/
 
 Any of these patterns within five lines of the download satisfies the check:
 
-* `sha256sum` — GNU coreutils checksum
-* `shasum` — macOS/BSD checksum utility
-* `Get-FileHash` — PowerShell checksum cmdlet
-* `openssl dgst -sha256` — OpenSSL digest
-* `sha256sum -c` — Checksum file verification
+* `sha256sum`: GNU coreutils checksum
+* `shasum`: macOS/BSD checksum utility
+* `Get-FileHash`: PowerShell checksum cmdlet
+* `openssl dgst -sha256`: OpenSSL digest
+* `sha256sum -c`: Checksum file verification
 
 ### Examples
 
@@ -200,8 +200,8 @@ flowchart LR
 
 ## Related Resources
 
-* [Threat Model](threat-model.md) — Supply chain threats S-1, S-2, SC-1, SC-4, and SC-6
-* [Branch Protection](../contributing/branch-protection.md) — Required status checks including dependency pinning
+* [Threat Model](threat-model.md): Supply chain threats S-1, S-2, SC-1, SC-4, and SC-6
+* [Branch Protection](../contributing/branch-protection.md): Required status checks including dependency pinning
 
 ---
 
