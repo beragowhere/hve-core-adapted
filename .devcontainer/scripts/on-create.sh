@@ -80,13 +80,14 @@ main() {
       UV_FILE="uv-aarch64-unknown-linux-gnu.tar.gz"
       ;;
     *)
-      echo "Unsupported architecture for uv: ${UV_ARCH}" >&2
+      echo "ERROR: Unsupported architecture for uv: ${UV_ARCH}" >&2
       exit 1
       ;;
   esac
-  curl -sL "https://github.com/astral-sh/uv/releases/download/${UV_VERSION}/${UV_FILE}" -o "/tmp/${UV_FILE}"
-  if ! echo "${UV_SHA256}  /tmp/${UV_FILE}" | sha256sum -c --quiet -; then
-    echo "SHA256 checksum verification failed for uv" >&2
+  curl -sSfL "https://github.com/astral-sh/uv/releases/download/${UV_VERSION}/${UV_FILE}" -o "/tmp/${UV_FILE}"
+  if ! echo "${UV_SHA256} /tmp/${UV_FILE}" | sha256sum -c --quiet -; then
+    echo "ERROR: SHA256 checksum verification failed for uv" >&2
+    rm -f "/tmp/${UV_FILE}"
     exit 1
   fi
   sudo tar -xzf "/tmp/${UV_FILE}" --strip-components=1 -C /usr/local/bin uv uvx
