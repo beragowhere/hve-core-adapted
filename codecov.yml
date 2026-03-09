@@ -23,3 +23,7 @@ flags:
     paths:
       - "scripts/**"
     carryforward: true
+  pytest:
+    paths:
+      - ".github/skills/**/scripts/**"
+    carryforward: true

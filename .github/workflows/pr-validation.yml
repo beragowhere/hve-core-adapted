@@ -78,6 +78,17 @@ jobs:
       changed-files-only: false
       code-coverage: true
 
+  pytest-powerpoint:
+    name: Python Tests (PowerPoint)
+    uses: ./.github/workflows/pytest-tests.yml
+    permissions:
+      contents: read
+      id-token: write
+    with:
+      working-directory: .github/skills/experimental/powerpoint
+      soft-fail: false
+      changed-files-only: true
+
   docusaurus-tests:
     name: Docusaurus Tests
     uses: ./.github/workflows/docusaurus-tests.yml
