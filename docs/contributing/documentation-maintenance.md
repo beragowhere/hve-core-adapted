@@ -85,3 +85,8 @@ Issues are not automatically closed. After updating the documentation and mergin
 * All documentation files under `docs/` must include a `ms.date` frontmatter field.
 * Dates must follow `YYYY-MM-DD` format.
 * Contributors are expected to update `ms.date` whenever they review or update a documentation file.
+
+<!-- markdownlint-disable MD036 -->
+*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+then carefully refined by our team of discerning human reviewers.*
+<!-- markdownlint-enable MD036 -->
