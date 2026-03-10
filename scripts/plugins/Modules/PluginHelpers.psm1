@@ -143,6 +143,7 @@ function New-PluginReadmeContent {
 
     .PARAMETER Collection
     Hashtable with id, name, and description keys from the collection manifest.
+    An optional 'notice' key injects a custom blockquote after the description.
 
     .PARAMETER Items
     Array of processed item objects. Each object must have Name, Description,
@@ -187,6 +188,12 @@ function New-PluginReadmeContent {
     elseif ($effectiveMaturity -eq 'preview') {
         [void]$sb.AppendLine()
         [void]$sb.AppendLine("> **`u{1F50D} Preview** `u{2014} This collection is in preview. Core features are complete and functional but refinements may follow.")
+    }
+
+    # Inject collection-level notice when present
+    if ($Collection.ContainsKey('notice') -and -not [string]::IsNullOrWhiteSpace($Collection.notice)) {
+        [void]$sb.AppendLine()
+        [void]$sb.AppendLine($Collection.notice.TrimEnd())
     }
 
     [void]$sb.AppendLine()
@@ -591,7 +598,16 @@ function Write-PluginDirectory {
             $fileName = Split-Path -Leaf $item.path
             $itemName = Get-PluginItemName -FileName $fileName -Kind $kind
             $destPath = Join-Path -Path $pluginRoot -ChildPath $subdir -AdditionalChildPath $itemName
-            $description = $fileName
+
+            # Read frontmatter from SKILL.md for description; fall back to directory name
+            $skillMdPath = Join-Path -Path $sourcePath -ChildPath 'SKILL.md'
+            if (Test-Path -Path $skillMdPath) {
+                $frontmatter = Get-ArtifactFrontmatter -FilePath $skillMdPath -FallbackDescription $fileName
+                $description = $frontmatter.description
+            }
+            else {
+                $description = $fileName
+            }
         }
         else {
             $fileName = Split-Path -Leaf $item.path

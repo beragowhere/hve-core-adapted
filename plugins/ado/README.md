@@ -46,9 +46,9 @@ copilot plugin install ado@hve-core
 
 ## Skills
 
-| Skill        | Description  |
-|--------------|--------------|
-| pr-reference | pr-reference |
+| Skill        | Description                                                                                                                                                                                                                                                                                                                                                               |
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| pr-reference | Generates PR reference XML containing commit history and unified diffs between branches. Includes utilities to list changed files and read diff chunks. Use when creating pull request descriptions, preparing code reviews, analyzing branch changes, discovering work items from diffs, or generating structured diff summaries. - Brought to you by microsoft/hve-core |
 
 ---
 

@@ -17,9 +17,9 @@ copilot plugin install installer@hve-core
 
 ## Skills
 
-| Skill              | Description        |
-|--------------------|--------------------|
-| hve-core-installer | hve-core-installer |
+| Skill              | Description                                                                                                                                                                                              |
+|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| hve-core-installer | Decision-driven installer for HVE-Core with 6 clone-based installation methods, extension quick-install, environment detection, and agent customization workflows - Brought to you by microsoft/hve-core |
 
 ---
 

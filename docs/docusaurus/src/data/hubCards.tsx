@@ -85,7 +85,7 @@ export const boxCards: BoxCardData[] = [
     description: 'Leverage AI across the development lifecycle',
     links: [
       { label: 'Configure agents', href: '/docs/category/agents' },
-      { label: 'Write instructions', href: '/docs/category/contributing' },
+      { label: 'Write instructions', href: '/docs/category/customization' },
       { label: 'Architecture', href: '/docs/category/architecture' },
     ],
   },
@@ -105,7 +105,7 @@ export const boxCards: BoxCardData[] = [
     description: 'Tailor HVE Core to your team',
     links: [
       { label: 'Custom agents', href: '/docs/category/agents' },
-      { label: 'Skill packages', href: '/docs/category/contributing' },
+      { label: 'Skill packages', href: '/docs/category/customization' },
       { label: 'Template library', href: '/docs/category/templates' },
     ],
   },

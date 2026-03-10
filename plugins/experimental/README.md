@@ -27,10 +27,10 @@ copilot plugin install experimental@hve-core
 
 ## Skills
 
-| Skill        | Description  |
-|--------------|--------------|
-| powerpoint   | powerpoint   |
-| video-to-gif | video-to-gif |
+| Skill        | Description                                                                                                                                   |
+|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| powerpoint   | PowerPoint slide deck generation and management using python-pptx with YAML-driven content and styling - Brought to you by microsoft/hve-core |
+| video-to-gif | Video-to-GIF conversion skill with FFmpeg two-pass optimization - Brought to you by microsoft/hve-core                                        |
 
 ---
 
