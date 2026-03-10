@@ -22,10 +22,10 @@ Every documentation file in this repository is expected to carry an `ms.date` fi
 
 The system runs in two contexts:
 
-| Context | Description |
-|---------|-------------|
-| Pull request validation | Checks only the files changed in the PR and fails if any stale files are found. |
-| Weekly scheduled scan | Scans all documentation files on Monday mornings and opens GitHub issues for any file exceeding the threshold. |
+| Context                 | Description                                                                                                    |
+|-------------------------|----------------------------------------------------------------------------------------------------------------|
+| Pull request validation | Checks only the files changed in the PR and fails if any stale files are found.                                |
+| Weekly scheduled scan   | Scans all documentation files on Monday mornings and opens GitHub issues for any file exceeding the threshold. |
 
 ## How It Works
 
@@ -51,10 +51,10 @@ If a file is flagged but the content is still accurate, update `ms.date` to the 
 
 The freshness check exposes these parameters:
 
-| Parameter                  | Default | Description                                                        |
-|----------------------------|---------|--------------------------------------------------------------------|
-| `staleness-threshold-days` | 90      | Days since `ms.date` before a file is considered stale            |
-| `changed-files-only`       | false   | When true, only checks files changed relative to the base branch  |
+| Parameter                  | Default | Description                                                      |
+|----------------------------|---------|------------------------------------------------------------------|
+| `staleness-threshold-days` | 90      | Days since `ms.date` before a file is considered stale           |
+| `changed-files-only`       | false   | When true, only checks files changed relative to the base branch |
 
 The PR validation workflow configures the check with `changed-files-only: true`. The weekly scan uses `changed-files-only: false` with default threshold to catch all stale files.
 
