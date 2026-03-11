@@ -67,7 +67,7 @@ Full documentation is available at **<https://microsoft.github.io/hve-core/>**.
 | Guide                                                            | Description                                     |
 |------------------------------------------------------------------|-------------------------------------------------|
 | [Getting Started](docs/getting-started/README.md)                | Setup and first workflow tutorial               |
-| [Collections](docs/getting-started/collections.md)               | Available bundles and selection guide            |
+| [Collections](docs/getting-started/collections.md)               | Available bundles and selection guide           |
 | [RPI Workflow](docs/rpi/README.md)                               | Deep dive into Research, Plan, Implement        |
 | [Contributing](docs/contributing/README.md)                      | Create custom agents, instructions, and prompts |
 | [Agents Reference](.github/CUSTOM-AGENTS.md)                     | All available agents                            |

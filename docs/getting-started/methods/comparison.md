@@ -35,18 +35,18 @@ Answer these three questions to narrow down the best method for your environment
 
 ## Decision Matrix
 
-| Environment               | Team | Updates    | Recommended Method                         |
-|---------------------------|------|------------|--------------------------------------------|
-| **Any** (simplest)        | Any  | Auto       | [VS Code Extension](extension) ⭐           |
-| Local (no container)      | Solo | Manual     | [Peer Directory Clone](peer-clone)         |
-| Local (no container)      | Team | Controlled | [Submodule](submodule)                     |
-| Local devcontainer        | Solo | Auto       | [Git-Ignored Folder](git-ignored)          |
-| Local devcontainer        | Team | Controlled | [Submodule](submodule)                     |
-| Codespaces only           | Solo | Auto       | [GitHub Codespaces](codespaces)            |
-| Codespaces only           | Team | Controlled | [Submodule](submodule)                     |
-| Both local + Codespaces   | Any  | Any        | [Multi-Root Workspace](multi-root)         |
-| Advanced (shared install) | Solo | Auto       | [Mounted Directory](mounted)               |
-| Any (CLI preferred)       | Any  | Manual     | [CLI Plugins](cli-plugins)                 |
+| Environment               | Team | Updates    | Recommended Method                 |
+|---------------------------|------|------------|------------------------------------|
+| **Any** (simplest)        | Any  | Auto       | [VS Code Extension](extension) ⭐   |
+| Local (no container)      | Solo | Manual     | [Peer Directory Clone](peer-clone) |
+| Local (no container)      | Team | Controlled | [Submodule](submodule)             |
+| Local devcontainer        | Solo | Auto       | [Git-Ignored Folder](git-ignored)  |
+| Local devcontainer        | Team | Controlled | [Submodule](submodule)             |
+| Codespaces only           | Solo | Auto       | [GitHub Codespaces](codespaces)    |
+| Codespaces only           | Team | Controlled | [Submodule](submodule)             |
+| Both local + Codespaces   | Any  | Any        | [Multi-Root Workspace](multi-root) |
+| Advanced (shared install) | Solo | Auto       | [Mounted Directory](mounted)       |
+| Any (CLI preferred)       | Any  | Manual     | [CLI Plugins](cli-plugins)         |
 
 ## Quick Decision Tree
 
@@ -75,30 +75,30 @@ Answer these three questions to narrow down the best method for your environment
 
 ### Simplest Method (Recommended for Most Users)
 
-| Method                                  | Best For                         | Complexity |
-|-----------------------------------------|----------------------------------|------------|
-| [VS Code Extension](extension) ⭐       | Anyone wanting zero-config setup | Minimal    |
+| Method                           | Best For                         | Complexity |
+|----------------------------------|----------------------------------|------------|
+| [VS Code Extension](extension) ⭐ | Anyone wanting zero-config setup | Minimal    |
 
 ### Consumer Methods (Customization + Version Control)
 
 These methods are for projects that want to use and potentially customize HVE-Core components:
 
-| Method                                    | Best For                      | Complexity |
-|-------------------------------------------|-------------------------------|------------|
-| [Multi-Root Workspace](multi-root)        | Any environment, portable     | Low        |
-| [Submodule](submodule)                    | Teams needing version control | Medium     |
+| Method                             | Best For                      | Complexity |
+|------------------------------------|-------------------------------|------------|
+| [Multi-Root Workspace](multi-root) | Any environment, portable     | Low        |
+| [Submodule](submodule)             | Teams needing version control | Medium     |
 
 ### Developer Methods
 
 These methods are for HVE-Core contributors or advanced scenarios:
 
-| Method                                    | Best For                      | Complexity |
-|-------------------------------------------|-------------------------------|------------|
-| [Peer Directory Clone](peer-clone)        | Local VS Code, solo           | Low        |
-| [Git-Ignored Folder](git-ignored)         | Local devcontainer, solo      | Low        |
-| [Mounted Directory](mounted)              | Advanced devcontainer sharing | High       |
-| [GitHub Codespaces](codespaces)           | Codespaces-only projects      | Medium     |
-| [CLI Plugins](cli-plugins)               | Terminal-based CLI workflows  | Low        |
+| Method                             | Best For                      | Complexity |
+|------------------------------------|-------------------------------|------------|
+| [Peer Directory Clone](peer-clone) | Local VS Code, solo           | Low        |
+| [Git-Ignored Folder](git-ignored)  | Local devcontainer, solo      | Low        |
+| [Mounted Directory](mounted)       | Advanced devcontainer sharing | High       |
+| [GitHub Codespaces](codespaces)    | Codespaces-only projects      | Medium     |
+| [CLI Plugins](cli-plugins)         | Terminal-based CLI workflows  | Low        |
 
 ## Still Not Sure?
 
