@@ -83,7 +83,7 @@ After installing, verify that HVE-Core is active:
 2. Type `@` to see available agents.
 3. Look for HVE-Core agents like `task-researcher`, `task-planner`, and `task-implementor`.
 
-If you don't see the agents, check the [troubleshooting section](methods/extension.md#troubleshooting) of the extension guide.
+If you don't see the agents, check the [Troubleshooting](troubleshooting.md) page for common solutions.
 
 ## Post-Installation: Update Your .gitignore
 
