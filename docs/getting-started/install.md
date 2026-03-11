@@ -29,20 +29,20 @@ Install the **HVE Core** extension for a zero-configuration experience that work
 
 The extension installs the `hve-core-all` (Full) collection containing all 163 artifacts. Updates arrive automatically through VS Code.
 
-See [Extension Installation Guide](methods/extension) for complete documentation.
+See [Extension Installation Guide](methods/extension.md) for complete documentation.
 
 > [!TIP]
 > The marketplace extension is the fastest way to start. You can switch to a clone-based method later without losing any configuration.
 
 ## Selective Install
 
-Teams that only need specific domains can use the **HVE Installer** extension to deploy individual [collections](collections) into a workspace.
+Teams that only need specific domains can use the **HVE Installer** extension to deploy individual [collections](collections.md) into a workspace.
 
 1. Install the [HVE Installer extension](https://marketplace.visualstudio.com/items?itemName=ise-hve-essentials.hve-installer) from the VS Code Marketplace.
 2. Open Copilot Chat and ask any agent: *"help me customize hve-core installation"*.
 3. Choose the collections that match your team's workflow.
 
-The installer reads collection manifests and copies only the artifacts assigned to your selected collections. See the [Collections Overview](collections) for a full list of available bundles and what each one includes.
+The installer reads collection manifests and copies only the artifacts assigned to your selected collections. See the [Collections Overview](collections.md) for a full list of available bundles and what each one includes.
 
 > [!NOTE]
 > Collection filtering currently applies to agents only. Support for prompts, instructions, and skills is planned for a future release.
@@ -67,13 +67,13 @@ Contributors and advanced users who need to modify HVE-Core source code should c
 
 Detailed instructions for each clone-based approach:
 
-* [Peer Directory Clone](methods/peer-clone) for side-by-side local development
-* [Git Submodule](methods/submodule) for team version control
+* [Peer Directory Clone](methods/peer-clone.md) for side-by-side local development
+* [Git Submodule](methods/submodule.md) for team version control
 * [Contributing Guide](../contributing/) for pull request and development conventions
 
 ## Choosing a Method
 
-The three paths above cover the vast majority of scenarios. If your environment has specific constraints (Codespaces-only, mounted containers, multi-root workspaces), the [Comparing Setup Methods](methods/comparison) page has a detailed decision matrix and decision tree. The [Setup Methods Overview](methods/) lists every available approach.
+The three paths above cover the vast majority of scenarios. If your environment has specific constraints (Codespaces-only, mounted containers, multi-root workspaces), the [Comparing Setup Methods](methods/comparison.md) page has a detailed decision matrix and decision tree. The [Setup Methods Overview](methods/) lists every available approach.
 
 ## Validation
 
@@ -83,7 +83,7 @@ After installing, verify that HVE-Core is active:
 2. Type `@` to see available agents.
 3. Look for HVE-Core agents like `task-researcher`, `task-planner`, and `task-implementor`.
 
-If you don't see the agents, check the [troubleshooting section](methods/extension#troubleshooting) of the extension guide.
+If you don't see the agents, check the [troubleshooting section](methods/extension.md#troubleshooting) of the extension guide.
 
 ## Post-Installation: Update Your .gitignore
 
@@ -102,12 +102,12 @@ The folder stores ephemeral workflow artifacts (research documents, implementati
 
 Some HVE-Core agents use MCP (Model Context Protocol) servers to integrate with Azure DevOps, GitHub, or documentation services. Agents work without MCP configuration; it is an optional enhancement.
 
-See [MCP Server Configuration](mcp-configuration) for setup instructions covering server requirements, configuration templates, and troubleshooting.
+See [MCP Server Configuration](mcp-configuration.md) for setup instructions covering server requirements, configuration templates, and troubleshooting.
 
 ## Next Steps
 
-* [Your First Interaction](first-interaction) to confirm your setup works
-* [Your First Workflow](first-workflow) to try HVE-Core with a real task
+* [Your First Interaction](first-interaction.md) to confirm your setup works
+* [Your First Workflow](first-workflow.md) to try HVE-Core with a real task
 * [RPI Workflow](../rpi/) for the Research, Plan, Implement methodology
 
 ---
