@@ -342,12 +342,12 @@ Describe 'New-MsDateReport' -Tag 'Unit' {
 
     Context 'JSON report creation' {
         It 'Creates msdate-freshness-results.json in logs directory' {
-            New-MsDateReport -Results $script:Results -Threshold 90
+            New-MsDateReport -Results $script:Results -Threshold 90 -OutputDirectory (Join-Path $TestDrive 'logs')
             Test-Path (Join-Path $TestDrive 'logs/msdate-freshness-results.json') | Should -BeTrue
         }
 
         It 'JSON contains correct schema fields' {
-            New-MsDateReport -Results $script:Results -Threshold 90
+            New-MsDateReport -Results $script:Results -Threshold 90 -OutputDirectory (Join-Path $TestDrive 'logs')
             $json = Get-Content (Join-Path $TestDrive 'logs/msdate-freshness-results.json') -Raw | ConvertFrom-Json
             $json.Count | Should -Be 3
             $staleItem = $json | Where-Object { $_.File -eq 'docs/stale.md' }
@@ -358,12 +358,12 @@ Describe 'New-MsDateReport' -Tag 'Unit' {
 
     Context 'Markdown summary creation' {
         It 'Creates msdate-summary.md in logs directory' {
-            New-MsDateReport -Results $script:Results -Threshold 90
+            New-MsDateReport -Results $script:Results -Threshold 90 -OutputDirectory (Join-Path $TestDrive 'logs')
             Test-Path (Join-Path $TestDrive 'logs/msdate-summary.md') | Should -BeTrue
         }
 
         It 'Markdown table lists stale files sorted by AgeDays descending' {
-            New-MsDateReport -Results $script:Results -Threshold 90
+            New-MsDateReport -Results $script:Results -Threshold 90 -OutputDirectory (Join-Path $TestDrive 'logs')
             $md = Get-Content (Join-Path $TestDrive 'logs/msdate-summary.md') -Raw
             $md | Should -Match 'Stale Documentation Files'
             $veryStaleIndex = $md.IndexOf('docs/very-stale.md')
@@ -374,13 +374,13 @@ Describe 'New-MsDateReport' -Tag 'Unit' {
 
     Context 'Return values' {
         It 'Returns object with JsonPath and MarkdownPath properties' {
-            $report = New-MsDateReport -Results $script:Results -Threshold 90
+            $report = New-MsDateReport -Results $script:Results -Threshold 90 -OutputDirectory (Join-Path $TestDrive 'logs')
             $report.JsonPath | Should -Not -BeNullOrEmpty
             $report.MarkdownPath | Should -Not -BeNullOrEmpty
         }
 
         It 'Returns StaleCount matching number of stale results' {
-            $report = New-MsDateReport -Results $script:Results -Threshold 90
+            $report = New-MsDateReport -Results $script:Results -Threshold 90 -OutputDirectory (Join-Path $TestDrive 'logs')
             $report.StaleCount | Should -Be 2
         }
     }
@@ -393,13 +393,13 @@ Describe 'New-MsDateReport' -Tag 'Unit' {
         }
 
         It 'Shows success message when no stale files' {
-            New-MsDateReport -Results $script:FreshResults -Threshold 90
+            New-MsDateReport -Results $script:FreshResults -Threshold 90 -OutputDirectory (Join-Path $TestDrive 'logs')
             $md = Get-Content (Join-Path $TestDrive 'logs/msdate-summary.md') -Raw
             $md | Should -Match 'All Files Fresh'
         }
 
         It 'Does not include stale files table' {
-            New-MsDateReport -Results $script:FreshResults -Threshold 90
+            New-MsDateReport -Results $script:FreshResults -Threshold 90 -OutputDirectory (Join-Path $TestDrive 'logs')
             $md = Get-Content (Join-Path $TestDrive 'logs/msdate-summary.md') -Raw
             $md | Should -Not -Match 'Stale Documentation Files'
         }
@@ -477,7 +477,7 @@ Content
             }
 
             $results.Count | Should -Be 2
-            $report = New-MsDateReport -Results $results -Threshold 90
+            $report = New-MsDateReport -Results $results -Threshold 90 -OutputDirectory (Join-Path $script:TestDir 'logs')
             Test-Path $report.JsonPath | Should -BeTrue
             Test-Path $report.MarkdownPath | Should -BeTrue
             $report.StaleCount | Should -BeGreaterThan 0

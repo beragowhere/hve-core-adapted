@@ -21,6 +21,7 @@ jobs:
     with:
       staleness-threshold-days: 90
       changed-files-only: false
+      soft-fail: false
     permissions:
       contents: read
 

@@ -168,10 +168,13 @@ function New-MsDateReport {
         [array]$Results,
 
         [Parameter(Mandatory = $true)]
-        [int]$Threshold
+        [int]$Threshold,
+
+        [Parameter()]
+        [string]$OutputDirectory = ''
     )
 
-    $logsDir = Join-Path $PWD 'logs'
+    $logsDir = if ($OutputDirectory) { $OutputDirectory } else { Join-Path $PSScriptRoot '..' '..' 'logs' }
     if (-not (Test-Path $logsDir)) {
         New-Item -ItemType Directory -Path $logsDir -Force | Out-Null
     }
@@ -291,11 +294,7 @@ Write-Host "  Files Checked: $(@($results).Count)"
 Write-Host "  Stale Files: $($report.StaleCount)"
 Write-Host "  Threshold: $ThresholdDays days"
 
-if (Test-Path $report.MarkdownPath) {
-    if ($env:GITHUB_STEP_SUMMARY) {
-        Get-Content $report.MarkdownPath | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
-    }
-}
+Write-CIStepSummary -Path $report.MarkdownPath
 
 if ($report.StaleCount -gt 0) {
     Write-Host "`n❌ Found $($report.StaleCount) stale documentation file(s)"
