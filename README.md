@@ -48,7 +48,7 @@ Two VS Code extensions serve different needs:
 | [HVE Core](https://marketplace.visualstudio.com/items?itemName=ise-hve-essentials.hve-core)           | Every collection: all agents, prompts, instructions, and skills | Individual developers and teams that want the full library              |
 | [HVE Installer](https://marketplace.visualstudio.com/items?itemName=ise-hve-essentials.hve-installer) | Selective installation of specific collections                  | Teams that want to pick only the collections relevant to their workflow |
 
-Not sure which to choose? Start with HVE Core. You can switch to HVE Installer later if you need finer control over which collections are active.
+Not sure which to choose? Start with HVE Core. You can switch to HVE Installer later if you need finer control over which collections are active. See the [Collections Overview](docs/getting-started/collections.md) for a comparison of all available bundles.
 
 ## What's Included
 
@@ -67,6 +67,7 @@ Full documentation is available at **<https://microsoft.github.io/hve-core/>**.
 | Guide                                                            | Description                                     |
 |------------------------------------------------------------------|-------------------------------------------------|
 | [Getting Started](docs/getting-started/README.md)                | Setup and first workflow tutorial               |
+| [Collections](docs/getting-started/collections.md)               | Available bundles and selection guide            |
 | [RPI Workflow](docs/rpi/README.md)                               | Deep dive into Research, Plan, Implement        |
 | [Contributing](docs/contributing/README.md)                      | Create custom agents, instructions, and prompts |
 | [Agents Reference](.github/CUSTOM-AGENTS.md)                     | All available agents                            |

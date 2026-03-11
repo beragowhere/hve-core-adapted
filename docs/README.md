@@ -58,7 +58,8 @@ Find your role-specific guide for AI-assisted engineering. Each guide maps the a
 
 The Getting Started guide walks through installation, configuration, and running your first Copilot workflow.
 
-* [Installation Methods](getting-started/install.md) - Seven setup options from VSCode extension to submodule
+* [Installation Methods](getting-started/install.md) - Three setup paths from marketplace extension to developer clone
+* [Collections Overview](getting-started/collections.md) - Available bundles and what each collection includes
 * [MCP Configuration](getting-started/mcp-configuration.md) - Model Context Protocol server setup
 * [First Workflow](getting-started/first-workflow.md) - End-to-end example with RPI agents
 
