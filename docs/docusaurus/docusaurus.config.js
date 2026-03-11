@@ -97,14 +97,10 @@ const config = {
             label: 'Topics',
             position: 'left',
             items: [
-              { label: 'Getting Started', to: '/docs/getting-started/' },
-              { label: 'HVE Guide', to: '/docs/hve-guide/' },
-              { label: 'RPI Workflow', to: '/docs/rpi/' },
-              { label: 'Agents', to: '/docs/agents/' },
-              { label: 'Architecture', to: '/docs/architecture/' },
-              { label: 'Contributing', to: '/docs/contributing/' },
-              { label: 'Security', to: '/docs/security/' },
-              { label: 'Templates', to: '/docs/templates/' },
+              { label: 'Get Started', to: '/docs/getting-started/' },
+              { label: 'Workflows', to: '/docs/rpi/' },
+              { label: 'Customize', to: '/docs/customization/' },
+              { label: 'Reference', to: '/docs/architecture/' },
             ],
           },
           {
