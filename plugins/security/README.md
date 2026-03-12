@@ -1,7 +1,9 @@
 <!-- markdownlint-disable-file -->
-# Security Planning
+# Security
 
-Security plan creation, incident response, and risk assessment
+Security review, planning, incident response, risk assessment, and vulnerability analysis
+
+> **⚠️ Experimental** — This collection is experimental. Contents and behavior may change or be removed without notice.
 
 > [!CAUTION]
 > The security agents and prompts in this collection are **assistive tools only**. They do not replace professional security tooling (SAST, DAST, SCA, penetration testing, compliance scanners) or qualified human review. All AI-generated security artifacts **must** be reviewed and validated by qualified security professionals before use. AI outputs may contain inaccuracies, miss critical threats, or produce recommendations that are incomplete or inappropriate for your environment.
@@ -20,7 +22,7 @@ This collection includes agents and prompts for:
 ## Install
 
 ```bash
-copilot plugin install security-planning@hve-core
+copilot plugin install security@hve-core
 ```
 
 ## Agents
