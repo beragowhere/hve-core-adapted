@@ -60,9 +60,12 @@ The agent tracks plan progress in markdown files under `.copilot-tracking/`. Sec
 ## Collection Membership
 
 > [!NOTE]
-> The Security Plan Creator agent source is located in `.github/agents/security-planning/` as part of the security-planning collection. It is documented here under Project Planning because security assessment is a core project planning activity.
+> The Security Plan Creator agent source is located in `.github/agents/security/` as part of the security collection. It is documented here under Project Planning because security assessment is a core project planning activity.
 
 ## How to Use
+
+> [!TIP]
+> Select the agent using the agent picker in the Copilot Chat pane before entering a prompt.
 
 ### Option 1: Prompt Shortcut
 
@@ -107,10 +110,10 @@ Compliance context: SOC 2 Type II and GDPR for EU tenants.
 
 ### Option 2: Direct Agent
 
-Start a Copilot Chat session and mention the agent:
+Select the Security Plan Creator using the agent picker in the Copilot Chat pane, then describe your security assessment:
 
 ```text
-@security-plan-creator Evaluate the security posture for the customer
+Evaluate the security posture for the customer
 data platform. Architecture: React SPA frontend deployed to Azure Static
 Web Apps, .NET 8 backend API on AKS, Azure SQL and Blob Storage for
 persistence. Authentication via Azure AD with MSAL.js.
@@ -130,7 +133,7 @@ The agent begins with Blueprint Selection, gathering information about your arch
 Narrow the assessment to specific threat categories from the 8-category framework:
 
 ```text
-@security-plan-creator Assess the DevOps Security (DS) and Privileged
+Assess the DevOps Security (DS) and Privileged
 Access (PA) categories for our CI/CD pipeline. The pipeline is defined
 in .github/workflows/ with 12 workflows deploying to 3 environments
 (dev, staging, production).

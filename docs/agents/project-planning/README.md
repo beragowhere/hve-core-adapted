@@ -64,27 +64,28 @@ See the [Security Plan Creator](security-plan-creator.md) guide for the workflow
 
 * VS Code with the GitHub Copilot Chat extension installed
 * Agent definition files from the `project-planning` collection deployed to `.github/agents/`
+* For Security Plan Creator: agent definition files from the `security` collection (see the [Collection Membership](security-plan-creator.md#collection-membership) note)
 * For BRD/PRD builders: a writable `.copilot-tracking/` directory for session state persistence
 * For Arch Diagram Builder: infrastructure-as-code files (Terraform, Bicep, ARM, Kubernetes YAML, or Docker Compose) in the repository
 
 ## Getting Started
 
-Invoke any agent by mentioning it in Copilot Chat. Each agent starts its guided workflow automatically.
+Select any agent using the agent picker in the Copilot Chat pane. Each agent starts its guided workflow automatically.
 
-| Scenario               | Agent                            | Purpose                                                                    |
-|------------------------|----------------------------------|----------------------------------------------------------------------------|
-| New project kickoff    | `@brd-builder` or `@prd-builder` | Capture requirements before making architecture decisions                  |
-| Architecture decisions | `@adr-creation`                  | Evaluate technology choices, design patterns, or infrastructure approaches |
-| Visual documentation   | `@arch-diagram-builder`          | Generate architecture diagrams for onboarding or reviews                   |
-| Security review        | `@security-plan-creator`         | Assess threats and plan mitigations after architecture decisions stabilize |
+| Scenario               | Agent                      | Purpose                                                                    |
+|------------------------|----------------------------|----------------------------------------------------------------------------|
+| New project kickoff    | BRD Builder or PRD Builder | Capture requirements before making architecture decisions                  |
+| Architecture decisions | ADR Creation Coach         | Evaluate technology choices, design patterns, or infrastructure approaches |
+| Visual documentation   | Arch Diagram Builder       | Generate architecture diagrams for onboarding or reviews                   |
+| Security review        | Security Plan Creator      | Assess threats and plan mitigations after architecture decisions stabilize |
 
 ### Recommended Sequencing
 
 For greenfield projects, follow this order to build artifacts that feed into each subsequent step:
 
-1. Start with `@brd-builder` to capture business context, then `@prd-builder` for product-level details.
-2. Use `@adr-creation` to document key design decisions, then `@arch-diagram-builder` to visualize the resulting architecture.
-3. Run `@security-plan-creator` once the architecture is stable to identify threats and plan mitigations.
+1. Start with the BRD Builder to capture business context, then the PRD Builder for product-level details.
+2. Use the ADR Creation Coach to document key design decisions, then the Arch Diagram Builder to visualize the resulting architecture.
+3. Run the Security Plan Creator once the architecture is stable to identify threats and plan mitigations.
 
 ## Related Documentation
 

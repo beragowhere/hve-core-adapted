@@ -76,6 +76,9 @@ The PRD Builder's larger file size reflects its extensive inline template and de
 
 ## How to Use
 
+> [!TIP]
+> Select the agent using the agent picker in the Copilot Chat pane before entering a prompt.
+
 ### Option 1: Prompt Shortcut
 
 **BRD Builder:**
@@ -131,10 +134,10 @@ Continue building requirements with this phased delivery model.
 
 ### Option 2: Direct Agent
 
-Start a Copilot Chat session and mention the agent by name:
+Select the BRD Builder or PRD Builder using the agent picker in the Copilot Chat pane, then describe your requirements:
 
 ```text
-@brd-builder Create a business requirements document for consolidating
+Create a business requirements document for consolidating
 our 3 data platforms (Azure SQL, CosmosDB, and PostgreSQL on AKS) into
 a unified data layer. The current architecture is spread across
 infra/sql/, infra/cosmos/, and k8s/postgres/.
@@ -147,7 +150,7 @@ Scope:
 ```
 
 ```text
-@prd-builder Define product requirements for a self-service analytics
+Define product requirements for a self-service analytics
 portal replacing the current manual reporting workflow. The BI team
 currently spends 20 hours/week generating reports from src/reports/.
 Requirements focus:
@@ -165,7 +168,7 @@ Both agents begin with the Assess phase, checking for existing sessions and eval
 Continue an interrupted session by referencing the project and providing new context:
 
 ```text
-@brd-builder Resume my BRD for the customer portal migration. Since our
+Resume my BRD for the customer portal migration. Since our
 last session I've confirmed the budget allocation ($150K for FY26) and
 identified the technical lead for each of the 4 workstreams.
 Continue from where we left off in the Integrate phase.

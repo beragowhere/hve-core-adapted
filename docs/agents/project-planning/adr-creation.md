@@ -55,6 +55,9 @@ This approach produces ADRs with stronger rationale sections because the reasoni
 
 ## How to Use
 
+> [!TIP]
+> Select the agent using the agent picker in the Copilot Chat pane before entering a prompt.
+
 ### Option 1: Prompt Shortcut
 
 ```text
@@ -83,10 +86,10 @@ Include rejected alternatives: modular monolith and serverless decomposition.
 
 ### Option 2: Direct Agent
 
-Start a Copilot Chat session and mention the agent:
+Select the ADR Creation Coach using the agent picker in the Copilot Chat pane, then describe your decision scenario:
 
 ```text
-@adr-creation Evaluate caching strategies for our API gateway layer.
+Evaluate caching strategies for our API gateway layer.
 The gateway in src/gateway/ currently has no caching and handles
 2,000 requests/second with 80% read traffic to the product catalog.
 Research:
@@ -105,7 +108,7 @@ The agent begins with Discovery phase questions before progressing through Resea
 Reference an existing draft to continue a multi-session ADR:
 
 ```text
-@adr-creation Resume my ADR draft for the caching strategy decision.
+Resume my ADR draft for the caching strategy decision.
 I've gathered the performance benchmarks you requested. Redis
 showed 0.3ms p99 latency vs 1.2ms for our current direct DB calls.
 Continue from the Analysis phase with this new evidence.

@@ -78,6 +78,9 @@ Unlike other project planning agents, the Arch Diagram Builder does not save fil
 
 ## How to Use
 
+> [!TIP]
+> Select the agent using the agent picker in the Copilot Chat pane before entering a prompt.
+
 ### Option 1: Prompt Shortcut
 
 ```text
@@ -105,10 +108,10 @@ Group services by their Kubernetes namespace from k8s/namespaces/.
 
 ### Option 2: Direct Agent
 
-Start a Copilot Chat session and mention the agent:
+Select the Arch Diagram Builder using the agent picker in the Copilot Chat pane, then describe the architecture to visualize:
 
 ```text
-@arch-diagram-builder Map the networking topology from the Bicep
+Map the networking topology from the Bicep
 templates in infra/bicep/. Show the VNet structure, subnet allocation,
 NSG rules between subnets, and how traffic flows from Azure Front Door
 through the Application Gateway to the AKS cluster.
