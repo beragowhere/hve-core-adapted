@@ -35,8 +35,8 @@ Answer these three questions to narrow down the best method for your environment
 
 ## Decision Matrix
 
-| Environment               | Team | Updates    | Recommended Method                 |
-|---------------------------|------|------------|------------------------------------|
+| Environment               | Team | Updates    | Recommended Method                    |
+|---------------------------|------|------------|---------------------------------------|
 | **Any** (simplest)        | Any  | Auto       | [VS Code Extension](extension.md) ⭐   |
 | Local (no container)      | Solo | Manual     | [Peer Directory Clone](peer-clone.md) |
 | Local (no container)      | Team | Controlled | [Submodule](submodule.md)             |
@@ -75,16 +75,16 @@ Answer these three questions to narrow down the best method for your environment
 
 ### Simplest Method (Recommended for Most Users)
 
-| Method                           | Best For                         | Complexity |
-|----------------------------------|----------------------------------|------------|
+| Method                              | Best For                         | Complexity |
+|-------------------------------------|----------------------------------|------------|
 | [VS Code Extension](extension.md) ⭐ | Anyone wanting zero-config setup | Minimal    |
 
 ### Consumer Methods (Customization + Version Control)
 
 These methods are for projects that want to use and potentially customize HVE-Core components:
 
-| Method                             | Best For                      | Complexity |
-|------------------------------------|-------------------------------|------------|
+| Method                                | Best For                      | Complexity |
+|---------------------------------------|-------------------------------|------------|
 | [Multi-Root Workspace](multi-root.md) | Any environment, portable     | Low        |
 | [Submodule](submodule.md)             | Teams needing version control | Medium     |
 
@@ -92,8 +92,8 @@ These methods are for projects that want to use and potentially customize HVE-Co
 
 These methods are for HVE-Core contributors or advanced scenarios:
 
-| Method                             | Best For                      | Complexity |
-|------------------------------------|-------------------------------|------------|
+| Method                                | Best For                      | Complexity |
+|---------------------------------------|-------------------------------|------------|
 | [Peer Directory Clone](peer-clone.md) | Local VS Code, solo           | Low        |
 | [Git-Ignored Folder](git-ignored.md)  | Local devcontainer, solo      | Low        |
 | [Mounted Directory](mounted.md)       | Advanced devcontainer sharing | High       |
