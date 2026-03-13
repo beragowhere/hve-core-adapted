@@ -46,6 +46,7 @@ copilot plugin install hve-core-all@hve-core
 | agile-coach                  | Conversational agent that helps create or refine goal-oriented user stories with clear acceptance criteria for any tracking tool - Brought to you by microsoft/hve-core                                    |
 | arch-diagram-builder         | Architecture diagram builder agent that builds high quality ASCII-art diagrams - Brought to you by microsoft/hve-core                                                                                      |
 | brd-builder                  | Business Requirements Document builder with guided Q&A and reference integration                                                                                                                           |
+| meeting-analyst              | Meeting transcript analyzer that extracts product requirements for PRD creation via work-iq-mcp - Brought to you by microsoft/hve-core                                                                     |
 | prd-builder                  | Product Requirements Document builder with guided Q&A and reference integration                                                                                                                            |
 | product-manager-advisor      | Product management advisor for requirements discovery, validation, and issue creation                                                                                                                      |
 | system-architecture-reviewer | System architecture reviewer for design trade-offs, ADR creation, and well-architected alignment - Brought to you by microsoft/hve-core                                                                    |
@@ -83,6 +84,7 @@ copilot plugin install hve-core-all@hve-core
 | github-discover-issues                      | Discover GitHub issues through user-centric queries, artifact-driven analysis, or search-based exploration and produce planning files for review |
 | github-execute-backlog                      | Execute a GitHub backlog plan by creating, updating, linking, closing, and commenting on issues from a handoff file                              |
 | github-sprint-plan                          | Plan a GitHub milestone sprint by analyzing issue coverage, identifying gaps, and organizing work into a prioritized sprint backlog              |
+| github-suggest                              | Resume GitHub backlog management workflow after session restore - Brought to you by microsoft/hve-core                                           |
 | github-triage-issues                        | Triage GitHub issues not yet triaged with automated label suggestions, milestone assignment, and duplicate detection                             |
 | checkpoint                                  | Save or restore conversation context using memory files - Brought to you by microsoft/hve-core                                                   |
 | doc-ops-update                              | Invoke doc-ops agent for documentation quality assurance and updates                                                                             |
