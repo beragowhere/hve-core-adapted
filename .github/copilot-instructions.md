@@ -186,10 +186,10 @@ After the command completes, read `logs/pester-summary.json` to confirm overall 
 
 Python skills include a `pyproject.toml` validated by `validate:skills` via `Test-PythonSkillConfig`. Required and recommended sections:
 
-* `[tool.ruff]` — Required. Enables `lint:py` compatibility across all Python skills.
-* `[tool.ruff.lint]` — Recommended. Configures rule selection (e.g., `select = ["E", "F", "I", "W"]`).
-* `[tool.pytest.ini_options]` — Required when the skill contains a `tests/` directory.
-* `ruff` in dev dependencies — Recommended. Ensures the linter is available in the skill's virtual environment.
+* `[tool.ruff]` - Required. Enables `lint:py` compatibility across all Python skills.
+* `[tool.ruff.lint]` - Recommended. Configures rule selection (e.g., `select = ["E", "F", "I", "W"]`).
+* `[tool.pytest.ini_options]` - Required when the skill contains a `tests/` directory.
+* `ruff` in dev dependencies - Recommended. Ensures the linter is available in the skill's virtual environment.
 
 ### Environment Synchronization
 
