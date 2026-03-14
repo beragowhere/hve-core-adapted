@@ -54,15 +54,15 @@ Describe 'Test-GitHubToken' -Tag 'Unit' {
             $result.Authenticated | Should -BeFalse
         }
 
-        It 'Returns rate limit of 60 when no token provided' {
+        It 'Returns rate limit of 0 when no token provided' {
             $result = Test-GitHubToken -Token ''
-            $result.RateLimit | Should -Be 60
+            $result.RateLimit | Should -Be 0
         }
     }
 
     Context 'Invalid token' {
         BeforeEach {
-            Mock Invoke-RestMethod {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 throw 'Bad credentials'
             }
         }
@@ -75,7 +75,7 @@ Describe 'Test-GitHubToken' -Tag 'Unit' {
 
     Context 'Valid token' {
         BeforeEach {
-            Mock Invoke-RestMethod {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 return @{
                     data = @{
                         viewer    = @{ login = 'testuser' }
@@ -114,7 +114,7 @@ Describe 'Invoke-GitHubAPIWithRetry' -Tag 'Unit' {
 
     Context 'Successful requests' {
         It 'Returns response on first successful call' {
-            Mock Invoke-RestMethod {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 return @{ data = 'success' }
             }
 
@@ -124,14 +124,15 @@ Describe 'Invoke-GitHubAPIWithRetry' -Tag 'Unit' {
         }
     }
 
-    Context 'Rate limiting' {
-        It 'Throws on non-rate-limit errors' {
-            Mock Invoke-RestMethod {
+    Context 'Non-retryable errors' {
+        It 'Returns null on non-rate-limit errors' {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 throw [System.Exception]::new('Network error')
             }
 
             $headers = @{ 'Authorization' = 'Bearer test' }
-            { Invoke-GitHubAPIWithRetry -Uri 'https://api.github.com/graphql' -Method 'POST' -Headers $headers -Body '{}' } | Should -Throw
+            $result = Invoke-GitHubAPIWithRetry -Uri 'https://api.github.com/graphql' -Method 'POST' -Headers $headers -Body '{}'
+            $result | Should -BeNullOrEmpty
         }
     }
 }

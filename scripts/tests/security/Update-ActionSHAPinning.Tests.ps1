@@ -229,7 +229,7 @@ Describe 'Invoke-GitHubAPIWithRetry' -Tag 'Unit' {
         $script:AttemptCount = 0
 
         # Mock Start-Sleep to avoid actual delays
-        Mock Start-Sleep { }
+        Mock Start-Sleep -ModuleName SecurityHelpers { }
     }
 
     AfterEach {
@@ -238,7 +238,7 @@ Describe 'Invoke-GitHubAPIWithRetry' -Tag 'Unit' {
 
     Context 'Successful requests' {
         It 'Returns response on first attempt success' {
-            Mock Invoke-RestMethod {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 $script:AttemptCount++
                 return @{ data = 'success' }
             }
@@ -247,13 +247,13 @@ Describe 'Invoke-GitHubAPIWithRetry' -Tag 'Unit' {
 
             $result.data | Should -Be 'success'
             $script:AttemptCount | Should -Be 1
-            Should -Not -Invoke Start-Sleep
+            Should -Not -Invoke Start-Sleep -ModuleName SecurityHelpers
         }
     }
 
     Context 'Rate limit retry behavior' {
         It 'Retries on 403 rate limit error and succeeds' {
-            Mock Invoke-RestMethod {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 $script:AttemptCount++
                 if ($script:AttemptCount -lt 3) {
                     # Create exception with proper Response.StatusCode for rate limit detection
@@ -268,27 +268,26 @@ Describe 'Invoke-GitHubAPIWithRetry' -Tag 'Unit' {
 
             $result.data | Should -Be 'success after retry'
             $script:AttemptCount | Should -Be 3
-            Should -Invoke Start-Sleep -Times 2
+            Should -Invoke Start-Sleep -ModuleName SecurityHelpers -Times 2
         }
 
-        It 'Throws after exceeding MaxRetries' {
-            Mock Invoke-RestMethod {
+        It 'Returns null after exceeding MaxRetries' {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 $script:AttemptCount++
                 $response = [System.Net.Http.HttpResponseMessage]::new([System.Net.HttpStatusCode]::Forbidden)
                 $exception = [Microsoft.PowerShell.Commands.HttpResponseException]::new('API rate limit exceeded', $response)
                 throw $exception
             }
 
-            { Invoke-GitHubAPIWithRetry -Uri 'https://api.github.com/test' -Method 'GET' -Headers @{ Authorization = 'token test' } -MaxRetries 2 } |
-                Should -Throw
-
-            $script:AttemptCount | Should -Be 2  # MaxRetries attempts
+            $result = Invoke-GitHubAPIWithRetry -Uri 'https://api.github.com/test' -Method 'GET' -Headers @{ Authorization = 'token test' } -MaxRetries 2
+            $result | Should -BeNullOrEmpty
+            $script:AttemptCount | Should -Be 2
         }
 
         It 'Uses exponential backoff delay' {
             $script:delays = @()
-            Mock Start-Sleep { param($Seconds) $script:delays += $Seconds }
-            Mock Invoke-RestMethod {
+            Mock Start-Sleep -ModuleName SecurityHelpers { param($Seconds) $script:delays += $Seconds }
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 $script:AttemptCount++
                 if ($script:AttemptCount -lt 3) {
                     $response = [System.Net.Http.HttpResponseMessage]::new([System.Net.HttpStatusCode]::Forbidden)
@@ -307,23 +306,22 @@ Describe 'Invoke-GitHubAPIWithRetry' -Tag 'Unit' {
     }
 
     Context 'Non-retryable errors' {
-        It 'Throws immediately on non-rate-limit error' {
-            Mock Invoke-RestMethod {
+        It 'Returns null on non-rate-limit error' {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 $script:AttemptCount++
                 throw [System.Net.WebException]::new('Not Found')
             }
 
-            { Invoke-GitHubAPIWithRetry -Uri 'https://api.github.com/test' -Method 'GET' -Headers @{ Authorization = 'token test' } } |
-                Should -Throw '*Not Found*'
-
+            $result = Invoke-GitHubAPIWithRetry -Uri 'https://api.github.com/test' -Method 'GET' -Headers @{ Authorization = 'token test' }
+            $result | Should -BeNullOrEmpty
             $script:AttemptCount | Should -Be 1
-            Should -Not -Invoke Start-Sleep
+            Should -Not -Invoke Start-Sleep -ModuleName SecurityHelpers
         }
     }
 
     Context 'Request with body' {
         It 'Includes body in request' {
-            Mock Invoke-RestMethod {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 param($Uri, $Method, $Headers, $Body, $ContentType)
                 $null = $Uri, $Method, $Headers  # Suppress PSScriptAnalyzer unused parameter warnings
                 return @{ received = $Body; contentType = $ContentType }
@@ -349,7 +347,7 @@ Describe 'Get-LatestCommitSHA' -Tag 'Unit' {
 
     Context 'Successful SHA retrieval' {
         It 'Returns SHA for valid repository and branch' {
-            Mock Invoke-RestMethod {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 return @{ sha = 'abc123def456789012345678901234567890abcdef' }
             }
 
@@ -359,7 +357,7 @@ Describe 'Get-LatestCommitSHA' -Tag 'Unit' {
         }
 
         It 'Handles branch parameter with refs/heads prefix' {
-            Mock Invoke-RestMethod {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 param($Uri)
                 if ($Uri -match 'refs/heads/main') {
                     return @{ sha = 'sha123' }
@@ -375,7 +373,7 @@ Describe 'Get-LatestCommitSHA' -Tag 'Unit' {
 
     Context 'Error handling' {
         It 'Returns null for non-existent repository' {
-            Mock Invoke-RestMethod {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 throw [System.Net.WebException]::new('Not Found')
             }
 
@@ -385,7 +383,7 @@ Describe 'Get-LatestCommitSHA' -Tag 'Unit' {
         }
 
         It 'Returns null on API error without throwing' {
-            Mock Invoke-RestMethod {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 throw [System.Exception]::new('Network error')
             }
 
@@ -397,7 +395,7 @@ Describe 'Get-LatestCommitSHA' -Tag 'Unit' {
 
     Context 'Default branch detection' {
         It 'Uses default branch when Branch not specified' {
-            Mock Invoke-RestMethod {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 param($Uri)
                 if ($Uri -match '/repos/[^/]+/[^/]+$') {
                     return @{ default_branch = 'main' }
@@ -423,7 +421,7 @@ Describe 'Test-GitHubToken' -Tag 'Unit' {
 
     Context 'Valid authenticated token' {
         It 'Returns Valid and Authenticated for good token' {
-            Mock Invoke-RestMethod {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 return (script:New-MockGitHubGraphQLResponse -Login 'testuser' -RateRemaining 5000)
             }
 
@@ -435,7 +433,7 @@ Describe 'Test-GitHubToken' -Tag 'Unit' {
         }
 
         It 'Returns rate limit information' {
-            Mock Invoke-RestMethod {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 return (script:New-MockGitHubGraphQLResponse -RateRemaining 4500 -RateLimit 5000)
             }
 
@@ -447,25 +445,18 @@ Describe 'Test-GitHubToken' -Tag 'Unit' {
     }
 
     Context 'Unauthenticated access' {
-        It 'Returns Valid but not Authenticated for empty token' {
-            Mock Invoke-RestMethod {
-                return @{
-                    data = @{
-                        rateLimit = @{ remaining = 60; limit = 60 }
-                    }
-                }
-            }
-
+        It 'Returns Valid false for empty token' {
             $result = Test-GitHubToken -Token ''
 
-            $result.Valid | Should -BeTrue
+            $result.Valid | Should -BeFalse
             $result.Authenticated | Should -BeFalse
+            $result.Message | Should -Be 'Token is empty or null'
         }
     }
 
     Context 'Low rate limit warning' {
         It 'Includes warning when remaining is low' {
-            Mock Invoke-RestMethod {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 return (script:New-MockGitHubGraphQLResponse -RateRemaining 50 -RateLimit 5000)
             }
 
@@ -477,7 +468,7 @@ Describe 'Test-GitHubToken' -Tag 'Unit' {
 
     Context 'Invalid token' {
         It 'Returns Valid false on API error' {
-            Mock Invoke-RestMethod {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 throw [System.Net.WebException]::new('Unauthorized')
             }
 
@@ -487,7 +478,7 @@ Describe 'Test-GitHubToken' -Tag 'Unit' {
         }
 
         It 'Includes error message on failure' {
-            Mock Invoke-RestMethod {
+            Mock Invoke-RestMethod -ModuleName SecurityHelpers {
                 throw [System.Exception]::new('Bad credentials')
             }
 
