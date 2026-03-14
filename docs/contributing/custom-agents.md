@@ -332,7 +332,7 @@ When agents reference MCP tools in their `tools:` frontmatter or body content, d
 tools: ['github/*', 'ado/*', 'context7/*', 'microsoft-docs/*']
 ```
 
-#### Curated MCP Servers Referenced by HVE-Core Agents
+#### Curated MCP Servers Referenced by HVE Core Agents
 
 | Server         | Tool Pattern       | Purpose                                   |
 |----------------|--------------------|-------------------------------------------|

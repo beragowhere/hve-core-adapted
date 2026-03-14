@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Solutions for common installation problems and answers to frequently asked questions about HVE-Core collections.
+description: Solutions for common installation problems and answers to frequently asked questions about HVE Core collections.
 sidebar_position: 8
 author: Microsoft
 ms.date: 2026-03-11
@@ -9,19 +9,19 @@ keywords: [troubleshooting, FAQ, installation, collections, hve-core, hve-instal
 estimated_reading_time: 5
 ---
 
-This page covers common installation problems and answers frequently asked questions about HVE-Core extensions and collections.
+This page covers common installation problems and answers frequently asked questions about HVE Core extensions and collections.
 
 ## Common Installation Problems
 
 ### Extension Not Loading After Install
 
-The extension appears in the Extensions sidebar but HVE-Core agents and prompts are not available in Copilot Chat.
+The extension appears in the Extensions sidebar but HVE Core agents and prompts are not available in Copilot Chat.
 
 #### Solutions
 
 1. Run the `Developer: Reload Window` command from the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`).
-2. Verify that GitHub Copilot Chat is installed and active in the Extensions sidebar. HVE-Core requires it.
-3. Open the Output panel (`Ctrl+Shift+U`) and select the HVE-Core channel. Look for error messages during extension activation.
+2. Verify that GitHub Copilot Chat is installed and active in the Extensions sidebar. HVE Core requires it.
+3. Open the Output panel (`Ctrl+Shift+U`) and select the HVE Core channel. Look for error messages during extension activation.
 4. Confirm your VS Code version is 1.99 or later under Help > About.
 
 ### Agent or Prompt Not Appearing in Copilot
@@ -53,7 +53,7 @@ Errors appear after updating VS Code or one of the HVE extensions, or agents ref
 
 1. When updating VS Code, also update GitHub Copilot, GitHub Copilot Chat, and the HVE extension to their latest versions.
 2. Review the [CHANGELOG](https://github.com/microsoft/hve-core/blob/main/CHANGELOG.md) for breaking changes between versions.
-3. If artifacts are out of sync, remove the existing `.github/` HVE-Core artifacts and reinstall using your preferred method.
+3. If artifacts are out of sync, remove the existing `.github/` HVE Core artifacts and reinstall using your preferred method.
 
 ## Collection FAQ
 
@@ -63,7 +63,7 @@ Errors appear after updating VS Code or one of the HVE extensions, or agents ref
 |-------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
 | You want everything HVE Core offers                         | [HVE Core All](https://marketplace.visualstudio.com/items?itemName=ise-hve-essentials.hve-core-all) (Full)        |
 | You want only specific domains (ADO, Design Thinking, etc.) | [HVE Installer](https://marketplace.visualstudio.com/items?itemName=ise-hve-essentials.hve-installer) (Selective) |
-| You plan to contribute to HVE-Core                          | Clone the repository directly, see [Developer Setup](install.md#developer-setup)                                  |
+| You plan to contribute to HVE Core                          | Clone the repository directly, see [Developer Setup](install.md#developer-setup)                                  |
 
 ### How Do I Switch from HVE Core All to HVE Installer?
 

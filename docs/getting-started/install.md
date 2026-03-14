@@ -1,6 +1,6 @@
 ---
-title: Installing HVE-Core
-description: Three ways to install HVE-Core with marketplace extension, selective collections, or developer clone
+title: Installing HVE Core
+description: Three ways to install HVE Core with marketplace extension, selective collections, or developer clone
 sidebar_position: 2
 author: Microsoft
 ms.date: 2026-03-11
@@ -14,7 +14,7 @@ keywords:
 estimated_reading_time: 4
 ---
 
-HVE-Core delivers GitHub Copilot customizations (agents, instructions, prompts, and skills) that accelerate your development workflow. Pick the installation path that fits your needs.
+HVE Core delivers GitHub Copilot customizations (agents, instructions, prompts, and skills) that accelerate your development workflow. Pick the installation path that fits your needs.
 
 ## Marketplace Install (Recommended)
 
@@ -43,7 +43,7 @@ Teams that only need specific domains can use the **HVE Installer** extension to
 3. Choose the collections that match your team's workflow.
 
 4. Update preference?
-   * Auto: Always get latest HVE-Core
+   * Auto: Always get latest HVE Core
    * Controlled: Pin to specific version, update explicitly
 
 ### Decision Matrix
@@ -65,7 +65,7 @@ Teams that only need specific domains can use the **HVE Installer** extension to
 
 ## Collection Packages
 
-HVE-Core organizes artifacts into role-based collections. The VS Code extension installs the **HVE Core Workflow** collection (flagship RPI workflow and core artifacts). For the complete set across all collections, use the `hve-core-all` CLI plugin or installer skill. Clone-based methods also support filtering which agents to copy by collection bundle.
+HVE Core organizes artifacts into role-based collections. The VS Code extension installs the **HVE Core Workflow** collection (flagship RPI workflow and core artifacts). For the complete set across all collections, use the `hve-core-all` CLI plugin or installer skill. Clone-based methods also support filtering which agents to copy by collection bundle.
 
 | Collection        | Collection ID      | Maturity     | Description                                                       |
 |-------------------|--------------------|--------------|-------------------------------------------------------------------|
@@ -100,7 +100,7 @@ The installer skill reads collection assignments from `collections/*.collection.
 
 ## Developer Setup
 
-Contributors and advanced users who need to modify HVE-Core source code should clone the repository directly.
+Contributors and advanced users who need to modify HVE Core source code should clone the repository directly.
 
 1. Fork and clone the repository:
 
@@ -128,11 +128,11 @@ The three paths above cover the vast majority of scenarios. If your environment 
 
 ## Validation
 
-After installing, verify that HVE-Core is active:
+After installing, verify that HVE Core is active:
 
 1. Open Copilot Chat in VS Code.
 2. Type `@` to see available agents.
-3. Look for HVE-Core agents like `task-researcher`, `task-planner`, and `task-implementor`.
+3. Look for HVE Core agents like `task-researcher`, `task-planner`, and `task-implementor`.
 
 If you don't see the agents, check the [Troubleshooting](troubleshooting.md) page for common solutions.
 
@@ -145,20 +145,20 @@ Add this line to your project's `.gitignore`:
 ```
 
 > [!IMPORTANT]
-> This applies to all installation methods. The `.copilot-tracking/` folder is created in your project directory, not in HVE-Core itself.
+> This applies to all installation methods. The `.copilot-tracking/` folder is created in your project directory, not in HVE Core itself.
 
 The folder stores ephemeral workflow artifacts (research documents, implementation plans, PR review notes, and work item planning files) that help agents maintain context across sessions. These files are useful during your workflow but should not be committed to your repository.
 
 ## MCP Server Configuration (Optional)
 
-Some HVE-Core agents use MCP (Model Context Protocol) servers to integrate with Azure DevOps, GitHub, or documentation services. Agents work without MCP configuration; it is an optional enhancement.
+Some HVE Core agents use MCP (Model Context Protocol) servers to integrate with Azure DevOps, GitHub, or documentation services. Agents work without MCP configuration; it is an optional enhancement.
 
 See [MCP Server Configuration](mcp-configuration.md) for setup instructions covering server requirements, configuration templates, and troubleshooting.
 
 ## Next Steps
 
 * [Your First Interaction](first-interaction.md) to confirm your setup works
-* [Your First Workflow](first-workflow.md) to try HVE-Core with a real task
+* [Your First Workflow](first-workflow.md) to try HVE Core with a real task
 * [RPI Workflow](../rpi/) for the Research, Plan, Implement methodology
 
 ---

@@ -26,11 +26,11 @@ Answer these three questions to narrow down the best method for your environment
    * Both local and Codespaces
 
 2. **Solo or team development?**
-   * Solo: just you, no version control of HVE-Core needed
+   * Solo: just you, no version control of HVE Core needed
    * Team: multiple people, need reproducible setup
 
 3. **Update preference?**
-   * Auto: always get latest HVE-Core
+   * Auto: always get latest HVE Core
    * Controlled: pin to specific version, update explicitly
 
 ## Decision Matrix
@@ -56,7 +56,7 @@ Answer these three questions to narrow down the best method for your environment
 │  Want the simplest setup?                                       │
 │  └─ Yes ──────────────────────────────► VS Code Extension ⭐   │
 │                                                                 │
-│  Need to customize HVE-Core?                                    │
+│  Need to customize HVE Core?                                    │
 │  ├─ Local VS Code only ──────────────► Peer Directory Clone    │
 │  ├─ Local devcontainer only ─────────► Git-Ignored Folder      │
 │  ├─ Codespaces only ─────────────────► GitHub Codespaces       │
@@ -81,7 +81,7 @@ Answer these three questions to narrow down the best method for your environment
 
 ### Consumer Methods (Customization + Version Control)
 
-These methods are for projects that want to use and potentially customize HVE-Core components:
+These methods are for projects that want to use and potentially customize HVE Core components:
 
 | Method                                | Best For                      | Complexity |
 |---------------------------------------|-------------------------------|------------|
@@ -90,7 +90,7 @@ These methods are for projects that want to use and potentially customize HVE-Co
 
 ### Developer Methods
 
-These methods are for HVE-Core contributors or advanced scenarios:
+These methods are for HVE Core contributors or advanced scenarios:
 
 | Method                                | Best For                      | Complexity |
 |---------------------------------------|-------------------------------|------------|
