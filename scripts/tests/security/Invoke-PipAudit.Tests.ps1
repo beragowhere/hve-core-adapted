@@ -3,6 +3,10 @@
 # SPDX-License-Identifier: MIT
 
 BeforeAll {
+    # Stub external tools when not installed so Pester can mock them
+    if (-not (Get-Command uv -ErrorAction SilentlyContinue)) { function global:uv { } }
+    if (-not (Get-Command uvx -ErrorAction SilentlyContinue)) { function global:uvx { } }
+
     . $PSScriptRoot/../../security/Invoke-PipAudit.ps1
     Import-Module (Join-Path $PSScriptRoot '../../lib/Modules/CIHelpers.psm1') -Force
 
