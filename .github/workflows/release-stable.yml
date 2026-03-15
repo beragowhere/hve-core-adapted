@@ -160,6 +160,9 @@ jobs:
       - docusaurus-tests
       - python-lint
       - pytest
+    # Allow release-please to run when conditional CI jobs (python-lint,
+    # pytest) are skipped. Block only on actual failures or cancellations.
+    if: ${{ !cancelled() && !failure() }}
     runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
