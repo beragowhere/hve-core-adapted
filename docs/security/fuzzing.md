@@ -4,7 +4,7 @@ description: OSSF Scorecard fuzz harness convention and compliance for HVE Core 
 sidebar_position: 5
 author: Microsoft
 ms.date: 2026-03-16
-ms.topic: conceptual
+ms.topic: concept
 keywords:
   - fuzzing
   - atheris
@@ -21,11 +21,11 @@ HVE Core uses [Atheris](https://github.com/google/atheris) fuzz harnesses to sat
 
 OSSF Scorecard evaluates fuzzing through a three-phase detection pipeline:
 
-| Phase | Detection Method | HVE Core Strategy |
-|-------|-----------------|-------------------|
-| 1 | OSSFuzz integration | Not applicable (HVE Core is not a library) |
-| 2 | ClusterFuzzLite YAML | Not applicable (no `.clusterfuzzlite/` config) |
-| 3 | Source file regex: `import atheris` | Active: `fuzz_harness.py` in each Python skill |
+| Phase | Detection Method                    | HVE Core Strategy                              |
+|-------|-------------------------------------|------------------------------------------------|
+| 1     | OSSFuzz integration                 | Not applicable (HVE Core is not a library)     |
+| 2     | ClusterFuzzLite YAML                | Not applicable (no `.clusterfuzzlite/` config) |
+| 3     | Source file regex: `import atheris` | Active: `fuzz_harness.py` in each Python skill |
 
 Phase 3 scans all `.py` files in the repository for `import atheris`. A single match gives the repository a 10/10 Fuzzing score.
 
