@@ -72,7 +72,7 @@
     "agentic"
   ],
   "reporters": [
-    ["default"],
+    "default",
     ["@cspell/cspell-json-reporter", { "outFile": "logs/cspell-results.json" }]
   ]
 }
