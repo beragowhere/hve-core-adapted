@@ -116,9 +116,9 @@ A five-step post-summarization recovery handles cases where conversation context
 
 | File type    | Location                                                     |
 |--------------|--------------------------------------------------------------|
-| Agent        | `.github/agents/security/security-planner.agent.md` |
-| Prompts      | `.github/prompts/security/`                         |
-| Instructions | `.github/instructions/security/`                    |
+| Agent        | `.github/agents/security/security-planner.agent.md`          |
+| Prompts      | `.github/prompts/security/`                                  |
+| Instructions | `.github/instructions/security/`                             |
 | State        | `.copilot-tracking/security-plans/{project-slug}/state.json` |
 
 <!-- markdownlint-disable MD036 -->

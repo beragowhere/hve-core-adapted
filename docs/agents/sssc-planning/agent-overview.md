@@ -122,9 +122,9 @@ A five-step post-summarization recovery handles cases where conversation context
 
 | File type    | Location                                                 |
 |--------------|----------------------------------------------------------|
-| Agent        | `.github/agents/security/sssc-planner.agent.md` |
-| Prompts      | `.github/prompts/security/sssc-*.prompt.md`     |
-| Instructions | `.github/instructions/security/`                    |
+| Agent        | `.github/agents/security/sssc-planner.agent.md`          |
+| Prompts      | `.github/prompts/security/sssc-*.prompt.md`              |
+| Instructions | `.github/instructions/security/`                         |
 | State        | `.copilot-tracking/sssc-plans/{project-slug}/state.json` |
 
 <!-- markdownlint-disable MD036 -->
