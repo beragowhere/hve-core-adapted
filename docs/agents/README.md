@@ -20,7 +20,7 @@ hve-core organizes specialized agents into functional groups. Each group combine
 | GitHub Backlog Management               | 1 active | Very High   | [Backlog Manager](github-backlog/README.md)                                              |
 | ADO Backlog Management                  | 1 active | Very High   | [Backlog Manager](ado-backlog/README.md)                                                 |
 | Project Planning                        | 5        | Medium-High | [Project Planning](project-planning/README.md)                                           |
-| [Security Planning](#security-planning) | 2 active | Very High   | [Security Planner](security-planning/README.md), [SSSC Planner](sssc-planning/README.md) |
+| [Security Planning](#security-planning) | 2 active | Very High   | [Security Planner](security/README.md), [SSSC Planner](sssc-planning/README.md) |
 | [RAI Planning](#rai-planning)           | 1 active | Very High   | [RAI Planner](rai-planning/README.md)                                                    |
 | Data Pipeline                           | 4        | Medium      | Planned                                                                                  |
 | DevOps Quality                          | 2        | High        | Planned                                                                                  |
@@ -67,7 +67,7 @@ General-purpose agents for cross-cutting concerns such as session persistence an
 
 ## Security Planning
 
-Guides teams through a six-phase security assessment covering system scoping, operational bucketing, standards mapping, security model analysis, impact assessment, and backlog handoff. The security planner agent conducts interactive sessions with structured state tracking and produces dual-platform work items for ADO and GitHub. See the [Security Planner Documentation](security-planning/) for phase details and entry modes.
+Guides teams through a six-phase security assessment covering system scoping, operational bucketing, standards mapping, security model analysis, impact assessment, and backlog handoff. The security planner agent conducts interactive sessions with structured state tracking and produces dual-platform work items for ADO and GitHub. See the [Security Planner Documentation](security/) for phase details and entry modes.
 
 The **SSSC Planner** guides teams through a structured six-phase supply chain security assessment. It inventories 27 supply chain capabilities, maps against OpenSSF Scorecard, SLSA, Sigstore, and SBOM standards, performs gap analysis with adoption categories, and generates priority-sorted backlog items. Supports four entry modes: capture, from-PRD, from-BRD, and from-security-plan. See [SSSC Planning](sssc-planning/README.md) for details.
 

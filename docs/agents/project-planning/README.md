@@ -30,7 +30,7 @@ These agents bring structure and consistency to activities that teams often hand
 | [PRD Builder](brd-prd-builders.md)                 | Requirements | 7-phase Q&A      | JSON state     | Product requirements document  |
 | [ADR Creation Coach](adr-creation.md)              | Architecture | 4-phase Socratic | Markdown draft | Architecture decision record   |
 | [Arch Diagram Builder](arch-diagram-builder.md)    | Architecture | 4-stage analysis | None           | ASCII architecture diagram     |
-| [Security Planner](../security-planning/README.md) | Security     | 6-phase STRIDE   | JSON state     | Security model and backlog     |
+| [Security Planner](../security/README.md) | Security     | 6-phase STRIDE   | JSON state     | Security model and backlog     |
 
 ## Requirements
 
@@ -58,7 +58,7 @@ The Security Planner applies STRIDE-based security model analysis across seven o
 > [!IMPORTANT]
 > Run security planning after architecture decisions stabilize. Changes to infrastructure or service boundaries may invalidate earlier security models.
 
-See the [Security Planning](../security-planning/README.md) guide for the workflow, operational buckets, and invocation details.
+See the [Security Planning](../security/README.md) guide for the workflow, operational buckets, and invocation details.
 
 ## Prerequisites
 
