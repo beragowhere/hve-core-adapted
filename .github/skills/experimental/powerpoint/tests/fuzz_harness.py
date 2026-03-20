@@ -1,3 +1,5 @@
+# Copyright (c) Microsoft Corporation.
+# SPDX-License-Identifier: MIT
 """Polyglot fuzz harness for PowerPoint skill priority modules.
 
 Runs as a pytest test when Atheris is not installed (CI default).
@@ -7,6 +9,7 @@ Runs as an Atheris coverage-guided fuzz target when executed directly.
 from __future__ import annotations
 
 import sys
+from contextlib import suppress
 
 try:
     import atheris
@@ -28,38 +31,28 @@ def fuzz_resolve_color(data):
     """Fuzz resolve_color with str and dict inputs."""
     fdp = atheris.FuzzedDataProvider(data)
     hex_str = "#" + fdp.ConsumeUnicodeNoSurrogates(6)
-    try:
+    with suppress(ValueError, IndexError):
         resolve_color(hex_str)
-    except (ValueError, IndexError):
-        pass  # random hex strings produce expected parse failures
     theme_ref = "@" + fdp.ConsumeUnicodeNoSurrogates(20)
-    try:
+    with suppress(ValueError, IndexError):
         resolve_color(theme_ref)
-    except (ValueError, IndexError):
-        pass  # unknown theme names raise ValueError by design
     theme_dict = {
         "theme": fdp.ConsumeUnicodeNoSurrogates(15),
         "brightness": fdp.ConsumeFloatInRange(-1.0, 1.0),
     }
-    try:
+    with suppress(ValueError, IndexError):
         resolve_color(theme_dict)
-    except (ValueError, IndexError):
-        pass  # arbitrary dict values produce expected validation errors
     nested_dict = {"color": "#" + fdp.ConsumeUnicodeNoSurrogates(6)}
-    try:
+    with suppress(ValueError, IndexError):
         resolve_color(nested_dict)
-    except (ValueError, IndexError):
-        pass  # nested random hex triggers expected parse failures
 
 
 def fuzz_hex_brightness(data):
     """Fuzz hex_brightness with arbitrary strings."""
     fdp = atheris.FuzzedDataProvider(data)
     hex_str = fdp.ConsumeUnicodeNoSurrogates(10)
-    try:
+    with suppress(ValueError, IndexError):
         hex_brightness(hex_str)
-    except (ValueError, IndexError):
-        pass  # arbitrary strings produce expected int-conversion failures
 
 
 def fuzz_max_severity(data):
@@ -85,10 +78,8 @@ def fuzz_max_severity(data):
         results["slides"] = slides
     if fdp.ConsumeBool():
         results["deck_issues"] = deck_issues
-    try:
+    with suppress(KeyError):
         max_severity(results)
-    except KeyError:
-        pass
 
 
 def fuzz_has_formatting_variation(data):
