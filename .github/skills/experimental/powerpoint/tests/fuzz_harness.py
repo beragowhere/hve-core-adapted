@@ -31,12 +31,12 @@ def fuzz_resolve_color(data):
     try:
         resolve_color(hex_str)
     except (ValueError, IndexError):
-        pass
+        pass  # random hex strings produce expected parse failures
     theme_ref = "@" + fdp.ConsumeUnicodeNoSurrogates(20)
     try:
         resolve_color(theme_ref)
     except (ValueError, IndexError):
-        pass
+        pass  # unknown theme names raise ValueError by design
     theme_dict = {
         "theme": fdp.ConsumeUnicodeNoSurrogates(15),
         "brightness": fdp.ConsumeFloatInRange(-1.0, 1.0),
@@ -44,12 +44,12 @@ def fuzz_resolve_color(data):
     try:
         resolve_color(theme_dict)
     except (ValueError, IndexError):
-        pass
+        pass  # arbitrary dict values produce expected validation errors
     nested_dict = {"color": "#" + fdp.ConsumeUnicodeNoSurrogates(6)}
     try:
         resolve_color(nested_dict)
     except (ValueError, IndexError):
-        pass
+        pass  # nested random hex triggers expected parse failures
 
 
 def fuzz_hex_brightness(data):
@@ -59,7 +59,7 @@ def fuzz_hex_brightness(data):
     try:
         hex_brightness(hex_str)
     except (ValueError, IndexError):
-        pass
+        pass  # arbitrary strings produce expected int-conversion failures
 
 
 def fuzz_max_severity(data):
@@ -164,6 +164,11 @@ class TestFuzzResolveColor:
         with pytest.raises(ValueError, match="depth"):
             resolve_color(deep, max_depth=2)
 
+    def test_resolve_color_short_hex(self):
+        result = resolve_color("#AB")
+        assert "rgb" in result
+        assert str(result["rgb"]) == "000000"
+
 
 class TestFuzzHexBrightness:
     """Property tests for hex_brightness."""
@@ -178,6 +183,9 @@ class TestFuzzHexBrightness:
     )
     def test_known_values(self, hex_color, expected):
         assert hex_brightness(hex_color) == expected
+
+    def test_short_hex_returns_zero(self):
+        assert hex_brightness("#AB") == 0
 
 
 class TestFuzzMaxSeverity:
