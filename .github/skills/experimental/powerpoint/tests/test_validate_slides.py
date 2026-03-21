@@ -447,9 +447,7 @@ class TestMain:
 
     def test_keyboard_interrupt(self, mocker):
         mock_parser_fn = mocker.patch("validate_slides.create_parser")
-        mocker.patch(
-            "validate_slides.asyncio.run", side_effect=KeyboardInterrupt
-        )
+        mocker.patch("validate_slides.asyncio.run", side_effect=KeyboardInterrupt)
         mock_parser = MagicMock()
         mock_parser.parse_args.return_value = _make_args(verbose=False)
         mock_parser_fn.return_value = mock_parser
@@ -458,9 +456,7 @@ class TestMain:
 
     def test_broken_pipe(self, mocker):
         mock_parser_fn = mocker.patch("validate_slides.create_parser")
-        mocker.patch(
-            "validate_slides.asyncio.run", side_effect=BrokenPipeError
-        )
+        mocker.patch("validate_slides.asyncio.run", side_effect=BrokenPipeError)
         mock_sys = mocker.patch("validate_slides.sys")
         mock_parser = MagicMock()
         mock_parser.parse_args.return_value = _make_args(verbose=False)
@@ -471,9 +467,7 @@ class TestMain:
 
     def test_generic_exception(self, mocker):
         mock_parser_fn = mocker.patch("validate_slides.create_parser")
-        mocker.patch(
-            "validate_slides.asyncio.run", side_effect=RuntimeError("fail")
-        )
+        mocker.patch("validate_slides.asyncio.run", side_effect=RuntimeError("fail"))
         mock_parser = MagicMock()
         mock_parser.parse_args.return_value = _make_args(verbose=False)
         mock_parser_fn.return_value = mock_parser
