@@ -11,7 +11,7 @@ Use this edition when you want access to everything without choosing a focused c
 
 Project planning agents included (via project-planning collection):
 
-- **Edge Network ISA-95 Planner** — Plans secure ISA-95-aligned edge Kubernetes to Azure network zones, conduits, and phased remediation roadmaps
+- **Network ISA-95 Planner** — Plans secure ISA-95-aligned edge Kubernetes to Azure network zones, conduits, and phased remediation roadmaps
 
 Code review agents included (via coding-standards collection):
 
@@ -75,8 +75,8 @@ copilot plugin install hve-core-all@hve-core
 | agile-coach                  | Conversational agent that helps create or refine goal-oriented user stories with clear acceptance criteria for any tracking tool - Brought to you by microsoft/hve-core                                    |
 | arch-diagram-builder         | Architecture diagram builder agent that builds high quality ASCII-art diagrams - Brought to you by microsoft/hve-core                                                                                      |
 | brd-builder                  | Business Requirements Document builder with guided Q&A and reference integration                                                                                                                           |
-| edge-network-isa95-planner   | ISA-95-aligned network planning assistant for secure edge Kubernetes to Azure connectivity, remediation roadmaps, and beginner-friendly guidance - Brought to you by microsoft/hve-core                    |
 | meeting-analyst              | Meeting transcript analyzer that extracts product requirements for PRD creation via work-iq-mcp - Brought to you by microsoft/hve-core                                                                     |
+| network-isa95-planner        | ISA-95-aligned network planning assistant for secure edge Kubernetes to Azure connectivity, remediation roadmaps, and beginner-friendly guidance - Brought to you by microsoft/hve-core                    |
 | prd-builder                  | Product Requirements Document builder with guided Q&A and reference integration                                                                                                                            |
 | product-manager-advisor      | Product management advisor for requirements discovery, validation, and issue creation                                                                                                                      |
 | system-architecture-reviewer | System architecture reviewer for design trade-offs, ADR creation, and well-architected alignment - Brought to you by microsoft/hve-core                                                                    |

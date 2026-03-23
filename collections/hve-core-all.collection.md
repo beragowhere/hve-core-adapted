@@ -4,7 +4,7 @@ Use this edition when you want access to everything without choosing a focused c
 
 Project planning agents included (via project-planning collection):
 
-- **Edge Network ISA-95 Planner** — Plans secure ISA-95-aligned edge Kubernetes to Azure network zones, conduits, and phased remediation roadmaps
+- **Network ISA-95 Planner** — Plans secure ISA-95-aligned edge Kubernetes to Azure network zones, conduits, and phased remediation roadmaps
 
 Code review agents included (via coding-standards collection):
 

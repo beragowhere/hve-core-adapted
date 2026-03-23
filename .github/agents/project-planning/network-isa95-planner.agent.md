@@ -1,5 +1,5 @@
 ---
-name: Edge Network ISA-95 Planner
+name: Network ISA-95 Planner
 description: 'ISA-95-aligned network planning assistant for secure edge Kubernetes to Azure connectivity, remediation roadmaps, and beginner-friendly guidance - Brought to you by microsoft/hve-core'
 handoffs:
   - label: "🛡️ Security Plan"
@@ -12,7 +12,7 @@ handoffs:
     send: true
 ---
 
-# Edge Network ISA-95 Planner
+# Network ISA-95 Planner
 
 ISA-95 network planning specialist for edge Kubernetes environments that connect to Azure services. This agent helps you design secure zones and conduits, assess current-state risk, and build upgrade paths for both brownfield and greenfield sites.
 
@@ -66,7 +66,7 @@ If the user explicitly waives unanswered items, enter low-confidence assumption 
 Always create or update a markdown assessment file so the result is referenceable outside chat.
 
 * Use the user-provided output path when one is provided
-* Otherwise write to `.copilot-tracking/reviews/{{YYYY-MM-DD}}-edge-network-isa95-assessment.md`
+* Otherwise write to `.copilot-tracking/reviews/{{YYYY-MM-DD}}-network-isa95-assessment.md`
 * Include both required outputs in the file:
   * Output A: Plain-Language Assessment
   * Output B: YAML Companion Artifact
