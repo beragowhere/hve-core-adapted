@@ -2,13 +2,18 @@ HVE Core provides the complete collection of AI chat agents, prompts, instructio
 
 Use this edition when you want access to everything without choosing a focused collection.
 
-Project planning agents included (via project-planning collection):
-
-- **Network ISA-95 Planner** — Plans secure ISA-95-aligned edge Kubernetes to Azure network zones, conduits, and phased remediation roadmaps
+> [!CAUTION]
+> This collection includes security, responsible AI, and supply chain security agents and prompts that are **assistive tools only**. They do not replace professional security tooling (SAST, DAST, SCA, penetration testing, compliance scanners) or qualified human review. All AI-generated security and compliance artifacts **must** be reviewed and validated by qualified professionals before use. AI outputs may contain inaccuracies, miss critical threats, or produce recommendations that are incomplete or inappropriate for your environment.
 
 Code review agents included (via coding-standards collection):
 
 - **Functional Code Review** — Pre-PR branch diff reviewer for functional correctness, error handling, edge cases, and testing gaps
+
+Security and planning agents included (via security collection):
+
+- **Security Planner** — STRIDE-based security model analysis with operational bucket classification, standards mapping, and automated backlog generation
+- **SSSC Planner** — Supply chain security assessment against OpenSSF Scorecard, SLSA, and SBOM standards
+- **RAI Planner** — Responsible AI assessment with sensitive uses screening, impact assessment, and dual-format backlog handoff
 
 Supporting subagents included:
 

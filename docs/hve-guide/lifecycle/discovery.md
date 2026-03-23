@@ -27,29 +27,37 @@ You enter Discovery after completing [Stage 1: Setup](setup.md) with a configure
 
 ## Available Tools
 
-| Tool                   | Type   | How to Invoke                           | Purpose                                                                              |
-|------------------------|--------|-----------------------------------------|--------------------------------------------------------------------------------------|
-| task-researcher        | Agent  | Select **task-researcher** agent        | Research best practices and technical topics                                         |
-| brd-builder            | Agent  | Select **brd-builder** agent            | Create business requirements documents                                               |
-| security-plan-creator  | Agent  | Select **security-plan-creator** agent  | Generate security plans and threat models                                            |
-| gen-data-spec          | Agent  | Select **gen-data-spec** agent          | Generate data specifications and schemas                                             |
-| adr-creation           | Agent  | Select **adr-creation** agent           | Document architecture decisions                                                      |
-| arch-diagram-builder   | Agent  | Select **arch-diagram-builder** agent   | Generate architecture diagrams                                                       |
-| ux-ui-designer         | Agent  | Select **ux-ui-designer** agent         | Design user experience and interface concepts                                        |
-| github-backlog-manager | Agent  | Select **github-backlog-manager** agent | Discover and triage existing GitHub issues                                           |
-| memory                 | Agent  | Select **memory** agent                 | Store research findings for later reference                                          |
-| risk-register          | Prompt | `/risk-register`                        | Identify and track project risks                                                     |
-| task-research          | Prompt | `/task-research`                        | Quick research queries without full agent context                                    |
-| dt-coach               | Agent  | Select **dt-coach** agent               | Guide teams through Design Thinking methods for user-centered requirements discovery |
+| Tool                   | Type   | How to Invoke                           | Purpose                                                                                    |
+|------------------------|--------|-----------------------------------------|--------------------------------------------------------------------------------------------|
+| task-researcher        | Agent  | Select **task-researcher** agent        | Research best practices and technical topics                                               |
+| brd-builder            | Agent  | Select **brd-builder** agent            | Create business requirements documents                                                     |
+| security-planner       | Agent  | Select **security-planner** agent       | Generate security plans and security models                                                |
+| sssc-planner           | Agent  | Select **sssc-planner** agent           | Assess supply chain security posture against OpenSSF standards                             |
+| rai-planner            | Agent  | Select **rai-planner** agent            | Assess responsible AI risks and generate RAI plans                                         |
+| gen-data-spec          | Agent  | Select **gen-data-spec** agent          | Generate data specifications and schemas                                                   |
+| adr-creation           | Agent  | Select **adr-creation** agent           | Document architecture decisions                                                            |
+| arch-diagram-builder   | Agent  | Select **arch-diagram-builder** agent   | Generate architecture diagrams                                                             |
+| ux-ui-designer         | Agent  | Select **ux-ui-designer** agent         | Design user experience and interface concepts                                              |
+| github-backlog-manager | Agent  | Select **github-backlog-manager** agent | Discover and triage existing GitHub issues                                                 |
+| memory                 | Agent  | Select **memory** agent                 | Store research findings for later reference                                                |
+| risk-register          | Prompt | `/risk-register`                        | Identify and track project risks                                                           |
+| task-research          | Prompt | `/task-research`                        | Quick research queries without full agent context                                          |
+| dt-coach               | Agent  | Select **dt-coach** agent               | Guide teams through Design Thinking methods for user-centered requirements discovery       |
+| experiment-designer    | Agent  | Select **experiment-designer** agent    | Design Minimum Viable Experiments to validate unknowns before committing to implementation |
 
 ## Design Thinking as Pre-Research Methodology
 
 > [!NOTE]
 > Teams can invoke **dt-coach** during Discovery to run scope conversations (Method 1) and design research (Method 2) before engaging the task-researcher agent. Design Thinking provides structured, empathy-driven research techniques that produce validated problem statements and stakeholder maps, strengthening the foundation for subsequent technical research.
 
+## Validating Unknowns with Minimum Viable Experiments
+
+> [!NOTE]
+> When Discovery surfaces unknowns across data, technology, or use cases, invoke **experiment-designer** to design a Minimum Viable Experiment (MVE) before committing to full implementation. The agent guides you through problem discovery, hypothesis formation, vetting criteria, and experiment planning. MVEs resolve uncertainty early (whether hypotheses are validated or invalidated) the results inform your go/no-go decisions and reduce downstream risk.
+
 ## Role-Specific Guidance
 
-TPMs lead Discovery, producing BRDs and coordinating research across disciplines. Engineers contribute technical feasibility research. Tech Leads evaluate architecture options. Security Architects drive threat modeling. Data Scientists define data requirements.
+TPMs lead Discovery, producing BRDs and coordinating research across disciplines. Engineers contribute technical feasibility research. Tech Leads evaluate architecture options. Security Architects drive security model analysis. Data Scientists define data requirements.
 
 * [TPM Guide](../roles/tpm.md)
 * [Engineer Guide](../roles/engineer.md)
@@ -80,19 +88,31 @@ onboarding time from 2 weeks to 3 days. Include integration requirements
 for existing SSO and billing systems and SOC 2 Type II compliance constraints.
 ```
 
-Select **security-plan-creator** agent:
+Select **security-planner** agent:
 
 ```text
 Generate a security plan for the /api/payments endpoint in our
 customer-facing REST API. Scope the plan to authentication via
 OAuth 2.0 with Azure AD B2C, PCI DSS compliance for payment
-tokenization, and a threat model covering injection and broken
+tokenization, and a security model covering injection and broken
 access control. Exclude infrastructure and network-level controls.
+```
+
+Select **sssc-planner** agent:
+
+```text
+Assess this repository's supply chain security posture against the OpenSSF Scorecard
+```
+
+Select **rai-planner** agent:
+
+```text
+Assess the responsible AI risks for this project based on the security plan
 ```
 
 ## Stage Outputs and Next Stage
 
-Discovery produces BRDs, research summaries, security plans, data specifications, and architecture decision records. Transition to [Stage 3: Product Definition](product-definition.md) when the BRD is complete (handoff at `docs/brds/`). TPMs who have a sufficient BRD can skip directly to [Stage 4: Decomposition](decomposition.md).
+Discovery produces BRDs, research summaries, security plans, data specifications, architecture decision records, supply chain security assessments, and RAI assessments. Transition to [Stage 3: Product Definition](product-definition.md) when the BRD is complete (handoff at `docs/brds/`). TPMs who have a sufficient BRD can skip directly to [Stage 4: Decomposition](decomposition.md).
 
 <!-- markdownlint-disable MD036 -->
 *🤖 Crafted with precision by ✨Copilot following brilliant human instruction,

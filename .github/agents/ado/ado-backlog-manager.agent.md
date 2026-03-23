@@ -74,7 +74,7 @@ Use interaction templates from [ado-interaction-templates.instructions.md](../..
 
 * Classify every request before dispatching. Resolve ambiguous requests through heuristic analysis rather than user interrogation.
 * Maintain state files in `.copilot-tracking/workitems/<planning-type>/<scope-name>/` for every workflow run per directory conventions in the [planning specification](../../instructions/ado/ado-wit-planning.instructions.md).
-* Before any ADO API call, apply the Content Sanitization Guards from the [planning specification](../../instructions/ado/ado-wit-planning.instructions.md) to strip `.copilot-tracking/` paths and planning reference IDs (such as `WI[NNN]`) from all outbound content.
+* Before any ADO API call, apply the Content Sanitization Guards from the [planning specification](../../instructions/ado/ado-wit-planning.instructions.md) to strip `.copilot-tracking/` paths, planning reference IDs (such as `WI[NNN]` or `WI-SEC-{NNN}`), and template ID placeholders (such as `{{TEMP-N}}`) from all outbound content.
 * Default to Partial autonomy unless the user specifies otherwise.
 * Announce phase transitions with a brief summary of outcomes and next actions.
 * Reference instruction files by path or targeted section rather than loading full contents unconditionally.
@@ -89,23 +89,24 @@ Three phases structure every interaction: classify the request, dispatch the app
 
 Classify the user's request into one of nine workflow categories using keyword signals and contextual heuristics.
 
-| Workflow        | Keyword Signals                                                             | Contextual Indicators                                      |
-|-----------------|-----------------------------------------------------------------------------|------------------------------------------------------------|
-| Triage          | triage, classify, categorize, untriaged, new items, needs attention         | Missing Area Path, unset Priority, New state items         |
-| Discovery       | discover, find, search, my work items, assigned, what's in backlog          | User assignment queries, search terms without documents    |
-| PRD Planning    | PRD, requirements, product requirements, plan from document, convert to WIs | PRD files, requirements documents, specifications as input |
-| Sprint Planning | sprint, iteration, plan, capacity, velocity, sprint goal                    | Iteration path references, capacity discussions            |
-| Execution       | create, update, execute, apply, implement, batch, handoff                   | A finalized handoff file or explicit CRUD actions          |
-| Single Item     | add work item, create bug, new user story, quick add                        | Single entity creation without batch context               |
-| Task Planning   | plan tasks, what should I work on, prioritize my work                       | Existing planning files, task recommendation               |
-| Build Info      | build, pipeline, status, logs, failed, CI/CD                                | Build IDs, PR references, pipeline names                   |
-| PR Creation     | pull request, PR, create PR, submit changes                                 | Branch references, code changes                            |
+| Workflow        | Keyword Signals                                                                   | Contextual Indicators                                                   |
+|-----------------|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| Triage          | triage, classify, categorize, untriaged, new items, needs attention               | Missing Area Path, unset Priority, New state items                      |
+| Discovery       | discover, find, search, my work items, assigned, what's in backlog, backlog brief | User assignment queries, search terms, or structured requirement briefs |
+| PRD Planning    | PRD, requirements, product requirements, plan from document, convert to WIs       | PRD files, requirements documents, specifications as input              |
+| Sprint Planning | sprint, iteration, plan, capacity, velocity, sprint goal                          | Iteration path references, capacity discussions                         |
+| Execution       | create, update, execute, apply, implement, batch, handoff                         | A finalized handoff file or explicit CRUD actions                       |
+| Single Item     | add work item, create bug, new user story, quick add                              | Single entity creation without batch context                            |
+| Task Planning   | plan tasks, what should I work on, prioritize my work                             | Existing planning files, task recommendation                            |
+| Build Info      | build, pipeline, status, logs, failed, CI/CD                                      | Build IDs, PR references, pipeline names                                |
+| PR Creation     | pull request, PR, create PR, submit changes                                       | Branch references, code changes                                         |
 
 Disambiguation heuristics for overlapping signals:
 
-* Documents, PRDs, or specifications as input suggest PRD Planning, which delegates to `@AzDO PRD to WIT`.
-* "Find my work items" or search terms without documents indicate Discovery.
-* PRD Planning produces hierarchies; Discovery produces flat lists.
+* Product-level documents (PRDs, specifications, feature documents) suggest PRD Planning, which delegates to `@AzDO PRD to WIT`.
+* Structured requirement briefs (e.g., `backlog-brief.md` with flat REQ-NNN entries) route to Discovery Path B.
+* "Find my work items" or search terms without broader document context indicate Discovery Path A or C.
+* PRD Planning produces hierarchies; Discovery produces flat lists with similarity assessment.
 * An explicit work item ID or single-entity phrasing scopes the request to Single Item.
 * A finalized handoff file as input points to Execution.
 

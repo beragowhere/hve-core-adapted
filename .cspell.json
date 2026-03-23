@@ -62,12 +62,19 @@
     "general-technical"
   ],
   "words": [
+    "atheris",
     "behaviour",
     "brainwriting",
+    "clusterfuzzlite",
     "easyops",
     "hideable",
     "learning",
     "ˈpræksɪs",
-    "πρᾶξις"
+    "πρᾶξις",
+    "agentic"
+  ],
+  "reporters": [
+    "default",
+    ["@cspell/cspell-json-reporter", { "outFile": "logs/cspell-results.json" }]
   ]
 }
