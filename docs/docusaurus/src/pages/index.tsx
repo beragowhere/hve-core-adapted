@@ -11,9 +11,15 @@ import styles from './styles.module.css';
 const collectionDiagram = `graph TD
     HCA["hve-core-all<br/>(163 artifacts)"]
     INS["installer<br/>(2 artifacts)"]
-    ADO["ado"] CS["coding-standards"] DS["data-science"]
-    DT["design-thinking"] EXP["experimental"] GH["github"]
-    HC["hve-core"] PP["project-planning"] SP["security"]
+    ADO["ado"]
+    CS["coding-standards"]
+    DS["data-science"]
+    DT["design-thinking"]
+    EXP["experimental"]
+    GH["github"]
+    HC["hve-core"]
+    PP["project-planning"]
+    SP["security"]
     HCA --> ADO
     HCA --> CS
     HCA --> DS
