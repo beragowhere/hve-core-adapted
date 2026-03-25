@@ -1,5 +1,9 @@
 import { collectionCards, metaCollections } from '../collectionCards';
 import type { CollectionCardData } from '../collectionCards';
+import * as fs from 'fs';
+import * as path from 'path';
+
+const collectionsDir = path.resolve(__dirname, '../../../../../collections');
 
 describe('collectionCards', () => {
   const expectedNames = [
@@ -65,5 +69,35 @@ describe('metaCollections', () => {
       expect(Number.isInteger(value)).toBe(true);
       expect(value).toBeGreaterThan(0);
     }
+  });
+});
+
+describe('artifact count cross-validation', () => {
+  function countYamlPaths(collectionName: string): number {
+    const yamlPath = path.join(
+      collectionsDir,
+      `${collectionName}.collection.yml`,
+    );
+    const content = fs.readFileSync(yamlPath, 'utf-8');
+    return (content.match(/^\s*- path:/gm) || []).length;
+  }
+
+  it.each(collectionCards.map((c): [string] => [c.name]))(
+    '%s artifact count matches YAML manifest',
+    (name) => {
+      const card = collectionCards.find((c) => c.name === name)!;
+      const yamlCount = countYamlPaths(name);
+      expect(card.artifacts).toBe(yamlCount);
+    },
+  );
+
+  it('hve-core-all count matches YAML manifest', () => {
+    const yamlCount = countYamlPaths('hve-core-all');
+    expect(metaCollections['hve-core-all']).toBe(yamlCount);
+  });
+
+  it('installer count matches YAML manifest', () => {
+    const yamlCount = countYamlPaths('installer');
+    expect(metaCollections['installer']).toBe(yamlCount);
   });
 });

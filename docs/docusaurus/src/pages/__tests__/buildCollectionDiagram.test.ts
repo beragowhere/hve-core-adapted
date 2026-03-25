@@ -90,4 +90,47 @@ describe('buildCollectionDiagram', () => {
     expect(nodeLines).toHaveLength(4);
     expect(edgeLines).toHaveLength(2);
   });
+
+  describe('Mermaid syntax validation', () => {
+    const result = buildCollectionDiagram(sampleCards, sampleMeta);
+    const lines = result.split('\n');
+
+    it('all node IDs referenced in edges are declared', () => {
+      const nodeIds = new Set<string>();
+      for (const line of lines) {
+        const match = line.match(/^\s+(\w+)\["/);
+        if (match) nodeIds.add(match[1]);
+      }
+      for (const line of lines) {
+        const match = line.match(/^\s+(\w+)\s+-->\s+(\w+)/);
+        if (match) {
+          expect(nodeIds).toContain(match[1]);
+          expect(nodeIds).toContain(match[2]);
+        }
+      }
+    });
+
+    it('node declarations match ID["label"] pattern', () => {
+      const nodeLines = lines.filter((l) => /^\s+\w+\["/.test(l));
+      for (const line of nodeLines) {
+        expect(line).toMatch(/^\s+\w+\["[^"]+"\]$/);
+      }
+    });
+
+    it('edge declarations match ID --> ID pattern', () => {
+      const edgeLines = lines.filter((l) => /-->/.test(l));
+      for (const line of edgeLines) {
+        expect(line).toMatch(/^\s+\w+\s+-->\s+\w+$/);
+      }
+    });
+
+    it('has no duplicate node declarations', () => {
+      const nodeIds: string[] = [];
+      for (const line of lines) {
+        const match = line.match(/^\s+(\w+)\["/);
+        if (match) nodeIds.push(match[1]);
+      }
+      expect(new Set(nodeIds).size).toBe(nodeIds.length);
+    });
+  });
 });
