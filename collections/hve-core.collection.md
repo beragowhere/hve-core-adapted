@@ -7,6 +7,7 @@ This collection includes agents for:
 - **Task Planner** — Creates detailed implementation plans from research findings
 - **Task Implementor** — Executes plans with progressive tracking and change records
 - **Task Reviewer** — Validates implementations against plans and project conventions
+- **Task Challenger** — Adversarial questioning agent that interrogates completed implementations with What/Why/How questions, no suggestions, no hints, no leading
 - **PR Review** — Comprehensive pull request review ensuring code quality and convention compliance
 
 Git workflow prompts for:

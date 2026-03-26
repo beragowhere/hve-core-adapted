@@ -14,6 +14,7 @@ This collection includes agents for:
 - **Task Planner** — Creates detailed implementation plans from research findings
 - **Task Implementor** — Executes plans with progressive tracking and change records
 - **Task Reviewer** — Validates implementations against plans and project conventions
+- **Task Challenger** — Adversarial questioning agent that interrogates completed implementations with What/Why/How questions, no suggestions, no hints, no leading
 - **PR Review** — Comprehensive pull request review ensuring code quality and convention compliance
 
 Git workflow prompts for:
@@ -54,6 +55,7 @@ copilot plugin install hve-core@hve-core
 | task-researcher          | Task research specialist for comprehensive project analysis - Brought to you by microsoft/hve-core                                                                                                |
 | task-implementor         | Executes implementation plans from .copilot-tracking/plans with progressive tracking and change records - Brought to you by microsoft/hve-core                                                    |
 | task-reviewer            | Reviews completed implementation work for accuracy, completeness, and convention compliance - Brought to you by microsoft/hve-core                                                                |
+| task-challenger          | Adversarial questioning agent that interrogates implementations with What/Why/How questions — no suggestions, no hints, no leading - Brought to you by microsoft/hve-core                         |
 | pr-review                | Comprehensive Pull Request review assistant ensuring code quality, security, and convention compliance - Brought to you by microsoft/hve-core                                                     |
 | rpi-validator            | Validates a Changes Log against the Implementation Plan, Planning Log, and Research Documents for a specific plan phase - Brought to you by microsoft/hve-core                                    |
 | implementation-validator | Validates implementation quality against architectural requirements, design principles, and code standards with severity-graded findings - Brought to you by microsoft/hve-core                   |
@@ -73,6 +75,7 @@ copilot plugin install hve-core@hve-core
 | task-plan          | Initiates implementation planning based on user context or research documents - Brought to you by microsoft/hve-core         |
 | task-implement     | Locates and executes implementation plans using Task Implementor - Brought to you by microsoft/hve-core                      |
 | task-review        | Initiates implementation review based on user context or automatic artifact discovery - Brought to you by microsoft/hve-core |
+| task-challenge     | Adversarial What/Why/How interrogation of completed implementation artifacts - Brought to you by microsoft/hve-core          |
 | checkpoint         | Save or restore conversation context using memory files - Brought to you by microsoft/hve-core                               |
 | doc-ops-update     | Invoke doc-ops agent for documentation quality assurance and updates                                                         |
 | git-commit-message | Generates a commit message following the commit-message.instructions.md rules based on all changes in the branch             |
