@@ -3,9 +3,6 @@ name: Dependency Review
 on:
   push:
     branches: [ main, develop ]
-    paths:
-      - '**/pyproject.toml'
-      - '**/uv.lock'
   pull_request:
     branches: [ main, develop ]
     paths:
