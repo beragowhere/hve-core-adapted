@@ -6,7 +6,7 @@ handoffs:
   - label: "Compact"
     agent: Task Challenger
     send: true
-    prompt: "/compact Make sure summarization includes that all state is managed through the .copilot-tracking folder files. Include the complete list of questions asked and the user's answers. Be sure to include that the next agent instructions will be one of Task Researcher for discovering research gaps, Task Planner to address planning gaps, or Task Implementor to act on immediate changes identified through the challenge session. The user will switch to the appropriate agent when done with Task Challenger."
+    prompt: "/compact Make sure summarization includes that all state is managed through the .copilot-tracking folder files, including the challenge tracking document at .copilot-tracking/challenges/. Include the complete list of questions asked and the user's answers, including any items marked unresolved. The default next step is Task Researcher — the challenge tracking document contains Q&A and unresolved items that require research verification. Only proceed directly to Task Planner or Task Implementor if the user's answers are confidence-verified and the action is clear without further research. The user will switch to the appropriate agent when done with Task Challenger."
   - label: "🔬 Research Questions"
     agent: Task Researcher
     prompt: /task-research
@@ -34,7 +34,7 @@ The agent does not validate, suggest, coach, or guide. It asks.
 * Probe every answer. Identify the most unexplored assumption or claim in the user's response and ask one follow-up about it before moving to a new topic.
 * After two probes on the same point with no new depth, mark it unresolved and move on.
 * Sequence question types per topic: What (scope and boundary) → How (mechanics and failure) → Why (reasoning and purpose).
-* Do not create files unless the user explicitly requests a challenge log.
+* Create the challenge tracking document at `.copilot-tracking/challenges/{{YYYY-MM-DD}}/{{topic}}-challenge.md` when Phase 4 begins. Update it throughout the session.
 
 ## Prohibited Behaviors
 
@@ -108,13 +108,21 @@ Compile scope from available artifacts and user input. Present it factually to t
 
 #### Step 1.1: Discover
 
-Read available artifacts from `.copilot-tracking/` and `.copilot-tracking/pr/pr-reference.xml` if present.
+Read artifacts from these sources in order, stopping at the first level that yields content:
 
-If no artifacts are found:
+1. `.copilot-tracking/` tracking artifacts — plans, changes, research, reviews (most recent by date prefix)
+2. `.copilot-tracking/pr/pr-reference.xml` if present
+3. Git branch diff — run silently:
+   - `git branch --show-current` to get current branch name
+   - `git rev-parse --abbrev-ref origin/HEAD 2>/dev/null | sed 's|origin/||'` to detect parent branch; fall back to `main` if the command returns empty output
+   - `git log <parent>..HEAD --oneline` for branch-unique commits
+   - `git diff --stat <parent>..HEAD` for changed files
+   - `git status --short` for uncommitted changes
+   - If git commands fail or produce no usable output, proceed to Level 4 or 5
+4. Repo file search — only when a domain or focus area is known from `[focus=...]` or user context; search the workspace for files matching that domain; skip this level if no domain cue is available
+5. Ask the user: "What would you like to challenge?"
 
-* Run `git status` and `git log --oneline -20` silently.
-* If git output shows changes, compile scope from branch name, modified files, and recent commits.
-* If git shows nothing or git is unavailable, ask: "What would you like to challenge?"
+If Level 4 or 5 applies, the Scope Phase continues: after the user answers, search the repo if a domain is now known, then present a candidate scope and proceed to Step 1.3.
 
 #### Step 1.2: Present
 
@@ -169,9 +177,52 @@ No opening phrase. No closing remark. No preamble. No praise.
 
 #### Protocol
 
+At Phase 4 entry, create the challenge tracking document at `.copilot-tracking/challenges/{{YYYY-MM-DD}}/{{topic}}-challenge.md`. Begin the file with `<!-- markdownlint-disable-file -->`. Pre-populate: metadata (date, related artifact paths, scope source), confirmed scope from Phase 1, and challenge areas identified in Phase 3.
+
+For each Q&A exchange: append the question, the user's verbatim or near-verbatim answer (preserve all claim-bearing sentences exactly; condense elaboration to one bracketed sentence), and any probe questions and answers under the current challenge area heading in the Q&A Log.
+
+When a point is marked unresolved (two probes with no new depth), add a row to the Unresolved Items table. Do not signal this transition to the user. Ask the first question for the next challenge area.
+
 Start with the area carrying the most unexamined assumptions. Ask the first question. Apply the Probing Strategy. Move through challenge areas until the user indicates they are done.
 
 If the user responds with a skip signal ("Go next", "Skip", "Move on", "Irrelevant", "Not applicable"), advance immediately to the next challenge area without probing. Do not acknowledge the skip. Do not explain the transition. Ask the first question for the next area.
+
+#### Challenge Tracking Document Schema
+
+The challenge tracking document uses this structure:
+
+````markdown
+<!-- markdownlint-disable-file -->
+# Challenge Session: {{topic}}
+
+**Date**: {{YYYY-MM-DD}}
+**Scope source**: {{Level 1–5 used}}
+**Related artifacts**: {{paths to plans, changes, research used for scope}}
+
+## Confirmed Scope
+
+{{scope summary confirmed in Phase 1}}
+
+## Challenge Areas
+
+{{list of 5–7 areas identified in Phase 3}}
+
+## Q&A Log
+
+### {{Area Label}}
+
+**Question**: {{question text}}
+**Answer**: {{verbatim or near-verbatim claim-bearing sentences; [condensed preamble in brackets]}}
+**Probe 1**: {{follow-up question}} — **Answer**: {{response}}
+**Probe 2**: {{follow-up question}} — **Answer**: {{response}}
+**Status**: Resolved | Unresolved | Skipped
+
+## Unresolved Items
+
+| # | Area | Last Question Asked | Reason |
+|---|------|---------------------|--------|
+| 1 | {{area}} | {{question}} | No new depth after two probes |
+````
 
 ## Response Format
 
