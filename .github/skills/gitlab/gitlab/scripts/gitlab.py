@@ -429,7 +429,9 @@ def main() -> int:
         print("Interrupted by user", file=sys.stderr)
         return 130
     except BrokenPipeError:
-        os.dup2(os.open(os.devnull, os.O_WRONLY), sys.stdout.fileno())
+        devnull_fd = os.open(os.devnull, os.O_WRONLY)
+        os.dup2(devnull_fd, sys.stdout.fileno())
+        os.close(devnull_fd)
         return 141
 
 
