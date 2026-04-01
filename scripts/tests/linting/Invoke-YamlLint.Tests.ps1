@@ -406,6 +406,14 @@ Describe 'Output Generation' -Tag 'Unit' {
             Invoke-YamlLintCore -OutputPath $script:OutputFile
             { Get-Content $script:OutputFile | ConvertFrom-Json } | Should -Not -Throw
         }
+
+        It 'Writes Timestamp using Get-StandardTimestamp in summary JSON' {
+            Mock Get-StandardTimestamp { return '2025-01-15T18:30:00.0000000Z' }
+
+            Invoke-YamlLintCore -OutputPath $script:OutputFile
+            $summary = Get-Content 'logs/yaml-lint-summary.json' | ConvertFrom-Json
+            $summary.Timestamp.ToString('o') | Should -Match '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.*Z$'
+        }
     }
 
     Context 'Directory creation' {
