@@ -312,8 +312,8 @@ function Test-SkillDirectory {
         foreach ($warn in $pyResult.Warnings) { $warnings.Add($warn) }
     }
 
-    # Check for unrecognized subdirectories
-    $subdirs = Get-ChildItem -Path $Directory.FullName -Directory -ErrorAction SilentlyContinue
+    # Check for unrecognized subdirectories (-Force includes dot-prefixed dirs hidden on Linux)
+    $subdirs = Get-ChildItem -Path $Directory.FullName -Directory -Force -ErrorAction SilentlyContinue
     foreach ($subdir in $subdirs) {
         if ($subdir.Name -notin $script:RecognizedSubdirectories) {
             # Python package directories (containing __init__.py) are valid in Python skills
