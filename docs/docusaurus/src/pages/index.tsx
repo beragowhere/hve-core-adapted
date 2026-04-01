@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Layout from '@theme/Layout';
 import Mermaid from '@theme/Mermaid';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import HeroSection from '../components/HeroSection';
 import { IconCard, BoxCard, CardGrid } from '../components/Cards';
 import CollectionCard from '../components/CollectionCards';
 import { iconCards, boxCards } from '../data/hubCards';
-import { collectionCards, metaCollections, type CollectionCardData, type MetaCollections } from '../data/collectionCards';
+import { resolveCollectionCards, resolveMetaCollections, type CollectionCardData, type MetaCollections } from '../data/collectionCards';
 import styles from './styles.module.css';
 
 export function buildCollectionDiagram(
@@ -25,9 +26,17 @@ export function buildCollectionDiagram(
   return lines.join('\n');
 }
 
-const collectionDiagram = buildCollectionDiagram(collectionCards, metaCollections);
-
 export default function Home(): React.ReactElement {
+  const { siteConfig } = useDocusaurusContext();
+  const counts = siteConfig.customFields.collectionCounts as Record<string, number>;
+
+  const collectionCards = useMemo(() => resolveCollectionCards(counts), [counts]);
+  const metaCollections = useMemo(() => resolveMetaCollections(counts), [counts]);
+  const collectionDiagram = useMemo(
+    () => buildCollectionDiagram(collectionCards, metaCollections),
+    [collectionCards, metaCollections],
+  );
+
   return (
     <Layout title="HVE Core" description="AI-Driven Software Development Across the Full Lifecycle">
       <HeroSection
