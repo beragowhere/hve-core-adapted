@@ -598,6 +598,11 @@ Write-Host "Test"
         $results.PSObject.Properties.Name | Should -Contain 'results'
     }
 
+    It 'Writes timestamp using Get-StandardTimestamp in result JSON' {
+        $results = Get-Content $script:OutputPath | ConvertFrom-Json
+        $results.timestamp.ToString('o') | Should -Match '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.*Z$'
+    }
+
     It 'Contains compliance percentage' {
         $results = Get-Content $script:OutputPath | ConvertFrom-Json
 
