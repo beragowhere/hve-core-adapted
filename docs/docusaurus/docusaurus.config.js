@@ -11,7 +11,15 @@ const collectionsDir = path.resolve(__dirname, '../../collections');
  */
 function countYamlPaths(name) {
   const yamlPath = path.join(collectionsDir, `${name}.collection.yml`);
-  const content = fs.readFileSync(yamlPath, 'utf-8');
+  let content;
+  try {
+    content = fs.readFileSync(yamlPath, 'utf-8');
+  } catch {
+    throw new Error(
+      `[docusaurus.config.js] Cannot read collection manifest: ${yamlPath}\n` +
+      `Ensure "${name}" exists in the collections/ directory.`,
+    );
+  }
   return (content.match(/^\s*- path:/gm) || []).length;
 }
 

@@ -10,7 +10,7 @@ import styles from './styles.module.css';
 
 export default function Home(): React.ReactElement {
   const { siteConfig } = useDocusaurusContext();
-  const counts = siteConfig.customFields.collectionCounts as Record<string, number>;
+  const counts = (siteConfig.customFields?.collectionCounts ?? {}) as Record<string, number>;
 
   const collectionCards = useMemo(() => resolveCollectionCards(counts), [counts]);
 
