@@ -12,6 +12,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > **Note:** This file is automatically maintained by [release-please](https://github.com/googleapis/release-please). Do not edit manually.
 
+## [3.4.0](https://github.com/microsoft/hve-core/compare/hve-core-v3.3.41...hve-core-v3.4.0) (2026-04-02)
+
+
+### ✨ Features
+
+* **docs:** add extension collections overview and integrate into getting started flow ([#950](https://github.com/microsoft/hve-core/issues/950)) ([b6fa2aa](https://github.com/microsoft/hve-core/commit/b6fa2aa064692616597e7961e9c87d53dd25a7ba))
+
+
+### 🐛 Bug Fixes
+
+* **scripts:** standardize timestamp in Invoke-LinkLanguageCheck.ps1 to use Get-StandardTimestamp ([#1264](https://github.com/microsoft/hve-core/issues/1264)) ([dd2ae45](https://github.com/microsoft/hve-core/commit/dd2ae45600e974f614f1f74508298f0ac27726ff))
+* **scripts:** standardize timestamp in Invoke-YamlLint.ps1 to use Get-StandardTimestamp ([#1270](https://github.com/microsoft/hve-core/issues/1270)) ([11a483f](https://github.com/microsoft/hve-core/commit/11a483f48415d96bb67e38a25007a53450895f76))
+* **scripts:** standardize timestamp in Test-CopyrightHeaders.ps1 to use Get-StandardTimestamp ([#1278](https://github.com/microsoft/hve-core/issues/1278)) ([84ddd5d](https://github.com/microsoft/hve-core/commit/84ddd5d6149871c41b04f7d11da6045feb151e20))
+* **workflows:** fix dependency-review path filters and sparse-checkout cone mode ([#1259](https://github.com/microsoft/hve-core/issues/1259)) ([8722d8f](https://github.com/microsoft/hve-core/commit/8722d8f84cb5df2e0c99f670310da007a343a26e))
+
 ## [3.2.2](https://github.com/microsoft/hve-core/compare/hve-core-v3.2.1...hve-core-v3.2.2) (2026-03-23)
 
 
