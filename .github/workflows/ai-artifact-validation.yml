@@ -1,0 +1,58 @@
+name: AI Artifact Validation
+
+on:
+  workflow_call:
+    inputs:
+      soft-fail:
+        description: 'Whether to continue on AI artifact validation failures'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  ai-artifact-validation:
+    name: Validate AI Artifacts
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v4.2.2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Install PowerShell-Yaml
+        shell: pwsh
+        run: |
+          Install-Module -Name PowerShell-Yaml -Force -Scope CurrentUser
+
+      - name: Validate AI artifact footers and disclaimers
+        id: validate
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path logs | Out-Null
+          & scripts/linting/Validate-AIArtifacts.ps1 -FailOnMissing
+        continue-on-error: ${{ inputs.soft-fail }}
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v4.4.3
+        with:
+          name: ai-artifact-results
+          path: |
+            logs/ai-artifact-results.json
+          retention-days: 30
+          if-no-files-found: ignore
+
+      - name: Check results
+        if: "!inputs.soft-fail"
+        shell: pwsh
+        run: |
+          if ($env:AI_ARTIFACT_VALIDATION_FAILED -eq 'true') {
+            Write-Error "AI artifact validation found violations"
+            exit 1
+          }
