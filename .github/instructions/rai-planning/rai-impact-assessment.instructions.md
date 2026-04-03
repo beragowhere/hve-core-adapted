@@ -328,6 +328,8 @@ phase: 5
 * {Control Description} (Coverage: {Full|Partial|Gap})
 
 <!-- Repeat for each principle -->
+
+> **Note** — The author created this content with assistance from AI. All outputs should be reviewed and validated before use.
 ```
 
 ### Evidence Register
@@ -346,6 +348,8 @@ phase: 5
 | Evidence ID | Threat ID   | Cross-Ref ID      | Principle   | Control Type | Control Description | Coverage | Evidence Source | Verification | Notes   |
 |-------------|-------------|-------------------|-------------|--------------|---------------------|----------|-----------------|--------------|---------|
 | {EV-ID}     | {T-RAI-NNN} | {T-BUCKET-AI-NNN} | {Principle} | {Type}       | {Description}       | {Status} | {Source}        | {Status}     | {Notes} |
+
+> **Note** — The author created this content with assistance from AI. All outputs should be reviewed and validated before use.
 ```
 
 ### RAI Tradeoffs
@@ -368,4 +372,7 @@ phase: 5
 * Decision: {which principle takes priority and conditions}
 * Compensating Controls: {mitigations for the deprioritized principle}
 * Residual Risk: {remaining exposure}
+
+> **Note** — The author created this content with assistance from AI. All outputs should be reviewed and validated before use.
+> - [ ] Reviewed and validated by a human reviewer
 ```

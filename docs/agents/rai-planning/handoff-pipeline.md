@@ -136,6 +136,53 @@ All generated backlog content is sanitized before handoff:
 | Evidence register              | `.copilot-tracking/rai-plans/{slug}/evidence-register.md`                 | Phase 5          |
 | RAI tradeoffs                  | `.copilot-tracking/rai-plans/{slug}/rai-tradeoffs.md`                     | Phase 5          |
 | RAI review summary             | `.copilot-tracking/rai-plans/{slug}/rai-review-summary.md`                | Phase 6          |
+| Handoff summary                | `.copilot-tracking/rai-plans/{slug}/rai-backlog-handoff-summary.md`       | Phase 6          |
+
+## Artifact Attribution and Review
+
+Persisted RAI artifacts include transparency footers that communicate AI involvement and establish expectations for human review. Footer composition varies based on whether an artifact is consumed by subsequent agent phases or delivered to human reviewers for validation and decision-making.
+
+### AI-Content Note
+
+Every Phase 5 and Phase 6 artifact includes a transparency note at the end of the file:
+
+<!-- markdownlint-disable search-replace -->
+> **Note** — The author created this content with assistance from AI. All outputs should be reviewed and validated before use.
+<!-- markdownlint-enable search-replace -->
+
+### Human Review Checkbox
+
+Artifacts delivered to human reviewers include a review validation checkbox beneath the AI-content note:
+
+<!-- markdownlint-disable MD004 -->
+> - [ ] Reviewed and validated by a human reviewer
+<!-- markdownlint-enable MD004 -->
+
+Reviewers check this box upon completing their assessment to signal that the content has been validated.
+
+### Full Disclaimer
+
+The Handoff Summary and Compact Handoff Summary append the full RAI Planner disclaimer after the review checkbox. This disclaimer establishes that the agent is an assistive tool only and that all outputs require independent review by appropriate legal and compliance reviewers before use.
+
+### Footer Classification
+
+The following table shows which footer components appear on each Phase 5 and Phase 6 artifact. Agentic artifacts are consumed by subsequent agent phases, while human-facing artifacts are delivered to reviewers.
+
+| Artifact                  | Phase | Category     | AI-content note | Review checkbox | Full disclaimer |
+|---------------------------|-------|--------------|:---------------:|:---------------:|:---------------:|
+| Control surface catalog   | 5     | Agentic      | ✓               |                 |                 |
+| Evidence register         | 5     | Agentic      | ✓               |                 |                 |
+| RAI tradeoffs             | 5     | Human-facing | ✓               | ✓               |                 |
+| RAI review summary        | 6     | Human-facing | ✓               | ✓               |                 |
+| ADO work items            | 6     | Human-facing | ✓               | ✓               |                 |
+| GitHub issues             | 6     | Human-facing | ✓               | ✓               |                 |
+| Transparency note outline | 6     | Human-facing | ✓               | ✓               |                 |
+| Monitoring summary        | 6     | Human-facing | ✓               | ✓               |                 |
+| Handoff summary           | 6     | Human-facing | ✓               | ✓               | ✓               |
+| Compact handoff summary   | 6     | Human-facing | ✓               | ✓               | ✓               |
+
+> [!NOTE]
+> Transparency note outline and monitoring summary are optional artifacts generated only when the user opts in during Phase 6.
 
 <details>
 <summary>End-to-end assessment flow</summary>

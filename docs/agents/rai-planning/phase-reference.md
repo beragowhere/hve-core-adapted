@@ -246,6 +246,8 @@ Common tradeoff examples:
 * `evidence-register.md`: Evidence log documenting existing mitigations, gaps, and collection difficulty
 * `rai-tradeoffs.md`: Principle conflict analysis with resolution recommendations
 
+The control surface catalog and evidence register are agentic artifacts that include only the AI-content transparency note. RAI tradeoffs is a human-facing artifact that also includes the human review checkbox. See [Handoff Pipeline](handoff-pipeline#artifact-attribution-and-review) for the complete footer classification.
+
 ### State Transitions
 
 | Field                       | Before | After |
@@ -294,6 +296,8 @@ Gaps identified across Phases 3-5 are converted to work items using the same dua
 
 * `rai-review-summary.md`: Review summary with observations across six dimensions and maturity indicators
 * Backlog items in the user's preferred format
+
+All Phase 6 artifacts are human-facing and include the AI-content transparency note and human review checkbox. The handoff summary and compact handoff summary also include the full RAI Planner disclaimer. See [Handoff Pipeline](handoff-pipeline#artifact-attribution-and-review) for the complete footer classification.
 
 ### State Transitions
 

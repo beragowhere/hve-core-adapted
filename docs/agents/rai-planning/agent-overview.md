@@ -141,6 +141,9 @@ When conversation context is compacted, a five-step recovery process reconstruct
 4. Identify the next incomplete task within the current phase
 5. Display the disclaimer blockquote and attribution notices, then resume with a brief summary of recovered state and the next action
 
+> [!NOTE]
+> The disclaimer and attribution notices described above are conversational, displayed in the chat interface during session starts, resumes, and exit points. Generated artifacts in Phases 5 and 6 carry separate persisted footers (AI-content transparency notes, human review checkboxes, and full disclaimers on handoff deliverables) written directly into the markdown files. See [Handoff Pipeline](handoff-pipeline#artifact-attribution-and-review) for details on persisted artifact footers.
+
 ## Operational Constraints
 
 * All files are created under `.copilot-tracking/rai-plans/{project-slug}/`
