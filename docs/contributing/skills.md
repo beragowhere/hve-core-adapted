@@ -154,6 +154,14 @@ description: 'Video-to-GIF conversion skill with FFmpeg two-pass optimization - 
 | Use case | Skills that incorporate third-party content under a specific license (e.g. CC-BY-SA-4.0, MIT) |
 | Example  | `MIT`                                                                                         |
 
+**`compatibility`** (string, optional)
+
+| Property | Value                                                                                                        |
+|----------|--------------------------------------------------------------------------------------------------------------|
+| Purpose  | Runtime requirements or prerequisites for the skill                                                          |
+| Use case | Skills that depend on interpreters, CLI tools, credentials, or other runtime dependencies                    |
+| Example  | `"Requires Python 3.11+, uv package manager, and network access for API calls"`                              |
+
 **`metadata`** (object, optional)
 
 | Property | Value                                                                              |
@@ -538,6 +546,7 @@ Before submitting your skill, verify:
 * [ ] Optional: `disable-model-invocation` set appropriately (default `false` works for most skills)
 * [ ] Optional: `argument-hint` provides useful input guidance if set
 * [ ] Optional: `license` set when skill content uses a specific license
+* [ ] Optional: `compatibility` describes runtime requirements when applicable
 * [ ] Optional: `metadata` includes provenance fields when skill references external content
 
 ### Scripts (when included)
