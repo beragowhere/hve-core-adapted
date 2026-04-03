@@ -823,9 +823,8 @@ Describe 'Write-SkillValidationResults' -Tag 'Unit' {
             Write-SkillValidationResults -Results $results -RepoRoot $repoRoot
 
             $jsonPath = Join-Path $repoRoot 'logs/skill-validation-results.json'
-            $json = Get-Content $jsonPath -Raw | ConvertFrom-Json
-            $json.timestamp | Should -Not -BeNullOrEmpty
-            $json.timestamp.ToString('o') | Should -Match '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.*Z$'
+            $raw = Get-Content $jsonPath -Raw
+            $raw | Should -Match '"timestamp":\s*"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d+Z"'
         }
     }
 
