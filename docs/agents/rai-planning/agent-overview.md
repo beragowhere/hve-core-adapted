@@ -40,6 +40,8 @@ flowchart TD
     I3["rai-security-model"]
     I4["rai-impact-assessment"]
     I5["rai-backlog-handoff"]
+    I6["rai-sensitive-uses-triggers"]
+    I7["rai-capture-coaching"]
   end
 
   RP -->|"reads/writes"| SJ
@@ -49,15 +51,18 @@ flowchart TD
   RP -->|"follows"| I3
   RP -->|"follows"| I4
   RP -->|"follows"| I5
+  RP -->|"follows"| I6
+  RP -->|"follows"| I7
 ```
 
-The RAI Planner agent definition lives at `.github/agents/rai-planning/rai-planner.agent.md`. Six instruction files under `.github/instructions/rai-planning/` provide domain-specific guidance, auto-applied via `applyTo` patterns when working within `.copilot-tracking/rai-plans/`.
+The RAI Planner agent definition lives at `.github/agents/rai-planning/rai-planner.agent.md`. Seven instruction files under `.github/instructions/rai-planning/` provide domain-specific guidance, auto-applied via `applyTo` patterns when working within `.copilot-tracking/rai-plans/`.
 
 | Instruction file                        | Domain                                                                                 |
 |-----------------------------------------|----------------------------------------------------------------------------------------|
 | `rai-identity.instructions.md`          | Agent identity, orchestration, state management, session recovery                      |
-| `rai-standards.instructions.md`         | Microsoft RAI Standard v2, NIST AI RMF subcategories, regulatory cross-references      |
-| `rai-security-model.instructions.md`    | AI-specific threat taxonomy, `RAI-T-{CATEGORY}-{NNN}` format, likelihood-impact matrix |
+| `rai-sensitive-uses-triggers.instructions.md` | Sensitive uses trigger screening, depth tier assignment, restricted uses gate    |
+| `rai-standards.instructions.md`         | Microsoft Responsible AI Impact Assessment Guide, NIST AI RMF subcategories, regulatory cross-references |
+| `rai-security-model.instructions.md`    | AI-specific threat taxonomy, `T-RAI-{NNN}` format, concern level assessment            |
 | `rai-impact-assessment.instructions.md` | Control surface evaluation, evidence register, principle tradeoff analysis             |
 | `rai-backlog-handoff.instructions.md`   | Dual-format backlog handoff, content sanitization, autonomy tiers                      |
 | `rai-capture-coaching.instructions.md`  | Exploration-first questioning techniques for capture mode                              |
@@ -72,18 +77,19 @@ All assessment state persists under `.copilot-tracking/rai-plans/{project-slug}/
 |-----------------------------|----------------|-------------------------------------------------------------|
 | `projectSlug`               | string         | Kebab-case project identifier                               |
 | `raiPlanFile`               | string         | Path to the RAI plan markdown file                          |
-| `currentPhase`              | number         | Current phase (1-5)                                         |
+| `currentPhase`              | number         | Current phase (1-6)                                         |
 | `entryMode`                 | string         | `capture`, `from-prd`, or `from-security-plan`              |
 | `securityPlanRef`           | string or null | Path to security plan state when using `from-security-plan` |
-| `assessmentDepth`           | string         | `standard` or `deep` assessment tier                        |
-| `standardsMapped`           | boolean        | Whether Phase 2 mapping is complete                         |
+| `assessmentDepth`           | string         | Assessment tier (`Basic`, `Standard`, or `Comprehensive`)   |
+| `sensitiveUsesTriggers`     | object         | Phase 2 sensitive uses trigger results                      |
+| `suggestedDepthTier`        | string         | Phase 2 depth tier assignment (`Basic`, `Standard`, or `Comprehensive`) |
+| `standardsMapped`           | boolean        | Whether Phase 3 mapping is complete                         |
 | `raiRiskSurfaceStarted`     | boolean        | Whether Phase 4 analysis has begun                          |
 | `raiThreatCount`            | number         | Running count of identified RAI threats                     |
 | `impactAssessmentGenerated` | boolean        | Whether Phase 5 assessment is complete                      |
 | `evidenceRegisterComplete`  | boolean        | Whether evidence register is finalized                      |
-| `handoffGenerated`          | boolean        | Whether Phase 5 backlog handoff is complete                 |
+| `handoffGenerated`          | boolean        | Whether Phase 6 backlog handoff is complete                 |
 | `gateResults`               | object         | Gate outcomes for threat coverage                           |
-| `scoredDimensions`          | object         | Phase 5 scorecard: five dimensions, total, and outcome      |
 | `referencesProcessed`       | array          | Files that have been read and incorporated                  |
 | `nextActions`               | array          | Pending action items for the current phase                  |
 | `userPreferences`           | object         | User-specified preferences for interaction and output       |
@@ -121,8 +127,8 @@ Each turn begins by showing the current phase checklist status. When all questio
 When returning to an existing RAI assessment, the agent follows a four-step resume protocol:
 
 1. Read `state.json` from the project slug directory
-2. Display current phase progress and checklist status
-3. Summarize what was completed and what remains
+2. Display the disclaimer blockquote and attribution notices
+3. Display current phase progress and checklist status. Summarize completed phases and remaining work
 4. Continue from the last incomplete action
 
 ### Post-Summarization Recovery
@@ -131,15 +137,15 @@ When conversation context is compacted, a five-step recovery process reconstruct
 
 1. Read `state.json` for project slug and current phase
 2. Read the RAI plan markdown file referenced in `raiPlanFile`
-3. Reconstruct context from existing artifacts (system definition pack, standards mapping, security model addendum, control surface catalog)
+3. Reconstruct context from existing artifacts (system definition pack, standards mapping, security model addendum, control surface catalog, evidence register, and tradeoffs)
 4. Identify the next incomplete task within the current phase
-5. Resume with a brief summary of recovered state and the next action
+5. Display the disclaimer blockquote and attribution notices, then resume with a brief summary of recovered state and the next action
 
 ## Operational Constraints
 
 * All files are created under `.copilot-tracking/rai-plans/{project-slug}/`
 * The agent never modifies application source code
-* Embedded standards (Microsoft RAI Standard v2, NIST AI RMF 1.0) are referenced from the rai-standards instruction file
+* Embedded standards (Microsoft Responsible AI Impact Assessment Guide, NIST AI RMF 1.0) are referenced from the rai-standards instruction file
 * Additional framework lookups (WAF, CAF, ISO 42001, EU AI Act details) are delegated to the Researcher Subagent
 * In `from-security-plan` mode, security plan artifacts are read-only
 

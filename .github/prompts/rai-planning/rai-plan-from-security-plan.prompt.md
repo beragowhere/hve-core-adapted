@@ -1,8 +1,8 @@
 ---
 description: >-
-  Initiate a responsible AI assessment from a completed Security Plan using
+  Initiate responsible AI assessment planning from a completed Security Plan using
   the RAI Planner agent in from-security-plan mode (recommended)
-agent: rai-planner
+agent: "RAI Planner"
 ---
 
 # RAI Plan from Security Plan
@@ -10,6 +10,10 @@ agent: rai-planner
 Activate the RAI Planner in **from-security-plan mode**, the recommended workflow for projects that have already completed a security assessment.
 
 Use project slug `${input:project-slug}`.
+
+> **Disclaimer** — This tool provides structured prompts and frameworks to support responsible AI planning. It is not a substitute for professional legal, compliance, or ethics review. All outputs are suggestions for human evaluation. Organizational RAI policies and applicable regulations take precedence.
+
+> **Attribution** — This assessment references the [Microsoft Responsible AI Impact Assessment Guide](https://aka.ms/RAI) (© 2022 Microsoft Corporation, all rights reserved). The Guide is provided "as-is" and does not provide any legal rights to any intellectual property in any Microsoft product. You may copy and use this document for your internal, reference purposes. This assessment also references NIST AI RMF 1.0, a U.S. Government work not subject to copyright protection in the United States.
 
 ## Requirements
 
@@ -64,3 +68,5 @@ Highlight what the security plan already covers and identify AI-specific context
 - Vulnerable populations and downstream effects
 
 Ask 3 to 5 clarifying questions targeting these AI-specific gaps.
+
+Also ask whether the user has evaluation standards, sensitive use categories, or output format requirements to supply for storage in `.copilot-tracking/rai-plans/references/`.

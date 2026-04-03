@@ -1,13 +1,17 @@
 ---
 description: >-
-  Initiate a responsible AI assessment from PRD/BRD artifacts using the
+  Initiate responsible AI assessment planning from PRD/BRD artifacts using the
   RAI Planner agent in from-prd mode
-agent: rai-planner
+agent: "RAI Planner"
 ---
 
 # RAI Plan from PRD/BRD
 
-Activate the RAI Planner in **from-prd mode** to assess AI-specific risks for project slug `${input:project-slug}`.
+Activate the RAI Planner in **from-prd mode** to plan for AI-specific risk assessment for project slug `${input:project-slug}`.
+
+> **Disclaimer** — This tool provides structured prompts and frameworks to support responsible AI planning. It is not a substitute for professional legal, compliance, or ethics review. All outputs are suggestions for human evaluation. Organizational RAI policies and applicable regulations take precedence.
+
+> **Attribution** — This assessment references the [Microsoft Responsible AI Impact Assessment Guide](https://aka.ms/RAI) (© 2022 Microsoft Corporation, all rights reserved). The Guide is provided "as-is" and does not provide any legal rights to any intellectual property in any Microsoft product. You may copy and use this document for your internal, reference purposes. This assessment also references NIST AI RMF 1.0, a U.S. Government work not subject to copyright protection in the United States.
 
 ## Requirements
 
@@ -60,3 +64,5 @@ Present the extracted AI system scope as a checklist with markers:
 - ❓ Items that need clarification or are missing
 
 Ask 3 to 5 clarifying questions that target AI-specific gaps not covered by the requirements documents, such as model selection rationale, training data provenance, fairness considerations, and unintended use scenarios.
+
+Also ask whether the user has evaluation standards, sensitive use categories, or output format requirements to supply for storage in `.copilot-tracking/rai-plans/references/`.

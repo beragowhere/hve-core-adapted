@@ -1,13 +1,13 @@
 ---
 title: RAI Planning
-description: Structured Responsible AI assessment through a 5-phase conversational workflow aligned with Microsoft RAI Standard v2 and NIST AI RMF 1.0
+description: Structured Responsible AI assessment planning through a 6-phase conversational workflow aligned with the Microsoft Responsible AI Impact Assessment Guide and NIST AI RMF 1.0
 sidebar_position: 1
 sidebar_label: Overview
 keywords:
   - responsible AI
   - RAI planner
   - NIST AI RMF
-  - Microsoft RAI Standard
+  - Microsoft Responsible AI Impact Assessment Guide
   - AI risk assessment
 tags:
   - agents
@@ -24,10 +24,10 @@ estimated_reading_time: 8
 
 ## Why Use RAI Planning?
 
-The RAI Planner agent transforms informal AI ethics reviews into a repeatable, evidence-backed assessment:
+The RAI Planner agent transforms informal AI ethics reviews into repeatable, evidence-backed assessment planning:
 
-* 🔍 **Systematic coverage** evaluates each AI component against six RAI principles and seven threat categories, eliminating the guesswork of ad-hoc reviews
-* 📊 **Quantified outcomes** produce a scored RAI scorecard across five dimensions so stakeholders can compare assessment quality across projects
+* 🔍 **Systematic coverage** maps each AI component against six RAI principles and seven threat categories, eliminating the guesswork of ad-hoc reviews
+* 📊 **Structured outcomes** produce suggested backlog items and maturity indicators so stakeholders can prioritize RAI improvements across projects
 * 🔗 **Security plan integration** picks up where the Security Planner leaves off, inheriting AI component data and continuing threat ID sequences without duplication
 
 > [!TIP]
@@ -35,46 +35,51 @@ The RAI Planner agent transforms informal AI ethics reviews into a repeatable, e
 
 ## How It Works
 
-The RAI Planner follows five sequential phases, each mapped to NIST AI RMF functions. Every phase produces artifacts, and the agent never advances without your confirmation.
+The RAI Planner follows six sequential phases, each mapped to NIST AI RMF functions. Every phase produces artifacts, and the agent never advances without your confirmation.
 
 ```mermaid
 flowchart LR
     subgraph govern ["Govern + Map"]
         P1["Phase 1\nAI System Scoping"]
+        P2["Phase 2\nSensitive Uses"]
     end
 
     subgraph measure ["Govern + Measure"]
-        P2["Phase 2\nRAI Standards\nMapping"]
-        P3["Phase 3\nRAI Security Model"]
+        P3["Phase 3\nRAI Standards\nMapping"]
+        P4["Phase 4\nRAI Security Model"]
     end
 
     subgraph manage ["Manage"]
-        P4["Phase 4\nImpact Assessment"]
-        P5["Phase 5\nReview & Handoff"]
+        P5["Phase 5\nImpact Assessment"]
+        P6["Phase 6\nReview & Handoff"]
     end
 
-    P1 --> P2 --> P3 --> P4 --> P5
+    P1 --> P2 --> P3 --> P4 --> P5 --> P6
 ```
 
 ### Phase 1: AI System Scoping
 
 Discover the AI system's purpose, technology stack, deployment model, and stakeholder roles. Classify AI components and establish assessment boundaries. Maps to NIST Govern and Map functions.
 
-### Phase 2: RAI Standards Mapping
+### Phase 2: Sensitive Uses Screening
+
+Screen the AI system for sensitive use triggers using three binary assessments: legal status and life opportunities, physical or psychological injury, and human rights restrictions. Determine the suggested assessment depth tier for subsequent phases.
+
+### Phase 3: RAI Standards Mapping
 
 Map AI system components and behaviors to the six RAI principles: fairness, reliability and safety, privacy and security, inclusiveness, transparency, and accountability. Cross-reference with NIST AI RMF subcategories and applicable regulations.
 
-### Phase 3: RAI Security Model Analysis
+### Phase 4: RAI Security Model Analysis
 
-Apply AI-specific threat analysis per component using seven threat categories: data poisoning, model evasion, prompt injection, output manipulation, bias amplification, privacy leakage, and misuse escalation. Threats follow the `RAI-T-{CATEGORY}-{NNN}` format.
+Facilitate AI-specific threat analysis per component using AI STRIDE extensions, eight AI element types, and five trust boundaries. Threats follow the `T-RAI-{NNN}` sequential format with optional `T-{BUCKET}-AI-{NNN}` cross-references.
 
-### Phase 4: RAI Impact Assessment
+### Phase 5: RAI Impact Assessment
 
-Evaluate control surface completeness for each identified threat. Document existing mitigations, identify gaps, analyze tradeoffs between competing RAI principles, and generate the control surface catalog and evidence register.
+Explore control surface coverage for each identified threat. Document existing mitigations, identify gaps, analyze tradeoffs between competing RAI principles, and prepare the control surface catalog and evidence register.
 
-### Phase 5: Review and Handoff
+### Phase 6: Review and Handoff
 
-Present the RAI scorecard summarizing all findings. Generate backlog items for identified gaps and hand off to the ADO or GitHub backlog system. Optionally dispatch findings back to the Security Planner for integrated tracking.
+Prepare a review summary of findings across dimensions. Generate suggested backlog items for identified gaps and hand off to the ADO or GitHub backlog system. Optionally dispatch findings back to the Security Planner for integrated tracking.
 
 ## Entry Modes
 
@@ -95,8 +100,8 @@ See [entry modes](entry-modes.md) for detailed guidance on when to choose each m
 | [Why RAI planning?](why-rai-planning.md)   | The case for structured RAI assessment over ad-hoc reviews             |
 | [Agent overview](agent-overview.md)        | Architecture, state management, and interaction model                  |
 | [Entry modes](entry-modes.md)              | Choosing between capture, from-prd, and from-security-plan             |
-| [Phase reference](phase-reference.md)      | Detailed inputs, outputs, and state transitions for all five phases    |
-| [Handoff pipeline](handoff-pipeline.md)    | Scorecard generation, backlog output, and the Security-to-RAI pipeline |
+| [Phase reference](phase-reference.md)      | Detailed inputs, outputs, and state transitions for all six phases     |
+| [Handoff pipeline](handoff-pipeline.md)    | Backlog generation, review summary, and the Security-to-RAI pipeline   |
 | [Security planning overview](../security/) | The Security Planner agent that feeds into RAI assessment              |
 
 <!-- markdownlint-disable MD036 -->

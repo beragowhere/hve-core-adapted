@@ -1,38 +1,98 @@
 ---
-description: 'Embedded RAI standards for Phase 3: Microsoft RAI Standard v2 principles and NIST AI RMF subcategory mappings'
+description: 'Embedded RAI standards for Phase 3: Microsoft Responsible AI Impact Assessment Guide principles and NIST AI RMF subcategory mappings'
 applyTo: '**/.copilot-tracking/rai-plans/**'
 ---
 
 # RAI Standards Reference
 
-Frequently-used Responsible AI standards are embedded directly in this file for immediate reference during Phase 3 of the RAI planning workflow. The Microsoft RAI Standard v2 provides the principle framework with a Goal, Requirement, and Tool hierarchy. NIST AI RMF 1.0 provides the authoritative subcategory structure across 4 core functions and 72 subcategories. Evolving regulatory frameworks (EU AI Act, ISO 42001, domain-specific regulations) are delegated to the Researcher Subagent at runtime.
+Frequently-used Responsible AI standards are embedded directly in this file for immediate reference during Phase 3 of the RAI planning workflow. The Microsoft Responsible AI Impact Assessment Guide provides the principle framework organized by Goals across Accountability, Transparency, Fairness, and Reliability and Safety. NIST AI RMF 1.0 provides the authoritative subcategory structure across 4 core functions and 72 subcategories. Evolving regulatory frameworks (EU AI Act, ISO 42001, domain-specific regulations) are delegated to the Researcher Subagent at runtime.
 
 At least one principle from each embedded framework should map to every AI system component in the RAI plan. The phase mapping table provides starting-point alignments; refine these during Phase 3 analysis.
 
-## Microsoft RAI Standard v2
+## Attribution
 
-Microsoft's Responsible AI Standard v2 (June 2022) organizes guidance into 6 principles, each following a hierarchical structure: Core Principle, Goals, Requirements, Assessment Criteria, and Tooling. Use this table to identify applicable principles for each AI system component and select appropriate assessment tools.
+> NIST AI RMF content based on: National Institute of Standards and Technology (2023)
+> Artificial Intelligence Risk Management Framework (AI RMF 1.0). NIST AI 100-1.
+> https://doi.org/10.6028/NIST.AI.100-1
+>
+> Republished courtesy of the National Institute of Standards and Technology.
+> This material is a work of the U.S. Government and is not subject to copyright
+> protection in the United States. Reference herein does not imply endorsement
+> by NIST.
 
-| Principle              | Goal                                                                                  | Assessment Criteria                                                                | Tooling                                      |
-|------------------------|---------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|----------------------------------------------|
-| Fairness               | AI systems treat everyone fairly and avoid affecting similar groups differently       | Demographic parity, equalized odds, group-level fairness metrics                   | Fairlearn, RAI Dashboard Fairness Analysis   |
-| Reliability and Safety | Systems operate reliably, safely, and consistently as designed                        | Cohort error analysis, performance bounds, stress testing, robustness evaluation   | RAI Dashboard Error Analysis, Model Overview |
-| Privacy and Security   | Protect privacy and secure personal and business information throughout the lifecycle | Differential privacy verification, data minimization, access control review        | SmartNoise, Microsoft Purview DSPM           |
-| Inclusiveness          | AI technology benefits and empowers everyone                                          | Dataset representation analysis, accessibility testing, diverse cohort evaluation  | RAI Dashboard Data Analysis                  |
-| Transparency           | Stakeholders understand how AI systems make decisions                                 | Feature importance, SHAP values, glass-box model analysis, model card completeness | InterpretML, RAI Dashboard Interpretability  |
-| Accountability         | Designers and deployers are accountable for system operation                          | PDF scorecards, model cards, decision audit trails, governance review completeness | RAI Dashboard Scorecard, Audit logging       |
+> Microsoft Responsible AI Impact Assessment Guide content © 2022 Microsoft Corporation.
+> All rights reserved. Based on: [Microsoft Responsible AI Impact Assessment Guide](https://aka.ms/RAI)
+> (June 2022, edited for external release).
+>
+> This document is provided "as-is." Information and views expressed in this
+> document may change without notice. You bear the risk of using it. This
+> document does not provide you with any legal rights to any intellectual
+> property in any Microsoft product. You may copy and use this document for
+> your internal, reference purposes. This content has been reformatted for
+> use as AI agent instructions and does not constitute the complete Guide.
+> Reference herein does not imply endorsement by Microsoft beyond the scope
+> of this project.
 
-### Assessment Workflows
+## Microsoft Responsible AI Impact Assessment Guide
 
-The RAI Dashboard supports two primary evaluation workflows:
+The Microsoft Responsible AI Impact Assessment Guide (June 2022) defines a structured planning methodology for AI systems. The agent's six phases align with the Guide's five sections and 13 Goals.
 
-* Model debugging (3-stage): Error Analysis, Fairness Analysis, Model Interpretability
-* Responsible decision-making: Causal Inference, Counterfactual What-If, Data Analysis
+### Guide Sections
 
-Both workflows produce exportable PDF scorecards for stakeholder review.
+| Section | Title                | Agent Phase Mapping                                |
+|---------|----------------------|----------------------------------------------------|
+| 01      | Project Overview     | Phase 1: AI System Scoping                         |
+| 02      | Intended Uses        | Phase 1–2: Scoping and Sensitive Uses              |
+| 03      | Adverse Impact       | Phase 2–4: Sensitive Uses and Security Model        |
+| 04      | Data Requirements    | Phase 3: Standards Mapping                         |
+| 05      | Summary of Impact    | Phase 5–6: Impact Assessment and Review            |
 
-> [!NOTE]
-> Current RAI Dashboard tooling is designed for ML classification and regression models with tabular data. LLM and generative AI assessment requires separate evaluation approaches (Azure AI Content Safety and related services).
+### Goals by Principle
+
+#### Accountability
+
+| Goal | Description                     | Planning Focus                                       |
+|------|---------------------------------|------------------------------------------------------|
+| A2   | Oversight and control           | Governance structures, escalation paths              |
+| A3   | Fit for purpose                 | Validation of system purpose and context             |
+| A4   | Data governance and management  | Data lifecycle, quality, and compliance              |
+| A5   | Human oversight and control     | Human-in-the-loop mechanisms, override capability    |
+
+#### Transparency
+
+| Goal | Description                        | Planning Focus                                      |
+|------|------------------------------------|-----------------------------------------------------|
+| T1   | Intelligibility                    | Model explainability, decision traceability         |
+| T2   | Communication to stakeholders      | Disclosure practices, user-facing documentation     |
+| T3   | Disclosure of AI interaction       | Users informed when interacting with AI             |
+
+#### Fairness
+
+| Goal | Description                                    | Planning Focus                                  |
+|------|------------------------------------------------|-------------------------------------------------|
+| F1   | Quality of service                             | Equitable performance across user groups        |
+| F2   | Allocation of resources and opportunities      | Fair distribution of outcomes                   |
+| F3   | Minimization of stereotyping                   | Avoidance of harmful stereotypes in outputs     |
+
+#### Reliability and Safety
+
+| Goal | Description                | Planning Focus                                            |
+|------|----------------------------|-----------------------------------------------------------|
+| RS1  | Reliability guidance       | Operational reliability standards and expectations        |
+| RS2  | Failures and remediations  | Failure mode analysis and remediation planning            |
+| RS3  | Ongoing monitoring         | Continuous monitoring and incident response               |
+
+#### Privacy and Security
+
+The Impact Assessment Guide references existing organizational standards: "Refer to the Microsoft Privacy Standard and Microsoft Security Policy for compliance." Review alignment with applicable privacy and security policies rather than applying Guide-specific Goals.
+
+#### Inclusiveness
+
+The Impact Assessment Guide references existing organizational standards: "Refer to the standards for compliance" and "Microsoft Accessibility Standards." Review accessibility and inclusion alignment with applicable standards rather than applying Guide-specific Goals.
+
+### Planning Workflows
+
+The Guide prescribes iterative review across the AI system lifecycle. Each section includes stakeholder identification, benefit and harm analysis, and mitigation planning.
 
 ## NIST AI RMF 1.0 Core Functions
 
@@ -185,13 +245,14 @@ These Measure subcategories overlap directly with security security model analys
 
 This table maps RAI Planner phases to NIST AI RMF subcategories. Use these alignments as starting points for each phase's standards coverage.
 
-| RAI Planner Phase           | AI RMF Function  | Key Subcategories                                                                                                    |
-|-----------------------------|------------------|----------------------------------------------------------------------------------------------------------------------|
-| Phase 1 (Scoping)           | Govern + Map     | GV-1 (policies), MP-1 through MP-5 (context, requirements, benefits and costs, third-party risks, impact assessment) |
-| Phase 2 (Standards Mapping) | Govern + Measure | GV-1 through GV-6 (full governance), MS-1 (measurement approach)                                                     |
-| Phase 3 (Assessment)        | Measure          | MS-2.5 through MS-2.11 (trustworthiness evaluation per characteristic)                                               |
-| Phase 4 (Mitigation)        | Manage           | MN-1 through MN-4 (risk prioritization, response, monitoring, documentation)                                         |
-| Phase 5 (Review)            | Manage           | MN-3 (third-party monitoring), MN-4 (continual improvement, incident communication)                                  |
+| RAI Planner Phase                    | AI RMF Function  | Key Subcategories                                                                                                    |
+|--------------------------------------|------------------|----------------------------------------------------------------------------------------------------------------------|
+| Phase 1 (Scoping)                    | Govern + Map     | GV-1 (policies), MP-1 through MP-5 (context, requirements, benefits and costs, third-party risks, impact assessment) |
+| Phase 2 (Sensitive Uses)             | Govern           | GV-1 (policies), GV-3 (DEI&A), GV-5 (stakeholder engagement)                                                        |
+| Phase 3 (Standards Mapping)          | Govern + Measure | GV-1 through GV-6 (full governance), MS-1 (measurement approach)                                                     |
+| Phase 4 (Security Model Analysis)    | Measure          | MS-2.5 through MS-2.11 (trustworthiness evaluation per characteristic)                                               |
+| Phase 5 (Impact Assessment)          | Manage           | MN-1 through MN-4 (risk prioritization, response, monitoring, documentation)                                         |
+| Phase 6 (Review and Handoff)         | Manage           | MN-3 (third-party monitoring), MN-4 (continual improvement, incident communication)                                  |
 
 ### Trustworthiness Characteristics Hierarchy
 
@@ -216,7 +277,16 @@ Evolving regulatory frameworks and emerging AI governance standards are delegate
 | Financial ML Regulations | Domain-specific financial services AI requirements, jurisdiction-dependent                         |
 | Regional AI Frameworks   | Jurisdiction-specific AI governance (Singapore Model AI Governance, Canada AIDA, UK AI Regulation) |
 
-Do NOT delegate Microsoft RAI Standard v2, NIST AI RMF, or RAI-Security overlap lookups. Those standards are embedded above.
+Do NOT delegate Microsoft Responsible AI Impact Assessment Guide, NIST AI RMF, or RAI-Security overlap lookups. Those standards are embedded above.
+
+### User-Supplied Standards
+
+Before completing standards mapping, check `.copilot-tracking/rai-plans/references/` for files with type `standard` in `referencesProcessed` state. When user-supplied standards exist:
+
+1. Read each standard reference file from `.copilot-tracking/rai-plans/references/`.
+2. Map the user-supplied standard's requirements alongside the embedded frameworks (Impact Assessment Guide, NIST AI RMF).
+3. Include user-supplied standard mappings in the component standards mapping output under a **User-Supplied Standards** subsection.
+4. Display the AI processing disclaimer for each user-supplied standard: "AI processed this user-supplied standard and may generate inconsistent results. Verify against the original source."
 
 ### When to Delegate
 
@@ -284,3 +354,19 @@ For each AI system component, produce a standards mapping block following this s
 ```
 
 Include justification for each mapped standard, explaining why the principle or subcategory is relevant to the specific component. Flag gaps where a standard should apply based on the phase mapping table but no corresponding assessment exists.
+
+### Output Detail Adjustments
+
+When `userPreferences.outputDetailLevel` is:
+
+* **summary**: Emit only the principle name, mapped standard reference, and one-line rationale.
+* **standard**: Emit the full mapping table with rationale column (current default behavior).
+* **comprehensive**: Emit the full mapping table plus evidence chains linking each mapping to source Guide sections and NIST subcategories.
+
+### Progressive Presentation
+
+Present standards mapping progressively:
+
+1. Core principles (Fairness, Reliability and Safety, Privacy and Security, Inclusiveness, Transparency, Accountability) — always mapped first.
+2. NIST AI RMF subcategories — map the most relevant subcategories per the system's context; present remaining subcategories upon request.
+3. Specialized standards — include domain-specific standards (ISO, sector regulations) only when the user's system context indicates relevance.

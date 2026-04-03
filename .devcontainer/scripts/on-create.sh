@@ -76,6 +76,29 @@ main() {
   sudo tar -xzf /tmp/gitleaks.tar.gz -C /usr/local/bin gitleaks
   rm /tmp/gitleaks.tar.gz
 
+  echo "Installing cosign..."
+  COSIGN_VERSION="3.0.5"
+  if [[ "${ARCH}" == "x86_64" ]]; then
+    COSIGN_ARCH="amd64"
+    COSIGN_SHA256="db15cc99e6e4837daabab023742aaddc3841ce57f193d11b7c3e06c8003642b2"
+  elif [[ "${ARCH}" == "aarch64" ]]; then
+    COSIGN_ARCH="arm64"
+    COSIGN_SHA256="d098f3168ae4b3aa70b4ca78947329b953272b487727d1722cb3cb098a1a20ab"
+  else
+    echo "ERROR: Unsupported architecture for cosign: ${ARCH}" >&2
+    exit 1
+  fi
+  curl -sSfL "${GITHUB_RELEASES_URL}/sigstore/cosign/releases/download/v${COSIGN_VERSION}/cosign-linux-${COSIGN_ARCH}" -o /tmp/cosign
+
+  echo "Checking cosign binary integrity..."
+  if ! echo "${COSIGN_SHA256} /tmp/cosign" | sha256sum -c --quiet -; then
+    echo "ERROR: SHA256 checksum verification failed for cosign binary" >&2
+    rm /tmp/cosign
+    exit 1
+  fi
+  sudo install /tmp/cosign /usr/local/bin/cosign
+  rm /tmp/cosign
+
   echo "Installing uv package manager..."
   # Dependencies are pinned for stability. Dependabot and security workflows manage updates.
   UV_VERSION="0.10.8"

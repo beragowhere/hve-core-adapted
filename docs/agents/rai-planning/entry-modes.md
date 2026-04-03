@@ -93,7 +93,7 @@ Prompt file: `.github/prompts/rai-planning/rai-plan-from-security-plan.prompt.md
 |------------------------|----------------------------------|----------------------------------|------------------------------------|
 | Initial context        | None                             | Product requirements             | Security plan with AI components   |
 | AI component discovery | Manual via interview             | Extracted from PRD artifacts     | Pre-populated from security plan   |
-| Threat ID continuity   | Starts at `RAI-T-{CATEGORY}-001` | Starts at `RAI-T-{CATEGORY}-001` | Continues from security plan count |
+| Threat ID continuity   | Starts at `T-RAI-001`            | Starts at `T-RAI-001`            | Continues from security plan count |
 | Time to Phase 2        | Longest                          | Medium                           | Shortest                           |
 | Best for               | Fresh assessments, exploratory   | Projects with product docs       | Recommended post-security-plan     |
 

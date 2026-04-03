@@ -1,13 +1,17 @@
 ---
 description: >-
-  Initiate a responsible AI assessment from existing knowledge using the
+  Initiate responsible AI assessment planning from existing knowledge using the
   RAI Planner agent in capture mode
-agent: rai-planner
+agent: "RAI Planner"
 ---
 
 # RAI Capture
 
 Activate the RAI Planner in **capture mode** for project slug `${input:project-slug}`.
+
+> **Disclaimer** — This tool provides structured prompts and frameworks to support responsible AI planning. It is not a substitute for professional legal, compliance, or ethics review. All outputs are suggestions for human evaluation. Organizational RAI policies and applicable regulations take precedence.
+
+> **Attribution** — This assessment references the [Microsoft Responsible AI Impact Assessment Guide](https://aka.ms/RAI) (© 2022 Microsoft Corporation, all rights reserved). The Guide is provided "as-is" and does not provide any legal rights to any intellectual property in any Microsoft product. You may copy and use this document for your internal, reference purposes. This assessment also references NIST AI RMF 1.0, a U.S. Government work not subject to copyright protection in the United States.
 
 ## Requirements
 
@@ -26,5 +30,6 @@ Begin the Phase 1 AI System Scoping interview with up to 7 focused questions cov
 - Stakeholder roles (developers, operators, affected individuals)
 - Intended and unintended use scenarios
 - Known AI-specific risks or concerns
+- User-supplied evaluation standards, sensitive use categories, or output format requirements to store in `.copilot-tracking/rai-plans/references/`
 
 Present a short summary sentence of the assessment scope before asking questions.

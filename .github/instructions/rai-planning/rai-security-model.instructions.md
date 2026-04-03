@@ -125,12 +125,12 @@ Both IDs appear in the extended threat table, linking the RAI assessment to the 
 
 ## Extended Threat Table Format
 
-The threat table extends the Security Planner format with three additional columns: RAI ID, RAI Principle, and NIST AI RMF.
+The threat table extends the Security Planner format with five additional columns: RAI ID, RAI Principle, NIST AI RMF, Suggested Threat Origin, and Concern Level.
 
 ```markdown
-| Threat ID     | RAI ID    | STRIDE    | RAI Principle | NIST AI RMF | Description                                          | AI Element          | Trust Boundary         | Likelihood | Impact | Risk     | Mitigation                                                    |
-|---------------|-----------|-----------|---------------|-------------|------------------------------------------------------|---------------------|------------------------|------------|--------|----------|---------------------------------------------------------------|
-| T-DATA-AI-001 | T-RAI-003 | Tampering | Fairness      | Map 2.3     | Training data poisoning introducing demographic bias | Training Data Store | Training Data Boundary | High       | High   | Critical | Data validation pipeline, bias detection, provenance tracking |
+| Threat ID     | RAI ID    | STRIDE    | RAI Principle | NIST AI RMF | Description                                          | AI Element          | Trust Boundary         | Suggested Threat Origin | Concern Level | Mitigation                                                    |
+|---------------|-----------|-----------|---------------|-------------|------------------------------------------------------|---------------------|------------------------|-------------------------|---------------|---------------------------------------------------------------|
+| T-DATA-AI-001 | T-RAI-003 | Tampering | Fairness      | Map 2.3     | Training data poisoning introducing demographic bias | Training Data Store | Training Data Boundary | Data Pipeline           | High Concern  | Data validation pipeline, bias detection, provenance tracking |
 ```
 
 ### Column Definitions
@@ -143,10 +143,45 @@ The threat table extends the Security Planner format with three additional colum
 * Description: Clear description of the threat, attack vector, and affected behavior.
 * AI Element: Element type from the AI Element Types table.
 * Trust Boundary: Boundary crossed or affected from the AI Trust Boundaries table.
-* Likelihood: High, Medium, Low, or ❓ (unassessed).
-* Impact: High, Medium, Low, or ❓ (unassessed).
-* Risk: Calculated using the standard risk matrix (High x High = Critical, High x Medium or Medium x High = High, Medium x Medium = Medium, Low x any or any x Low = Low).
+* Suggested Threat Origin: Where the threat originates (Data Pipeline, Model, Interface, Infrastructure, or Cross-cutting).
+* Concern Level: Qualitative assessment of threat significance (Low Concern, Moderate Concern, or High Concern).
 * Mitigation: Proposed mitigation strategy with standards references.
+
+### Concern Level Assessment
+
+Suggest a qualitative concern level for each identified threat based on contextual judgment:
+
+| Concern Level    | Criteria                                                                                |
+|------------------|-----------------------------------------------------------------------------------------|
+| Low Concern      | Threat is theoretical or mitigated by existing controls; no immediate action suggested.  |
+| Moderate Concern | Threat is plausible and partially mitigated; additional controls recommended.            |
+| High Concern     | Threat is likely or unmitigated; priority mitigation suggested.                          |
+
+The concern level is a suggested assessment for the team's consideration, not a definitive risk rating.
+
+### Threat Origin Grouping
+
+After populating the threat table, present a summary grouped by Suggested Threat Origin. This helps the team identify which system components carry the most threats and prioritize architectural mitigations. Present AI-specific threats (Data Pipeline, Model) first, then Interface threats, then Infrastructure and Cross-cutting threats.
+
+### Output Detail Level
+
+Adjust threat table column visibility based on `userPreferences.outputDetailLevel`:
+
+| Level         | Visible Columns                                                                                                                          |
+|---------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| summary       | RAI ID, STRIDE, Concern Level, Suggested Threat Origin.                                                                                  |
+| standard      | All columns (default).                                                                                                                   |
+| comprehensive | All columns plus a "Detailed Rationale" column with per-threat analysis explaining the concern level assignment and mitigation reasoning. |
+
+### Audience Adaptation
+
+Adjust ML STRIDE matrix presentation based on `userPreferences.audienceProfile`:
+
+| Profile   | Presentation                                                                                  |
+|-----------|-----------------------------------------------------------------------------------------------|
+| technical | Include the full ML STRIDE matrix.                                                            |
+| executive | Summarize ML-specific threats in narrative prose; omit the matrix.                            |
+| mixed     | Include the matrix with regulatory cross-references and contextual notes for diverse audiences. |
 
 ## ML STRIDE Matrix
 
@@ -242,9 +277,9 @@ description: RAI-specific threat analysis extending security plan security model
 
 ## Extended Threat Table
 
-| Threat ID | RAI ID    | STRIDE | RAI Principle | NIST AI RMF | Description | AI Element | Trust Boundary | Likelihood | Impact | Risk | Mitigation |
-|-----------|-----------|--------|---------------|-------------|-------------|------------|----------------|------------|--------|------|------------|
-|           | T-RAI-001 |        |               |             |             |            |                |            |        |      |            |
+| Threat ID | RAI ID    | STRIDE | RAI Principle | NIST AI RMF | Description | AI Element | Trust Boundary | Suggested Threat Origin | Concern Level | Mitigation |
+|-----------|-----------|--------|---------------|-------------|-------------|------------|----------------|-------------------------|---------------|------------|
+|           | T-RAI-001 |        |               |             |             |            |                |                         |               |            |
 
 ## Cross-Reference
 
@@ -288,11 +323,11 @@ For each threat, document the control surface:
 | Control Description   | {description}                             |
 | Implementation Status | Implemented, Partial, Planned, or Missing |
 | Evidence              | {reference to evidence or "None"}         |
-| Residual Risk         | {risk level after control application}    |
+| Residual Concern      | {concern level after control application} |
 
 ### Control Surface Table
 
-| RAI ID    | Control Category | Control Description | Status | Evidence | Residual Risk |
-|-----------|------------------|---------------------|--------|----------|---------------|
-| T-RAI-001 |                  |                     |        |          |               |
+| RAI ID    | Control Category | Control Description | Status | Evidence | Residual Concern |
+|-----------|------------------|---------------------|--------|----------|------------------|
+| T-RAI-001 |                  |                     |        |          |                  |
 ```

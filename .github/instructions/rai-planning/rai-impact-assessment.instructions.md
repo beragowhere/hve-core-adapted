@@ -9,7 +9,7 @@ Phase 5 evaluates control surface completeness for each identified threat, docum
 
 ## Control Surface Taxonomy
 
-The taxonomy maps six Microsoft RAI Standard v2 principles against three control types. Each cell represents a control surface that may contain one or more mitigations.
+The taxonomy maps six responsible AI principles against three control types. Each cell represents a control surface that may contain one or more mitigations.
 
 | Principle              | Prevent                                                              | Detect                                                              | Respond                                                     |
 |------------------------|----------------------------------------------------------------------|---------------------------------------------------------------------|-------------------------------------------------------------|
@@ -43,7 +43,7 @@ Each evidence entry requires these fields:
 * Evidence ID: format `EV-{PRINCIPLE_ABBR}-{NNN}` where abbreviations are FAIR, REL, PRIV, INCL, TRAN, ACCT
 * Threat ID: the `T-RAI-{NNN}` identifier from Phase 4 security model analysis
 * Cross-Reference Threat ID: the `T-{BUCKET}-AI-{NNN}` identifier when a Security Planner threat exists
-* Principle: one of the six MS RAI Standard v2 principles
+* Principle: one of the six responsible AI principles
 * Control Type: Prevent, Detect, or Respond
 * Control Description: what the mitigation does and how it operates
 * Coverage Status: Full, Partial, or Gap
@@ -58,6 +58,14 @@ Each evidence entry requires these fields:
 * Set Coverage Status to Gap when no evidence source exists for the control.
 * Review all Gap entries during work item generation.
 
+### Output Detail Levels
+
+When `userPreferences.outputDetailLevel` is set, adjust the evidence register output:
+
+* **summary** — Evidence register captures Evidence ID, Evidence Source, and one-line summary per entry.
+* **standard** — Default behavior. Full evidence fields as defined above.
+* **comprehensive** — Full evidence register plus chain-of-custody tracking (who provided the evidence, when, and verification chain) and cross-references to external documents.
+
 ### Evidence Summary Table
 
 | Evidence ID | Threat ID | Principle              | Control Type | Coverage Status |
@@ -68,7 +76,7 @@ Each evidence entry requires these fields:
 
 ## Guardrail Verification Checklist
 
-The guardrail verification checklist confirms that cataloged controls function as intended, not only that they exist. Walk through each category with the user and record verification findings in the evidence register using the Verification Status field.
+The guardrail verification checklist evaluates whether cataloged controls function as intended, not only that they exist. Walk through each category with the user and record verification findings in the evidence register using the Verification Status field.
 
 ### Input Guardrails
 
@@ -94,7 +102,7 @@ For each guardrail evaluated, update the corresponding evidence register entry:
 
 ## Appropriate Reliance Assessment
 
-Appropriate reliance ensures users neither over-trust nor under-trust AI-generated outputs. This assessment evaluates whether the system's design calibrates user trust to match the system's actual reliability. Findings produce evidence register entries using the standard `EV-{PRINCIPLE_ABBR}-{NNN}` format under Reliability and Safety or Transparency principles.
+Appropriate reliance helps ensure users neither over-trust nor under-trust AI-generated outputs. This assessment evaluates whether the system's design calibrates user trust to match the system's actual reliability. Findings produce evidence register entries using the standard `EV-{PRINCIPLE_ABBR}-{NNN}` format under Reliability and Safety or Transparency principles.
 
 ### Trust Calibration
 
@@ -126,32 +134,26 @@ Appropriate reliance ensures users neither over-trust nor under-trust AI-generat
 * When under-reliance is detected, what intervention is available (contextual guidance, accuracy demonstrations, workflow adjustments)?
 * Is there a feedback mechanism for users to report why they distrust specific outputs?
 
-## Fairness-Weighted Difficulty Assessment
+## Suggested Priority Derivation
 
-The FWD assessment scores each threat-control pairing on two dimensions: difficulty of implementation and fairness impact. The product of these scores determines remediation priority.
+Priority is derived from the combination of concern levels, trigger severity, and principleTracker observations. Never derive priority from numerical scores.
 
-### FWD Scoring
+### Priority Levels
 
-| Dimension                 | Score 1                               | Score 2                                     | Score 3                                  |
-|---------------------------|---------------------------------------|---------------------------------------------|------------------------------------------|
-| Implementation Difficulty | Low: standard tooling, minimal effort | Medium: custom development, moderate effort | High: novel research, significant effort |
-| Fairness Impact           | Low: limited demographic effect       | Medium: measurable disparate impact         | High: systemic exclusion or harm         |
+| Priority | Criteria | Suggested Action |
+|----------|----------|------------------|
+| Immediate | Restricted use trigger fired, or High concern level on safety-critical threat, or multiple principles show "Not yet addressed" maturity | Warrants prompt attention before deployment |
+| Near-term | Moderate concern level with partial control coverage, or single principle shows "Not yet addressed" maturity | Recommended for upcoming development cycles |
+| Planned | Low-to-Moderate concern level with identified improvement opportunities | Consider for future iterations |
+| Backlog | Low concern level with existing controls in place | Note for long-term consideration |
 
-The combined FWD score ranges from 1 to 9. Higher scores indicate greater urgency.
+### Derivation Rules
 
-| FWD Score Range | Priority |
-|-----------------|----------|
-| 7-9             | Critical |
-| 4-6             | High     |
-| 2-3             | Medium   |
-| 1               | Low      |
-
-### FWD Assessment Table
-
-| Evidence ID | Threat ID | Implementation Difficulty | Fairness Impact | FWD Score |
-|-------------|-----------|---------------------------|-----------------|-----------|
-| EV-FAIR-001 | T-RAI-001 | 2                         | 3               | 6         |
-| EV-REL-001  | T-RAI-002 | 1                         | 2               | 2         |
+* Restricted use triggers (from Phase 2 sensitive uses screening) automatically suggest Immediate priority.
+* Concern levels from Phase 4 security model inform priority: High concern → Immediate or Near-term; Moderate concern → Near-term or Planned; Low concern → Planned or Backlog.
+* principleTracker observations provide supporting evidence for priority selection.
+* When multiple signals conflict, select the higher priority and document the reasoning.
+* Present all priorities as suggestions for user review — the user makes final priority decisions.
 
 ## Tradeoff Documentation
 
@@ -167,6 +169,14 @@ Each tradeoff entry includes:
 * Decision: which principle takes priority and under what conditions
 * Compensating Controls: mitigations that reduce the impact on the deprioritized principle
 * Residual Risk: remaining exposure after compensating controls are applied
+
+### Audience Adaptation
+
+When `userPreferences.audienceProfile` is set, adjust tradeoff presentation:
+
+* **technical** — Detailed tradeoff analysis with implementation implications, code-level control descriptions, and specific metric thresholds.
+* **executive** — High-level tradeoff summary with business impact focus, risk-to-opportunity framing, and strategic recommendations.
+* **mixed** — Tradeoff documentation with regulatory mapping and contextual notes accessible to diverse audiences.
 
 ### Common Tradeoffs
 
@@ -194,56 +204,97 @@ Detailed model explanations can expose proprietary logic or create adversarial a
 
 Comprehensive monitoring generates usage data that may conflict with data minimization requirements. Document the monitoring scope, data retention policies, and any anonymization applied to monitoring outputs.
 
-## Per-Principle Rubrics
+## Per-Principle Maturity Indicators
 
-Score each principle from 1 to 5 based on control surface coverage, evidence completeness, and tradeoff documentation. The rubric below defines thresholds for each score level.
+Assess each principle's maturity based on evidence gathered during the session. Select the indicator that best describes the current state and document observations supporting the selection in the principleTracker.
 
-| Score | Fairness                                                          | Reliability and Safety                                                          | Privacy and Security                                                      | Inclusiveness                                                                 | Transparency                                                                                   | Accountability                                                                             |
-|-------|-------------------------------------------------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------------------------|-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
-| 1     | No bias testing or fairness metrics defined                       | No input validation or failsafe mechanisms                                      | No privacy controls or data minimization                                  | No accessibility testing or diverse user research                             | No model documentation or explanation capability                                               | No audit logging or approval workflows                                                     |
-| 2     | Bias testing planned but not yet executed                         | Basic input validation only                                                     | Data minimization policy exists but is not enforced                       | Accessibility guidelines documented but not tested                            | Model card exists but lacks explanation interfaces                                             | Audit logging exists but is not monitored                                                  |
-| 3     | Bias testing executed with partial demographic coverage           | Input validation and basic drift detection in place                             | Data minimization enforced with periodic access reviews                   | Accessibility testing on primary interaction modes                            | Model card and basic explanation interface available                                           | Audit logging with periodic review cycles                                                  |
-| 4     | Comprehensive bias testing with ongoing monitoring                | Full input validation, drift detection, and anomaly alerts                      | Differential privacy applied with continuous monitoring                   | Multi-modal accessibility tested with diverse user groups                     | Detailed model card, explanation interface, and decision trails                                | Role-based access with automated compliance monitoring                                     |
-| 5     | Continuous fairness monitoring with automated retraining triggers | Adversarial robustness testing, failsafe defaults, and tested incident response | Full privacy stack with breach response tested and data deletion verified | Inclusive design validated through ongoing diverse user research and feedback | Complete transparency stack with user comprehension testing and explanation quality monitoring | Full accountability chain with escalation procedures tested and corrective actions tracked |
+### Fairness Maturity Indicators
 
-### Scoring Rules
+* **Foundational** — Basic awareness exists; no formal bias testing or fairness metrics defined.
+* **Developing** — Some bias testing planned or executed with partial demographic coverage; gaps remain in coverage or consistency.
+* **Established** — Comprehensive bias testing with ongoing monitoring; regular review cycles in place.
+* **Advanced** — Continuous fairness monitoring with automated processes; industry-leading practices active.
 
-* Score each principle independently based on the rubric thresholds.
-* Use evidence from the evidence register to justify the assigned score.
-* A score of 3 represents the minimum acceptable baseline for production deployment.
-* Principles scoring below 3 require work items with Critical or High priority.
-* Document the rationale for each score in the assessment output.
+### Reliability and Safety Maturity Indicators
+
+* **Foundational** — Basic awareness exists; no formal input validation or failsafe mechanisms.
+* **Developing** — Basic input validation in place; drift detection planned but not yet operational.
+* **Established** — Full input validation, drift detection, and anomaly alerts operational; regular testing cycles.
+* **Advanced** — Adversarial robustness testing, failsafe defaults, and tested incident response; continuous improvement active.
+
+### Privacy and Security Maturity Indicators
+
+* **Foundational** — Basic awareness exists; no formal privacy controls or data minimization.
+* **Developing** — Data minimization policy exists; access controls partially implemented.
+* **Established** — Privacy controls enforced with periodic access reviews; monitoring in place.
+* **Advanced** — Full privacy stack with breach response tested and data deletion verified; continuous monitoring active.
+
+### Inclusiveness Maturity Indicators
+
+* **Foundational** — Basic awareness exists; no formal accessibility testing or diverse user research.
+* **Developing** — Accessibility guidelines documented; some testing on primary interaction modes.
+* **Established** — Multi-modal accessibility tested with diverse user groups; regular review cycles.
+* **Advanced** — Inclusive design validated through ongoing diverse user research and feedback; continuous improvement active.
+
+### Transparency Maturity Indicators
+
+* **Foundational** — Basic awareness exists; no formal model documentation or explanation capability.
+* **Developing** — Model card exists; basic explanation interface planned or partially available.
+* **Established** — Detailed model card, explanation interface, and decision trails available; regular updates.
+* **Advanced** — Complete transparency stack with user comprehension testing and explanation quality monitoring; continuous improvement active.
+
+### Accountability Maturity Indicators
+
+* **Foundational** — Basic awareness exists; no formal audit logging or approval workflows.
+* **Developing** — Audit logging exists; role-based access partially implemented.
+* **Established** — Role-based access with compliance monitoring; periodic review cycles in place.
+* **Advanced** — Full accountability chain with escalation procedures tested and corrective actions tracked; continuous improvement active.
+
+### Assessment Rules
+
+* Assess each principle independently based on evidence from the evidence register and session observations.
+* Document the rationale for each maturity level in the principleTracker.
+* Principles at the Foundational level suggest work items with Immediate or Near-term priority.
+* When presenting maturity level assessments, explain the reasoning by citing specific observations from the session. Do not present bare maturity levels without supporting evidence.
 
 ## Work Item Generation
 
-Generate work items from the evidence register for entries with Coverage Status of Gap or Partial and for principles scoring below 3 on the rubric.
+Generate work items from the evidence register for entries with Coverage Status of Gap, and for entries with Coverage Status of Partial when the associated principle is at Foundational maturity level.
 
 ### Generation Rules
 
 * Create one work item per evidence register entry with Coverage Status of Gap.
-* Create one work item per evidence register entry with Coverage Status of Partial when the associated principle scores below 3.
+* Create one work item per evidence register entry with Coverage Status of Partial when the associated principle is at Foundational maturity level based on principleTracker observations.
 * Include the Evidence ID, Threat ID, Principle, Control Type, and Control Description in the work item body.
 * Reference the Tradeoff ID when the work item involves a documented tradeoff.
-* Map the FWD score to the priority using the FWD priority table.
-
-### Priority Mapping
-
-| FWD Score Range | Work Item Priority                     |
-|-----------------|----------------------------------------|
-| 7-9             | Critical: address before deployment    |
-| 4-6             | High: address within current iteration |
-| 2-3             | Medium: schedule for next iteration    |
-| 1               | Low: add to backlog                    |
+* Derive the suggested priority using the Suggested Priority Derivation rules from the priority section above.
 
 ### Work Item Fields
 
 * Title: `[RAI] {Principle}: {Control Description summary}`
-* Priority: mapped from FWD score
+* Suggested Priority: derived from concern levels, trigger severity, and principleTracker observations
 * Evidence ID: the associated evidence register entry
 * Threat ID: the associated threat from Phase 4
 * Principle: the RAI principle
 * Control Type: Prevent, Detect, or Respond
 * Acceptance Criteria: the condition that moves Coverage Status from Gap or Partial to Full
+* Suggested Remediation Horizon: Pre-Production, Early Operations, or Ongoing Governance
+
+### Suggested Remediation Horizons
+
+| Horizon | Description | Typical Triggers |
+|---------|-------------|------------------|
+| Pre-Production | Address before initial deployment | Safety-critical controls, restricted use gates, Immediate priority items |
+| Early Operations | Address within first operational cycle | Monitoring controls, user feedback loops, Near-term priority items |
+| Ongoing Governance | Continuous improvement items | Process refinement, training updates, Planned or Backlog priority items |
+
+### Horizon Derivation Rules
+
+* Safety-critical controls and controls associated with restricted use triggers → Pre-Production.
+* Monitoring, detection, and feedback controls → Early Operations.
+* Process, governance, and training controls → Ongoing Governance.
+* When the horizon is uncertain, default to Early Operations with a note explaining the ambiguity.
+* Present all horizon suggestions as recommendations for user review.
 
 ## Artifact Templates
 
