@@ -25,7 +25,6 @@ artifact-classification:
   agentic:
     scope:
       - .github/instructions/rai-planning/**
-      - .github/instructions/security/**
     required-footers:
       - ai-content-note
     artifacts:
@@ -36,7 +35,6 @@ artifact-classification:
   human-facing:
     scope:
       - .github/instructions/rai-planning/**
-      - .github/instructions/security/**
     required-footers:
       - ai-content-note
       - human-review-checkbox
@@ -52,7 +50,6 @@ artifact-classification:
   human-facing-with-disclaimer:
     scope:
       - .github/instructions/rai-planning/**
-      - .github/instructions/security/**
     required-footers:
       - ai-content-note
       - human-review-checkbox
