@@ -237,8 +237,7 @@ Describe 'Write-SecurityReport' -Tag 'Unit' {
 
         It 'Includes Timestamp in JSON' {
             $output = Write-SecurityReport -Results $script:testIssues -OutputFormat json
-            $json = $output | ConvertFrom-Json
-            $json.Timestamp.ToString('o') | Should -Match '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.*Z$'
+            $output | Should -Match '"Timestamp":\s*"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d+Z"'
         }
 
         It 'Includes Count in JSON' {
