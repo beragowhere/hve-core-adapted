@@ -156,16 +156,16 @@ description: 'Video-to-GIF conversion skill with FFmpeg two-pass optimization - 
 
 **`compatibility`** (string, optional)
 
-| Property | Value                                                                                                        |
-|----------|--------------------------------------------------------------------------------------------------------------|
-| Purpose  | Runtime requirements or prerequisites for the skill                                                          |
-| Use case | Skills that depend on interpreters, CLI tools, credentials, or other runtime dependencies                    |
-| Example  | `"Requires Python 3.11+, uv package manager, and network access for API calls"`                              |
+| Property | Value                                                                                     |
+|----------|-------------------------------------------------------------------------------------------|
+| Purpose  | Runtime requirements or prerequisites for the skill                                       |
+| Use case | Skills that depend on interpreters, CLI tools, credentials, or other runtime dependencies |
+| Example  | `"Requires Python 3.11+, uv package manager, and network access for API calls"`           |
 
 **`metadata`** (object, optional)
 
 | Property | Value                                                                              |
-|----------|-------------------------------------------------------------------------------------|
+|----------|------------------------------------------------------------------------------------|
 | Purpose  | Provenance and versioning metadata for the skill                                   |
 | Use case | Skills that track authorship, upstream framework versions, or source documentation |
 
