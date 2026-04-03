@@ -194,7 +194,7 @@ class ValidationSummary {
 
     [hashtable] ToHashtable() {
         return @{
-            Timestamp         = Get-StandardTimestamp
+            timestamp         = Get-StandardTimestamp
             totalFiles        = $this.TotalFiles
             filesWithErrors   = $this.FilesWithErrors
             filesWithWarnings = $this.FilesWithWarnings

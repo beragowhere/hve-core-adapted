@@ -346,14 +346,14 @@ Describe 'ValidationSummary Class' -Tag 'Unit' {
             $hash.ContainsKey('duration') | Should -BeTrue
         }
 
-        It 'Includes Timestamp using Get-StandardTimestamp in hashtable' {
+        It 'Includes timestamp using Get-StandardTimestamp in hashtable' {
             $summary = New-ValidationSummary
             $summary.Complete()
 
             $hash = $summary.ToHashtable()
 
-            $hash.ContainsKey('Timestamp') | Should -BeTrue
-            $hash['Timestamp'] | Should -Match '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d+Z$'
+            $hash.ContainsKey('timestamp') | Should -BeTrue
+            $hash['timestamp'] | Should -Match '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d+Z$'
         }
     }
 }
