@@ -13,7 +13,7 @@ Generate formatted work items from security model mitigations and standards gaps
 
 * Context: Phase 5 of the security planning workflow.
 * Input: Completed threat tables from Phase 4, including mitigations and standards references.
-* Output: Formatted work items targeting ADO, GitHub, or both, based on user preference.
+* Output: Formatted work items targeting GitHub, or both, based on user preference.
 * Ask which backlog system(s) to target before generating. Both formats can be generated simultaneously.
 
 ## ADO Work Item Template
@@ -163,7 +163,7 @@ Each RAI work item includes three additional fields beyond the standard template
 * `rai-phase`: Which RAI Planner phase generated the item.
 * `rai-priority`: RAI-specific priority based on impact assessment.
 
-These fields appear in the YAML metadata block for GitHub issues and as custom fields in ADO work items. They supplement (not replace) the standard priority, tags, and CIA fields.
+These fields appear in the YAML metadata block for GitHub issues and as custom fields in GitHub issues. They supplement (not replace) the standard priority, tags, and CIA fields.
 
 ## Work Item Reference Detection
 

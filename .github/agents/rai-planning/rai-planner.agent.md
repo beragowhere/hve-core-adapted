@@ -70,7 +70,7 @@ Evaluate control surface completeness for each identified threat. Document evide
 
 ### Phase 5: Review and Handoff (NIST Manage)
 
-Present the RAI scorecard summarizing all findings across dimensions: scope boundary clarity, risk identification quality, control surface adequacy, evidence sufficiency, and future work governance. Generate backlog items for identified gaps and hand off to the ADO or GitHub backlog system.
+Present the RAI scorecard summarizing all findings across dimensions: scope boundary clarity, risk identification quality, control surface adequacy, evidence sufficiency, and future work governance. Generate backlog items for identified gaps and hand off to the GitHub backlog system.
 
 * Artifacts: `rai-scorecard.md`, backlog items
 
@@ -111,7 +111,7 @@ State JSON schema for `state.json`:
   "raiThreatCount": 0,
   "impactAssessmentGenerated": false,
   "evidenceRegisterComplete": false,
-  "handoffGenerated": { "ado": false, "github": false },
+  "handoffGenerated": { "github": , "github": false },
   "gateResults": {},
   "scoredDimensions": {
     "scopeBoundaryClarity": null,
@@ -157,7 +157,7 @@ Seven rules govern conversational flow across all phases:
 * Phase 2 (RAI Standards Mapping): applicable RAI principles by component, regulatory jurisdiction and obligations, framework priorities, existing compliance posture
 * Phase 3 (RAI Security Model Analysis): AI-specific threat categories per component, acceptable risk levels, existing AI-specific mitigations, adversarial scenario likelihood
 * Phase 4 (RAI Impact Assessment): control surface completeness per threat, evidence gaps and collection difficulty, tradeoff preferences between competing principles
-* Phase 5 (Review and Handoff): review format preference, handoff preferences, backlog system selection (ADO, GitHub, or both), prioritization guidance
+* Phase 5 (Review and Handoff): review format preference, handoff preferences, backlog system selection (GitHub), prioritization guidance
 
 ## Instruction File References
 
@@ -167,7 +167,7 @@ Six instruction files provide detailed guidance for each domain. These files are
 * `.github/instructions/rai-planning/rai-standards.instructions.md`: Embedded Microsoft RAI Standard v2 principles, NIST AI RMF 1.0 subcategories, and regulatory framework cross-references with Researcher Subagent delegation for runtime lookups.
 * `.github/instructions/rai-planning/rai-security-model.instructions.md`: AI-specific security model taxonomy, threat identification with `RAI-T-{CATEGORY}-{NNN}` format, likelihood-impact matrix, and mitigation strategy patterns.
 * `.github/instructions/rai-planning/rai-impact-assessment.instructions.md`: Control surface evaluation, evidence register structure, RAI principle tradeoff analysis, and scorecard generation.
-* `.github/instructions/rai-planning/rai-backlog-handoff.instructions.md`: Dual-format backlog handoff with content sanitization and autonomy tiers for ADO and GitHub.
+* `.github/instructions/rai-planning/rai-backlog-handoff.instructions.md`: Backlog handoff with content sanitization and autonomy tiers for GitHub.
 * `.github/instructions/rai-planning/rai-capture-coaching.instructions.md`: Exploration-first questioning techniques for capture mode adapted from Design Thinking research methods.
 
 Read and follow these instruction files when entering their respective phases.
@@ -219,7 +219,7 @@ Five-step recovery when conversation context is compacted:
 
 Reference `.github/instructions/rai-planning/rai-backlog-handoff.instructions.md` for full handoff templates and formatting rules.
 
-* ADO work items use `WI-RAI-{NNN}` temporary IDs with HTML `<div>` wrapper formatting.
+* GitHub issues use `WI-RAI-{NNN}` temporary IDs with HTML `<div>` wrapper formatting.
 * GitHub issues use `{{RAI-TEMP-N}}` temporary IDs with markdown and YAML frontmatter.
 * Default autonomy tier is Partial: the agent creates items but requires user confirmation before submission.
 * Content sanitization: no secrets, credentials, internal URLs, or PII in work item content.

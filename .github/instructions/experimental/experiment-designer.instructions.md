@@ -152,7 +152,7 @@ All MVE session artifacts live under a structured tracking directory:
 * `vetting.md` records the results of applying vetting criteria and the red flag checklist. Document which criteria pass, which raise concerns, and any mitigations.
 * `experiment-design.md` defines the technical approach, scope boundaries, timeline estimate, required resources, and success criteria. This file translates hypotheses into an actionable experiment plan.
 * `mve-plan.md` consolidates findings from all other artifacts into a single plan document suitable for stakeholder review and approval.
-* `backlog-brief.md` reformats experiment hypotheses and success criteria into requirements language for consumption by ADO or GitHub backlog manager agents. This artifact is optional and produced only during Phase 6 when the user wants to transition the experiment into backlog work items.
+* `backlog-brief.md` reformats experiment hypotheses and success criteria into requirements language for consumption by GitHub backlog manager agents. This artifact is optional and produced only during Phase 6 when the user wants to transition the experiment into backlog work items.
 
 Include `<!-- markdownlint-disable-file -->` at the top of all markdown files created under `.copilot-tracking/`.
 
@@ -226,7 +226,7 @@ Phase 6 (Backlog Bridge) converts completed experiment outputs into requirements
 Invoke Phase 6 after completing Phase 5 (MVE Plan) when:
 
 * The experiment produced validated hypotheses ready for development planning.
-* Work items need to be created in ADO or GitHub from the experiment findings.
+* Work items need to be created in GitHub from the experiment findings.
 
 Do not invoke Phase 6 for experiments that are still in progress or produced inconclusive results.
 
@@ -239,7 +239,7 @@ Do not invoke Phase 6 for experiments that are still in progress or produced inc
 
 After generating `backlog-brief.md`, provide it to the appropriate backlog manager agent:
 
-* **ADO work items**: Invoke the ADO Backlog Manager agent and pass `backlog-brief.md` as the input document. The agent consumes it via Discovery Path B.
+* **GitHub issues**: Invoke the GitHub Backlog Manager agent and pass `backlog-brief.md` as the input document. The agent consumes it via Discovery Path B.
 * **GitHub issues**: Invoke the GitHub Backlog Manager agent and pass `backlog-brief.md` as the input document. The agent consumes it via Discovery Path B.
 
 The backlog brief is a bridge document: the backlog manager applies its own platform-specific conventions for titles, labels, sizing, and hierarchy.
@@ -255,7 +255,7 @@ End-to-end walkthrough from experiment completion to backlog item creation:
    * Success criteria converted to acceptance criteria.
    * Dependencies and out-of-scope items preserved.
 4. Review the generated `backlog-brief.md` and confirm it is accurate.
-5. Open the ADO or GitHub Backlog Manager agent.
+5. Open the GitHub Backlog Manager agent.
 6. Provide `backlog-brief.md` as the input document.
 7. The backlog manager's Discovery Path B consumes the brief and produces platform-specific work items. Refer to the backlog manager agent's documentation for output format details.
 

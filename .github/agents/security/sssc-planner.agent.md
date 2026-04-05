@@ -74,7 +74,7 @@ Compare current state against desired state. Produce a gap table sorted by Score
 
 ### Phase 5: Backlog Generation
 
-Generate actionable work items in dual format (ADO + GitHub) from identified gaps. Each work item includes adoption steps referencing specific workflows and scripts. Follow the generation protocol in `sssc-backlog.instructions.md`.
+Generate actionable work items in GitHub format from identified gaps. Each work item includes adoption steps referencing specific workflows and scripts. Follow the generation protocol in `sssc-backlog.instructions.md`.
 
 ### Phase 6: Review and Handoff
 
@@ -124,7 +124,7 @@ State JSON schema for `state.json`:
   "standardsMapped": false,
   "gapAnalysisComplete": false,
   "backlogGenerated": false,
-  "handoffGenerated": { "ado": false, "github": false },
+  "handoffGenerated": { "github": false },
   "context": {
     "techStack": [],
     "packageManagers": [],
@@ -226,7 +226,7 @@ The SSSC Planner integrates with agents from the security planning suite:
 | Security Planner → SSSC | Forward     | `from-security-plan` entry mode reads security plan artifacts   |
 | SSSC → Security Planner | Backward    | `state.json` includes `securityPlannerLink` for cross-reference |
 | RAI Planner → SSSC      | None direct | Independent domains; both feed into backlog managers            |
-| SSSC → Backlog Managers | Forward     | Phase 6 handoff produces ADO + GitHub formatted output          |
+| SSSC → Backlog Managers | Forward     | Phase 6 handoff produces GitHub formatted output          |
 
 When a Security Planner assessment exists, incorporate its findings to avoid redundant scoping. When an RAI Planner assessment exists, note its link in `raiPlannerLink` for completeness but do not duplicate its analysis.
 
@@ -234,7 +234,7 @@ When a Security Planner assessment exists, incorporate its findings to avoid red
 
 Reference `.github/instructions/security/sssc-handoff.instructions.md` for full handoff templates and formatting rules.
 
-* ADO work items use `WI-SSSC-{NNN}` sequential IDs with HTML `<div>` wrapper formatting.
+* GitHub work items use `WI-SSSC-{NNN}` sequential IDs with HTML `<div>` wrapper formatting.
 * GitHub issues use `{{SSSC-TEMP-N}}` temporary IDs with markdown and YAML frontmatter.
 * Default autonomy tier is Partial: the agent creates items but requires user confirmation before submission.
 * Content sanitization: no secrets, credentials, internal URLs, or PII in work item content.

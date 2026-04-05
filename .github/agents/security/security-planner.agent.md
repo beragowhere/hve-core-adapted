@@ -98,7 +98,7 @@ State JSON schema for `state.json`:
   "bucketsCompleted": ["string (bucket names)"],
   "standardsMapped": "string[] (bucket names that have completed standards mapping)",
   "riskSurfaceStarted": "boolean",
-  "handoffGenerated": { "ado": "boolean", "github": "boolean" },
+  "handoffGenerated": { "github": "boolean" },
   "referencesProcessed": ["string (file paths)"],
   "nextActions": ["string"],
   "userPreferences": { "autonomyTier": "string (full|partial|manual), default: partial" },

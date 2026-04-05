@@ -70,9 +70,9 @@ After the standard scoping questionnaire, assess for AI/ML components:
 ### Phase 5: Backlog Generation
 
 * Entry: Phase 4 complete (all threat tables documented)
-* Activities: convert mitigations and gaps to work items, format for ADO/GitHub per user preference, apply prioritization and autonomy tier
+* Activities: convert mitigations and gaps to work items, format for GitHub per user preference, apply prioritization and autonomy tier
 * Exit: all work items generated and reviewed by the user
-* Artifacts: formatted work item lists (ADO and/or GitHub format)
+* Artifacts: formatted work item lists (GitHub format)
 * Transition: advance to Phase 6
 
 ### Phase 6: Review and Handoff
@@ -119,7 +119,7 @@ State persists across sessions in a JSON file at `.copilot-tracking/security-pla
   "bucketsCompleted": ["string (bucket names)"],
   "standardsMapped": ["string (bucket names that have completed standards mapping)"],
   "riskSurfaceStarted": "boolean",
-  "handoffGenerated": { "ado": "boolean", "github": "boolean" },
+  "handoffGenerated": { "github": "boolean", "github": "boolean" },
   "referencesProcessed": ["string (file paths)"],
   "nextActions": ["string"],
   "userPreferences": { "autonomyTier": "string (full|partial|manual), default: partial" },
@@ -201,7 +201,7 @@ Ask 3-5 questions per turn. Present questions with emoji checklists:
 * Phase 2 (Bucket Analysis): data flows per bucket, integration points, existing security controls
 * Phase 3 (Standards Mapping): regulatory requirements, framework preferences; delegate WAF/CAF detail to the Researcher Subagent
 * Phase 4 (Security Model Analysis): threat likelihood assessment, acceptable risk levels, existing mitigations
-* Phase 5 (Backlog Generation): preferred backlog system (ADO/GitHub/both), autonomy tier preference, work item granularity
+* Phase 5 (Backlog Generation): preferred backlog system (GitHub/both), autonomy tier preference, work item granularity
 * Phase 6 (Review and Handoff): review format preference, handoff confirmation
 
 ## Error Handling

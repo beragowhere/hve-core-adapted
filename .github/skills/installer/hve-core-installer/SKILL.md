@@ -706,7 +706,7 @@ Some HVE-Core agents integrate with external services via MCP (Model Context Pro
 | Agent                  | MCP Server               | Purpose                   |
 |------------------------|--------------------------|---------------------------|
 # | ado-prd-to-wit         | ado                      | Azure DevOps work items   |
-# REMOVED: ADO integration not needed in adapted fork
+# REMOVED: Azure DevOps integration not needed in adapted fork
 | github-backlog-manager | github                   | GitHub backlog management |
 | task-researcher        | context7, microsoft-docs | Documentation lookup      |
 

@@ -44,7 +44,7 @@ Prompts can be invoked in GitHub Copilot Chat using `/prompt-name` syntax (e.g.,
 
 ### Azure DevOps Integration (REMOVED)
 
-* **ADO prompts removed in adapted fork** - Azure DevOps integration not needed
+* **Azure DevOps prompts removed in adapted fork** - Azure DevOps integration not needed
 
 ### GitHub Integration
 

@@ -42,7 +42,7 @@ Assess which Badge tier the repository would qualify for after completing all wo
 * **Projected readiness**: {Passing|Silver|Gold}
 * **Missing criteria** (if any): {list}
 
-## ADO Handoff
+## GitHub handoff
 
 Write ADO-formatted work items to `.copilot-tracking/workitems/backlog/{project-slug}-sssc/work-items.md`.
 
@@ -89,6 +89,6 @@ Update `state.json`:
 * Clear `nextActions` (or populate with post-handoff recommendations)
 
 Present the user with next steps:
-* For ADO: invoke the ADO Backlog Manager to create work items from the handoff file
+* For ADO: invoke the GitHub Backlog Manager to create work items from the handoff file
 * For GitHub: invoke the GitHub Backlog Manager to create issues from the handoff file
 * If cross-agent artifacts exist: note the links for continuity across security domains

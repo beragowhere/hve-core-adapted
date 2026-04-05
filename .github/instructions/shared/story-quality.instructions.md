@@ -1,6 +1,6 @@
 ---
 description: "Shared story quality conventions for work item creation and evaluation across agents and workflows"
-applyTo: '**/*.agent.md, **/.github/instructions/ado/**'
+applyTo: '**/*.agent.md'
 ---
 
 # Story Quality Conventions

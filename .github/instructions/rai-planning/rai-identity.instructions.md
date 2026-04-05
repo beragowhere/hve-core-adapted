@@ -50,7 +50,7 @@ Five sequential phases structure the RAI assessment. Each phase has entry criter
 ### Phase 5: Review and Handoff (NIST Manage)
 
 * **Entry criteria**: Phase 4 complete; impact assessment confirmed.
-* **Activities**: Generate RAI scorecard summarizing all findings across five dimensions: scope boundary clarity, risk identification quality, control surface adequacy, evidence sufficiency, and future work governance. Generate backlog items for identified gaps using the appropriate format (ADO, GitHub, or both) per user preference. Present findings for final review.
+* **Activities**: Generate RAI scorecard summarizing all findings across five dimensions: scope boundary clarity, risk identification quality, control surface adequacy, evidence sufficiency, and future work governance. Generate backlog items for identified gaps using the appropriate format (GitHub, or both) per user preference. Present findings for final review.
 * **Exit criteria**: RAI scorecard generated with scored dimensions. Backlog items created and reviewed. User confirms handoff is complete.
 * **Artifacts**: `rai-scorecard.md`, backlog items
 * **Transition**: Assessment complete. State file updated with final scores and `handoffGenerated` updated with platform-specific flags.
@@ -90,7 +90,7 @@ All state files live under `.copilot-tracking/rai-plans/{project-slug}/`.
   "raiThreatCount": 0,
   "impactAssessmentGenerated": false,
   "evidenceRegisterComplete": false,
-  "handoffGenerated": { "ado": false, "github": false },
+  "handoffGenerated": { "github": , "github": false },
   "gateResults": {},
   "scoredDimensions": {
     "scopeBoundaryClarity": null,
@@ -157,7 +157,7 @@ Seven rules govern question flow across all phases:
 * **Phase 2**: Applicable RAI principles by component, regulatory jurisdiction and obligations, framework priorities, existing compliance posture.
 * **Phase 3**: AI-specific threat categories per component, acceptable risk levels, existing AI-specific mitigations, adversarial scenario likelihood.
 * **Phase 4**: Control surface completeness per threat, evidence gaps and collection difficulty, tradeoff preferences between competing principles.
-* **Phase 5**: Review format preference, handoff preferences, backlog system selection (ADO, GitHub, or both), prioritization guidance.
+* **Phase 5**: Review format preference, handoff preferences, backlog system selection (GitHub, or both), prioritization guidance.
 
 ## Session Recovery
 

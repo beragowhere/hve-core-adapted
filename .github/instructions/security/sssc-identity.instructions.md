@@ -202,7 +202,7 @@ Ask 3-5 questions per turn. Present questions with emoji checklists:
 * Phase 2 (Assessment): existing workflows, dependency management practices, signing capabilities, attestation status, SBOM generation
 * Phase 3 (Standards Mapping): Scorecard check coverage, SLSA level evidence, Badge enrollment status, Sigstore readiness
 * Phase 4 (Gap Analysis): desired compliance targets, acceptable risk levels, effort budget, adoption preferences (reusable workflow vs. custom)
-* Phase 5 (Backlog Generation): preferred backlog system (ADO/GitHub/both), autonomy tier preference, work item granularity, priority overrides
+* Phase 5 (Backlog Generation): preferred backlog system (GitHub/both), autonomy tier preference, work item granularity, priority overrides
 * Phase 6 (Review and Handoff): review format preference, handoff confirmation, backlog manager selection
 
 ## Error Handling
