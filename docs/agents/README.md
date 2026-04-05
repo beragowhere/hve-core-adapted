@@ -19,7 +19,7 @@ hve-core organizes specialized agents into functional groups. Each group combine
 | RPI Orchestration                       | 5        | High        | [RPI Documentation](../rpi/README.md)                                           |
 | [Code Review](#code-review)             | 3        | Medium      | [Code Review](code-review/README.md)                                            |
 | GitHub Backlog Management               | 1 active | Very High   | [Backlog Manager](github-backlog/README.md)                                     |
-| ADO Backlog Management                  | 1 active | Very High   | [Backlog Manager](ado-backlog/README.md)                                        |
+| GitHub Backlog Management               | 1 active | Very High   | [Backlog Manager](github-backlog/README.md)                                     |
 | Project Planning                        | 5        | Medium-High | [Project Planning](project-planning/README.md)                                  |
 | [Security Planning](#security-planning) | 2 active | Very High   | [Security Planner](security/README.md), [SSSC Planner](sssc-planning/README.md) |
 | [RAI Planning](#rai-planning)           | 1 active | Very High   | [RAI Planner](rai-planning/README.md)                                           |
@@ -42,9 +42,9 @@ Three agents provide pre-PR code review on local branches. Code Review Functiona
 
 Automates issue discovery, triage, sprint planning, and execution across GitHub repositories. The backlog manager agent orchestrates five distinct workflows with three-tier autonomy control. See the [Backlog Manager Documentation](github-backlog/) for workflow guides.
 
-## ADO Backlog Management
+## GitHub Backlog Management
 
-Automates work item discovery, triage, sprint planning, execution, PR creation, build monitoring, and task planning across Azure DevOps projects. The ADO Backlog Manager agent orchestrates nine distinct workflows with three-tier autonomy control. See the [Backlog Manager Documentation](ado-backlog/README.md) for workflow guides.
+Automates work item discovery, triage, sprint planning, execution, PR creation, build monitoring, and task planning across GitHub projects. The GitHub Backlog Manager agent orchestrates five distinct workflows with three-tier autonomy control. See the [Backlog Manager Documentation](github-backlog/README.md) for workflow guides.
 
 ## Project Planning
 

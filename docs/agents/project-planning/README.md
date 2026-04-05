@@ -91,7 +91,7 @@ For greenfield projects, follow this order to build artifacts that feed into eac
 
 * [RPI Documentation](../../rpi/README.md): Task research, planning, and implementation workflows
 * [GitHub Backlog Manager](../github-backlog/README.md): Issue lifecycle management for GitHub repositories
-* [ADO Backlog Manager](../ado-backlog/README.md): Work item management for Azure DevOps projects
+* [GitHub Backlog Manager](../github-backlog/README.md): Issue lifecycle management for GitHub repositories
 
 ---
 
