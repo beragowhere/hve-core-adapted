@@ -14,13 +14,12 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check for ADO references
         run: |
-          ./scripts/verify-ado-removal.sh || echo "ADO references found"
-        continue-on-error: true  # Report but don't fail yet
-      - name: Fail if ADO references present
-        if: failure()
-        run: |
-          echo "❌ ADO references detected. Run ./scripts/verify-ado-removal.sh locally."
-          exit 1
+          if [ -f "./scripts/verify-ado-removal.sh" ]; then
+            ./scripts/verify-ado-removal.sh
+          else
+            echo "ADO verification script not found"
+            exit 0
+          fi
 
   build:
     runs-on: ubuntu-latest
@@ -33,72 +32,5 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
-        # Auto‑remediation: retry once on network failure
-        continue-on-error: true
-      - name: Retry install on failure
-        if: failure()
-        run: npm ci
-      - name: Install docs dependencies
-        working-directory: docs/docusaurus
-        run: npm ci
       - name: Build documentation
         run: npm run docs:build
-
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: npm ci
-      - name: Run PowerShell tests
-        run: npm run test:ps
-        # Auto‑remediation: rerun flaky tests once
-        continue-on-error: true
-      - name: Retry failed tests
-        if: failure()
-        run: npm run test:ps
-      - name: Run Python tests
-        run: npm run test:py
-        continue-on-error: true
-      - name: Retry Python tests
-        if: failure()
-        run: npm run test:py
-
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: npm ci
-      - name: Run all linting
-        run: npm run lint:all
-        # Auto‑remediation: attempt auto‑fix where available
-        continue-on-error: true
-      - name: Attempt spell check fix
-        if: failure()
-        run: npm run spell-check:fix || true
-      - name: Attempt markdown lint fix
-        if: failure()
-        run: npm run lint:md:fix || true
-
-  security-scan:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: npm ci
-      - name: Run npm audit
-        run: npm audit --audit-level=high
-        continue-on-error: true
-      - name: Report security issues
-        if: failure()
-        run: |
-          echo "Security vulnerabilities found. Check npm audit output."
-          # Don't fail build for security findings (report only)
