@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
@@ -51,7 +51,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
       - run: npm ci
       - name: Run PowerShell tests
         run: npm run test:ps
@@ -73,7 +73,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
       - run: npm ci
       - name: Run all linting
         run: npm run lint:all
@@ -90,6 +90,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
       - name: Run npm audit
         run: npm audit --audit-level=high
         continue-on-error: true
