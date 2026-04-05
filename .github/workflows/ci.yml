@@ -38,6 +38,9 @@ jobs:
       - name: Retry install on failure
         if: failure()
         run: npm ci
+      - name: Install docs dependencies
+        working-directory: docs/docusaurus
+        run: npm ci
       - name: Build documentation
         run: npm run docs:build
 
