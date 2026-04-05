@@ -5,7 +5,7 @@ applyTo: '**/.copilot-tracking/rai-plans/**'
 
 # RAI Review and Backlog Handoff
 
-Instructions for generating the review rubric, RAI scorecard, and formatted backlog items from RAI assessment findings. Phase 6 produces dual-format work items (ADO and GitHub) compatible with the Security Planner backlog handoff for cross-referencing.
+Instructions for generating the review rubric, RAI scorecard, and formatted backlog items from RAI assessment findings. Phase 6 produces GitHub work items compatible with the Security Planner backlog handoff for cross-referencing.
 
 ## Review Rubric
 
@@ -110,9 +110,9 @@ Tags applied to work items for tracking and filtering across backlog systems.
 
 ## Dual-Format Backlog Templates
 
-Both ADO and GitHub formats can be generated simultaneously. Ask the user which backlog system(s) to target before generating. Both formats are compatible with the Security Planner backlog handoff for cross-referencing.
+GitHub format is generated. The format is compatible with the Security Planner backlog handoff for cross-referencing.
 
-### ADO Work Item Template
+### GitHub Work Item Template
 
 Assign sequential IDs within the RAI plan using the format `WI-RAI-{NNN}` (for example, WI-RAI-001, WI-RAI-002). This convention is distinct from the Security Planner `WI-SEC-{NNN}` format to prevent ID collisions.
 
@@ -155,7 +155,7 @@ Work item hierarchy maps from the RAI assessment structure:
 * Task: Implementation steps for a user story.
 * Bug: Existing RAI violations requiring remediation.
 
-Execution follows `ado-update-wit-items.instructions.md`.
+Execution follows `github-update-issues.instructions.md`.
 
 ### GitHub Issue Template
 
@@ -261,7 +261,7 @@ Rules:
 
 * When an RAI threat overlaps with a Security Planner threat (identified by dual `T-{BUCKET}-AI-{NNN}` IDs), the RAI work item includes a cross-reference field.
 * Security Planner work items are not duplicated. RAI items extend or complement them instead.
-* Cross-reference format: `Security-Ref: WI-SEC-{NNN}` in ADO, `Security: #{NNN}` in GitHub.
+* Cross-reference format: `Security: #{NNN}` in GitHub.
 * The handoff summary includes a cross-reference table listing all overlapping items.
 * Before creating new work items, search for existing Security Planner items with matching threat IDs or control surfaces. Link rather than duplicate.
 

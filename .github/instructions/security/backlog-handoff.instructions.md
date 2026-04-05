@@ -1,11 +1,11 @@
 ---
-description: "Dual-format backlog handoff for ADO and GitHub with content sanitization, autonomy tiers, and work item templates - Brought to you by microsoft/hve-core"
+description: "Backlog handoff for GitHub with content sanitization, autonomy tiers, and work item templates - Adapted from microsoft/hve-core"
 applyTo: '**/.copilot-tracking/security-plans/**'
 ---
 
 # Backlog Handoff
 
-Instructions for generating formatted work items from security planning security models. Applies to both Azure DevOps (ADO) and GitHub issue trackers.
+Instructions for generating formatted work items from security planning security models. Applies to GitHub issue tracker.
 
 ## Handoff Overview
 
@@ -16,7 +16,7 @@ Generate formatted work items from security model mitigations and standards gaps
 * Output: Formatted work items targeting GitHub, or both, based on user preference.
 * Ask which backlog system(s) to target before generating. Both formats can be generated simultaneously.
 
-## ADO Work Item Template
+## GitHub Work Item Template
 
 Assign sequential IDs within the security plan using the format `WI-SEC-{NNN}` (for example, WI-SEC-001, WI-SEC-002). Order work items by type hierarchy: Epic, Feature, User Story, Task, Bug.
 
@@ -28,7 +28,7 @@ Required fields per work item:
 * Tags: `Security`, `{bucket_name}`, `{STRIDE_category}`, plus applicable CIA triad and privacy tags (`cia:confidentiality`, `cia:integrity`, `cia:availability`, `cia:privacy`). Assign tags based on which information security properties the threat affects.
 * Priority: Derived from risk level (see Work Item Prioritization).
 
-Use the `format` parameter to control output: HTML for ADO API operations, markdown for display.
+Use the `format` parameter to control output: markdown for GitHub issues.
 
 HTML template for description fields:
 
@@ -56,7 +56,7 @@ Work item hierarchy maps from the security plan structure:
 * Task: Implementation steps for a user story.
 * Bug: Existing vulnerabilities requiring remediation.
 
-Five MCP tool categories support ADO operations: work item creation, work item update, work item query, attachment upload, and link management. Execution follows `ado-update-wit-items.instructions.md`.
+GitHub operations support: issue creation, issue update, issue query, attachment upload, and link management. Execution follows `github-update-issues.instructions.md`.
 
 ## GitHub Issue Template
 
@@ -182,7 +182,7 @@ Log all match decisions (create, update, skip, link) in the handoff summary.
 
 After generating all work items, produce a summary covering:
 
-* Total items by type (Epic, Feature, Story, Task, Bug for ADO; Issue for GitHub).
+* Total items by type (Issue for GitHub).
 * Items by operational bucket.
 * Items by risk level.
 * Items by STRIDE category.

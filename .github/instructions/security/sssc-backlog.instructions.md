@@ -5,7 +5,7 @@ applyTo: '**/.copilot-tracking/sssc-plans/**'
 
 # SSSC Phase 5 — Backlog Generation
 
-Generate actionable work items from the gap analysis in dual format (ADO + GitHub). Each work item maps a supply chain security gap to concrete adoption steps.
+Generate actionable work items from the gap analysis in GitHub format. Each work item maps a supply chain security gap to concrete adoption steps.
 
 ## Work Item Template
 
@@ -34,7 +34,7 @@ Each generated work item follows this structure:
 - [ ] {Verifiable criterion}
 - [ ] {Verifiable criterion}
 
-### ADO Mapping
+### GitHub Mapping
 - Type: {Epic|Feature|User Story|Task}
 - Tags: supply-chain, ossf, {scorecard-check}, {adoption-type}
 
@@ -56,7 +56,7 @@ Derive work item priority from the Scorecard risk level:
 
 Within the same priority level, order items by adoption type (reusable workflow first, new capability last).
 
-## ADO Work Item Format
+## GitHub Work Item Format
 
 Assign sequential IDs using the format `WI-SSSC-{NNN}` (for example, WI-SSSC-001, WI-SSSC-002). This convention distinguishes SSSC work items from Security Planner items (`WI-SEC-{NNN}`). Order work items by type hierarchy: Epic, Feature, User Story, Task.
 
@@ -67,7 +67,7 @@ Work item hierarchy for supply chain security:
 * **User Story**: Per Scorecard check or SLSA improvement step
 * **Task**: Individual implementation steps for a user story
 
-HTML template for ADO description fields:
+Markdown template for GitHub issue description:
 
 ```html
 <div>

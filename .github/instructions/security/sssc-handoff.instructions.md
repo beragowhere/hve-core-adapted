@@ -44,9 +44,9 @@ Assess which Badge tier the repository would qualify for after completing all wo
 
 ## GitHub handoff
 
-Write ADO-formatted work items to `.copilot-tracking/workitems/backlog/{project-slug}-sssc/work-items.md`.
+Write GitHub-formatted work items to `.copilot-tracking/workitems/backlog/{project-slug}-sssc/work-items.md`.
 
-Apply the ADO work item template from `sssc-backlog.instructions.md` with:
+Apply the GitHub work item template from `sssc-backlog.instructions.md` with:
 
 * HTML-formatted description fields
 * `WI-SSSC-{NNN}` sequential IDs
@@ -54,7 +54,7 @@ Apply the ADO work item template from `sssc-backlog.instructions.md` with:
 * Tags: `supply-chain`, `ossf`, plus per-check and per-category tags
 * Priority derived from Scorecard risk level
 
-Set `state.json` field `handoffGenerated.ado` to `true` after writing.
+Set `state.json` field `handoffGenerated.github` to `true` after writing.
 
 ## GitHub Handoff
 
@@ -89,6 +89,6 @@ Update `state.json`:
 * Clear `nextActions` (or populate with post-handoff recommendations)
 
 Present the user with next steps:
-* For ADO: invoke the GitHub Backlog Manager to create work items from the handoff file
+* Invoke the GitHub Backlog Manager to create work items from the handoff file
 * For GitHub: invoke the GitHub Backlog Manager to create issues from the handoff file
 * If cross-agent artifacts exist: note the links for continuity across security domains

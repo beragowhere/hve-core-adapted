@@ -330,7 +330,7 @@ Extract issue references from commit messages and branch names using these patte
 | `Resolves #(\d+)`                    | Commit message   | `Resolves #123`   |
 | `#(\d+)` (standalone)                | Commit message   | `Related to #123` |
 | `/(\d+)-`                            | Branch name      | `Related to #123` |
-| `AB#(\d+)` (Azure DevOps convention) | Commit or branch | `AB#12345` (ADO)  |
+| `AB#(\d+)` (Azure DevOps convention) | Commit or branch | `AB#12345` (historical)  |
 
 Deduplicate issue numbers and preserve the action prefix from the first occurrence.
 

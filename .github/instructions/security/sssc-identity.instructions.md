@@ -58,7 +58,7 @@ Each phase has entry criteria, activities, exit criteria, artifacts produced, an
 ### Phase 5: Backlog Generation
 
 * Entry: Phase 4 complete (gap analysis documented)
-* Activities: convert gaps to work items in dual format (ADO + GitHub); apply priority from Scorecard risk level; include adoption steps with workflow and script references
+* Activities: convert gaps to work items in GitHub format; apply priority from Scorecard risk level; include adoption steps with workflow and script references
 * Exit: all work items generated and reviewed by user
 * Artifacts: `sssc-backlog.md` (neutral intermediate format)
 * Transition: advance to Phase 6
@@ -68,7 +68,7 @@ Each phase has entry criteria, activities, exit criteria, artifacts produced, an
 * Entry: Phase 5 complete (all work items reviewed)
 * Activities: validate completeness against OSSF standards, generate Scorecard improvement projections, assess SLSA level improvements, produce handoff files for backlog managers
 * Exit: user confirms acceptance of the SSSC plan and handoff
-* Artifacts: platform-specific handoff files (ADO and/or GitHub format)
+* Artifacts: platform-specific handoff files (GitHub format)
 
 ## Entry Modes
 
@@ -107,7 +107,7 @@ State persists across sessions in a JSON file at `.copilot-tracking/sssc-plans/{
   "standardsMapped": false,
   "gapAnalysisComplete": false,
   "backlogGenerated": false,
-  "handoffGenerated": { "ado": false, "github": false },
+  "handoffGenerated": { "github": false },
   "context": {
     "techStack": [],
     "packageManagers": [],
