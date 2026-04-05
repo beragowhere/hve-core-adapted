@@ -94,7 +94,8 @@ The Research-Plan-Implement (RPI) workflow provides a structured approach to com
 |--------------------------|------------------------------------------------------------|-------------------------------------------------|
 | **github-backlog-manager** | Consolidated GitHub backlog management with community interaction | Uses MCP GitHub tools                           |
 | **jira-backlog-manager** | Consolidated Jira backlog management with workflow dispatch and handoff tracking | Uses Jira skill planning workflows              |
-| **ado-prd-to-wit**       | Analyzes PRDs and plans Azure DevOps work item hierarchies | Planning-only; does not create work items       |
+# | **ado-prd-to-wit**       | Analyzes PRDs and plans Azure DevOps work item hierarchies | Planning-only; does not create work items       |
+# REMOVED: ADO integration not needed in adapted fork
 | **jira-prd-to-wit**      | Analyzes PRDs and plans Jira issue hierarchies             | Planning-only; does not mutate Jira             |
 
 ### Testing Agents
@@ -298,7 +299,7 @@ Users are responsible for verifying their repository's `.gitignore` configuratio
 
 * `state.json` (session state for resume capability)
 * `security-plan-{project-slug}.md` (security plan with STRIDE analysis, standards mapping, and operational bucket classification)
-* Backlog items in ADO (`WI-SEC-{NNN}`) or GitHub (`{{SEC-TEMP-N}}`) format
+* Backlog items in GitHub (`{{SEC-TEMP-N}}`) format
 
 **Workflow:** Six sequential phases: Scoping → Bucket Analysis → Standards Mapping → Security Model Analysis → Backlog Generation → Review and Handoff
 
@@ -329,7 +330,7 @@ Users are responsible for verifying their repository's `.gitignore` configuratio
 
 * `state.json` (session state for resume capability)
 * `sssc-plan-{project-slug}.md` (supply chain security assessment with standards mapping and gap analysis)
-* Backlog items in ADO or GitHub format for remediation tracking
+* Backlog items in GitHub format for remediation tracking
 
 **Workflow:** Six sequential phases: Scoping → Supply Chain Assessment → Standards Mapping → Gap Analysis → Backlog Generation → Review and Handoff
 
@@ -450,18 +451,18 @@ Users are responsible for verifying their repository's `.gitignore` configuratio
 
 **Critical:** Uses the Jira skill command surface. Supports discovery, triage, execution, and single-issue workflows while preserving planning files and autonomy gates.
 
-### ado-prd-to-wit
+### ado-prd-to-wit (REMOVED)
 
 **Creates:** Work item planning files:
 
 * `.copilot-tracking/workitems/prds/<artifact-normalized-name>/planning-log.md` (session activity and decisions)
 * `.copilot-tracking/workitems/prds/<artifact-normalized-name>/artifact-analysis.md` (PRD parsing and extraction)
 * `.copilot-tracking/workitems/prds/<artifact-normalized-name>/work-items.md` (Epic/Feature/Story hierarchy)
-* `.copilot-tracking/workitems/prds/<artifact-normalized-name>/handoff.md` (final handoff for ADO creation)
+* `.copilot-tracking/workitems/prds/<artifact-normalized-name>/handoff.md` (final handoff for GitHub issue creation)
 
 **Workflow:** Analyze PRD → Discover Codebase → Discover Related Work Items → Refine → Finalize Handoff
 
-**Critical:** Planning-only. Uses ADO MCP tools for work item discovery. Supports Epics, Features, and User Stories.
+**Critical:** Planning-only. (ADO agent removed in adapted fork)
 
 ### jira-prd-to-wit
 

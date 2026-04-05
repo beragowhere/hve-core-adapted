@@ -16,7 +16,7 @@ keywords:
 
 ## GitHub Copilot Prompts
 
-This directory contains **coaching and guidance prompts** designed to provide step-by-step assistance for specific development tasks. Unlike instructions that focus on systematic implementation, prompts offer educational guidance and context-aware coaching to help you learn and apply best practices. Prompts are organized by workflow focus areas: onboarding & planning, source control & commit quality, Azure DevOps integration, development tools, documentation & process, and prompt engineering.
+This directory contains **coaching and guidance prompts** designed to provide step-by-step assistance for specific development tasks. Unlike instructions that focus on systematic implementation, prompts offer educational guidance and context-aware coaching to help you learn and apply best practices. Prompts are organized by workflow focus areas: onboarding & planning, source control & commit quality, development tools, documentation & process, and prompt engineering.
 
 ## How to Use Prompts
 
@@ -42,19 +42,9 @@ Prompts can be invoked in GitHub Copilot Chat using `/prompt-name` syntax (e.g.,
 * **[Git Merge](./hve-core/git-merge.prompt.md)** - Git merge, rebase, and rebase --onto workflows with conflict handling
 * **[Git Setup](./hve-core/git-setup.prompt.md)** - Verification-first Git configuration assistant
 
-### Azure DevOps Integration
+### Azure DevOps Integration (REMOVED)
 
-#### Work Item Management
-
-* **[ADO Get My Work Items](./ado/ado-get-my-work-items.prompt.md)** - Retrieves user's work items and organizes into planning files
-* **[ADO Process My Work Items for Task Planning](./ado/ado-process-my-work-items-for-task-planning.prompt.md)** - Processes planning files for task planning with repository context enrichment
-
-> **Note:** For comprehensive work item task planning, use the two-step workflow: First run `ado-get-my-work-items` to retrieve and organize work items into planning files, then `ado-process-my-work-items-for-task-planning` to enrich with repository context and generate task planning handoffs.
-
-#### Pull Requests & Builds
-
-* **[ADO Create Pull Request](./ado/ado-create-pull-request.prompt.md)** - Creates Azure DevOps PRs with work item discovery and reviewer identification
-* **[ADO Get Build Info](./ado/ado-get-build-info.prompt.md)** - Retrieves Azure DevOps build information for PRs or specific builds
+* **ADO prompts removed in adapted fork** - Azure DevOps integration not needed
 
 ### GitHub Integration
 
@@ -97,11 +87,11 @@ Jira workflow support is available through dedicated prompts in this directory. 
 5. **Handling merge conflicts?** Use [Git Merge](./hve-core/git-merge.prompt.md)
 6. **Setting up Git?** Use [Git Setup](./hve-core/git-setup.prompt.md)
 7. **Tracking your work?** Run [ADO Get My Work Items](./ado/ado-get-my-work-items.prompt.md) then [ADO Process My Work Items for Task Planning](./ado/ado-process-my-work-items-for-task-planning.prompt.md)
-8. **Creating Azure DevOps PRs?** Use [ADO Create Pull Request](./ado/ado-create-pull-request.prompt.md)
-9. **Checking build status?** Use [ADO Get Build Info](./ado/ado-get-build-info.prompt.md)
+8. **Creating GitHub PRs?** Use GitHub web interface or CLI
+9. **Checking build status?** Use GitHub Actions interface
 10. **Creating GitHub issues?** Use [GitHub Add Issue](./github/github-add-issue.prompt.md)
 11. **Working on PRs?** Use [Pull Request](./hve-core/pull-request.prompt.md)
-12. **Responding to Azure incidents?** Use [Incident Response](./security/incident-response.prompt.md)
+12. **Responding to incidents?** Use [Incident Response](./security/incident-response.prompt.md)
 13. **Managing Jira work?** Use [Jira Discover Issues](./jira/jira-discover-issues.prompt.md), [Jira Triage Issues](./jira/jira-triage-issues.prompt.md), or [Jira Execute Backlog](./jira/jira-execute-backlog.prompt.md)
 14. **Need GitLab delivery context?** Review the [GitLab Skill](../skills/gitlab/gitlab/SKILL.md) for setup and command guidance
 15. **Running a security review?** Use [Security Review](./security/security-review.prompt.md) for full OWASP assessment

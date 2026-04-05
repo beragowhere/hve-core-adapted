@@ -695,7 +695,7 @@ After the gitignore checkpoint, proceed to Checkpoint 5 (MCP Configuration).
 
 ### Checkpoint 5: MCP Configuration Guidance
 
-After the gitignore checkpoint (for **any** installation method), present MCP configuration guidance. This helps users who want to use agents that integrate with Azure DevOps, GitHub, or documentation services.
+After the gitignore checkpoint (for **any** installation method), present MCP configuration guidance. This helps users who want to use agents that integrate with GitHub or documentation services.
 
 <!-- <mcp-guidance-prompt> -->
 ```text
@@ -705,7 +705,8 @@ Some HVE-Core agents integrate with external services via MCP (Model Context Pro
 
 | Agent                  | MCP Server               | Purpose                   |
 |------------------------|--------------------------|---------------------------|
-| ado-prd-to-wit         | ado                      | Azure DevOps work items   |
+# | ado-prd-to-wit         | ado                      | Azure DevOps work items   |
+# REMOVED: ADO integration not needed in adapted fork
 | github-backlog-manager | github                   | GitHub backlog management |
 | task-researcher        | context7, microsoft-docs | Documentation lookup      |
 

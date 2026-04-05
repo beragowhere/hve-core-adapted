@@ -12,7 +12,7 @@
     {
       "name": "ado",
       "source": "ado",
-      "description": "Azure DevOps work item management, build monitoring, and pull request creation",
+      "description": "GitHub work item management, build monitoring, and pull request creation",
       "version": "3.3.41"
     },
     {

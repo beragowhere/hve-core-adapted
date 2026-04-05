@@ -78,7 +78,7 @@ Guide labeling and categorization:
 * Link issues to parent epics, initiatives, or milestones for traceability.
 * Reference related documentation, ADRs, or design artifacts when they exist.
 
-For GitHub repositories, reference the [official issue template configuration](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository) for structural guidance. For Azure DevOps, reference the [work item template documentation](https://learn.microsoft.com/azure/devops/boards/backlogs/work-item-template). For Jira, align outputs to the project's configured issue types, required fields, and workflow states. When GitLab is used primarily for merge requests and pipelines, keep planning artifacts in the system of record for work tracking, typically Jira or GitHub, and reference GitLab delivery artifacts separately.
+For GitHub repositories, reference the [official issue template configuration](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository) for structural guidance. For Jira, align outputs to the project's configured issue types, required fields, and workflow states. When GitLab is used primarily for merge requests and pipelines, keep planning artifacts in the system of record for work tracking, typically Jira or GitHub, and reference GitLab delivery artifacts separately.
 
 ### Step 3: Prioritization
 

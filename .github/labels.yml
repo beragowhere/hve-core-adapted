@@ -61,9 +61,10 @@
   description: "Further information is requested"
 
 # Area labels
-- name: ado
-  color: "ededed"
-  description: "Azure DevOps integration"
+# - name: ado
+#   color: "ededed"
+#   description: "Azure DevOps integration"
+# REMOVED: ADO integration not needed in adapted fork
 - name: agents
   color: "ededed"
   description: "Custom chat agents (.agent.md)"

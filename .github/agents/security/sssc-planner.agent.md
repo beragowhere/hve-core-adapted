@@ -56,7 +56,7 @@ Key scoping questions cover:
 * Deployment targets (cloud, on-prem, hybrid, container registries)
 * Existing security tooling (Dependabot, CodeQL, secret scanning, etc.)
 * Compliance targets (Scorecard score threshold, SLSA level, Best Practices Badge tier)
-* Repository hosting (GitHub, Azure DevOps, GitLab)
+* Repository hosting (GitHub, GitLab)
 
 After scoping, check whether a Security Planner assessment already exists. If `.copilot-tracking/security-plans/` contains artifacts for this project, read relevant context and store the path in `securityPlannerLink`. Similarly check for RAI Planner artifacts in `.copilot-tracking/rai-plans/`.
 

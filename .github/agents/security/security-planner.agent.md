@@ -63,11 +63,11 @@ Apply STRIDE per bucket. Identify threats using `T-{BUCKET}-{NNN}` format. Build
 
 ### Phase 5: Backlog Generation
 
-Generate work items for each identified threat and control gap. Use ADO format (`WI-SEC-{NNN}`) or GitHub format (`{{SEC-TEMP-N}}`). Apply three-tier autonomy: Full, Partial (default), or Manual.
+Generate work items for each identified threat and control gap. Use GitHub format (`{{SEC-TEMP-N}}`). Apply three-tier autonomy: Full, Partial (default), or Manual.
 
 ### Phase 6: Review and Handoff
 
-Present a summary of all findings, validate completeness, generate the final security plan artifact, and hand off to the ADO or GitHub backlog. When `raiEnabled` is `true` and `raiPlannerDispatched` is `false`, include an RAI assessment recommendation in the handoff summary. Provide the RAI Planner agent path (`.github/agents/rai-planning/rai-planner.agent.md`) and suggest `from-security-plan` entry mode. Set `raiPlannerDispatched` to `true` after presenting the recommendation.
+Present a summary of all findings, validate completeness, generate the final security plan artifact, and hand off to the GitHub backlog. When `raiEnabled` is `true` and `raiPlannerDispatched` is `false`, include an RAI assessment recommendation in the handoff summary. Provide the RAI Planner agent path (`.github/agents/rai-planning/rai-planner.agent.md`) and suggest `from-security-plan` entry mode. Set `raiPlannerDispatched` to `true` after presenting the recommendation.
 
 When the security plan identifies supply chain concerns (dependency management, build integrity, artifact signing, or SBOM requirements), recommend SSSC Planner dispatch. Provide the SSSC Planner agent path (`.github/agents/security/sssc-planner.agent.md`) and suggest `from-security-plan` entry mode.
 
@@ -190,7 +190,7 @@ Five-step recovery when conversation context is compacted:
 
 Reference `.github/instructions/security/backlog-handoff.instructions.md` for full handoff templates and formatting rules.
 
-* ADO work items use `WI-SEC-{NNN}` temporary IDs with HTML `<div>` wrapper formatting.
+* GitHub work items use `{{SEC-TEMP-N}}` temporary IDs with HTML `<div>` wrapper formatting.
 * GitHub issues use `{{SEC-TEMP-N}}` temporary IDs with markdown and YAML frontmatter.
 * Default autonomy tier is Partial: the agent creates items but requires user confirmation before submission.
 * Content sanitization: no secrets, credentials, internal URLs, or PII in work item content.

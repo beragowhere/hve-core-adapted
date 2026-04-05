@@ -106,7 +106,7 @@ Identify and recommend appropriate mitigation strategies based on diagnostic fin
    * Best practices for the affected Azure services
    * Recovery procedures for specific failure modes
 
-3. **Review deployment history**: Check CI/CD pipelines (Azure DevOps, GitHub Actions) for:
+3. **Review deployment history**: Check CI/CD pipelines (GitHub Actions) for:
    * Recent deployments that may need rollback
    * Previous known-good versions
    * Rollback procedures documented in pipeline configs
