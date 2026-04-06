@@ -1,0 +1,148 @@
+name: Agent Integration Test
+on:
+  workflow_dispatch:
+    inputs:
+      agent-type:
+        description: 'Type of agent to test'
+        required: true
+        type: choice
+        options:
+          - security-planner
+          - security-reviewer
+          - sssc-planner
+      project-slug:
+        description: 'Test project identifier'
+        required: false
+        type: string
+        default: 'test-project-001'
+
+jobs:
+  test-agent:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Run agent validation test
+        run: ./scripts/test-agent-validation.sh
+        
+      - name: Create test state directory
+        run: |
+          mkdir -p .copilot-tracking/${{ inputs.agent-type }}
+          echo '{
+            "phase": "testing",
+            "projectSlug": "${{ inputs.project-slug }}",
+            "testRun": true,
+            "createdAt": "${{ github.run_id }}"
+          }' > .copilot-tracking/${{ inputs.agent-type }}/test-state.json
+          
+      - name: Verify agent file exists
+        run: |
+          case "${{ inputs.agent-type }}" in
+            security-planner)
+              AGENT_FILE=".github/agents/security/security-planner.agent.md"
+              ;;
+            security-reviewer)
+              AGENT_FILE=".github/agents/security/security-reviewer.agent.md"
+              ;;
+            sssc-planner)
+              AGENT_FILE=".github/agents/security/sssc-planner.agent.md"
+              ;;
+          esac
+          
+          if [ -f "$AGENT_FILE" ]; then
+            echo "✅ Agent file exists: $AGENT_FILE"
+            echo "Agent name: $(grep -m1 'name:' "$AGENT_FILE" | cut -d: -f2- | xargs)"
+          else
+            echo "❌ Agent file not found: $AGENT_FILE"
+            exit 1
+          fi
+          
+      - name: Check instruction files
+        run: |
+          echo "Checking instruction files for ${{ inputs.agent-type }}..."
+          case "${{ inputs.agent-type }}" in
+            security-planner)
+              INSTRUCTION_FILES="identity.instructions.md security-model.instructions.md"
+              ;;
+            sssc-planner)
+              INSTRUCTION_FILES="sssc-gap-analysis.instructions.md sssc-backlog.instructions.md backlog-handoff.instructions.md"
+              ;;
+            *)
+              INSTRUCTION_FILES=""
+              ;;
+          esac
+          
+          for file in $INSTRUCTION_FILES; do
+            if [ -f ".github/instructions/security/$file" ]; then
+              echo "✅ Instruction file exists: $file"
+            else
+              echo "⚠️  Instruction file missing: $file"
+            fi
+          done
+          
+      - name: Test file system access
+        run: |
+          TEST_FILE=".copilot-tracking/${{ inputs.agent-type }}/integration-test.txt"
+          echo "Integration test for ${{ inputs.agent-type }} - Run ID: ${{ github.run_id }}" > "$TEST_FILE"
+          echo "Test timestamp: $(date)" >> "$TEST_FILE"
+          
+          if [ -f "$TEST_FILE" ]; then
+            echo "✅ File system access verified"
+            cat "$TEST_FILE"
+          else
+            echo "❌ File system access failed"
+            exit 1
+          fi
+          
+      - name: Create test issue (simulated backlog item)
+        if: ${{ inputs.agent-type == 'security-planner' || inputs.agent-type == 'sssc-planner' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Simulating backlog item creation for ${{ inputs.agent-type }}..."
+          # Create a test file instead of actual issue for now
+          TEST_ISSUE=".copilot-tracking/${{ inputs.agent-type }}/test-backlog-item.json"
+          echo '{
+            "type": "test",
+            "agent": "${{ inputs.agent-type }}",
+            "title": "Test backlog item from integration test",
+            "description": "This is a test backlog item created during agent integration testing.",
+            "projectSlug": "${{ inputs.project-slug }}",
+            "createdAt": "$(date -Iseconds)",
+            "runId": "${{ github.run_id }}"
+          }' > "$TEST_ISSUE"
+          
+          echo "✅ Test backlog item created at: $TEST_ISSUE"
+          
+      - name: Verify test completion
+        run: |
+          echo "=== Integration Test Summary ==="
+          echo "Agent: ${{ inputs.agent-type }}"
+          echo "Project: ${{ inputs.project-slug }}"
+          echo "Run ID: ${{ github.run_id }}"
+          echo ""
+          echo "Files created:"
+          find .copilot-tracking/${{ inputs.agent-type }} -type f -name "*.json" -o -name "*.txt" | while read file; do
+            echo "  - $file"
+          done
+          echo ""
+          echo "✅ Integration test completed successfully"
+          
+      - name: Cleanup test files (optional)
+        if: always()
+        run: |
+          echo "Cleaning up test files..."
+          rm -rf .copilot-tracking/${{ inputs.agent-type }}/*.txt .copilot-tracking/${{ inputs.agent-type }}/*.json 2>/dev/null || true
+          echo "Cleanup complete"
