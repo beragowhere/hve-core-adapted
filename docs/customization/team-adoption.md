@@ -65,7 +65,7 @@ glance. Follow kebab-case patterns throughout.
 | Agents        | `{workflow}.agent.md`                                 | `code-review.agent.md`          |
 | Prompts       | `{action}.prompt.md`                                  | `generate-tests.prompt.md`      |
 | Skills        | `{skill-name}/SKILL.md`                               | `pr-reference/SKILL.md`         |
-| Collections   | `{collection-id}.collection.yml` and `.collection.md` | `ado.collection.yml`            |
+| Collections   | `{collection-id}.collection.yml` and `.collection.md` | `github.collection.yml`          |
 
 ### Collection IDs
 
@@ -73,7 +73,7 @@ Collection IDs serve as directory names throughout `.github/` and must be
 unique, lowercase, and kebab-cased. Choose IDs that reflect the domain or team
 the collection serves:
 
-* `ado` for Azure DevOps integration
+* `github` for GitHub integration
 * `coding-standards` for language-specific conventions
 * `security` for security architecture workflows
 
