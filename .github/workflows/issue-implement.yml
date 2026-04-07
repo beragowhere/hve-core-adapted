@@ -30,6 +30,7 @@ jobs:
       - name: Authenticate with GitHub token
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh auth status || gh auth login --with-token <<< "$GITHUB_TOKEN"
           
