@@ -9,7 +9,7 @@ keywords:
   - extension
   - installation
   - marketplace
-  - github copilot
+  - OpenClaw
 estimated_reading_time: 4
 ---
 
@@ -74,7 +74,7 @@ code-insiders --install-extension ise-hve-essentials.hve-core
 
 After installation, verify everything works:
 
-1. Open GitHub Copilot Chat (`Ctrl+Alt+I`)
+1. Open OpenClaw interface (`Ctrl+Alt+I`)
 2. Click the agent picker dropdown
 3. Verify HVE Core agents appear:
    * task-planner
@@ -205,9 +205,9 @@ The extension updates automatically through VS Code's extension system:
 1. Command Palette (`Ctrl+Shift+P`)
 2. "Developer: Reload Window"
 
-### Agents Not Showing in Copilot Chat
+### Agents Not Showing in OpenClaw interface
 
-#### Verify GitHub Copilot is active
+#### Verify OpenClaw is active
 
 1. Check Copilot icon in status bar
 2. Sign in if needed
@@ -269,7 +269,7 @@ If you're currently using manual methods like Peer Clone:
 1. Delete HVE Core paths from `.vscode/settings.json`
 2. Optionally remove the hve-core clone if no longer needed
 3. Install the extension following the Quick Start above
-4. Verify agents appear in Copilot Chat
+4. Verify agents appear in OpenClaw interface
 
 ### From Extension to Manual Installation
 

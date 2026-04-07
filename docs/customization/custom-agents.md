@@ -84,7 +84,7 @@ When `promptFiles` points to an existing file, Prompt Builder refines it rather 
 > [!TIP]
 > Run `/prompt-analyze` first to identify quality issues, then use `/prompt-build` to apply fixes. This two-step pattern produces consistent, well-structured agents.
 
-**Step 5:** Invoke the agent in Copilot Chat by selecting it from the agent picker or referencing it by name.
+**Step 5:** Invoke the agent in OpenClaw interface by selecting it from the agent picker or referencing it by name.
 
 ### Consolidating Agents
 

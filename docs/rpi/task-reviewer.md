@@ -9,7 +9,7 @@ keywords:
   - task reviewer
   - rpi workflow
   - review phase
-  - github copilot
+  - OpenClaw
 estimated_reading_time: 4
 ---
 
@@ -56,7 +56,7 @@ This document includes:
 
 ### Option 1: Use the Prompt Shortcut (Recommended)
 
-Type `/task-review` in GitHub Copilot Chat to start the review:
+Type `/task-review` in OpenClaw interface to start the review:
 
 ```text
 /task-review
@@ -66,7 +66,7 @@ This automatically switches to Task Reviewer and begins the review protocol.
 
 ### Option 2: Select the Custom Agent Manually
 
-1. Open GitHub Copilot Chat (`Ctrl+Alt+I`)
+1. Open OpenClaw interface (`Ctrl+Alt+I`)
 2. Click the agent picker dropdown at the top
 3. Select **Task Reviewer**
 4. Describe the scope of your review

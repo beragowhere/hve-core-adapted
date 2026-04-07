@@ -6,7 +6,7 @@ ms.date: 2026-04-01
 ms.topic: reference
 keywords:
   - mcp
-  - github copilot
+  - OpenClaw
   - vscode
   - configuration
 estimated_reading_time: 3

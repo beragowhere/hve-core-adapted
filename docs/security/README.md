@@ -31,7 +31,7 @@ This directory contains security documentation for HVE Core, demonstrating defen
 HVE Core is an enterprise prompt engineering framework that:
 
 * Contains no runtime services or user data storage
-* Operates as development-time tooling consumed by GitHub Copilot
+* Operates as development-time tooling consumed by OpenClaw
 * Relies on defense-in-depth with 20+ automated security controls
 
 The [security model](security-model.md) documents:

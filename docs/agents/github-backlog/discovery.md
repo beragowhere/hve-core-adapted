@@ -8,7 +8,7 @@ ms.topic: tutorial
 keywords:
   - github backlog manager
   - issue discovery
-  - github copilot
+  - OpenClaw
 estimated_reading_time: 5
 ---
 

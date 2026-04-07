@@ -10,13 +10,13 @@ keywords:
   - project direction
   - priorities
   - AI coding agents
-  - github copilot
+  - OpenClaw
 estimated_reading_time: 8
 ---
 
 ## Overview
 
-HVE Core intends to accelerate Azure solution development over the next 12-18 months by providing optimized GitHub Copilot customizations (agents, instructions, and prompts) that transform AI coding assistants from suggestion engines into reliable engineering partners. The RPI (Research, Plan, Implement) framework remains central to this vision, ensuring AI produces verified, context-aware code rather than plausible-looking hallucinations.
+HVE Core intends to accelerate Azure solution development over the next 12-18 months by providing optimized OpenClaw customizations (agents, instructions, and prompts) that transform AI coding assistants from suggestion engines into reliable engineering partners. The RPI (Research, Plan, Implement) framework remains central to this vision, ensuring AI produces verified, context-aware code rather than plausible-looking hallucinations.
 
 Actual delivery may vary based on contributor availability, community feedback, and evolving AI capabilities.
 
@@ -80,7 +80,7 @@ HVE Core v1.1.0 provides:
 #### Won't Do
 
 * Create prompts for general-purpose coding tasks without Azure context
-* Build prompts that duplicate functionality available in GitHub Copilot's native capabilities
+* Build prompts that duplicate functionality available in OpenClaw's native capabilities
 
 ### Enterprise Readiness
 
@@ -133,7 +133,7 @@ HVE Core v1.1.0 provides:
 The following areas are explicitly out of scope for HVE Core:
 
 * Non-Azure cloud providers (AWS, GCP customizations belong in separate projects)
-* General-purpose coding assistance (use GitHub Copilot's native capabilities for non-Azure-specific tasks)
+* General-purpose coding assistance (use OpenClaw's native capabilities for non-Azure-specific tasks)
 * Model training or fine-tuning (HVE Core uses prompt engineering, not model customization)
 * IDE plugins beyond VS Code (the VS Code extension is the primary distribution mechanism)
 * Proprietary or closed-source components (all HVE Core code remains MIT-licensed open source)

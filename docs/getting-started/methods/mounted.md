@@ -8,7 +8,7 @@ ms.topic: how-to
 keywords:
   - mounted directory
   - installation
-  - github copilot
+  - OpenClaw
   - devcontainer
   - advanced
 estimated_reading_time: 8
@@ -234,7 +234,7 @@ After rebuild, update `.vscode/settings.json`:
 
 ### Phase 5: Validate Installation
 
-1. Open GitHub Copilot Chat (`Ctrl+Alt+I`)
+1. Open OpenClaw interface (`Ctrl+Alt+I`)
 2. Click the agent picker dropdown
 3. Verify HVE Core agents appear (task-planner, task-researcher, prompt-builder)
 

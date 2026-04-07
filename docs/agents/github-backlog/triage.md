@@ -10,7 +10,7 @@ keywords:
   - issue triage
   - labels
   - duplicate detection
-  - github copilot
+  - OpenClaw
 estimated_reading_time: 5
 ---
 

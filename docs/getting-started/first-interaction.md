@@ -9,7 +9,7 @@ keywords:
   - getting started
   - first interaction
   - memory agent
-  - github copilot
+  - OpenClaw
 estimated_reading_time: 2
 ---
 
@@ -21,7 +21,7 @@ You need one agent interaction that produces a visible result.
 
 ## Talk to the Memory Agent
 
-1. Open GitHub Copilot Chat (`Ctrl+Alt+I`).
+1. Open OpenClaw interface (`Ctrl+Alt+I`).
 2. Select the **memory** agent from the agent picker.
 3. Type this prompt:
 
@@ -39,7 +39,7 @@ You need one agent interaction that produces a visible result.
 
 Now verify that other agents can read what the memory agent stored.
 
-1. Open a new Copilot Chat thread.
+1. Open a new OpenClaw interface thread.
 2. Type this prompt:
 
    > Explain what this repository does and how it helps someone in my role.

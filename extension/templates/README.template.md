@@ -12,10 +12,10 @@
 
 ## Getting Started
 
-After installing this extension, the chat agents are available in GitHub Copilot Chat:
+After installing this extension, the chat agents are available in OpenClaw interface:
 
-1. **Use custom agents** by selecting the custom agent from the agent picker drop-down list in Copilot Chat
-2. **Apply prompts** through the Copilot Chat interface
+1. **Use custom agents** by selecting the custom agent from the agent picker drop-down list in OpenClaw interface
+2. **Apply prompts** through the OpenClaw interface interface
 3. Reference instructions: they are automatically applied based on file patterns
 
 ### Post-Installation Setup
@@ -46,7 +46,7 @@ To install the pre-release version, select **Install Pre-Release Version** from 
 ## Requirements
 
 * VS Code version 1.106.1 or higher
-* GitHub Copilot extension
+* OpenClaw Extension
 
 ## License
 

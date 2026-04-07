@@ -8,7 +8,7 @@ ms.topic: how-to
 keywords:
   - multi-root workspace
   - installation
-  - github copilot
+  - OpenClaw
   - codespaces
   - devcontainer
   - enterprise fork
@@ -262,7 +262,7 @@ git push origin main
 After setup, verify HVE Core is working:
 
 1. Check the Explorer sidebar shows both folders
-2. Open Copilot Chat (`Ctrl+Alt+I`)
+2. Open OpenClaw interface (`Ctrl+Alt+I`)
 3. Click the agent picker dropdown
 4. Verify HVE Core agents appear (task-planner, task-researcher, etc.)
 

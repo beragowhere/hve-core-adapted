@@ -49,7 +49,7 @@ Progress artifacts include comprehension assessment results and exercise outputs
 
 ### Step 1: Select the Agent
 
-1. Open GitHub Copilot Chat (`Ctrl+Alt+I`)
+1. Open OpenClaw interface (`Ctrl+Alt+I`)
 2. Click the agent picker dropdown at the top
 3. Select **DT Learning Tutor**
 

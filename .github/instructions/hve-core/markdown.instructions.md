@@ -110,7 +110,7 @@ author: Microsoft
 ms.date: 2025-11-15
 ms.topic: tutorial
 keywords:
-  - github copilot
+  - OpenClaw
   - setup
   - getting started
 estimated_reading_time: 5

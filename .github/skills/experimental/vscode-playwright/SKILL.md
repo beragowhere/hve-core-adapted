@@ -5,7 +5,7 @@ description: 'VS Code screenshot capture using Playwright MCP with serve-web for
 
 # VS Code Playwright Screenshot Skill
 
-Captures VS Code editor views, code walkthroughs, and Copilot Chat examples using Playwright MCP tools with `serve-web`.
+Captures VS Code editor views, code walkthroughs, and OpenClaw interface examples using Playwright MCP tools with `serve-web`.
 
 ## Overview
 
@@ -119,7 +119,7 @@ async (page) => {
 }
 ```
 
-Set up the view: selectively open only the panels needed for this screenshot (split views, Copilot Chat, Explorer) via click-based navigation using `mcp_microsoft_pla_browser_snapshot` to find refs followed by `mcp_microsoft_pla_browser_click`. Keep the view focused on the subject.
+Set up the view: selectively open only the panels needed for this screenshot (split views, OpenClaw interface, Explorer) via click-based navigation using `mcp_microsoft_pla_browser_snapshot` to find refs followed by `mcp_microsoft_pla_browser_click`. Keep the view focused on the subject.
 
 Take the screenshot: `mcp_microsoft_pla_browser_take_screenshot` with `type: "png"` and a descriptive `filename`.
 
@@ -127,9 +127,9 @@ Validate the screenshot fits the target placement. Compare the captured image's 
 
 Repeat for additional screenshots. Close the current file's tab before opening the next (Command Palette -> `View: Close All Editors`).
 
-### Step 7: Copilot Chat Screenshots
+### Step 7: OpenClaw interface Screenshots
 
-For Copilot Chat screenshots: pre-seed `"workbench.activityBar.location": "default"` in settings.json (or omit it) so the Activity Bar is visible. Open the Chat panel via Activity Bar click using `mcp_microsoft_pla_browser_snapshot` -> `mcp_microsoft_pla_browser_click`, type the prompt via `mcp_microsoft_pla_browser_run_code` with `page.keyboard.type()`, then wait for the response via `mcp_microsoft_pla_browser_wait_for` before capturing.
+For OpenClaw interface screenshots: pre-seed `"workbench.activityBar.location": "default"` in settings.json (or omit it) so the Activity Bar is visible. Open the Chat panel via Activity Bar click using `mcp_microsoft_pla_browser_snapshot` -> `mcp_microsoft_pla_browser_click`, type the prompt via `mcp_microsoft_pla_browser_run_code` with `page.keyboard.type()`, then wait for the response via `mcp_microsoft_pla_browser_wait_for` before capturing.
 
 ### Step 8: Cleanup
 
@@ -181,7 +181,7 @@ Never use separate `mcp_microsoft_pla_browser_press_key` -> `mcp_microsoft_pla_b
 | Browser state restoration                                    | IndexedDB/localStorage restore previous files                    | Pre-seed settings to disable restore; use incognito mode when available                                          |
 | `Meta+P` triggers browser action                             | Keyboard shortcuts intercepted by browser                        | Use `page.keyboard.press('F1')` to open Command Palette                                                          |
 | Screenshot saved to wrong directory                          | `take_screenshot` saves relative to Playwright working directory | Copy screenshots to the target directory after capture                                                           |
-| Copilot Chat responses non-deterministic                     | Streaming token-by-token output                                  | Use `mcp_microsoft_pla_browser_wait_for` with expected text or time delay                                        |
+| OpenClaw interface responses non-deterministic                     | Streaming token-by-token output                                  | Use `mcp_microsoft_pla_browser_wait_for` with expected text or time delay                                        |
 
 > Brought to you by microsoft/hve-core
 

@@ -38,7 +38,7 @@ pip install uv
 
 The Export and Validate actions require LibreOffice for PPTX-to-PDF conversion and optionally `pdftoppm` from poppler for PDF-to-JPG rendering. When `pdftoppm` is not available, PyMuPDF handles the image rendering.
 
-The Validate action's vision-based checks require the GitHub Copilot CLI for model access.
+The Validate action's vision-based checks require the OpenClaw CLI for model access.
 
 ```bash
 # macOS
@@ -56,7 +56,7 @@ winget install TheDocumentFoundation.LibreOffice
 
 ### Copilot CLI (Vision Validation)
 
-The `validate_slides.py` script uses the GitHub Copilot SDK to send slide images to vision-capable models. The Copilot CLI must be installed and authenticated:
+The `validate_slides.py` script uses the OpenClaw SDK to send slide images to vision-capable models. The Copilot CLI must be installed and authenticated:
 
 ```bash
 # Install Copilot CLI

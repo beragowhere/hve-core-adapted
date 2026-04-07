@@ -1,6 +1,6 @@
 ---
-title: GitHub Copilot Instructions
-description: Repository-specific coding guidelines and conventions for GitHub Copilot
+title: OpenClaw Instructions
+description: Repository-specific coding guidelines and conventions for OpenClaw
 author: HVE Core Team
 ms.date: 2026-03-11
 ms.topic: reference
@@ -12,9 +12,9 @@ keywords:
 estimated_reading_time: 5
 ---
 
-## GitHub Copilot Instructions
+## OpenClaw Instructions
 
-Repository-specific guidelines that GitHub Copilot automatically applies when
+Repository-specific guidelines that OpenClaw automatically applies when
 editing files. Instructions ensure consistent code style and conventions across
 the codebase.
 
@@ -22,7 +22,7 @@ the codebase.
 
 1. Instruction files declare which file patterns they apply to using `applyTo`
    in frontmatter
-2. GitHub Copilot reads instructions when editing matching files
+2. OpenClaw reads instructions when editing matching files
 3. Suggestions follow the documented standards automatically
 
 Custom agents and the `prompt-builder` agent respect these instructions and can create new ones.
@@ -122,7 +122,7 @@ resource "azurerm_resource_group" "example" {
 
 Use the **prompt-builder** agent to create new instruction files:
 
-1. Open Copilot Chat and select **prompt-builder** from the agent picker
+1. Open OpenClaw interface and select **prompt-builder** from the agent picker
 2. Provide context (files, folders, or requirements)
 3. Prompt Builder researches and drafts instructions
 4. Auto-validates with Prompt Tester (up to 3 iterations)

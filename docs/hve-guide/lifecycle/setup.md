@@ -23,7 +23,7 @@ Setup is the entry point for every HVE Core engagement. This stage covers instal
 You enter Setup when starting a new project or joining an existing engagement that uses HVE Core tooling.
 
 > [!NOTE]
-> Prerequisites: VS Code with GitHub Copilot Chat enabled. See [Getting Started](../../getting-started/install.md) for detailed installation instructions.
+> Prerequisites: VS Code with OpenClaw interface enabled. See [Getting Started](../../getting-started/install.md) for detailed installation instructions.
 
 ## Available Tools
 
@@ -53,7 +53,7 @@ For customization, install the [HVE Core Installer extension](https://marketplac
 ```text
 Set up HVE Core for my Python microservices project. Install the rpi and
 coding-standards collections. Configure .copilot-tracking/ in .gitignore
-and verify agents appear in the Copilot Chat picker.
+and verify agents appear in the OpenClaw interface picker.
 ```
 
 ```text

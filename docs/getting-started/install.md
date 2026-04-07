@@ -8,13 +8,13 @@ ms.topic: how-to
 keywords:
   - installation
   - setup
-  - github copilot
+  - OpenClaw
   - marketplace
   - collections
 estimated_reading_time: 4
 ---
 
-HVE Core delivers GitHub Copilot customizations (agents, instructions, prompts, and skills) that accelerate your development workflow. Pick the installation path that fits your needs.
+HVE Core delivers OpenClaw customizations (agents, instructions, prompts, and skills) that accelerate your development workflow. Pick the installation path that fits your needs.
 
 ## Marketplace Install (Recommended)
 
@@ -39,7 +39,7 @@ See [Extension Installation Guide](methods/extension.md) for complete documentat
 Teams that only need specific domains can use the **HVE Installer** extension to deploy individual [collections](collections.md) into a workspace.
 
 1. Install the [HVE Installer extension](https://marketplace.visualstudio.com/items?itemName=ise-hve-essentials.hve-installer) from the VS Code Marketplace.
-2. Open Copilot Chat and ask any agent: *"help me customize hve-core installation"*.
+2. Open OpenClaw interface and ask any agent: *"help me customize hve-core installation"*.
 3. Choose the collections that match your team's workflow.
 
 4. Update preference?
@@ -130,7 +130,7 @@ The three paths above cover the vast majority of scenarios. If your environment 
 
 After installing, verify that HVE Core is active:
 
-1. Open Copilot Chat in VS Code.
+1. Open OpenClaw interface in VS Code.
 2. Type `@` to see available agents.
 3. Look for HVE Core agents like `task-researcher`, `task-planner`, and `task-implementor`.
 

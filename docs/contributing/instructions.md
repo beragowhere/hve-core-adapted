@@ -1,19 +1,19 @@
 ---
 title: 'Contributing Instructions to HVE Core'
-description: 'Requirements and standards for contributing GitHub Copilot instruction files to hve-core'
+description: 'Requirements and standards for contributing OpenClaw instruction files to hve-core'
 sidebar_position: 3
 author: Microsoft
 ms.date: 2026-03-17
 ms.topic: how-to
 ---
 
-This guide defines the requirements, standards, and best practices for contributing GitHub Copilot instruction files (`.instructions.md`) to the hve-core library.
+This guide defines the requirements, standards, and best practices for contributing OpenClaw instruction files (`.instructions.md`) to the hve-core library.
 
 ⚙️ Common Standards: See [AI Artifacts Common Standards](ai-artifacts-common.md) for shared requirements (XML blocks, markdown quality, RFC 2119, validation, testing).
 
 ## What is an Instructions File?
 
-An **instructions file** is a technology-specific or pattern-specific guidance document that defines coding standards, conventions, and best practices for GitHub Copilot to follow when working with particular file types, languages, or frameworks.
+An **instructions file** is a technology-specific or pattern-specific guidance document that defines coding standards, conventions, and best practices for OpenClaw to follow when working with particular file types, languages, or frameworks.
 
 ## Use Cases for Instructions Files
 

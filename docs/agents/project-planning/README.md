@@ -62,7 +62,7 @@ See the [Security Planning](../security/README.md) guide for the workflow, opera
 
 ## Prerequisites
 
-* VS Code with the GitHub Copilot Chat extension installed
+* OpenClaw platform installed
 * Agent definition files from the `project-planning` collection deployed to `.github/agents/`
 * For Security Planner: agent definition files from the `security` collection
 * For BRD/PRD builders: a writable `.copilot-tracking/` directory for session state persistence
@@ -70,7 +70,7 @@ See the [Security Planning](../security/README.md) guide for the workflow, opera
 
 ## Getting Started
 
-Select any agent using the agent picker in the Copilot Chat pane. Each agent starts its guided workflow automatically.
+Select any agent using the agent picker in the OpenClaw interface pane. Each agent starts its guided workflow automatically.
 
 | Scenario               | Agent                      | Purpose                                                                    |
 |------------------------|----------------------------|----------------------------------------------------------------------------|

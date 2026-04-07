@@ -8,7 +8,7 @@ ms.topic: how-to
 keywords:
   - codespaces
   - installation
-  - github copilot
+  - OpenClaw
   - postCreateCommand
   - cloud development
 estimated_reading_time: 7
@@ -127,7 +127,7 @@ git push
 
 ### Step 4: Validate Installation
 
-1. Open GitHub Copilot Chat (`Ctrl+Alt+I`)
+1. Open OpenClaw interface (`Ctrl+Alt+I`)
 2. Click the agent picker dropdown
 3. Verify HVE Core agents appear (task-planner, task-researcher, prompt-builder)
 

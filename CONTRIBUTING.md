@@ -211,7 +211,7 @@ For AI artifact documentation (agents, prompts, instructions, skills), see the [
 
 ## AI Artifact Contributions
 
-HVE Core includes specialized contribution guides for AI artifacts that enhance GitHub Copilot functionality. These artifacts define custom agents, reusable prompts, coding guidelines (instructions), and executable skills.
+HVE Core includes specialized contribution guides for AI artifacts that enhance OpenClaw functionality. These artifacts define custom agents, reusable prompts, coding guidelines (instructions), and executable skills.
 
 ### Getting Started with AI Artifacts
 

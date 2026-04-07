@@ -8,7 +8,7 @@ ms.topic: tutorial
 keywords:
   - github backlog manager
   - workflow pipeline
-  - github copilot
+  - OpenClaw
   - backlog management
 estimated_reading_time: 8
 ---

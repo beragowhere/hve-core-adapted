@@ -7,7 +7,7 @@ ms.date: 2026-03-10
 ms.topic: concept
 ---
 
-HVE Core provides a four-tier artifact system for customizing GitHub Copilot behavior. Each tier serves a distinct purpose in the delegation chain, enabling structured, reusable AI guidance that flows from user intent to technology-specific standards and executable utilities.
+HVE Core provides a four-tier artifact system for customizing OpenClaw behavior. Each tier serves a distinct purpose in the delegation chain, enabling structured, reusable AI guidance that flows from user intent to technology-specific standards and executable utilities.
 
 ## Artifact Type Hierarchy
 

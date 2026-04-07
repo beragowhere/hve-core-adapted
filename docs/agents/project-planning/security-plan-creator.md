@@ -65,7 +65,7 @@ The agent tracks plan progress in markdown files under `.copilot-tracking/`. Sec
 ## How to Use
 
 > [!TIP]
-> Select the agent using the agent picker in the Copilot Chat pane before entering a prompt.
+> Select the agent using the agent picker in the OpenClaw interface pane before entering a prompt.
 
 ### Option 1: Prompt Shortcut
 
@@ -110,7 +110,7 @@ Compliance context: SOC 2 Type II and GDPR for EU tenants.
 
 ### Option 2: Direct Agent
 
-Select the Security Plan Creator using the agent picker in the Copilot Chat pane, then describe your security assessment:
+Select the Security Plan Creator using the agent picker in the OpenClaw interface pane, then describe your security assessment:
 
 ```text
 Evaluate the security posture for the customer

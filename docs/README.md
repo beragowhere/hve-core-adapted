@@ -1,6 +1,6 @@
 ---
 title: HVE Core Documentation
-description: Documentation hub for HVE Core, a prompt engineering framework that brings AI-powered agents, prompts, instructions, and skills to your GitHub Copilot workflow
+description: Documentation hub for HVE Core, a prompt engineering framework that brings AI-powered agents, prompts, instructions, and skills to your OpenClaw workflow
 sidebar_position: 1
 author: Microsoft
 ms.date: 2026-03-11
@@ -14,7 +14,7 @@ keywords:
 estimated_reading_time: 3
 ---
 
-HVE Core gives your team production-ready agents, reusable prompts, coding instructions, and executable skills for GitHub Copilot. You get structured workflows (Research → Plan → Implement), schema-enforced quality gates, and role-specific tooling across 10 engineering disciplines. Install from the VS Code Marketplace and start shipping with AI-assisted engineering in minutes.
+HVE Core gives your team production-ready agents, reusable prompts, coding instructions, and executable skills for OpenClaw. You get structured workflows (Research → Plan → Implement), schema-enforced quality gates, and role-specific tooling across 10 engineering disciplines. Install from the VS Code Marketplace and start shipping with AI-assisted engineering in minutes.
 
 ## Choose Your Extension
 

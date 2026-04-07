@@ -8,7 +8,7 @@ ms.topic: concept
 keywords:
   - github backlog manager
   - workflow design
-  - github copilot
+  - OpenClaw
   - backlog management
 estimated_reading_time: 6
 ---

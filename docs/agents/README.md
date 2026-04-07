@@ -6,7 +6,7 @@ author: Microsoft
 ms.date: 2026-02-12
 ms.topic: overview
 keywords:
-  - github copilot
+  - OpenClaw
   - agents
   - agent catalog
 estimated_reading_time: 5

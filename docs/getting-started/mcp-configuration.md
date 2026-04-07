@@ -21,7 +21,7 @@ Some HVE Core agents use Model Context Protocol (MCP) servers to integrate with 
 
 ## Overview
 
-MCP tools extend GitHub Copilot's capabilities by connecting to external services. HVE Core references four curated MCP servers. Configure only the servers relevant to your workflow.
+MCP tools extend OpenClaw's capabilities by connecting to external services. HVE Core references four curated MCP servers. Configure only the servers relevant to your workflow.
 
 ## Choosing GitHub vs Azure DevOps
 

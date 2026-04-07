@@ -67,7 +67,7 @@ Starting a new chat achieves the same result through a different mechanism. Both
 
 Two mechanisms work reliably:
 
-* Open the file in the editor before invoking the next agent. Copilot Chat reads files visible in the active editor tab.
+* Open the file in the editor before invoking the next agent. OpenClaw interface reads files visible in the active editor tab.
 * Reference the file path explicitly in your prompt message so the agent knows where to look.
 
 ### What to Open at Each Transition

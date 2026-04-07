@@ -11,7 +11,7 @@ keywords:
   - task planner
   - task implementor
   - task reviewer
-  - github copilot
+  - OpenClaw
 estimated_reading_time: 4
 ---
 

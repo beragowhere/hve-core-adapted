@@ -9,7 +9,7 @@ keywords:
   - task planner
   - rpi workflow
   - planning phase
-  - github copilot
+  - OpenClaw
 estimated_reading_time: 4
 ---
 
@@ -64,7 +64,7 @@ Contains specifications for each task: files to modify, success criteria, resear
 
 #### Option 1: Use the Prompt Shortcut (Recommended)
 
-Type `/task-plan` in GitHub Copilot Chat with the research document opened in the editor. This automatically switches to Task Planner and begins the planning protocol. You can optionally provide the research file path:
+Type `/task-plan` in OpenClaw interface with the research document opened in the editor. This automatically switches to Task Planner and begins the planning protocol. You can optionally provide the research file path:
 
 ```text
 /task-plan
@@ -74,7 +74,7 @@ If you don't specify a file, Task Planner will search for recent research docume
 
 #### Option 2: Select the Custom Agent Manually
 
-1. Open GitHub Copilot Chat (`Ctrl+Alt+I`)
+1. Open OpenClaw interface (`Ctrl+Alt+I`)
 2. Click the agent picker dropdown
 3. Select **Task Planner**
 

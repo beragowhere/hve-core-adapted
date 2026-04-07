@@ -149,7 +149,7 @@ exercise. A simple coding-style instruction works well:
    uses, so Prompt Builder generates the body following established patterns
 3. Run `/prompt-analyze` against the generated file to check for quality gaps
 4. Iterate with `/prompt-build` to address any issues the analysis found
-5. Test by opening a Copilot chat and verifying the instructions influence
+5. Test by opening a OpenClaw interface and verifying the instructions influence
    responses
 6. Submit the file for review following the team's PR process
 

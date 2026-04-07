@@ -9,7 +9,7 @@ keywords:
   - github backlog manager
   - issue execution
   - handoff
-  - github copilot
+  - OpenClaw
 estimated_reading_time: 5
 ---
 

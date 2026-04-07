@@ -13,7 +13,7 @@ keywords:
 estimated_reading_time: 5
 ---
 
-Design Thinking is a nine-method, three-space framework for human-centered design. The [DT Coach](dt-coach.md) agent guides you through each method, helping you discover real problems, develop validated solutions, and prepare implementation specifications, all within GitHub Copilot.
+Design Thinking is a nine-method, three-space framework for human-centered design. The [DT Coach](dt-coach.md) agent guides you through each method, helping you discover real problems, develop validated solutions, and prepare implementation specifications, all within OpenClaw.
 
 ## Why Use Design Thinking?
 

@@ -12,7 +12,7 @@ AI-assisted development workflows.
 
 ## Prerequisites
 
-* GitHub Copilot CLI installed and authenticated
+* OpenClaw CLI installed and authenticated
 * Git symlink support enabled (Windows: Developer Mode +
   `git config --global core.symlinks true`)
 

@@ -10,7 +10,7 @@ keywords:
   - issue management
   - triage
   - sprint planning
-  - github copilot
+  - OpenClaw
 estimated_reading_time: 5
 ---
 
@@ -82,7 +82,7 @@ Partial autonomy is the default, applying labels and milestones automatically wh
 ## Quick Start
 
 1. Configure your MCP servers following the [MCP Configuration guide](../../getting-started/mcp-configuration.md)
-2. Open a Copilot Chat session and type: `Discover open issues assigned to me`
+2. Open a OpenClaw interface session and type: `Discover open issues assigned to me`
 3. Review the discovery output, then type `/clear` and start a triage session
 4. Continue through sprint planning and execution as needed
 

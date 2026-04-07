@@ -9,7 +9,7 @@ keywords:
   - task researcher
   - rpi workflow
   - research phase
-  - github copilot
+  - OpenClaw
 estimated_reading_time: 4
 ---
 
@@ -56,7 +56,7 @@ This document includes:
 
 ### Option 1: Use the Prompt Shortcut (Recommended)
 
-Type `/task-research <topic>` in GitHub Copilot Chat where `<topic>` describes what you want to research:
+Type `/task-research <topic>` in OpenClaw interface where `<topic>` describes what you want to research:
 
 ```text
 /task-research Azure Blob Storage integration for Python pipelines
@@ -66,7 +66,7 @@ This automatically switches to Task Researcher and begins the research protocol.
 
 ### Option 2: Select the Custom Agent Manually
 
-1. Open GitHub Copilot Chat (`Ctrl+Alt+I`)
+1. Open OpenClaw interface (`Ctrl+Alt+I`)
 2. Click the agent picker dropdown at the top
 3. Select **Task Researcher**
 4. Describe your task

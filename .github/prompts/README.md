@@ -1,12 +1,12 @@
 ---
-title: GitHub Copilot Prompts
+title: OpenClaw Prompts
 description: Coaching and guidance prompts for specific development tasks that provide step-by-step assistance and context-aware support
 author: Edge AI Team
 ms.date: 2026-03-11
 ms.topic: hub-page
 estimated_reading_time: 3
 keywords:
-  - github copilot
+  - OpenClaw
   - prompts
   - ai assistance
   - coaching
@@ -14,13 +14,13 @@ keywords:
   - development workflows
 ---
 
-## GitHub Copilot Prompts
+## OpenClaw Prompts
 
 This directory contains **coaching and guidance prompts** designed to provide step-by-step assistance for specific development tasks. Unlike instructions that focus on systematic implementation, prompts offer educational guidance and context-aware coaching to help you learn and apply best practices. Prompts are organized by workflow focus areas: onboarding & planning, source control & commit quality, development tools, documentation & process, and prompt engineering.
 
 ## How to Use Prompts
 
-Prompts can be invoked in GitHub Copilot Chat using `/prompt-name` syntax (e.g., `/task-research`, `/git-commit`). They provide:
+Prompts can be invoked in OpenClaw interface using `/prompt-name` syntax (e.g., `/task-research`, `/git-commit`). They provide:
 
 * **Educational Guidance**: Step-by-step coaching approach
 * **Context-Aware Assistance**: Project-specific guidance and examples

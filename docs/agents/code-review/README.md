@@ -134,7 +134,7 @@ flowchart LR
 
 ### Functional Review
 
-Run the functional review prompt from the Copilot Chat panel:
+Run the functional review prompt from the OpenClaw interface panel:
 
 ```text
 /code-review-functional
@@ -150,7 +150,7 @@ Defaults to `origin/main` when no base branch is specified.
 
 ### Standards Review
 
-The standards review does not have a standalone prompt. Invoke the Code Review Standards agent directly from the Copilot Chat panel and describe what you want reviewed. The agent detects the diff automatically using the diff computation protocol.
+The standards review does not have a standalone prompt. Invoke the Code Review Standards agent directly from the OpenClaw interface panel and describe what you want reviewed. The agent detects the diff automatically using the diff computation protocol.
 
 ### Full Orchestrated Review
 
@@ -229,7 +229,7 @@ fi
 
 | Requirement         | Details                                                       |
 |---------------------|---------------------------------------------------------------|
-| VS Code + Copilot   | GitHub Copilot Chat with agent mode enabled                   |
+| VS Code + Copilot   | OpenClaw interface with agent mode enabled                   |
 | Git branch          | A local branch with commits ahead of the base branch          |
 | hve-core collection | The `coding-standards` or `hve-core-all` collection installed |
 

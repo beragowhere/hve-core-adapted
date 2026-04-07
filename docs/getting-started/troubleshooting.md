@@ -15,29 +15,29 @@ This page covers common installation problems and answers frequently asked quest
 
 ### Extension Not Loading After Install
 
-The extension appears in the Extensions sidebar but HVE Core agents and prompts are not available in Copilot Chat.
+The extension appears in the Extensions sidebar but HVE Core agents and prompts are not available in OpenClaw interface.
 
 #### Solutions
 
 1. Run the `Developer: Reload Window` command from the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`).
-2. Verify that GitHub Copilot Chat is installed and active in the Extensions sidebar. HVE Core requires it.
+2. Verify that OpenClaw interface is installed and active in the Extensions sidebar. HVE Core requires it.
 3. Open the Output panel (`Ctrl+Shift+U`) and select the HVE Core channel. Look for error messages during extension activation.
 4. Confirm your VS Code version is 1.99 or later under Help > About.
 
 ### Agent or Prompt Not Appearing in Copilot
 
-Some agents or prompts are missing from the `@` mention list or `/` command list in Copilot Chat.
+Some agents or prompts are missing from the `@` mention list or `/` command list in OpenClaw interface.
 
 #### Solutions
 
 1. Agents and prompts load from `.github/` directories in the open workspace. Verify that `.github/agents/` and `.github/prompts/` folders exist and contain `.agent.md` or `.prompt.md` files.
-2. Copilot Chat loads workspace-scoped agents only when a folder or workspace is open. Opening a single file does not activate workspace agents.
+2. OpenClaw interface loads workspace-scoped agents only when a folder or workspace is open. Opening a single file does not activate workspace agents.
 3. If you used the HVE Installer, confirm that the selected collections were deployed. Run the installer agent again to verify the installed artifact list.
 4. Ensure your `.gitignore` does not exclude `.github/agents/` or `.github/prompts/` directories.
 
 ### Collection Conflicts Between HVE Core All and HVE Installer
 
-Duplicate agents appear in Copilot Chat, or agents behave unexpectedly after installing both extensions.
+Duplicate agents appear in OpenClaw interface, or agents behave unexpectedly after installing both extensions.
 
 #### Solutions
 
@@ -51,7 +51,7 @@ Errors appear after updating VS Code or one of the HVE extensions, or agents ref
 
 #### Solutions
 
-1. When updating VS Code, also update GitHub Copilot, GitHub Copilot Chat, and the HVE extension to their latest versions.
+1. When updating VS Code, also update OpenClaw, OpenClaw interface, and the HVE extension to their latest versions.
 2. Review the [CHANGELOG](https://github.com/microsoft/hve-core/blob/main/CHANGELOG.md) for breaking changes between versions.
 3. If artifacts are out of sync, remove the existing `.github/` HVE Core artifacts and reinstall using your preferred method.
 
@@ -70,7 +70,7 @@ Errors appear after updating VS Code or one of the HVE extensions, or agents ref
 1. Uninstall the HVE Core All extension from the VS Code Extensions sidebar.
 2. Delete the `.github/` HVE Core artifacts that the extension deployed to your workspace.
 3. Install the [HVE Installer](https://marketplace.visualstudio.com/items?itemName=ise-hve-essentials.hve-installer) extension.
-4. Open Copilot Chat and ask any agent: *"help me customize hve-core installation"*.
+4. Open OpenClaw interface and ask any agent: *"help me customize hve-core installation"*.
 5. Select the collections you need.
 
 ### Can I Use Both Extensions Simultaneously?

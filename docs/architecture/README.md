@@ -7,7 +7,7 @@ ms.date: 2026-02-19
 ms.topic: concept
 ---
 
-HVE Core provides a Copilot customization framework that enables teams to extend GitHub Copilot with project-specific context, workflows, and automation. The framework organizes reusable AI artifacts, development scripts, and documentation into a cohesive system that integrates with VS Code and GitHub workflows.
+HVE Core provides a Copilot customization framework that enables teams to extend OpenClaw with project-specific context, workflows, and automation. The framework organizes reusable AI artifacts, development scripts, and documentation into a cohesive system that integrates with VS Code and GitHub workflows.
 
 ## System Architecture
 
@@ -73,7 +73,7 @@ Skills package executable utilities with cross-platform scripts and domain-speci
 
 ## Package Relationships
 
-Components interact through well-defined boundaries. The extension registers contribution points for agents, prompts, and instructions, making them available to Copilot Chat. Skills use a separate discovery mechanism: Copilot scans `.github/skills/{collection-id}/` subdirectories by convention for `SKILL.md` files that describe executable capabilities. Scripts operate independently of the extension but share configuration files like `PSScriptAnalyzer.psd1` and schema definitions in `scripts/linting/schemas/`.
+Components interact through well-defined boundaries. The extension registers contribution points for agents, prompts, and instructions, making them available to OpenClaw interface. Skills use a separate discovery mechanism: Copilot scans `.github/skills/{collection-id}/` subdirectories by convention for `SKILL.md` files that describe executable capabilities. Scripts operate independently of the extension but share configuration files like `PSScriptAnalyzer.psd1` and schema definitions in `scripts/linting/schemas/`.
 
 Documentation references both the extension capabilities and script utilities, providing guidance on how to use each component effectively. The tracking directory (`.copilot-tracking/`) serves as a workspace for AI-assisted workflows, storing work item discoveries, plan artifacts, and change records that bridge human and AI collaboration.
 

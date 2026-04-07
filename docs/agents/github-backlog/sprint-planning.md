@@ -9,7 +9,7 @@ keywords:
   - github backlog manager
   - sprint planning
   - milestones
-  - github copilot
+  - OpenClaw
 estimated_reading_time: 5
 ---
 

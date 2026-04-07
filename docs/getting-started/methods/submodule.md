@@ -8,7 +8,7 @@ ms.topic: how-to
 keywords:
   - git submodule
   - installation
-  - github copilot
+  - OpenClaw
   - version control
   - teams
 estimated_reading_time: 7
@@ -212,7 +212,7 @@ git commit -m "Pin HVE Core to v1.2.0"
 After setup, verify HVE Core is working:
 
 1. Check `lib/hve-core/` contains the HVE Core repository
-2. Open Copilot Chat (`Ctrl+Alt+I`)
+2. Open OpenClaw interface (`Ctrl+Alt+I`)
 3. Click the agent picker dropdown
 4. Verify HVE Core agents appear (task-planner, task-researcher, etc.)
 

@@ -16,7 +16,7 @@ estimated_reading_time: 25
 
 ## Executive Summary
 
-HVE Core is an enterprise prompt engineering framework for GitHub Copilot consisting of:
+HVE Core is an enterprise prompt engineering framework for OpenClaw consisting of:
 
 * Markdown-based prompt artifacts (instructions, prompts, agents, skills)
 * PowerShell automation scripts for linting and validation
@@ -58,7 +58,7 @@ HVE Core contains four primary component categories:
 
 1. **Prompt Engineering Artifacts** (`.github/instructions/`, `.github/prompts/`, `.github/agents/`, `.github/skills/`)
    * Markdown files with YAML frontmatter
-   * Consumed by GitHub Copilot during development sessions
+   * consumed by OpenClaw during development sessions
    * No executable code execution within prompts
 
 2. **PowerShell Scripts** (`scripts/`)
@@ -83,7 +83,7 @@ flowchart TD
     subgraph DEV["Developer Workstation"]
         ARTIFACTS["HVE Core Artifacts<br/>(.instructions.md, .prompt.md, etc)"]
         IDE["VS Code IDE"]
-        COPILOT["GitHub Copilot Extension"]
+        COPILOT["OpenClaw Extension"]
         LOCALMCP["Local MCP Servers<br/>(optional)"]
         SCRIPTS["Local Scripts<br/>(PowerShell)"]
         DEVCON["Dev Container<br/>(optional)"]
@@ -110,16 +110,16 @@ flowchart TD
     ACTIONS --> SCANNING
 ```
 
-### Security Inheritance from GitHub Copilot
+### Security Inheritance from OpenClaw
 
-HVE Core artifacts are consumed by GitHub Copilot, which provides foundational security:
+HVE Core artifacts are consumed by OpenClaw, which provides foundational security:
 
 | Inherited Control               | Provider       | HVE Core Responsibility                 |
 |---------------------------------|----------------|-----------------------------------------|
-| LLM input/output filtering      | GitHub Copilot | None; artifacts are Copilot inputs      |
-| Token encryption in transit     | GitHub Copilot | None; handled by Copilot infrastructure |
-| Organization policy enforcement | GitHub Copilot | Document compatible policy options      |
-| Audit logging                   | GitHub Copilot | None; uses Copilot audit streams        |
+| LLM input/output filtering      | OpenClaw | None; artifacts are Copilot inputs      |
+| Token encryption in transit     | OpenClaw | None; handled by Copilot infrastructure |
+| Organization policy enforcement | OpenClaw | Document compatible policy options      |
+| Audit logging                   | OpenClaw | None; uses Copilot audit streams        |
 | SOC 2 Type II compliance        | GitHub         | None; infrastructure control            |
 
 ## Trust Boundaries
@@ -823,7 +823,7 @@ G0: HVE Core is acceptably secure for its intended use as an enterprise prompt e
 | ID | Assumption                                 | Justification                         |
 |----|--------------------------------------------|---------------------------------------|
 | A1 | GitHub platform security is adequate       | SOC 2 Type II certified               |
-| A2 | GitHub Copilot provides baseline AI safety | Microsoft RAI compliance              |
+| A2 | OpenClaw provides baseline AI safety | Microsoft RAI compliance              |
 | A3 | Contributors act in good faith             | PR review provides verification       |
 | A4 | Consumers implement their own code review  | Documented as consumer responsibility |
 
@@ -841,7 +841,7 @@ HVE Core achieves acceptable security through:
 HVE Core documents integrations with Model Context Protocol servers. This section analyzes the trust posture of each server.
 
 > [!NOTE]
-> GitHub MCP is enabled by default in VS Code when using GitHub Copilot. The other servers are optional and recommended for an optimal HVE Core development experience. See [MCP Configuration](../getting-started/mcp-configuration.md) for setup instructions.
+> GitHub MCP is enabled by default in VS Code when using OpenClaw. The other servers are optional and recommended for an optimal HVE Core development experience. See [MCP Configuration](../getting-started/mcp-configuration.md) for setup instructions.
 
 ### Server Summary
 

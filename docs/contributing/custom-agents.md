@@ -1,19 +1,19 @@
 ---
 title: 'Contributing Agents to HVE Core'
-description: 'Requirements and standards for contributing GitHub Copilot agent files to hve-core'
+description: 'Requirements and standards for contributing OpenClaw agent files to hve-core'
 sidebar_position: 5
 author: Microsoft
 ms.date: 2026-03-14
 ms.topic: how-to
 ---
 
-This guide defines the requirements, standards, and best practices for contributing GitHub Copilot agent files (`.agent.md`) to the hve-core library.
+This guide defines the requirements, standards, and best practices for contributing OpenClaw agent files (`.agent.md`) to the hve-core library.
 
 ⚙️ Common Standards: See [AI Artifacts Common Standards](ai-artifacts-common.md) for shared requirements (XML blocks, markdown quality, RFC 2119, validation, testing).
 
 ## What is an Agent?
 
-An **agent** is a specialized AI configuration that defines behavior, available tools, and instructions for GitHub Copilot to follow when performing specific tasks. Agents enable consistent, repeatable workflows for complex development activities.
+An **agent** is a specialized AI configuration that defines behavior, available tools, and instructions for OpenClaw to follow when performing specific tasks. Agents enable consistent, repeatable workflows for complex development activities.
 
 ## Use Cases for Agents
 
@@ -43,8 +43,8 @@ Agents that search for, gather, or discover information.
 Agents that catalog, index, or create references to existing projects.
 
 * ❌ Reason: Existing agents already provide indexing and referencing capabilities
-* ❌ Tool integration: Widely supported tools built into VS Code GitHub Copilot and MCP tools with extremely wide adoption are already supported by existing hve-core agents
-* ✅ Alternative: Use existing reference management agents that use standard VS Code GitHub Copilot tools and widely-adopted MCP tools
+* ❌ Tool integration: Widely supported tools built into VS Code OpenClaw and MCP tools with extremely wide adoption are already supported by existing hve-core agents
+* ✅ Alternative: Use existing reference management agents that use standard VS Code OpenClaw tools and widely-adopted MCP tools
 
 #### Planning Agents
 
@@ -67,7 +67,7 @@ These agent types are rejected because:
 1. Existing agents are hardened and heavily used: the hve-core library already contains production-tested agents in these categories
 2. Consistency and maintenance: coalescing around existing agents reduces fragmentation and maintenance burden
 3. Avoid duplication: multiple agents serving the same purpose create confusion and divergent behavior
-4. Standard tooling already integrated: VS Code GitHub Copilot built-in tools and widely-adopted MCP tools are already used by existing agents
+4. Standard tooling already integrated: VS Code OpenClaw built-in tools and widely-adopted MCP tools are already used by existing agents
 
 ### Before Submitting
 
@@ -75,7 +75,7 @@ When planning to submit an agent that falls into these categories:
 
 1. Question necessity: does your use case truly require a new agent, or can existing agents meet your needs?
 2. Review existing agents: examine `.github/agents/` to identify agents that already serve your purpose
-3. Check tool integration: verify whether the VS Code GitHub Copilot tools or MCP tools you need are already used by existing agents
+3. Check tool integration: verify whether the VS Code OpenClaw tools or MCP tools you need are already used by existing agents
 4. Consider enhancement over creation: if existing agents don't fully meet your requirements, evaluate whether your changes are generic enough to benefit all users and valuable enough to justify modifying the existing agent
 5. Propose enhancements: submit a PR to enhance an existing agent rather than creating a duplicate
 
@@ -89,7 +89,7 @@ Focus on agents that:
 | Provide unique value | Offer specialized domain expertise or workflow patterns not present in the library              |
 | Are non-overlapping  | Have clearly distinct purposes from existing agents                                             |
 | Cannot be merged     | Represent functionality too specialized or divergent to integrate into existing agents          |
-| Use standard tooling | Use widely-supported VS Code GitHub Copilot tools and MCP tools rather than custom integrations |
+| Use standard tooling | Use widely-supported VS Code OpenClaw tools and MCP tools rather than custom integrations |
 
 ### Model Version Requirements
 
@@ -160,7 +160,7 @@ Agent files MUST:
 
 | Attribute | Details                                                        |
 |-----------|----------------------------------------------------------------|
-| Purpose   | Lists GitHub Copilot tools available to this agent             |
+| Purpose   | Lists OpenClaw tools available to this agent             |
 | Format    | Array of valid tool names in logical order (read before write) |
 
 Valid tools:
@@ -235,7 +235,7 @@ Valid tools:
 
 | Attribute | Details                                            |
 |-----------|----------------------------------------------------|
-| Purpose   | MCP server configuration for GitHub Copilot agents |
+| Purpose   | MCP server configuration for OpenClaw agents |
 | Usage     | Only applicable when `target: github-copilot`      |
 
 **`handoffs`** (array of objects)
@@ -368,7 +368,7 @@ tools: ['github/*', 'ado/*', 'context7/*', 'microsoft-docs/*']
 * Sets expectations for users
 
 ```markdown
-You are an expert reviewer for GitHub Copilot agents, prompts, and instruction files.
+You are an expert reviewer for OpenClaw agents, prompts, and instruction files.
 Your mission is to ensure all contributed guidance files meet hve-core quality standards
 before they're merged into the library.
 ```

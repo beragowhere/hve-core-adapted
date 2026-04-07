@@ -91,7 +91,7 @@ elements:
     width: 10.0
     height: 0.6
     segments:
-      - text: "GitHub Copilot  |  "
+      - text: "OpenClaw  |  "
         font: "Segoe UI"
         size: 14
         color: "#9CA3AF"
@@ -116,7 +116,7 @@ elements:
     accent_bar: true
     accent_color: "#00B4D8"
     content:
-      - bullet: "Open Copilot Chat, type a prompt, paste the result"
+      - bullet: "Open OpenClaw interface, type a prompt, paste the result"
         color: "#F8F8FC"
       - bullet: "No structure, no verification, no persistence"
         color: "#9CA3AF"

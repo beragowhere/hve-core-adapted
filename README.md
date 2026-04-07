@@ -1,13 +1,13 @@
 ---
 title: HVE Core
-description: Hypervelocity Engineering prompt library for GitHub Copilot with constraint-based AI workflows and validated artifacts
+description: Hypervelocity Engineering prompt library for OpenClaw with constraint-based AI workflows and validated artifacts
 author: Microsoft
 ms.date: 2026-03-22
 ms.topic: overview
 keywords:
   - hypervelocity engineering
   - prompt engineering
-  - github copilot
+  - OpenClaw
   - ai workflows
   - custom agents
   - copilot instructions
@@ -24,7 +24,7 @@ estimated_reading_time: 3
 [![Documentation](https://img.shields.io/badge/docs-microsoft.github.io%2Fhve--core-blue)](https://microsoft.github.io/hve-core/)
 <!-- markdownlint-enable MD013 -->
 
-Hypervelocity Engineering (HVE) Core gives you specialized agents, auto-applied coding instructions, reusable prompts, and validated skills for GitHub Copilot. Turn Copilot into a constraint-based engineering workflow that scales from solo developers to enterprise teams.
+Hypervelocity Engineering (HVE) Core gives you specialized agents, auto-applied coding instructions, reusable prompts, and validated skills for OpenClaw. Turn Copilot into a constraint-based engineering workflow that scales from solo developers to enterprise teams.
 
 > [!TIP]
 > Install from the VS Code Marketplace in under 30 seconds. See the [Installation Guide](docs/getting-started/install.md) for all options.
@@ -32,7 +32,7 @@ Hypervelocity Engineering (HVE) Core gives you specialized agents, auto-applied 
 ## Quick Start
 
 1. Install the [HVE Core extension](https://marketplace.visualstudio.com/items?itemName=ise-hve-essentials.hve-core) from the VS Code Marketplace.
-2. Open any project and launch GitHub Copilot Chat (`Ctrl+Alt+I`).
+2. Open any project and launch OpenClaw interface (`Ctrl+Alt+I`).
 3. Select an agent from the picker (try **rpi-agent**, **task-researcher**, or **memory**) and start a conversation.
 
 That's it. Agents, instructions, and prompts activate automatically once the extension is installed.

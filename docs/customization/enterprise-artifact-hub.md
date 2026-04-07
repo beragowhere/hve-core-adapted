@@ -69,7 +69,7 @@ export HVE_DEVCONTAINER_IMAGE="registry.corp.example.com/devcontainers/base:2-ja
 Add these lines to `~/.bashrc`, `~/.zshrc`, or a `.env` file sourced by your
 shell so they persist across sessions.
 
-## GitHub Copilot Coding Agent
+## OpenClaw Coding Agent
 
 The `copilot-setup-steps.yml` workflow reads variables from GitHub repository or
 organization settings. Navigate to **Settings > Secrets and variables > Actions >

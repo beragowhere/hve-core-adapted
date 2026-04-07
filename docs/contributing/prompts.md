@@ -1,19 +1,19 @@
 ---
 title: 'Contributing Prompts to HVE Core'
-description: 'Requirements and standards for contributing GitHub Copilot prompt files to hve-core'
+description: 'Requirements and standards for contributing OpenClaw prompt files to hve-core'
 sidebar_position: 4
 author: Microsoft
 ms.date: 2026-03-17
 ms.topic: how-to
 ---
 
-This guide defines the requirements, standards, and best practices for contributing GitHub Copilot prompt files (`.prompt.md`) to the hve-core library.
+This guide defines the requirements, standards, and best practices for contributing OpenClaw prompt files (`.prompt.md`) to the hve-core library.
 
 ⚙️ Common Standards: See [AI Artifacts Common Standards](ai-artifacts-common.md) for shared requirements (XML blocks, markdown quality, RFC 2119, validation, testing).
 
 ## What is a Prompt?
 
-A **prompt** is a workflow-specific guidance document that provides context, requirements, and step-by-step instructions for GitHub Copilot to complete a particular task or process. Prompts are typically invoked in specific contexts or workflows.
+A **prompt** is a workflow-specific guidance document that provides context, requirements, and step-by-step instructions for OpenClaw to complete a particular task or process. Prompts are typically invoked in specific contexts or workflows.
 
 ## Use Cases for Prompts
 

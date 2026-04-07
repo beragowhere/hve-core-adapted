@@ -860,7 +860,7 @@ After gitignore and MCP checkpoints complete, display the final completion messa
 
 ▶️ Next Steps:
 1. Reload VS Code (Ctrl+Shift+P → "Reload Window")
-2. Open Copilot Chat (`Ctrl+Alt+I`) and click the agent picker dropdown
+2. Open OpenClaw interface (`Ctrl+Alt+I`) and click the agent picker dropdown
 3. Select an agent to start working
 
 💡 Select `task-researcher` from the picker to explore HVE-Core capabilities

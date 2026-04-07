@@ -16,7 +16,7 @@ estimated_reading_time: 8
 This guide walks through a complete Design Thinking journey, showing how the nine methods work together to transform a vague request into a validated, scalable solution. The walkthrough uses a manufacturing scenario where a plant manager asks to "build a quality dashboard" and the team discovers the real problem is knowledge loss across shifts.
 
 > [!NOTE]
-> All prompts in this walkthrough use the **dt-coach** agent. Select it from the agent picker dropdown in Copilot Chat before entering each prompt. See [Using DT Coach](dt-coach.md) for setup details.
+> All prompts in this walkthrough use the **dt-coach** agent. Select it from the agent picker dropdown in OpenClaw interface before entering each prompt. See [Using DT Coach](dt-coach.md) for setup details.
 
 ## The Complete Journey
 

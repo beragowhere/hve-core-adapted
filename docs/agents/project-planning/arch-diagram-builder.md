@@ -79,7 +79,7 @@ Unlike other project planning agents, the Arch Diagram Builder does not save fil
 ## How to Use
 
 > [!TIP]
-> Select the agent using the agent picker in the Copilot Chat pane before entering a prompt.
+> Select the agent using the agent picker in the OpenClaw interface pane before entering a prompt.
 
 ### Option 1: Prompt Shortcut
 
@@ -108,7 +108,7 @@ Group services by their Kubernetes namespace from k8s/namespaces/.
 
 ### Option 2: Direct Agent
 
-Select the Arch Diagram Builder using the agent picker in the Copilot Chat pane, then describe the architecture to visualize:
+Select the Arch Diagram Builder using the agent picker in the OpenClaw interface pane, then describe the architecture to visualize:
 
 ```text
 Map the networking topology from the Bicep

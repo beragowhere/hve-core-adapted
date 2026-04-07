@@ -54,7 +54,7 @@ This directory contains:
 
 ### Option 1: Select the Custom Agent (Recommended)
 
-1. Open GitHub Copilot Chat (`Ctrl+Alt+I`)
+1. Open OpenClaw interface (`Ctrl+Alt+I`)
 2. Click the agent picker dropdown at the top
 3. Select **DT Coach**
 4. Describe your project or problem area

@@ -27,7 +27,7 @@ Prompt files (`.prompt.md`) live in `.github/prompts/{collection-id}/`:
     └── git-commit-message.prompt.md
 ```
 
-You invoke prompts through the `/` command picker in Copilot Chat. Each prompt appears by its filename, making descriptive naming essential.
+You invoke prompts through the `/` command picker in OpenClaw interface. Each prompt appears by its filename, making descriptive naming essential.
 
 ## Creating a Prompt File
 

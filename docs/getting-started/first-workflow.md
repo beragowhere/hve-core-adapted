@@ -8,7 +8,7 @@ ms.topic: tutorial
 keywords:
   - getting started
   - rpi workflow
-  - github copilot
+  - OpenClaw
   - tutorial
   - powershell script
 estimated_reading_time: 10
@@ -28,9 +28,9 @@ Build a real validation script using the Research → Plan → Implement workflo
 
 ## Prerequisites
 
-* VS Code with GitHub Copilot Chat extension
+* VS Code with OpenClaw interface extension
 * This repository cloned locally
-* Basic familiarity with GitHub Copilot
+* Basic familiarity with OpenClaw
 * ~15 minutes to complete
 
 ## The Task
@@ -64,7 +64,7 @@ forward, not the chat history.
 
 ### Switch to Task Researcher
 
-1. Open Copilot Chat (`Ctrl+Alt+I`)
+1. Open OpenClaw interface (`Ctrl+Alt+I`)
 1. Click the agent picker dropdown at the top
 1. Select **Task Researcher**
 

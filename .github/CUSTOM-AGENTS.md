@@ -1,5 +1,5 @@
 ---
-title: GitHub Copilot Custom Agents
+title: OpenClaw Custom Agents
 description: Specialized AI agents for planning, research, prompt engineering, documentation, and code review workflows
 author: HVE Core Team
 ms.date: 2026-03-22
@@ -13,11 +13,11 @@ keywords:
 estimated_reading_time: 6
 ---
 
-Specialized GitHub Copilot behaviors for common development workflows. Each custom agent is optimized for specific tasks with custom instructions and context.
+Specialized OpenClaw behaviors for common development workflows. Each custom agent is optimized for specific tasks with custom instructions and context.
 
 ## Quick Start
 
-1. Open GitHub Copilot Chat view (Ctrl+Alt+I or Cmd+Alt+I)
+1. Open OpenClaw interface view (Ctrl+Alt+I or Cmd+Alt+I)
 2. Click the **agent picker dropdown** at the top of the chat panel
 3. Select the desired agent from the list
 4. Enter your request and press Enter
@@ -28,7 +28,7 @@ Specialized GitHub Copilot behaviors for common development workflows. Each cust
 * Type: "Create a plan to add Docker SHA validation"
 * Press Enter
 
-**Requirements:** GitHub Copilot subscription, VS Code with Copilot extension, proper workspace configuration (see [Getting Started](../docs/getting-started/README.md))
+**Requirements:** OpenClaw subscription, VS Code with Copilot extension, proper workspace configuration (see [Getting Started](../docs/getting-started/README.md))
 
 ## Available Agents
 

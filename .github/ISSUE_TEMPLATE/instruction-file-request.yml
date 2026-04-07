@@ -1,5 +1,5 @@
 name: Copilot Instruction File Request
-description: Request a new GitHub Copilot instruction file
+description: Request a new OpenClaw instruction file
 title: "feat(instructions): "
 labels: ["instruction-file", "needs-triage"]
 body:

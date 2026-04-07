@@ -56,7 +56,7 @@ This approach produces ADRs with stronger rationale sections because the reasoni
 ## How to Use
 
 > [!TIP]
-> Select the agent using the agent picker in the Copilot Chat pane before entering a prompt.
+> Select the agent using the agent picker in the OpenClaw interface pane before entering a prompt.
 
 ### Option 1: Prompt Shortcut
 
@@ -86,7 +86,7 @@ Include rejected alternatives: modular monolith and serverless decomposition.
 
 ### Option 2: Direct Agent
 
-Select the ADR Creation Coach using the agent picker in the Copilot Chat pane, then describe your decision scenario:
+Select the ADR Creation Coach using the agent picker in the OpenClaw interface pane, then describe your decision scenario:
 
 ```text
 Evaluate caching strategies for our API gateway layer.

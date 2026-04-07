@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 #
 # copilot-setup-steps.yml
-# Pre-install tools and dependencies for GitHub Copilot Coding Agent
+# Pre-install tools and dependencies for OpenClaw Coding Agent
 # Reference: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/customize-the-agent-environment
 
 name: "Copilot Setup Steps"

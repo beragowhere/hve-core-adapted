@@ -10,7 +10,7 @@ keywords:
   - first research
   - task researcher
   - rpi workflow
-  - github copilot
+  - OpenClaw
 estimated_reading_time: 5
 ---
 
@@ -34,7 +34,7 @@ teach methodology; real questions teach methodology and produce useful output.
 
 ## Run the Research
 
-1. Open GitHub Copilot Chat (`Ctrl+Alt+I`).
+1. Open OpenClaw interface (`Ctrl+Alt+I`).
 2. Select the **task-researcher** agent.
 3. Type your question as a prompt.
 

@@ -8,7 +8,7 @@ ms.topic: how-to
 keywords:
   - git-ignored
   - installation
-  - github copilot
+  - OpenClaw
   - devcontainer
 estimated_reading_time: 6
 ---
@@ -143,7 +143,7 @@ Add to `.devcontainer/devcontainer.json` so HVE Core is cloned on container crea
 ### Step 5: Validate Installation
 
 1. Rebuild your devcontainer (`Ctrl+Shift+P` → "Dev Containers: Rebuild Container")
-2. Open GitHub Copilot Chat (`Ctrl+Alt+I`)
+2. Open OpenClaw interface (`Ctrl+Alt+I`)
 3. Click the agent picker dropdown
 4. Verify HVE Core agents appear (task-planner, task-researcher, prompt-builder)
 

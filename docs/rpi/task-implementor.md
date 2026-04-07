@@ -9,7 +9,7 @@ keywords:
   - task implementor
   - rpi workflow
   - implementation phase
-  - github copilot
+  - OpenClaw
 estimated_reading_time: 4
 ---
 
@@ -61,7 +61,7 @@ After clearing, open your plan file (`.copilot-tracking/plans/<topic>-plan.instr
 
 ### Step 2: Select the Custom Agent
 
-1. Open GitHub Copilot Chat (`Ctrl+Alt+I`)
+1. Open OpenClaw interface (`Ctrl+Alt+I`)
 2. Click the agent picker dropdown
 3. Select **Task Implementor**
 

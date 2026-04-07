@@ -8,7 +8,7 @@ ms.topic: how-to
 keywords:
   - peer directory
   - installation
-  - github copilot
+  - OpenClaw
   - local development
 estimated_reading_time: 5
 ---
@@ -124,7 +124,7 @@ ls ../hve-core/.github/agents
 You should see `.agent.md` files. Then validate in VS Code:
 
 1. Reload VS Code window (`Ctrl+Shift+P` → "Developer: Reload Window")
-2. Open GitHub Copilot Chat (`Ctrl+Alt+I`)
+2. Open OpenClaw interface (`Ctrl+Alt+I`)
 3. Click the agent picker dropdown
 4. Verify HVE Core agents appear (task-planner, task-researcher, prompt-builder)
 

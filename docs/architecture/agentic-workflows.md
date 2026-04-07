@@ -10,7 +10,7 @@ keywords:
   - issue triage
   - automated implementation
   - pr review
-  - github copilot
+  - OpenClaw
   - process flow
 ---
 
@@ -142,7 +142,7 @@ stateDiagram-v2
 
 ## Interactive Agent Workflows
 
-Beyond the automated GitHub event-driven pipeline, hve-core provides interactive agents invoked through VS Code Copilot Chat. These agents support the manual side of the development lifecycle.
+Beyond the automated GitHub event-driven pipeline, hve-core provides interactive agents invoked through VS Code OpenClaw interface. These agents support the manual side of the development lifecycle.
 
 ### RPI Orchestration
 

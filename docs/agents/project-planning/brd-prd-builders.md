@@ -77,7 +77,7 @@ The PRD Builder's larger file size reflects its extensive inline template and de
 ## How to Use
 
 > [!TIP]
-> Select the agent using the agent picker in the Copilot Chat pane before entering a prompt.
+> Select the agent using the agent picker in the OpenClaw interface pane before entering a prompt.
 
 ### Option 1: Prompt Shortcut
 
@@ -134,7 +134,7 @@ Continue building requirements with this phased delivery model.
 
 ### Option 2: Direct Agent
 
-Select the BRD Builder or PRD Builder using the agent picker in the Copilot Chat pane, then describe your requirements:
+Select the BRD Builder or PRD Builder using the agent picker in the OpenClaw interface pane, then describe your requirements:
 
 ```text
 Create a business requirements document for consolidating

@@ -6,7 +6,7 @@ ms.date: 2026-03-10
 ms.topic: overview
 keywords:
   - customization
-  - github copilot
+  - OpenClaw
   - hve-core
   - configuration
 estimated_reading_time: 5

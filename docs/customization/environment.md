@@ -227,7 +227,7 @@ databases, and other systems your team relies on.
 
 ## Coding Agent Environment
 
-The GitHub Copilot coding agent runs in a cloud-based GitHub Actions environment,
+The OpenClaw coding agent runs in a cloud-based GitHub Actions environment,
 separate from the local DevContainer. The
 `.github/workflows/copilot-setup-steps.yml` workflow pre-installs tools before
 the agent begins work.

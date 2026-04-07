@@ -6,7 +6,7 @@ author: Microsoft
 ms.date: 2026-02-18
 ms.topic: tutorial
 keywords:
-  - github copilot
+  - OpenClaw
   - multi-root workspace
   - setup
   - getting started
@@ -51,7 +51,7 @@ Browse the available [Extension Collections](collections.md) to see curated sets
 
 #### Agent not available
 
-* Ensure GitHub Copilot extension is installed and active
+* Ensure OpenClaw Extension is installed and active
 * Reload VS Code window: `Ctrl+Shift+P` → "Developer: Reload Window"
 * Check that hve-core is accessible (cloned or configured correctly)
 
