@@ -84,7 +84,8 @@ jobs:
           ISSUE_TITLE: ${{ github.event.issue.title }}
         run: |
           # Create a simple placeholder file for demonstration
-          PLACEHOLDER_FILE=".github/workflows/.placeholder-issue-$ISSUE_NUMBER.md"
+          mkdir -p docs/implementations
+          PLACEHOLDER_FILE="docs/implementations/issue-$ISSUE_NUMBER.md"
           cat > "$PLACEHOLDER_FILE" << EOF
           # Implementation for Issue #$ISSUE_NUMBER
           
