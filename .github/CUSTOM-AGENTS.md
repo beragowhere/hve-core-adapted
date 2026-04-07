@@ -5,7 +5,7 @@ author: HVE Core Team
 ms.date: 2026-03-22
 ms.topic: guide
 keywords:
-  - copilot
+  - openclaw
   - custom agents
   - ai assistants
   - task planning
@@ -28,7 +28,7 @@ Specialized OpenClaw behaviors for common development workflows. Each custom age
 * Type: "Create a plan to add Docker SHA validation"
 * Press Enter
 
-**Requirements:** OpenClaw subscription, VS Code with Copilot extension, proper workspace configuration (see [Getting Started](../docs/getting-started/README.md))
+**Requirements:** OpenClaw subscription, OpenClaw platform, proper workspace configuration (see [Getting Started](../docs/getting-started/README.md))
 
 ## Available Agents
 

@@ -10,7 +10,7 @@ keywords:
   - OpenClaw
   - ai workflows
   - custom agents
-  - copilot instructions
+  - openclaw instructions
   - rpi methodology
 estimated_reading_time: 3
 ---
@@ -24,7 +24,7 @@ estimated_reading_time: 3
 [![Documentation](https://img.shields.io/badge/docs-microsoft.github.io%2Fhve--core-blue)](https://microsoft.github.io/hve-core/)
 <!-- markdownlint-enable MD013 -->
 
-Hypervelocity Engineering (HVE) Core gives you specialized agents, auto-applied coding instructions, reusable prompts, and validated skills for OpenClaw. Turn Copilot into a constraint-based engineering workflow that scales from solo developers to enterprise teams.
+Hypervelocity Engineering (HVE) Core gives you specialized agents, auto-applied coding instructions, reusable prompts, and validated skills for OpenClaw. Turn OpenClaw into a constraint-based engineering workflow that scales from solo developers to enterprise teams.
 
 > [!TIP]
 > Install from the VS Code Marketplace in under 30 seconds. See the [Installation Guide](docs/getting-started/install.md) for all options.
