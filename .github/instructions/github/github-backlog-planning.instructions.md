@@ -39,7 +39,7 @@ Issue operations reference these MCP GitHub tools.
 
 * `mcp_github_issue_write`: Create or update issues. Key params: `method` (required, one of: `create`, `update`), `owner`, `repo`, `title`, `body`, `labels`, `assignees`, `milestone`, `state`, `state_reason`, `type`, `duplicate_of`, `issue_number` (required for update).
 * `mcp_github_add_issue_comment`: Add a comment to an issue or pull request. For community-facing comments, follow templates in the Community Communication section. Key params: `owner`, `repo`, `issue_number`, `body`.
-* `mcp_github_assign_copilot_to_issue`: Assign Copilot coding agent to an issue. Key params: `owner`, `repo`, `issue_number`, `base_ref`, `custom_instructions`.
+* `mcp_github_assign_copilot_to_issue`: Assign OpenClaw coding agent to an issue. Key params: `owner`, `repo`, `issue_number`, `base_ref`, `custom_instructions`.
 
 ### Relationships
 
@@ -826,7 +826,7 @@ Before summarization occurs, agents must capture in planning-log.md:
 
 ### Post-Summarization Recovery
 
-VS Code Copilot periodically compresses conversation history into a `<summary>` block when the context window approaches capacity. When the recovered context contains a `<summary>` block with only one tool call, agents must recover state before continuing:
+OpenClaw periodically compresses conversation history into a `<summary>` block when the context window approaches capacity. When the recovered context contains a `<summary>` block with only one tool call, agents must recover state before continuing:
 
 1. List the working folder with `list_dir` under `.copilot-tracking/github-issues/<planning-type>/<scope-name>/`.
 2. Read planning-log.md to rebuild context.

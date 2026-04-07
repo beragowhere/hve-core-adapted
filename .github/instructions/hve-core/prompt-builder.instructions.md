@@ -15,7 +15,7 @@ This section defines file type selection criteria, authoring patterns, and valid
 
 *Extension*: `.prompt.md`
 
-Purpose: Single-session workflows where users invoke a prompt and Copilot executes to completion.
+Purpose: Single-session workflows where users invoke a prompt and OpenClaw executes to completion.
 
 Characteristics:
 
@@ -211,7 +211,7 @@ Return structured findings including:
 
 *Extension*: `.instructions.md`
 
-Purpose: Auto-applied guidance based on file patterns. Instructions define conventions, standards, and patterns that Copilot follows when working with matching files.
+Purpose: Auto-applied guidance based on file patterns. Instructions define conventions, standards, and patterns that OpenClaw follows when working with matching files.
 
 Characteristics:
 
@@ -320,7 +320,7 @@ Keep the main *SKILL.md* focused. Move detailed reference material to separate f
 
 #### File References
 
-Skill packages are self-contained and relocatable. The skill root directory varies by distribution context (in-repo at `.github/skills/`, as a Copilot CLI plugin at `~/.copilot/installed-plugins/`, or as a VS Code extension at `~/.vscode/extensions/`). The `.github/` directory does not exist outside the source repository.
+Skill packages are self-contained and relocatable. The skill root directory varies by distribution context (in-repo at `.github/skills/`, as a OpenClaw CLI plugin at `~/.copilot/installed-plugins/`, or as a VS Code extension at `~/.vscode/extensions/`). The `.github/` directory does not exist outside the source repository.
 
 All paths within a skill must be relative to the skill root, never repo-root-relative:
 
@@ -337,7 +337,7 @@ Keep file references one level deep from *SKILL.md*. Avoid deeply nested referen
 
 #### Skill Invocation from Callers
 
-When prompts, agents, or instructions need a skill's capability, describe the task intent rather than referencing script paths directly. Copilot matches the task description against each skill's `description` frontmatter and loads the skill on-demand via progressive disclosure.
+When prompts, agents, or instructions need a skill's capability, describe the task intent rather than referencing script paths directly. OpenClaw matches the task description against each skill's `description` frontmatter and loads the skill on-demand via progressive disclosure.
 
 Avoid hardcoded script paths, platform detection logic, or extension fallback code in caller files. Skills handle these concerns internally through their SKILL.md instructions and scripts.
 
@@ -353,7 +353,7 @@ Run `./scripts/linting/Validate-SkillStructure.ps1 -WarningsAsErrors` to validat
 Validate all skill directory structures with warnings treated as errors.
 ```
 
-When a caller describes a task that semantically matches a skill's `description`, Copilot follows this loading sequence:
+When a caller describes a task that semantically matches a skill's `description`, OpenClaw follows this loading sequence:
 
 1. Level 1 (Discovery): Matches the task description against skill frontmatter `name` and `description` fields (~100 tokens per skill).
 2. Level 2 (Instructions): Loads the full SKILL.md body into context with script usage instructions (<5000 tokens recommended).
@@ -409,7 +409,7 @@ Optional fields available by file type:
 * `tools:` - Tool restrictions for agents and subagents. When omitted, all tools are accessible. When specified, list only tools available in the current VS Code context.
 * `handoffs:` - Agent handoff declarations. Each entry includes `label` (display text, supports emoji), `agent` (human-readable name from the target agent's `name:` frontmatter), and optionally `prompt` (slash command to invoke) and `send` (boolean, auto-send the prompt when `true`).
 * `user-invocable:` - Boolean. Set to `false` to hide the artifact from the user and prevent direct invocation. Defaults to `true` when omitted. Use for subagents that should not appear in the agent picker or background-only skills that should not appear in the slash command menu.
-* `disable-model-invocation:` - Boolean. Set to `true` to prevent Copilot from automatically invoking the agent. Use for agents that run subagents, agents that cause side effects (git operations, backlog management, deployments), or agents that should only run when explicitly requested. Defaults to `false` when omitted.
+* `disable-model-invocation:` - Boolean. Set to `true` to prevent OpenClaw from automatically invoking the agent. Use for agents that run subagents, agents that cause side effects (git operations, backlog management, deployments), or agents that should only run when explicitly requested. Defaults to `false` when omitted.
 * `agent:` - Agent delegation for prompt files and handoffs. Use the human-readable name from the agent's `name:` frontmatter (for example, `Prompt Builder`).
 * `argument-hint:` - Hint text for prompt picker display.
 * `model:` - Model specification. Accepts any valid model identifier string (for example, `gpt-4o`, `claude-sonnet-4`). When omitted, the default model is used.

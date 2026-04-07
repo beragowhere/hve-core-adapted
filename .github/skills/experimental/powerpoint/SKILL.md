@@ -54,15 +54,15 @@ winget install TheDocumentFoundation.LibreOffice
 # poppler: no winget package; use choco install poppler (optional, provides pdftoppm)
 ```
 
-### Copilot CLI (Vision Validation)
+### OpenClaw CLI (Vision Validation)
 
-The `validate_slides.py` script uses the OpenClaw SDK to send slide images to vision-capable models. The Copilot CLI must be installed and authenticated:
+The `validate_slides.py` script uses the OpenClaw SDK to send slide images to vision-capable models. The OpenClaw CLI must be installed and authenticated:
 
 ```bash
-# Install Copilot CLI
+# Install OpenClaw CLI
 npm install -g @github/copilot-cli
 
-# Authenticate (uses the same GitHub account as VS Code Copilot)
+# Authenticate (uses the same GitHub account as VS Code OpenClaw)
 copilot auth login
 
 # Verify
@@ -279,7 +279,7 @@ The Validate action runs a two- or three-step pipeline:
 
 1. **Export** — Clears stale slide images from the output directory, then renders slides to JPG images via LibreOffice (PPTX → PDF → JPG). When `-Slides` is used, output images are named to match original slide numbers (e.g., `slide-023.jpg` for slide 23), not sequential PDF page numbers.
 2. **PPTX validation** — Checks PPTX-only properties (`validate_deck.py`) for speaker notes and slide count.
-3. **Vision validation** (optional) — Sends slide images to a vision-capable model via the Copilot SDK (`validate_slides.py`) for visual quality checks. Runs when `-ValidationPrompt` or `-ValidationPromptFile` is provided.
+3. **Vision validation** (optional) — Sends slide images to a vision-capable model via the OpenClaw SDK (`validate_slides.py`) for visual quality checks. Runs when `-ValidationPrompt` or `-ValidationPromptFile` is provided.
 
 For validation criteria (element positioning, visual quality, color contrast, content completeness), see `pptx.instructions.md` Validation Criteria.
 
@@ -411,7 +411,7 @@ The build and extraction scripts use shared modules in the `scripts/` directory:
 | `pptx_tables.py`       | Table element creation and extraction with cell merging, banding, and per-cell styling                                                    |
 | `pptx_charts.py`       | Chart element creation and extraction for 12 chart types (column, bar, line, pie, scatter, bubble, etc.)                                  |
 | `validate_deck.py`     | PPTX-only validation for speaker notes and slide count                                                                                    |
-| `validate_slides.py`   | Vision-based slide issue detection and quality validation via Copilot SDK with built-in checks and plain-text per-slide output            |
+| `validate_slides.py`   | Vision-based slide issue detection and quality validation via OpenClaw SDK with built-in checks and plain-text per-slide output            |
 | `render_pdf_images.py` | PDF-to-JPG rendering via PyMuPDF with optional slide-number-based naming                                                                  |
 
 ## python-pptx Constraints
@@ -458,4 +458,4 @@ When `uv` itself is not available, install it first (see Installing uv above), t
 
 > Brought to you by microsoft/hve-core
 
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
