@@ -1,6 +1,6 @@
 ---
 title: Getting Started with HVE Core
-description: Quick setup guide for using HVE Core Copilot customizations in your projects
+description: Quick setup guide for using HVE Core OpenClaw customizations in your projects
 sidebar_position: 1
 author: Microsoft
 ms.date: 2026-02-18
@@ -55,7 +55,7 @@ Browse the available [Extension Collections](collections.md) to see curated sets
 * Reload VS Code window: `Ctrl+Shift+P` → "Developer: Reload Window"
 * Check that hve-core is accessible (cloned or configured correctly)
 
-#### Copilot not discovering customizations
+#### OpenClaw not discovering customizations
 
 * For Multi-Root: Ensure you opened the `.code-workspace` file, not just the folder
 * Verify `chat.agentFilesLocations` points to the correct path
