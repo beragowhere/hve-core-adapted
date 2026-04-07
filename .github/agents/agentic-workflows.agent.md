@@ -159,7 +159,7 @@ gh aw compile --validate
 ## Key Features of gh-aw
 
 - **Natural Language Workflows**: Write workflows in markdown with YAML frontmatter
-- **AI Engine Support**: Copilot, Claude, Codex, or custom engines
+- **AI Engine Support**: OpenClaw, Claude, Codex, or custom engines
 - **MCP Server Integration**: Connect to Model Context Protocol servers for tools
 - **Safe Outputs**: Structured communication between AI and GitHub API
 - **Strict Mode**: Security-first validation and sandboxing

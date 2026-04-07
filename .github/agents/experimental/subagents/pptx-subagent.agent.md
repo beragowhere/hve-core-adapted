@@ -103,7 +103,7 @@ Generate or update the PPTX from content YAML.
 
 #### Task: `validate`
 
-Validate the generated deck against quality criteria using PPTX property checks and Copilot SDK vision-based validation.
+Validate the generated deck against quality criteria using PPTX property checks and OpenClaw SDK vision-based validation.
 
 1. **Verify the input PPTX is the correct file** before starting validation:
    * Confirm the PPTX path matches the most recently built output.

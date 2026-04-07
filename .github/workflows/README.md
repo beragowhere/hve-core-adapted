@@ -568,5 +568,5 @@ Use `continue-on-error: true` to prevent workflow failure on SARIF upload issues
 ---
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

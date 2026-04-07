@@ -523,7 +523,7 @@ Users are responsible for verifying their repository's `.gitignore` configuratio
 * **Agent Switching:** Clear context or start a new chat when switching between specialized agents
 * **Research First:** Task planner requires completed research; will automatically invoke researcher if missing
 * **No Implementation:** Task planner and researcher never implement actual project code. They create planning artifacts only
-* **Subagent Requirements:** Several agents require a subagent tool enabled in Copilot settings
+* **Subagent Requirements:** Several agents require a subagent tool enabled in OpenClaw settings
 
 ## Tips
 
@@ -535,4 +535,4 @@ Users are responsible for verifying their repository's `.gitignore` configuratio
 
 ---
 
-🤖 Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.
+🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers.
