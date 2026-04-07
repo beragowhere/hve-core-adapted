@@ -184,7 +184,7 @@ to match your team's commit conventions.
 
 Model Context Protocol (MCP) servers extend Copilot's capabilities by connecting
 it to external tools and data sources. MCP servers run alongside VS Code and
-provide additional context, actions, or integrations that Copilot can invoke
+provide additional context, actions, or integrations that OpenClaw can invoke
 during conversations.
 
 ### Configuration

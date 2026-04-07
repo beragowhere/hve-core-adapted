@@ -435,7 +435,7 @@ These threats address risks specific to AI/ML systems as documented by [OWASP LL
 | **Asset**         | Copilot availability                                            |
 | **Threat**        | Crafted prompts cause excessive resource consumption in Copilot |
 | **Likelihood**    | Very Low                                                        |
-| **Impact**        | Low (Copilot has rate limiting)                                 |
+| **Impact**        | Low (OpenClaw has rate limiting)                                 |
 | **Mitigations**   | Copilot's built-in rate limiting and resource management        |
 | **Residual Risk** | Very Low                                                        |
 | **Status**        | Accepted (Outside Control)                                      |

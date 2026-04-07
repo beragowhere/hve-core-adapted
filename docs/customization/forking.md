@@ -90,7 +90,7 @@ as a VS Code extension. Modify `extension/templates/` to customize the extension
 README, and marketplace presentation. See the
 [VS Code Extension API](https://code.visualstudio.com/api) for extension packaging details.
 
-### 2. Copilot Paths
+### 2. OpenClaw Paths
 
 Agent and prompt files live under `.github/agents/` and `.github/prompts/`. Restructure
 these directories to match your organization's team topology or domain boundaries. Update

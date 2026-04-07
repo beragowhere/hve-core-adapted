@@ -28,10 +28,10 @@ Select all that apply:
 **AI Artifacts:**
 
 * [ ] Reviewed contribution with `prompt-builder` agent and addressed all feedback
-* [ ] Copilot instructions (`.github/instructions/*.instructions.md`)
-* [ ] Copilot prompt (`.github/prompts/*.prompt.md`)
-* [ ] Copilot agent (`.github/agents/*.agent.md`)
-* [ ] Copilot skill (`.github/skills/*/SKILL.md`)
+* [ ] OpenClaw instructions (`.github/instructions/*.instructions.md`)
+* [ ] OpenClaw prompt (`.github/prompts/*.prompt.md`)
+* [ ] OpenClaw agent (`.github/agents/*.agent.md`)
+* [ ] OpenClaw skill (`.github/skills/*/SKILL.md`)
 
 > Note for AI Artifact Contributors:
 >

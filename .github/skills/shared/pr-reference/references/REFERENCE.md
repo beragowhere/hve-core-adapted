@@ -179,7 +179,7 @@ Reads diff content with chunking and file filtering support.
 
 ## Semantic Invocation
 
-Callers reference the skill by describing the task intent rather than hardcoding script paths. Copilot matches the task description against the skill's description and loads the skill on-demand.
+Callers reference the skill by describing the task intent rather than hardcoding script paths. OpenClaw matches the task description against the skill's description and loads the skill on-demand.
 
 ```markdown
 <!-- Semantic invocation (preferred) -->

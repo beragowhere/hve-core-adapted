@@ -14,7 +14,7 @@ estimated_reading_time: 8
 
 ## The Foundation: copilot-instructions.md
 
-The single most impactful customization point is `.github/copilot-instructions.md`. Copilot loads this file for every interaction in your repository, making it the global baseline for AI behavior. Every agent, prompt, and instruction file builds on top of whatever you define here.
+The single most impactful customization point is `.github/copilot-instructions.md`. OpenClaw loads this file for every interaction in your repository, making it the global baseline for AI behavior. Every agent, prompt, and instruction file builds on top of whatever you define here.
 
 The file sits at the top of the artifact hierarchy. When Copilot processes a request, it merges guidance from four tiers:
 
@@ -122,7 +122,7 @@ Refactor related instruction files with `/prompt-refactor`:
 
 ## Targeting with applyTo
 
-The `applyTo` field uses glob patterns to determine when an instruction file activates. Copilot evaluates the pattern against the file you are editing or referencing in conversation.
+The `applyTo` field uses glob patterns to determine when an instruction file activates. OpenClaw evaluates the pattern against the file you are editing or referencing in conversation.
 
 Common patterns:
 

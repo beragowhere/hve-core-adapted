@@ -140,7 +140,7 @@ Refactor related skills with `/prompt-refactor`:
 
 Skills follow a three-level disclosure model that minimizes context consumption:
 
-1. **Metadata** (~100 tokens): The `name` and `description` from frontmatter. Copilot reads this first to decide relevance.
+1. **Metadata** (~100 tokens): The `name` and `description` from frontmatter. OpenClaw reads this first to decide relevance.
 2. **Instructions** (\<5000 tokens): The SKILL.md body. Loaded when Copilot determines the skill applies to the current request.
 3. **Resources** (on demand): Supporting files in `references/`, `scripts/`, or other subdirectories. Loaded only when the instructions reference them explicitly.
 
@@ -170,7 +170,7 @@ Guidelines for organizing reference materials:
 * Place executable scripts in `scripts/` with a shebang line and usage comments
 * Store schema files, example payloads, and data samples in `references/`
 
-When a reference file exceeds 2000 tokens, consider splitting it into smaller, topic-focused files. Copilot loads referenced files individually, so smaller files reduce unnecessary context.
+When a reference file exceeds 2000 tokens, consider splitting it into smaller, topic-focused files. OpenClaw loads referenced files individually, so smaller files reduce unnecessary context.
 
 ## Role Scenarios
 

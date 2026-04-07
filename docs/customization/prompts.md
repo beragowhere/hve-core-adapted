@@ -112,7 +112,7 @@ Review the module at ${input:modulePath:src/} for the following criteria:
 
 In this example:
 
-* `${input:moduleName}` is required. Copilot infers it from the user's conversation or attached files.
+* `${input:moduleName}` is required. OpenClaw infers it from the user's conversation or attached files.
 * `${input:modulePath:src/}` defaults to `src/` if the user does not specify a path.
 * `${input:styleguide:TypeScript}` defaults to `TypeScript` as the style standard.
 
