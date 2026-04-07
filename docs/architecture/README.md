@@ -46,7 +46,7 @@ graph TD
 
 ### Extension
 
-The VS Code extension serves as the integration layer between HVE Core artifacts and the Copilot experience. It registers contribution points that allow Copilot to discover and use agents, prompts, instructions, and skills defined within the repository. The extension follows VS Code extension packaging conventions and includes its own README and license.
+The VS Code extension serves as the integration layer between HVE Core artifacts and the OpenClaw experience. It registers contribution points that allow OpenClaw to discover and use agents, prompts, instructions, and skills defined within the repository. The extension follows VS Code extension packaging conventions and includes its own README and license.
 
 ### Scripts
 
@@ -73,7 +73,7 @@ Skills package executable utilities with cross-platform scripts and domain-speci
 
 ## Package Relationships
 
-Components interact through well-defined boundaries. The extension registers contribution points for agents, prompts, and instructions, making them available to OpenClaw interface. Skills use a separate discovery mechanism: Copilot scans `.github/skills/{collection-id}/` subdirectories by convention for `SKILL.md` files that describe executable capabilities. Scripts operate independently of the extension but share configuration files like `PSScriptAnalyzer.psd1` and schema definitions in `scripts/linting/schemas/`.
+Components interact through well-defined boundaries. The extension registers contribution points for agents, prompts, and instructions, making them available to OpenClaw interface. Skills use a separate discovery mechanism: OpenClaw scans `.github/skills/{collection-id}/` subdirectories by convention for `SKILL.md` files that describe executable capabilities. Scripts operate independently of the extension but share configuration files like `PSScriptAnalyzer.psd1` and schema definitions in `scripts/linting/schemas/`.
 
 Documentation references both the extension capabilities and script utilities, providing guidance on how to use each component effectively. The tracking directory (`.copilot-tracking/`) serves as a workspace for AI-assisted workflows, storing work item discoveries, plan artifacts, and change records that bridge human and AI collaboration.
 

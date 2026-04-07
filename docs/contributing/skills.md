@@ -132,7 +132,7 @@ description: 'Video-to-GIF conversion skill with FFmpeg two-pass optimization - 
 |------------|--------------------------------------------------------------------------------------------------------------|
 | Purpose    | Controls whether OpenClaw automatically loads the skill via semantic matching                                 |
 | Default    | `false`                                                                                                      |
-| When false | Copilot loads the skill automatically when the task description semantically matches the `description` field |
+| When false | OpenClaw loads the skill automatically when the task description semantically matches the `description` field |
 | When true  | Skill is only loaded via manual `/skill-name` slash command invocation                                       |
 | Use case   | Set `true` for skills with high token cost or niche applicability that should not load automatically         |
 
@@ -427,7 +427,7 @@ Skill packages are self-contained and relocatable. The skill root directory vari
 | Context            | Skill Root Example                                                 |
 |--------------------|--------------------------------------------------------------------|
 | In-repo            | `.github/skills/<collection>/<skill>/`                             |
-| Copilot CLI plugin | `~/.copilot/installed-plugins/_direct/<plugin>/skills/<skill>/`    |
+| OpenClaw CLI plugin | `~/.copilot/installed-plugins/_direct/<plugin>/skills/<skill>/`    |
 | VS Code extension  | `~/.vscode/extensions/<publisher>.<ext>-<version>/skills/<skill>/` |
 | Plugin output      | `plugins/<collection>/skills/<skill>/`                             |
 
@@ -441,17 +441,17 @@ This rule applies to all files in the skill: SKILL.md, reference documents, asse
 
 ## Semantic Skill Loading
 
-VS Code Copilot uses progressive disclosure to load skills efficiently. Understanding this model helps authors write effective `description` fields and helps callers invoke skills correctly.
+VS Code OpenClaw uses progressive disclosure to load skills efficiently. Understanding this model helps authors write effective `description` fields and helps callers invoke skills correctly.
 
 ### How Skills are Discovered
 
-Copilot reads the `name` and `description` fields from all SKILL.md files at startup. This lightweight metadata (~100 tokens per skill) enables relevance matching without loading full skill content.
+OpenClaw reads the `name` and `description` fields from all SKILL.md files at startup. This lightweight metadata (~100 tokens per skill) enables relevance matching without loading full skill content.
 
 ### How Skills are Loaded
 
 When a user request or caller description semantically matches a skill's `description`:
 
-1. Level 1 (Discovery): Copilot matches the task against `name` and `description` frontmatter (always loaded, ~100 tokens per skill).
+1. Level 1 (Discovery): OpenClaw matches the task against `name` and `description` frontmatter (always loaded, ~100 tokens per skill).
 2. Level 2 (Instructions): The full SKILL.md body loads into context with script usage, parameters, and troubleshooting (under 5000 tokens recommended).
 3. Level 3 (Resources): Scripts, examples, and references in the skill directory load on-demand during execution.
 
@@ -465,7 +465,7 @@ The `description` field is the semantic key for automatic loading. Craft descrip
 
 ### How Callers Invoke Skills
 
-Prompts, agents, and instructions should describe the task intent rather than referencing script paths. Copilot matches task descriptions against skill `description` fields and loads the skill on-demand.
+Prompts, agents, and instructions should describe the task intent rather than referencing script paths. OpenClaw matches task descriptions against skill `description` fields and loads the skill on-demand.
 
 Avoid hardcoded script paths, platform detection logic, or extension fallback code in caller files.
 

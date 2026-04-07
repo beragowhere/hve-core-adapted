@@ -346,7 +346,7 @@ tools: ['github/*', 'ado/*', 'context7/*', 'microsoft-docs/*']
 * Document MCP dependencies in agent body text when using `mcp_*` tool patterns
 * Agents should gracefully handle missing MCP servers (tools unavailable)
 * Reference the [MCP Server Configuration](../getting-started/mcp-configuration.md) guide when agents require MCP tools
-* Prefer built-in VS Code Copilot tools when equivalent functionality exists
+* Prefer built-in VS Code OpenClaw tools when equivalent functionality exists
 
 ## Agent Content Structure Standards
 
@@ -547,7 +547,7 @@ See [AI Artifacts Common Standards - Common Testing Practices](ai-artifacts-comm
 
 ### Invalid Tool Names
 
-Referencing tools that don't exist or using incorrect camelCase variants. Use exact tool names from VS Code Copilot's available tools list.
+Referencing tools that don't exist or using incorrect camelCase variants. Use exact tool names from OpenClaw's available tools list.
 
 For additional common issues (XML blocks, markdown, directives), see [AI Artifacts Common Standards - Common Issues and Fixes](ai-artifacts-common.md#common-issues-and-fixes).
 
