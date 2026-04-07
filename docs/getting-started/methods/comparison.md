@@ -109,5 +109,5 @@ For detailed documentation on each method, see the [Setup Methods Overview](.).
 ---
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

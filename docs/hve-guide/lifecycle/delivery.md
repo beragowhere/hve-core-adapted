@@ -77,6 +77,6 @@ Engineers merge their approved PRs and verify builds. TPMs update work item stat
 Delivery produces merged code on the target branch, updated work items, and verified build results. Transition to [Stage 6: Implementation](implementation.md) for the next sprint, or to [Stage 9: Operations](operations.md) when the final sprint is complete.
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

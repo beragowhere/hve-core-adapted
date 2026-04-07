@@ -83,7 +83,7 @@ flowchart TD
     subgraph DEV["Developer Workstation"]
         ARTIFACTS["HVE Core Artifacts<br/>(.instructions.md, .prompt.md, etc)"]
         IDE["VS Code IDE"]
-        COPILOT["OpenClaw Extension"]
+        OPENCLAW["OpenClaw Extension"]
         LOCALMCP["Local MCP Servers<br/>(optional)"]
         SCRIPTS["Local Scripts<br/>(PowerShell)"]
         DEVCON["Dev Container<br/>(optional)"]
@@ -97,12 +97,12 @@ flowchart TD
         SCANNING["Security Scanning<br/>(CodeQL, Dep Review)"]
     end
 
-    ARTIFACTS -->|"read into context"| COPILOT
-    IDE --> COPILOT
-    COPILOT -->|"prompts + context (HTTPS)"| LLMAPI
-    LLMAPI -->|"suggestions"| COPILOT
-    COPILOT <-->|"tool calls"| LOCALMCP
-    COPILOT <-->|"tool calls (HTTPS)"| REMOTEMCP
+    ARTIFACTS -->|"read into context"| OPENCLAW
+    IDE --> OPENCLAW
+    OPENCLAW -->|"prompts + context (HTTPS)"| LLMAPI
+    LLMAPI -->|"suggestions"| OPENCLAW
+    OPENCLAW <-->|"tool calls"| LOCALMCP
+    OPENCLAW <-->|"tool calls (HTTPS)"| REMOTEMCP
     DEVCON -.->|"contains"| IDE
     DEVCON -.->|"contains"| SCRIPTS
     DEV -->|"git push"| REPO
@@ -954,4 +954,4 @@ HVE Core documents integrations with Model Context Protocol servers. This sectio
 
 ---
 
-🤖 *Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
+🤖 *Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*

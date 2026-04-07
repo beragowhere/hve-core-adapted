@@ -212,4 +212,4 @@ Changes to this governance document follow the governance changes process:
 
 📜 This governance document was created to meet [OSSF Best Practices Badge](https://www.bestpractices.dev/) Silver-level requirements.
 
-🤖 *Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
+🤖 *Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*

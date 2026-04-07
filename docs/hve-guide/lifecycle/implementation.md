@@ -158,6 +158,6 @@ and error handling for invalid cursor values.
 Implementation produces source code, documentation, notebooks, dashboards, prompt artifacts, and infrastructure definitions. Transition to [Stage 7: Review](review.md) when implementation is complete. Use `/clear` to reset context before starting the review cycle.
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

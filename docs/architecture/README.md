@@ -86,4 +86,4 @@ GitHub workflows orchestrate script execution for continuous integration, runnin
 * [Build Workflows](workflows.md) - GitHub Actions CI/CD pipeline architecture
 * [Testing Architecture](testing.md) - PowerShell Pester test infrastructure
 
-🤖 *Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
+🤖 *Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*

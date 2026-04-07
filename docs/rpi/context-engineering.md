@@ -148,6 +148,6 @@ Context degradation produces observable symptoms. Catching them early prevents w
 ---
 
 <!-- markdownlint-disable MD036 -->
-_🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+_🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers._
 <!-- markdownlint-enable MD036 -->

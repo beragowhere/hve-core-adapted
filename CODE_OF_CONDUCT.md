@@ -23,4 +23,4 @@ Resources:
 
 ---
 
-🤖 Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.
+🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers.

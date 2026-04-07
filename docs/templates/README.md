@@ -33,4 +33,4 @@ Standardized templates for common documentation tasks. Each template provides a 
 
 Copy any template into your project and fill in the bracketed placeholders. Remove sections that do not apply to your use case.
 
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*

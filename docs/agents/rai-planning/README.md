@@ -100,6 +100,6 @@ See [entry modes](entry-modes.md) for detailed guidance on when to choose each m
 | [Security planning overview](../security/) | The Security Planner agent that feeds into RAI assessment              |
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

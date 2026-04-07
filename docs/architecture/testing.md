@@ -213,4 +213,4 @@ $skillScripts = Get-ChildItem -Path (Join-Path $repoRoot '.github/skills') `
 
 Co-located `tests/` directories are excluded from the VSIX extension package by `Package-Extension.ps1`. After copying a skill directory, the packaging script removes any `tests/` subdirectories from the destination.
 
-🤖 *Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
+🤖 *Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*

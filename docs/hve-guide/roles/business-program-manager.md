@@ -197,6 +197,6 @@ Prompts complement the agents for cross-cutting workflows:
 > Dedicated BPM workflow automation and business outcome tracking are planned improvements.
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

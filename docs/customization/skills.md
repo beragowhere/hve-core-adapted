@@ -183,6 +183,6 @@ When a reference file exceeds 2000 tokens, consider splitting it into smaller, t
 For full validation rules, directory requirements, and collection packaging guidance, see [Contributing: Skills](../contributing/skills.md).
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

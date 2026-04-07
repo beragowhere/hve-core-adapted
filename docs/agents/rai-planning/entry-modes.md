@@ -104,6 +104,6 @@ Once Phase 1 completes, all three modes converge into the same workflow for Phas
 See [Phase Reference](phase-reference.md) for the complete specification of each phase.
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

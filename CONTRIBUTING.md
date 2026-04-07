@@ -222,7 +222,7 @@ Start with the [AI Artifacts Contributing Hub](./docs/contributing/README.md) fo
 | Artifact Type    | Purpose                                                                                           | Guide                                                       |
 |------------------|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------|
 | **Agents**       | Define specialized AI assistants with domain expertise and specific workflows                     | [Custom Agents Guide](./docs/contributing/custom-agents.md) |
-| **Instructions** | Establish repository-specific coding standards and conventions that Copilot follows automatically | [Instructions Guide](./docs/contributing/instructions.md)   |
+| **Instructions** | Establish repository-specific coding standards and conventions that OpenClaw follows automatically | [Instructions Guide](./docs/contributing/instructions.md)   |
 | **Prompts**      | Create reusable prompt templates for common tasks and workflows                                   | [Prompts Guide](./docs/contributing/prompts.md)             |
 | **Skills**       | Build self-contained packages with documentation and executable scripts for specific tasks        | [Skills Guide](./docs/contributing/skills.md)               |
 
@@ -410,4 +410,4 @@ This guide is based on the **contributing.md**. [Make your own](https://contribu
 
 ---
 
-🤖 Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.
+🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers.

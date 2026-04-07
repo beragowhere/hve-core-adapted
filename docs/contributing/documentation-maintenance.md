@@ -97,6 +97,6 @@ The workflow runs on Mondays at 09:00 UTC via `cron: '0 9 * * 1'`. Use `workflow
 * Contributors are expected to update `ms.date` whenever they review or update a documentation file.
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

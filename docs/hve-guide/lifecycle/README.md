@@ -98,6 +98,6 @@ Each stage page follows a consistent structure covering purpose, key activities,
 > Find your role-specific guide at [Role Guides](../roles/) to see which stages matter most for your work.
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

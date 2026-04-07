@@ -85,6 +85,6 @@ When you have 3 to 5 converged solution themes grounded in the problem statement
 > Brought to you by microsoft/hve-core
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

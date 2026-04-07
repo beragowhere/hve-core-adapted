@@ -229,7 +229,7 @@ fi
 
 | Requirement         | Details                                                       |
 |---------------------|---------------------------------------------------------------|
-| VS Code + Copilot   | OpenClaw interface with agent mode enabled                   |
+| OpenClaw   | OpenClaw interface with agent mode enabled                   |
 | Git branch          | A local branch with commits ahead of the base branch          |
 | hve-core collection | The `coding-standards` or `hve-core-all` collection installed |
 
@@ -240,6 +240,6 @@ The agents work with any programming language. Standards enforcement requires sk
 The standards agent discovers skills dynamically at review time. You extend coverage by adding `SKILL.md` files to your repository without modifying the agent itself. See [Language Skills](language-skills.md) for the full guide on built-in skills, skill stacking, and authoring enterprise-specific standards.
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

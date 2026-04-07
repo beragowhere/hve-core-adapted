@@ -200,4 +200,4 @@ The roadmap evolves based on community input:
 
 *This roadmap satisfies OpenSSF Best Practices Badge Silver criterion `documentation_roadmap`.*
 
-🤖 *Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
+🤖 *Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*

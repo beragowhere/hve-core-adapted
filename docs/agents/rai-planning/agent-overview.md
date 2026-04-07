@@ -155,6 +155,6 @@ When conversation context is compacted, a five-step recovery process reconstruct
 | `.copilot-tracking/rai-plans/{project-slug}/state.json`              | Assessment state                  |
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

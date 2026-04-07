@@ -80,4 +80,4 @@ Atheris provides pre-built wheels for Linux x86_64 only. The `fuzz` dependency g
 
 ---
 
-🤖 *Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
+🤖 *Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*

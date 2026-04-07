@@ -82,6 +82,6 @@ The right entry mode depends on what artifacts already exist and how much contex
 | No formal requirements         | Capture            | Gathers scope through structured interview        |
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

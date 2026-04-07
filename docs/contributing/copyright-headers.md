@@ -92,5 +92,5 @@ If no shebang exists, place the header at the first line.
 
 ---
 
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*

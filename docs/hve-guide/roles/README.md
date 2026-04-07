@@ -83,6 +83,6 @@ Least-covered stage: Stage 4 Decomposition: 8 of 9 roles have no dedicated tooli
 > See the full project lifecycle at [AI-Assisted Project Lifecycle](../lifecycle/) to understand how stages connect across roles. Each stage guide maps available HVE Core tools and role-specific guidance for that phase of work.
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

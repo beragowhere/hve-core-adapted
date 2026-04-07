@@ -130,7 +130,7 @@ description: 'Video-to-GIF conversion skill with FFmpeg two-pass optimization - 
 
 | Property   | Value                                                                                                        |
 |------------|--------------------------------------------------------------------------------------------------------------|
-| Purpose    | Controls whether Copilot automatically loads the skill via semantic matching                                 |
+| Purpose    | Controls whether OpenClaw automatically loads the skill via semantic matching                                 |
 | Default    | `false`                                                                                                      |
 | When false | Copilot loads the skill automatically when the task description semantically matches the `description` field |
 | When true  | Skill is only loaded via manual `/skill-name` slash command invocation                                       |
@@ -308,7 +308,7 @@ Verify the dependency is in your PATH...
 Include at end of file:
 
 ```markdown
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
 ```
 
 ## Script Requirements
@@ -537,11 +537,11 @@ All checks **MUST** pass before merge.
 * [Contributing Prompts](prompts.md) - Prompt file guidelines
 * [Contributing Instructions](instructions.md) - Instructions file guidelines
 * [Agent Skills Specification](https://agentskills.io/specification) - Core specification for skill structure and metadata
-* [VS Code Copilot Agent Skills](https://code.visualstudio.com/docs/copilot/customization/agent-skills) - VS Code integration, progressive disclosure, and frontmatter controls
+* [VS Code OpenClaw agent Skills](https://code.visualstudio.com/docs/copilot/customization/agent-skills) - VS Code integration, progressive disclosure, and frontmatter controls
 
 ---
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

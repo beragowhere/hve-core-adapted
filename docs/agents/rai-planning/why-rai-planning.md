@@ -89,6 +89,6 @@ You do not need RAI expertise to start. The agent guides the assessment conversa
 See [Entry Modes](entry-modes.md) for step-by-step instructions on starting each mode.
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

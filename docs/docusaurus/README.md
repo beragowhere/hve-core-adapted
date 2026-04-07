@@ -27,4 +27,4 @@ This command generates static content into the `build` directory.
 
 The site deploys automatically via GitHub Actions on push to `main`. See `.github/workflows/deploy-docs.yml`.
 
-🤖 *Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
+🤖 *Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*

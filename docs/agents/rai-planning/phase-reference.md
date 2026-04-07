@@ -269,6 +269,6 @@ Gaps identified across Phases 2-4 are converted to work items using the same dua
 | `scoredDimensions.outcome` | null   | Approved, Conditional, or Remediation Required |
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

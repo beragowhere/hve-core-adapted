@@ -133,4 +133,4 @@ The `.sigstore.json` bundle contains the full Sigstore verification material. Th
 
 ---
 
-🤖 Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.
+🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers.

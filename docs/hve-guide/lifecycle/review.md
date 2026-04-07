@@ -143,6 +143,6 @@ Evaluate the execution log from .copilot-tracking/sandbox/2025-01-15-task-review
 Review produces reviewed pull requests with feedback, validation reports, and approval decisions. Transition to [Stage 8: Delivery](delivery.md) when the PR is approved. Return to [Stage 6: Implementation](implementation.md) when rework is needed.
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

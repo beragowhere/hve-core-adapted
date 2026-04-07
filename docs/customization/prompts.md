@@ -187,6 +187,6 @@ Mode configuration is useful when a prompt needs Copilot to operate differently 
 For full frontmatter schema, naming conventions, and validation rules, see [Contributing: Prompts](../contributing/prompts.md).
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

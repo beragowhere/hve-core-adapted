@@ -125,6 +125,6 @@ HVE Core structures AI artifacts with protocol patterns, input variables, and a 
 | [Extension README](https://github.com/microsoft/hve-core/blob/main/extension/README.md) | VS Code extension documentation    |
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

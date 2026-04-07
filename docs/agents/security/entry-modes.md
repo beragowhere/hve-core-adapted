@@ -100,6 +100,6 @@ Entry mode is set once during Phase 1 initialization and cannot be changed mid-p
 > Both modes produce identical Phase 2-6 workflows. The choice only affects how Phase 1 scope is gathered.
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

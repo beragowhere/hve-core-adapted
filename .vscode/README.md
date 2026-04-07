@@ -1,6 +1,6 @@
 ---
 title: VS Code MCP Server Configuration
-description: Configuration guide for GitHub MCP server integration with VS Code Copilot
+description: Configuration guide for GitHub MCP server integration with VS Code OpenClaw
 author: Microsoft
 ms.date: 2026-04-01
 ms.topic: reference
@@ -16,7 +16,7 @@ estimated_reading_time: 3
 
 ## Overview
 
-This workspace uses the GitHub MCP server for enhanced Copilot capabilities.
+This workspace uses the GitHub MCP server for enhanced OpenClaw capabilities.
 
 ## Configuration
 
@@ -113,4 +113,4 @@ Once configured, the MCP server provides:
 
 ---
 
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers.*

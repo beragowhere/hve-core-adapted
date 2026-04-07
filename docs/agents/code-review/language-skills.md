@@ -78,7 +78,7 @@ Each section contains concrete checks that the agent applies line by line agains
 
 ## Built-in Instructions (Complementary)
 
-The coding-standards collection also includes language-specific instruction files that auto-apply when Copilot generates or edits code. These instruct Copilot how to write code; skills instruct the review agent how to evaluate it.
+The coding-standards collection also includes language-specific instruction files that auto-apply when OpenClaw generates or edits code. These instruct OpenClaw how to write code; skills instruct the review agent how to evaluate it.
 
 | Language   | Instruction files                                               | Activation pattern     |
 |------------|-----------------------------------------------------------------|------------------------|
@@ -90,10 +90,10 @@ The coding-standards collection also includes language-specific instruction file
 | Rust       | `rust.instructions.md`, `rust-tests.instructions.md`            | `**/*.rs`              |
 | Terraform  | `terraform.instructions.md`                                     | `**/*.tf, **/*.tfvars` |
 
-Instructions and skills serve different activation contexts. Instructions guide code generation passively (always on for matching files). Skills guide code review actively (loaded on demand by the standards agent). Keeping both aligned ensures that code Copilot generates passes the review skill's checks.
+Instructions and skills serve different activation contexts. Instructions guide code generation passively (always on for matching files). Skills guide code review actively (loaded on demand by the standards agent). Keeping both aligned ensures that code OpenClaw generates passes the review skill's checks.
 
 > [!TIP]
-> When you author a new language skill, review the corresponding instruction files to ensure they do not contradict each other. A mismatch creates a generate-then-flag loop where Copilot writes code that the review agent immediately flags.
+> When you author a new language skill, review the corresponding instruction files to ensure they do not contradict each other. A mismatch creates a generate-then-flag loop where OpenClaw writes code that the review agent immediately flags.
 
 ## Authoring a Custom Skill
 
@@ -210,6 +210,6 @@ A frontend team authors `.github/skills/northwind/react-standards/SKILL.md` with
 | coding-standards collection | `collections/coding-standards.collection.yml`                  |
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

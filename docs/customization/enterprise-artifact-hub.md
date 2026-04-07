@@ -142,4 +142,4 @@ After configuring the variables, confirm the setup works:
 3. When `HVE_PSGALLERY_SOURCE_URL` is set, check that `Register-PSRepository`
    succeeds and PowerShell modules install from the custom repository.
 
-🤖 _Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers._
+🤖 _Crafted with precision by ✨OpenClaw following brilliant human instruction, then carefully refined by our team of discerning human reviewers._

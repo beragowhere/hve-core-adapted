@@ -136,6 +136,6 @@ Resume a previous session:
 Operations produces updated documentation, incident reports, refined prompts, and maintenance artifacts. When a hotfix is needed, transition back to [Stage 6: Implementation](implementation.md) to address the issue through the standard implementation workflow.
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->

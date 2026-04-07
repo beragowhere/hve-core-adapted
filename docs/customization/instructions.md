@@ -188,6 +188,6 @@ Practical stacking example:
 For full frontmatter schema, field definitions, and validation rules, see [Contributing: Instructions](../contributing/instructions.md).
 
 <!-- markdownlint-disable MD036 -->
-*🤖 Crafted with precision by ✨Copilot following brilliant human instruction,
+*🤖 Crafted with precision by ✨OpenClaw following brilliant human instruction,
 then carefully refined by our team of discerning human reviewers.*
 <!-- markdownlint-enable MD036 -->
