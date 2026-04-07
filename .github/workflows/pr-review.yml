@@ -1,0 +1,153 @@
+name: PR Review
+on:
+  pull_request:
+    types: [opened, ready_for_review]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Setup GitHub CLI
+        run: |
+          type -p gh >/dev/null || curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+          && chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+          && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+          && apt update \
+          && apt install gh -y
+          
+      - name: Authenticate with GitHub token
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh auth status || gh auth login --with-token <<< "$GITHUB_TOKEN"
+          
+      - name: Get PR details
+        id: pr-details
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          PR_INFO=$(gh pr view "$PR_NUMBER" --json title,body,additions,deletions,changedFiles,author)
+          echo "pr_info=$PR_INFO" >> $GITHUB_OUTPUT
+          
+          # Extract basic metrics
+          ADDITIONS=$(echo "$PR_INFO" | jq -r '.additions')
+          DELETIONS=$(echo "$PR_INFO" | jq -r '.deletions')
+          FILES=$(echo "$PR_INFO" | jq -r '.changedFiles')
+          
+          echo "additions=$ADDITIONS" >> $GITHUB_OUTPUT
+          echo "deletions=$DELETIONS" >> $GITHUB_OUTPUT
+          echo "files=$FILES" >> $GITHUB_OUTPUT
+          
+      - name: Perform basic checks
+        id: checks
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          ADDITIONS: ${{ steps.pr-details.outputs.additions }}
+          DELETIONS: ${{ steps.pr-details.outputs.deletions }}
+          FILES: ${{ steps.pr-details.outputs.files }}
+        run: |
+          echo "Performing basic PR checks..."
+          
+          # Check PR size
+          TOTAL_CHANGES=$((ADDITIONS + DELETIONS))
+          echo "Total changes: $TOTAL_CHANGES"
+          echo "Files changed: $FILES"
+          
+          ISSUES=""
+          
+          if [ "$TOTAL_CHANGES" -gt 1000 ]; then
+            ISSUES="$ISSUES\n⚠️ **Large PR**: Consider breaking into smaller changes"
+          fi
+          
+          if [ "$FILES" -gt 20 ]; then
+            ISSUES="$ISSUES\n⚠️ **Many files changed**: Review may be challenging"
+          fi
+          
+          if [ "$ADDITIONS" -eq 0 ] && [ "$DELETIONS" -eq 0 ]; then
+            ISSUES="$ISSUES\n⚠️ **No changes detected**: PR appears empty"
+          fi
+          
+          echo "issues=$ISSUES" >> $GITHUB_OUTPUT
+          
+      - name: Check for common patterns
+        id: patterns
+        run: |
+          echo "Checking for common patterns..."
+          
+          PATTERNS=""
+          
+          # Check for TODO comments
+          if find . -name "*.js" -o -name "*.ts" -o -name "*.py" -o -name "*.java" -o -name "*.go" 2>/dev/null | xargs grep -l "TODO:" 2>/dev/null | head -5; then
+            PATTERNS="$PATTERNS\n🔍 **TODO comments found**: Consider addressing before merge"
+          fi
+          
+          # Check for console.log/debug statements
+          if find . -name "*.js" -o -name "*.ts" 2>/dev/null | xargs grep -l "console\\.log\\|console\\.debug" 2>/dev/null | head -3; then
+            PATTERNS="$PATTERNS\n🔍 **Debug statements found**: Remove before production"
+          fi
+          
+          echo "patterns=$PATTERNS" >> $GITHUB_OUTPUT
+          
+      - name: Create review comment
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          ISSUES: ${{ steps.checks.outputs.issues }}
+          PATTERNS: ${{ steps.patterns.outputs.patterns }}
+          ADDITIONS: ${{ steps.pr-details.outputs.additions }}
+          DELETIONS: ${{ steps.pr-details.outputs.deletions }}
+          FILES: ${{ steps.pr-details.outputs.files }}
+        run: |
+          # Build review comment
+          REVIEW_BODY="## 🤖 Automated PR Review\n\n"
+          REVIEW_BODY="$REVIEW_BODY**Summary:**\n"
+          REVIEW_BODY="$REVIEW_BODY- 📊 **Changes:** +$ADDITIONS -$DELETIONS across $FILES files\n"
+          
+          if [ -n "$ISSUES" ]; then
+            REVIEW_BODY="$REVIEW_BODY\n**Issues to consider:**$ISSUES\n"
+          fi
+          
+          if [ -n "$PATTERNS" ]; then
+            REVIEW_BODY="$REVIEW_BODY\n**Code patterns noted:**$PATTERNS\n"
+          fi
+          
+          REVIEW_BODY="$REVIEW_BODY\n---\n"
+          REVIEW_BODY="$REVIEW_BODY*This is an automated review. Please conduct a thorough manual review before merging.*"
+          
+          # Post review comment
+          gh pr comment "$PR_NUMBER" --body "$REVIEW_BODY"
+          
+          echo "✅ Review comment posted"
+          
+      - name: Apply appropriate labels
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          ADDITIONS: ${{ steps.pr-details.outputs.additions }}
+          TOTAL_CHANGES: $(( ${{ steps.pr-details.outputs.additions }} + ${{ steps.pr-details.outputs.deletions }} ))
+        run: |
+          # Determine label based on size
+          if [ "$TOTAL_CHANGES" -gt 500 ]; then
+            LABEL="large-pr"
+          elif [ "$TOTAL_CHANGES" -lt 50 ]; then
+            LABEL="small-pr"
+          else
+            LABEL="medium-pr"
+          fi
+          
+          # Apply label
+          gh pr edit "$PR_NUMBER" --add-label "$LABEL"
+          echo "✅ Applied label: $LABEL"
+          
+      - name: Log completion
+        run: |
+          echo "✅ PR review completed"
+          echo "PR: #${{ github.event.pull_request.number }}"
+          echo "Changes: +${{ steps.pr-details.outputs.additions }} -${{ steps.pr-details.outputs.deletions }}"
+          echo "Files: ${{ steps.pr-details.outputs.files }}"

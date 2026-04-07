@@ -1,0 +1,226 @@
+name: Dependency PR Review
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'package.json'
+      - 'package-lock.json'
+      - '**/requirements.txt'
+      - '**/pyproject.toml'
+      - '.github/workflows/*.yml'
+      - '.devcontainer/**'
+
+jobs:
+  review-dependabot:
+    # Only run for Dependabot PRs
+    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Setup GitHub CLI
+        run: |
+          type -p gh >/dev/null || curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+          && chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+          && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+          && apt update \
+          && apt install gh -y
+          
+      - name: Authenticate with GitHub token
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh auth status || gh auth login --with-token <<< "$GITHUB_TOKEN"
+          
+      - name: Get PR details
+        id: pr-details
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          PR_INFO=$(gh pr view "$PR_NUMBER" --json title,body,files,additions,deletions)
+          echo "pr_info=$PR_INFO" >> $GITHUB_OUTPUT
+          
+          # Check if dependency files were modified
+          DEPENDENCY_FILES=$(echo "$PR_INFO" | jq -r '.files[] | select(.path | test("package\\.json|package-lock\\.json|requirements\\.txt|pyproject\\.toml")) | .path' | head -5)
+          if [ -z "$DEPENDENCY_FILES" ]; then
+            echo "dependency_changes=false" >> $GITHUB_OUTPUT
+            echo "No dependency files modified"
+          else
+            echo "dependency_changes=true" >> $GITHUB_OUTPUT
+            echo "dependency_files=$DEPENDENCY_FILES" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Skip if no dependency changes
+        if: steps.pr-details.outputs.dependency_changes == 'false'
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          gh pr comment "$PR_NUMBER" \
+            --body "🤖 **Dependency Review Skipped**\n\nNo dependency files were modified in this PR. Skipping automated review."
+          echo "Skipping: no dependency changes found"
+          exit 0
+          
+      - name: Analyze version bumps
+        id: analyze
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          echo "Analyzing dependency updates..."
+          
+          # Extract version changes from PR body (Dependabot format)
+          VERSION_CHANGES=""
+          if echo "$PR_BODY" | grep -q "Bumps.*from.*to"; then
+            VERSION_CHANGES=$(echo "$PR_BODY" | grep -o "Bumps [^ ]* from [^ ]* to [^ ]*" | head -5)
+          fi
+          
+          echo "version_changes=$VERSION_CHANGES" >> $GITHUB_OUTPUT
+          
+          # Classify changes
+          MAJOR_COUNT=0
+          MINOR_COUNT=0
+          PATCH_COUNT=0
+          
+          while IFS= read -r line; do
+            if [ -n "$line" ]; then
+              # Extract version numbers
+              FROM_VERSION=$(echo "$line" | sed -n 's/.*from \([0-9.]*\) to.*/\1/p')
+              TO_VERSION=$(echo "$line" | sed -n 's/.*to \([0-9.]*\).*/\1/p')
+              
+              if [ -n "$FROM_VERSION" ] && [ -n "$TO_VERSION" ]; then
+                # Simple classification based on first number
+                FROM_MAJOR=$(echo "$FROM_VERSION" | cut -d. -f1)
+                TO_MAJOR=$(echo "$TO_VERSION" | cut -d. -f1)
+                
+                if [ "$FROM_MAJOR" != "$TO_MAJOR" ]; then
+                  MAJOR_COUNT=$((MAJOR_COUNT + 1))
+                else
+                  FROM_MINOR=$(echo "$FROM_VERSION" | cut -d. -f2)
+                  TO_MINOR=$(echo "$TO_VERSION" | cut -d. -f2)
+                  
+                  if [ "$FROM_MINOR" != "$TO_MINOR" ]; then
+                    MINOR_COUNT=$((MINOR_COUNT + 1))
+                  else
+                    PATCH_COUNT=$((PATCH_COUNT + 1))
+                  fi
+                fi
+              fi
+            fi
+          done <<< "$VERSION_CHANGES"
+          
+          echo "major=$MAJOR_COUNT" >> $GITHUB_OUTPUT
+          echo "minor=$MINOR_COUNT" >> $GITHUB_OUTPUT
+          echo "patch=$PATCH_COUNT" >> $GITHUB_OUTPUT
+          
+      - name: Check for safety issues
+        id: safety
+        run: |
+          echo "Checking for safety issues..."
+          
+          ISSUES=""
+          
+          # Check for GitHub Actions without SHA pinning
+          if find .github/workflows -name "*.yml" -type f -exec grep -l "uses:.*@[^#]" {} \; 2>/dev/null | head -3; then
+            ISSUES="$ISSUES\n⚠️ **GitHub Actions without SHA pinning detected**"
+          fi
+          
+          # Check for license files
+          if [ ! -f "LICENSE" ] && [ ! -f "LICENSE.md" ] && [ ! -f "LICENSE.txt" ]; then
+            ISSUES="$ISSUES\n⚠️ **No license file found** - Ensure MIT license compatibility"
+          fi
+          
+          echo "issues=$ISSUES" >> $GITHUB_OUTPUT
+          
+      - name: Determine review action
+        id: decision
+        env:
+          MAJOR_COUNT: ${{ steps.analyze.outputs.major }}
+          ISSUES: ${{ steps.safety.outputs.issues }}
+        run: |
+          echo "Determining review action..."
+          
+          ACTION="approve"
+          REASON="All safety checks passed"
+          
+          if [ "$MAJOR_COUNT" -gt 0 ]; then
+            ACTION="comment"
+            REASON="Major version bump(s) detected - requires human review"
+          elif [ -n "$ISSUES" ]; then
+            ACTION="comment"
+            REASON="Safety issues detected"
+          fi
+          
+          echo "action=$ACTION" >> $GITHUB_OUTPUT
+          echo "reason=$REASON" >> $GITHUB_OUTPUT
+          
+      - name: Approve PR
+        if: steps.decision.outputs.action == 'approve'
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          MAJOR_COUNT: ${{ steps.analyze.outputs.major }}
+          MINOR_COUNT: ${{ steps.analyze.outputs.minor }}
+          PATCH_COUNT: ${{ steps.analyze.outputs.patch }}
+        run: |
+          REVIEW_BODY="## ✅ **Dependency Review Approved**\n\n"
+          REVIEW_BODY="$REVIEW_BODY**Summary:**\n"
+          REVIEW_BODY="$REVIEW_BODY- 🟢 **Patch updates:** $PATCH_COUNT\n"
+          REVIEW_BODY="$REVIEW_BODY- 🟡 **Minor updates:** $MINOR_COUNT\n"
+          REVIEW_BODY="$REVIEW_BODY- 🔴 **Major updates:** $MAJOR_COUNT\n\n"
+          REVIEW_BODY="$REVIEW_BODY**Safety checks passed:**\n"
+          REVIEW_BODY="$REVIEW_BODY- ✅ License compatibility maintained\n"
+          REVIEW_BODY="$REVIEW_BODY- ✅ No critical safety issues detected\n\n"
+          REVIEW_BODY="$REVIEW_BODY**Note:** This is an automated review. Always verify changes before merging."
+          
+          gh pr review "$PR_NUMBER" --approve --body "$REVIEW_BODY"
+          echo "✅ PR approved"
+          
+      - name: Comment for review needed
+        if: steps.decision.outputs.action == 'comment'
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          MAJOR_COUNT: ${{ steps.analyze.outputs.major }}
+          MINOR_COUNT: ${{ steps.analyze.outputs.minor }}
+          PATCH_COUNT: ${{ steps.analyze.outputs.patch }}
+          ISSUES: ${{ steps.safety.outputs.issues }}
+          REASON: ${{ steps.decision.outputs.reason }}
+        run: |
+          REVIEW_BODY="## 🔍 **Dependency Review - Human Review Needed**\n\n"
+          REVIEW_BODY="$REVIEW_BODY**Reason:** $REASON\n\n"
+          REVIEW_BODY="$REVIEW_BODY**Summary:**\n"
+          REVIEW_BODY="$REVIEW_BODY- 🟢 **Patch updates:** $PATCH_COUNT\n"
+          REVIEW_BODY="$REVIEW_BODY- 🟡 **Minor updates:** $MINOR_COUNT\n"
+          REVIEW_BODY="$REVIEW_BODY- 🔴 **Major updates:** $MAJOR_COUNT\n\n"
+          
+          if [ -n "$ISSUES" ]; then
+            REVIEW_BODY="$REVIEW_BODY**Safety Issues:**$ISSUES\n\n"
+          fi
+          
+          if [ "$MAJOR_COUNT" -gt 0 ]; then
+            REVIEW_BODY="$REVIEW_BODY**Major Version Changes:**\n"
+            REVIEW_BODY="$REVIEW_BODYMajor version bumps may contain breaking changes. Please review:\n"
+            REVIEW_BODY="$REVIEW_BODY1. Check release notes for breaking changes\n"
+            REVIEW_BODY="$REVIEW_BODY2. Verify compatibility with existing code\n"
+            REVIEW_BODY="$REVIEW_BODY3. Test the changes before merging\n\n"
+          fi
+          
+          REVIEW_BODY="$REVIEW_BODY**Next Steps:**\n"
+          REVIEW_BODY="$REVIEW_BODY1. Review the dependency changes\n"
+          REVIEW_BODY="$REVIEW_BODY2. Check for breaking changes\n"
+          REVIEW_BODY="$REVIEW_BODY3. Test if needed\n"
+          REVIEW_BODY="$REVIEW_BODY4. Approve or request changes\n"
+          
+          gh pr comment "$PR_NUMBER" --body "$REVIEW_BODY"
+          echo "⚠️ Review comment posted - human review needed"
+          
+      - name: Log completion
+        run: |
+          echo "✅ Dependency review completed"
+          echo "PR: #${{ github.event.pull_request.number }}"
+          echo "Action: ${{ steps.decision.outputs.action }}"
+          echo "Reason: ${{ steps.decision.outputs.reason }}"

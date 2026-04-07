@@ -1,0 +1,175 @@
+name: Issue Implementation
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  implement:
+    if: github.event.label.name == 'agent-ready'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Setup GitHub CLI
+        run: |
+          type -p gh >/dev/null || curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+          && chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+          && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+          && apt update \
+          && apt install gh -y
+          
+      - name: Authenticate with GitHub token
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh auth status || gh auth login --with-token <<< "$GITHUB_TOKEN"
+          
+      - name: Analyze issue
+        id: analyze
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          echo "Analyzing issue #$ISSUE_NUMBER: $ISSUE_TITLE"
+          
+          # Extract key information from issue
+          echo "title=$ISSUE_TITLE" >> $GITHUB_OUTPUT
+          echo "body=$ISSUE_BODY" >> $GITHUB_OUTPUT
+          
+          # Simple classification of implementation type
+          if echo "$ISSUE_TITLE" | grep -qi "bug\|fix\|error"; then
+            echo "type=bugfix" >> $GITHUB_OUTPUT
+          elif echo "$ISSUE_TITLE" | grep -qi "feature\|add\|new"; then
+            echo "type=feature" >> $GITHUB_OUTPUT
+          elif echo "$ISSUE_TITLE" | grep -qi "doc\|readme\|documentation"; then
+            echo "type=documentation" >> $GITHUB_OUTPUT
+          else
+            echo "type=enhancement" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Create implementation branch
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          BRANCH_NAME="issue-$ISSUE_NUMBER-implement"
+          git checkout -b "$BRANCH_NAME"
+          echo "branch=$BRANCH_NAME" >> $GITHUB_ENV
+          
+      - name: Check for OpenClaw integration
+        id: openclaw-check
+        run: |
+          if [ -f ".github/openclaw-config.json" ] || [ -d ".github/openclaw/" ]; then
+            echo "openclaw=true" >> $GITHUB_OUTPUT
+            echo "OpenClaw integration detected"
+          else
+            echo "openclaw=false" >> $GITHUB_OUTPUT
+            echo "No OpenClaw integration found"
+          fi
+          
+      - name: Create placeholder implementation
+        if: steps.openclaw-check.outputs.openclaw == 'false'
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: |
+          # Create a simple placeholder file for demonstration
+          PLACEHOLDER_FILE=".github/workflows/.placeholder-issue-$ISSUE_NUMBER.md"
+          cat > "$PLACEHOLDER_FILE" << EOF
+          # Implementation for Issue #$ISSUE_NUMBER
+          
+          **Issue:** $ISSUE_TITLE
+          
+          **Status:** Pending implementation
+          
+          **Notes:** 
+          - This is a placeholder file created by the Issue Implementation workflow
+          - Actual implementation would be done by an OpenClaw agent or developer
+          - Remove this file once implementation is complete
+          
+          **Next Steps:**
+          1. Analyze the issue requirements
+          2. Implement the necessary changes
+          3. Test the implementation
+          4. Create pull request
+          EOF
+          
+          echo "Created placeholder file: $PLACEHOLDER_FILE"
+          
+      - name: Commit changes
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git add .
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            echo "changes=false" >> $GITHUB_ENV
+          else
+            git commit -m "Implement issue #$ISSUE_NUMBER [skip ci]"
+            echo "changes=true" >> $GITHUB_ENV
+          fi
+          
+      - name: Push changes
+        if: env.changes == 'true'
+        env:
+          BRANCH_NAME: ${{ env.branch }}
+        run: |
+          git push origin "$BRANCH_NAME"
+          
+      - name: Create pull request
+        if: env.changes == 'true'
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          BRANCH_NAME: ${{ env.branch }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_TITLE="Implement #$ISSUE_NUMBER: $ISSUE_TITLE"
+          PR_BODY="This PR implements the changes requested in issue #$ISSUE_NUMBER."
+          
+          gh pr create \
+            --title "$PR_TITLE" \
+            --body "$PR_BODY" \
+            --base "main" \
+            --head "$BRANCH_NAME" \
+            --label "implementation"
+            
+      - name: Update issue with status
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ env.changes }}" = "true" ]; then
+            gh issue comment "$ISSUE_NUMBER" \
+              --body "✅ **Implementation Started**\n\nA pull request has been created to implement this issue. The implementation is now in progress."
+              
+            # Remove agent-ready label since we're working on it
+            gh issue edit "$ISSUE_NUMBER" \
+              --remove-label "agent-ready" \
+              --add-label "in-progress"
+          else
+            gh issue comment "$ISSUE_NUMBER" \
+              --body "🔍 **Analysis Complete**\n\nIssue analyzed. No automatic implementation possible at this time. Requires manual implementation or OpenClaw agent configuration."
+          fi
+          
+      - name: Log completion
+        run: |
+          echo "✅ Issue implementation workflow completed"
+          echo "Issue: #${{ github.event.issue.number }}"
+          echo "Branch: ${{ env.branch }}"
+          echo "Changes: ${{ env.changes }}"

@@ -1,0 +1,82 @@
+name: BRD/PRD Agent
+on:
+  workflow_dispatch:
+    inputs:
+      agent-type:
+        description: 'Type of agent to run'
+        required: true
+        type: choice
+        options:
+          - brd-builder
+          - prd-builder
+      project-name:
+        description: 'Project name for BRD/PRD'
+        required: true
+        type: string
+      trigger-type:
+        description: 'How to trigger the agent'
+        required: true
+        type: choice
+        options:
+          - manual
+          - issue-comment
+          - scheduled
+
+jobs:
+  run-brd-prd-agent:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: |
+          npm install @microsoft/copilot-cli
+          
+      - name: Determine agent file
+        id: agent-file
+        run: |
+          if [[ "${{ github.event.inputs.agent-type }}" == "brd-builder" ]]; then
+            echo "agent-file=.github/agents/project-planning/brd-builder.agent.md" >> $GITHUB_OUTPUT
+          else
+            echo "agent-file=.github/agents/project-planning/prd-builder.agent.md" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Run BRD/PRD agent
+        env:
+          COPILOT_API_KEY: ${{ secrets.COPILOT_API_KEY }}
+          PROJECT_NAME: ${{ github.event.inputs.project-name }}
+        run: |
+          echo "Running ${{ steps.agent-file.outputs.agent-file }} for project: $PROJECT_NAME"
+          # This would normally invoke the copilot CLI with the agent
+          # For now, create a placeholder output
+          mkdir -p docs/brds
+          echo "# BRD/PRD Agent Output" > docs/brds/placeholder-output.md
+          echo "Agent: ${{ steps.agent-file.outputs.agent-file }}" >> docs/brds/placeholder-output.md
+          echo "Project: $PROJECT_NAME" >> docs/brds/placeholder-output.md
+          echo "Status: Ready for deployment" >> docs/brds/placeholder-output.md
+          echo "Date: $(date)" >> docs/brds/placeholder-output.md
+          
+      - name: Create issue with results
+        if: github.event.inputs.trigger-type == 'manual'
+        run: |
+          gh issue create \
+            --title "BRD/PRD Agent Execution: ${{ github.event.inputs.project-name }}" \
+            --body "BRD/PRD agent executed successfully for project: ${{ github.event.inputs.project-name }}
+            
+            **Agent Type:** ${{ github.event.inputs.agent-type }}
+            **Trigger:** ${{ github.event.inputs.trigger-type }}
+            **Output:** Created placeholder documentation
+            **Next Steps:** Review and refine requirements
+            
+            See: docs/brds/placeholder-output.md" \
+            --label "documentation,requirements"

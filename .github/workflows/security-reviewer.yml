@@ -1,0 +1,8 @@
+# Placeholder for security-reviewer.yml
+name: Placeholder security-reviewer.yml
+on: workflow_dispatch
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Placeholder workflow for security-reviewer.yml"

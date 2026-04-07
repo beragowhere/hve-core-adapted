@@ -1,0 +1,54 @@
+name: Auto Label Issues
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  label-issue:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Label issue based on title
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const title = issue.title.toLowerCase();
+            const body = issue.body ? issue.body.toLowerCase() : '';
+            
+            let label = 'enhancement'; // default
+            
+            if (title.includes('bug') || title.includes('fix') || title.includes('error') || title.includes('broken')) {
+              label = 'bug';
+            } else if (title.includes('doc') || title.includes('readme') || title.includes('documentation')) {
+              label = 'documentation';
+            } else if (title.includes('security') || title.includes('vulnerability') || title.includes('cve')) {
+              label = 'security';
+            } else if (title.includes('feature') || title.includes('new') || title.includes('add')) {
+              label = 'feature';
+            } else if (title.includes('chore') || title.includes('maintenance') || title.includes('cleanup')) {
+              label = 'maintenance';
+            }
+            
+            console.log(`Labeling issue #${issue.number} as: ${label}`);
+            
+            // Add the label
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              labels: [label]
+            });
+            
+            // Add comment for enhancements
+            if (label === 'enhancement') {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: "🔍 **Issue Labeled**\n\nI've labeled this issue as an **enhancement**.\n\nPlease provide more details about the specific change you're proposing if you haven't already included them in the issue description."
+              });
+            }
+            
+            console.log(`✅ Issue #${issue.number} labeled as: ${label}`);

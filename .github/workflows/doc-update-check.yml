@@ -1,0 +1,204 @@
+name: Documentation Update Check
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - '.github/agents/**'
+      - '.github/instructions/**'
+      - '.github/skills/**'
+      - '.github/prompts/**'
+      - 'extension/**'
+      - 'collections/**'
+      - '.devcontainer/**'
+      - '.github/workflows/**'
+      - '!.github/workflows/*.lock.yml'
+
+jobs:
+  check-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Setup GitHub CLI
+        run: |
+          type -p gh >/dev/null || curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+          && chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+          && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+          && apt update \
+          && apt install gh -y
+          
+      - name: Authenticate with GitHub token
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh auth status || gh auth login --with-token <<< "$GITHUB_TOKEN"
+          
+      - name: Get changed files
+        id: changes
+        run: |
+          # Get list of changed files in this push
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD 2>/dev/null || git diff --name-only origin/main HEAD 2>/dev/null || echo "")
+          
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No changed files detected"
+            echo "changed_files=" >> $GITHUB_OUTPUT
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "Changed files:"
+            echo "$CHANGED_FILES"
+            echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Skip if only documentation changed
+        if: steps.changes.outputs.has_changes == 'true'
+        id: skip-check
+        env:
+          CHANGED_FILES: ${{ steps.changes.outputs.changed_files }}
+        run: |
+          # Check if all changes are documentation files
+          NON_DOC_FILES=$(echo "$CHANGED_FILES" | grep -v "^docs/" | grep -v "^README" | grep -v "\.md$" | head -5)
+          
+          if [ -z "$NON_DOC_FILES" ]; then
+            echo "Only documentation files changed, skipping check"
+            echo "skip=true" >> $GITHUB_OUTPUT
+            echo "reason=only documentation files changed" >> $GITHUB_OUTPUT
+          else
+            echo "Code files changed, proceeding with check"
+            echo "skip=false" >> $GITHUB_OUTPUT
+            
+            # Extract code files for checking
+            CODE_FILES=$(echo "$CHANGED_FILES" | grep -E "(\.js$|\.ts$|\.py$|\.yml$|\.yaml$|\.json$|\.sh$)" | grep -v "^docs/" | head -10)
+            echo "code_files=$CODE_FILES" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Skip workflow if appropriate
+        if: steps.skip-check.outputs.skip == 'true'
+        run: |
+          echo "Skipping documentation check: ${{ steps.skip-check.outputs.reason }}"
+          exit 0
+          
+      - name: Map code files to documentation
+        id: map-docs
+        env:
+          CODE_FILES: ${{ steps.skip-check.outputs.code_files }}
+        run: |
+          echo "Mapping code files to documentation..."
+          
+          DOC_MAPPINGS=""
+          
+          # Simple mapping logic
+          while IFS= read -r file; do
+            if [ -n "$file" ]; then
+              # Map based on file type/location
+              if echo "$file" | grep -q "\.github/agents/"; then
+                DOC="docs/agents/$(basename "$file" .agent.md).md"
+                DOC_MAPPINGS="$DOC_MAPPINGS\n$file → $DOC"
+              elif echo "$file" | grep -q "\.github/workflows/"; then
+                DOC="docs/workflows/$(basename "$file" .yml).md"
+                DOC_MAPPINGS="$DOC_MAPPINGS\n$file → $DOC"
+              elif echo "$file" | grep -q "scripts/"; then
+                DOC="docs/scripts/$(basename "$file").md"
+                DOC_MAPPINGS="$DOC_MAPPINGS\n$file → $DOC"
+              fi
+            fi
+          done <<< "$CODE_FILES"
+          
+          echo "doc_mappings=$DOC_MAPPINGS" >> $GITHUB_OUTPUT
+          
+      - name: Check documentation existence
+        id: check-existence
+        env:
+          DOC_MAPPINGS: ${{ steps.map-docs.outputs.doc_mappings }}
+        run: |
+          echo "Checking if documentation exists..."
+          
+          MISSING_DOCS=""
+          EXISTING_DOCS=""
+          
+          # Parse mappings and check file existence
+          while IFS= read -r line; do
+            if [ -n "$line" ] && echo "$line" | grep -q "→"; then
+              DOC_FILE=$(echo "$line" | sed 's/.*→ //')
+              
+              if [ -f "$DOC_FILE" ]; then
+                EXISTING_DOCS="$EXISTING_DOCS\n$line"
+              else
+                MISSING_DOCS="$MISSING_DOCS\n$line"
+              fi
+            fi
+          done <<< "$(echo -e "$DOC_MAPPINGS")"
+          
+          echo "missing_docs=$MISSING_DOCS" >> $GITHUB_OUTPUT
+          echo "existing_docs=$EXISTING_DOCS" >> $GITHUB_OUTPUT
+          
+      - name: Create issues for missing documentation
+        id: create-issues
+        env:
+          MISSING_DOCS: ${{ steps.check-existence.outputs.missing_docs }}
+          COMMIT_SHA: ${{ github.sha }}
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+        run: |
+          echo "Creating issues for missing documentation..."
+          
+          ISSUES_CREATED=0
+          
+          # Parse missing docs and create issues
+          while IFS= read -r line; do
+            if [ -n "$line" ] && [ "$ISSUES_CREATED" -lt 3 ] && echo "$line" | grep -q "→"; then
+              CODE_FILE=$(echo "$line" | sed 's/ →.*//')
+              DOC_FILE=$(echo "$line" | sed 's/.*→ //')
+              
+              # Create issue title
+              ISSUE_TITLE="docs: Add documentation for $CODE_FILE"
+              
+              # Create issue body
+              ISSUE_BODY="## Documentation Gap Detected\n\n"
+              ISSUE_BODY="$ISSUE_BODY**Component:** Documentation\n\n"
+              ISSUE_BODY="$ISSUE_BODY**Bug Description:**\n"
+              ISSUE_BODY="$ISSUE_BODYCode file \`$CODE_FILE\` was modified but corresponding documentation \`$DOC_FILE\` is missing or needs update.\n\n"
+              ISSUE_BODY="$ISSUE_BODY**Expected Behavior:**\n"
+              ISSUE_BODY="$ISSUE_BODYDocumentation should exist for \`$CODE_FILE\` describing its purpose, usage, and any changes made.\n\n"
+              ISSUE_BODY="$ISSUE_BODY**Steps to Reproduce:**\n"
+              ISSUE_BODY="$ISSUE_BODY1. Review commit \`$COMMIT_SHA\`: $COMMIT_MESSAGE\n"
+              ISSUE_BODY="$ISSUE_BODY2. Check file \`$CODE_FILE\` for changes\n"
+              ISSUE_BODY="$ISSUE_BODY3. Verify documentation \`$DOC_FILE\` is missing or outdated\n\n"
+              ISSUE_BODY="$ISSUE_BODY**Additional Context:**\n"
+              ISSUE_BODY="$ISSUE_BODY- Code file: \`$CODE_FILE\`\n"
+              ISSUE_BODY="$ISSUE_BODY- Documentation file: \`$DOC_FILE\`\n"
+              ISSUE_BODY="$ISSUE_BODY- Triggered by automated documentation check workflow\n"
+              
+              # Create issue
+              gh issue create \
+                --title "$ISSUE_TITLE" \
+                --body "$ISSUE_BODY" \
+                --label "documentation,needs-triage,agent-ready"
+                
+              echo "Created issue for: $line"
+              ISSUES_CREATED=$((ISSUES_CREATED + 1))
+            fi
+          done <<< "$(echo -e "$MISSING_DOCS")"
+          
+          echo "issues_created=$ISSUES_CREATED" >> $GITHUB_OUTPUT
+          
+      - name: Log results
+        env:
+          ISSUES_CREATED: ${{ steps.create-issues.outputs.issues_created }}
+          CODE_FILES_COUNT: $(echo "${{ steps.skip-check.outputs.code_files }}" | wc -l)
+        run: |
+          echo "📊 **Documentation Check Results**"
+          echo "Code files changed: $CODE_FILES_COUNT"
+          echo "Issues created: $ISSUES_CREATED"
+          
+          if [ "$ISSUES_CREATED" -eq 0 ]; then
+            echo "✅ All documentation appears to be in sync"
+          else
+            echo "⚠️ Created $ISSUES_CREATED documentation issue(s)"
+          fi
